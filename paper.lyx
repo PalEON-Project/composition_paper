@@ -1,0 +1,270 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section
+Raw data
+\end_layout
+
+\begin_layout Standard
+The raw data are obtained from survey records collated from across the northeast
+ern U.S.
+ by a number of researchers.
+ For the states of Minnesota, Wisconsin, Illinois, Indiana, and Michigan,
+ data are available at point locations of surveyors and have been aggregated
+ to a regular 8 km grid in the Albers projection.
+ For the states of Ohio, Pennsylvania, New Jersey, New York and the six
+ New England states, data are aggregated at the township level.
+ Extensive details are available in Goring et al.
+ (2014) and the data are available at XXX.
+ 
+\end_layout
+
+\begin_layout Section
+Statistical model
+\end_layout
+
+\begin_layout Standard
+We fit a Bayesian statistical model to the data, with two primary goals:
+\end_layout
+
+\begin_layout Enumerate
+To estimate composition on a regular grid across the entire domain, filling
+ gaps where no data are available, and
+\end_layout
+
+\begin_layout Enumerate
+To quantify uncertainty in composition at all locations.
+\end_layout
+
+\begin_layout Standard
+The statistical model treats the observations as having a multinomial distributi
+on with a (latent) vector of proportions for each grid cell.
+ The proportions are modeled spatially by a set of P Gaussian spatial processes,
+ one per taxon, 
+\begin_inset Formula $\alpha_{p}(s)$
+\end_inset
+
+.
+ This collection of processes defines a multivariate spatial process for
+ composition.
+ At each grid cell, the proportions necessarily sum to one; this constrain
+ is imposed via the log-ratio transformation, which defines the proportion
+ for taxon 
+\begin_inset Formula $p$
+\end_inset
+
+ at cell 
+\begin_inset Formula $i$
+\end_inset
+
+ to be
+\begin_inset Formula 
+\[
+\theta_{p}(s_{i})=\frac{\log(\alpha_{p}(s_{i}))}{\sum_{j=1}^{P}\exp(\alpha_{j}(s_{i})};
+\]
+
+\end_inset
+
+This transformation is the multivariate analogue of the logit transformation.
+ The result is a multinomial probit model.
+\end_layout
+
+\begin_layout Standard
+We considered two spatial models to define the structure of the 
+\begin_inset Formula $\alpha_{p}(s)$
+\end_inset
+
+ processes, a standard conditional autoregressive model (Bane:etal:2003)
+ and a Gaussian Markov random field approximation to a Gaussian process
+ with Matern covariance (Lind:etal:2011).
+ 
+\end_layout
+
+\begin_layout Subsection
+Model for township data
+\end_layout
+
+\begin_layout Standard
+We developed an extension of this model to account for data at a different
+ aggregation than our core 8 km grid.
+ This extension introduces latent variables, one per tree, that are the
+ grid cell in which the tree is located.
+ These latent 'membership' variables can be sampled within the MCMC as additiona
+l unknown parameters.
+ The prior for the latent variable for each tree is a discrete distribution
+ that puts mass proportional to the overlap between the township in which
+ the tree is located and the grid cells that intersect the township, with
+ the priors across different trees in a township being independent.
+ Note that this prior has the unrealistic feature that it does not represent
+ our understanding that the trees in a township would be distributed more
+ regularly across the area of the township than expected by such independence
+ prior.
+\end_layout
+
+\begin_layout Subsection
+Computation
+\end_layout
+
+\begin_layout Standard
+McCu:Ross:1994 introduced a representation of the multinomial probit model
+ that pertains at each location.
+ The representation introduces latent variables that allow one to develop
+ a MCMC sampling strategy that takes advantage of closed form full conditional
+ distributions (so-called Gibbs sampling steps).
+ 
+\end_layout
+
+\begin_layout Standard
+In the spatial context, this allows us to draw from the conditional distribution
+ of w given alpha in closed form, drawing the entire vector of alpha values
+ for a given taxon at once, accounting for the spatial dependence structure.
+ 
+\end_layout
+
+\begin_layout Standard
+While the latent variable representation provides great advantages in the
+ MCMC sampling compared to joint Metropolis updates or single location at
+ a time updates, there is still strong dependence between the hyperparameters
+ and the the latent process values (as well as between the latent process
+ values and the auxiliary variables).
+ To address the first, we developed a 'cross-level' joint updating strategy
+ in which we propose 
+\begin_inset Formula $\phi$
+\end_inset
+
+ via a Metropolis-style random walk and then conditional on the proposed
+ value propose 
+\begin_inset Formula $\alpha_{p}(\cdot)$
+\end_inset
+
+ from its full conditional distribution (Paci:2007).
+ This approach is equivalent to integrating over 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ and sampling from the marginalized distribution 
+\begin_inset Formula $\phi|W$
+\end_inset
+
+.
+ We took a similar strategy for sampling 
+\begin_inset Formula $\mu$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+[sampling of p's given alphas]
+\end_layout
+
+\begin_layout Section
+Model comparison
+\end_layout
+
+\begin_layout Subsection
+Design
+\end_layout
+
+\begin_layout Standard
+We compared the CAR and Lindgren models by holding out data from the fitting
+ process and assessing the fit of the model on the held-out data.
+ We used two types of test data:
+\end_layout
+
+\begin_layout Enumerate
+We held out all the data from 95% of the cells in Minnesota, with cells
+ selected at random.
+ This was meant to assess the ability of the model to interpolate from sparse
+ observations and mimics the limited data in Illinois, Indiana, and southern
+ Michigan.
+\end_layout
+
+\begin_layout Enumerate
+We held out 5% of the trees from all of the trees in the dataset (leaving
+ aside the held-out Minnesota cells).
+ This was meant to assess the ability of the model to estimate the composition
+ in cells in which data were available.
+ 
+\end_layout
+
+\begin_layout Standard
+We used the following criteria to compare models.
+\end_layout
+
+\begin_layout Enumerate
+mae
+\end_layout
+
+\begin_layout Enumerate
+mspe
+\end_layout
+
+\begin_layout Enumerate
+log predictive density
+\end_layout
+
+\begin_layout Subsection
+Results
+\end_layout
+
+\end_body
+\end_document
