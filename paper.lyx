@@ -85,15 +85,15 @@ Christopher J.
  Paciorek, Andrew Thurman, Simon J.
  Goring, Charlie V.
  Cogbill, 
-\end_layout
+\begin_inset Newline newline
+\end_inset
 
-\begin_layout Author
 John W.
  Williams, David J.
  Mladenoff, Jody Peters, Jun Zhu, 
-\end_layout
+\begin_inset Newline newline
+\end_inset
 
-\begin_layout Author
 and Jason McLachlan [author order to be discussed]
 \begin_inset Newline newline
 \end_inset
@@ -117,6 +117,11 @@ properly cite Goring stuff and reference details of data collection
 look at PLOS One and Ecology Stats Letters
 \end_layout
 
+\begin_layout Standard
+Figs: 1: domain with data; 2 focal taxa with raw,pm,psd; 3 full taxa with
+ pm only
+\end_layout
+
 \begin_layout Section
 Introduction
 \end_layout
@@ -136,8 +141,8 @@ The raw data are obtained from survey records collated from across the northeast
 ern U.S.
  by a number of researchers.
  For the states of Minnesota, Wisconsin, Illinois, Indiana, and Michigan
- (the western subdomain), data are available at point locations of surveyors
- and have been aggregated to a regular 8 km grid in the Albers projection.
+ (the western subdomain), data are available at survey point locations and
+ have been aggregated to a regular 8 km grid in the Albers projection.
  For the states of Ohio, Pennsylvania, New Jersey, New York and the six
  New England states (the eastern subdomain), data are aggregated at the
  township level.
@@ -147,7 +152,8 @@ ern U.S.
  data in Illinois and Indiana represent a sample of the full set of grid
  cells, with transcription ongoing.
  Data for the remaining states are a subset of the full set of townships.
- 
+ Fig.
+ X shows the domain, indicating the grid cells and townships with data.
 \end_layout
 
 \begin_layout Standard
@@ -160,8 +166,9 @@ Note that surveys occurred over a period of more than 200 years as Europeans
 \end_layout
 
 \begin_layout Standard
-Extensive details are available in Goring et al.
- (2014) and the data are available at XXX.
+Extensive details on the data are available in 
+\backslash
+cite{Gori:etal:2015} and the data are available at XXX.
  The aggregation into taxonomic groups is primarily at the genus level,
  but in some cases of monospecific genera, is at the species level.
  In some other cases, because of ambiguity in the common tree names used
@@ -202,15 +209,15 @@ To estimate composition on a regular grid across the entire domain, filling
 \begin_layout Enumerate
 To quantify uncertainty in composition at all locations.
  Even in grid cells and townships with data, we wish to quantify uncertainty
- as the empirical proportions represent estimates of the true proportions
- if all trees in the areal region were counted.
+ because the empirical proportions represent estimates of the true proportions
+ based on the full population of all the trees in an areal region.
 \end_layout
 
 \begin_layout Standard
-The result of fitting the Bayesian model via MCMC is a set of representative
- samples from the posterior distribution for the composition of the taxa
- at all of the grid cells.
- These samples are the data product and can then be in analyses.
+The result of fitting the Bayesian model via Markov chain Monte Carlo (MCMC)
+ is a set of representative samples from the posterior distribution for
+ the composition of the taxa at all of the grid cells.
+ These samples are the data product and can then be used in analyses.
  We also provide the mean and standard deviation of the samples, which represent
  our best estimate of composition and a Bayesian 
 \begin_inset Quotes eld
@@ -266,15 +273,22 @@ th location,
  is the vector of unknown proportions for those taxa at that location.
  Note that we use a standard multinomial distribution without overdispersion
  as the set of trees in the dataset is roughly uniformly sampled across
- the cells or townships (
+ the cells or townships 
 \backslash
-citep{Gori:etal:2014}).
+citep{Gori:etal:2015}.
 \end_layout
 
 \begin_layout Standard
 In what follows we describe the basic model for those states for which we
- have raw data on the 8 km grid and in Section X we describe the extension
- of the model to accommodate data aggregated to the township level.
+ have raw data on the 8 km grid and in Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Model-for-township"
+
+\end_inset
+
+ we describe the extension of the model to accommodate data aggregated to
+ the township level.
 \end_layout
 
 \begin_layout Standard
@@ -282,15 +296,52 @@ The proportions,
 \begin_inset Formula $\theta_{p}(s_{i}),\, p=1,\ldots,P$
 \end_inset
 
- are modeled spatially by a set of P Gaussian spatial processes, one per
- taxon, 
-\begin_inset Formula $\alpha_{p}(s)$
+, are modeled spatially by a set of 
+\begin_inset Formula $P$
+\end_inset
+
+ Gaussian spatial processes, one per taxon, 
+\begin_inset Formula $\alpha_{p}(s_{i}),\, p=1,\ldots,P$
 \end_inset
 
 .
  This collection of processes defines a multivariate spatial process for
  composition.
- At each grid cell, the proportions necessarily sum to one; this constrain
+ The 
+\begin_inset Formula $\alpha_{p}(s)$
+\end_inset
+
+ processes are defined on the 8 km grid, 
+\begin_inset Formula $\alpha_{p}=\{\alpha_{p}(s_{1}),\ldots,\alpha_{p}(s_{m})\}$
+\end_inset
+
+ for the 
+\begin_inset Formula $m$
+\end_inset
+
+ grid cells.
+ In Section X we introduce a multinomial probit model that relates the 
+\begin_inset Formula $\alpha_{p}(s)$
+\end_inset
+
+ processes to the proportion processes, 
+\begin_inset Formula $\theta_{p}(s)$
+\end_inset
+
+, via the introduction of latent variables, with an implicit sum-to-one
+ constraint, 
+\begin_inset Formula $\sum_{p=1}^{P}\theta_{p}(s)=1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+At each grid cell, the proportions necessarily sum to one; this constraint
  is imposed via the log-ratio transformation, which defines the proportion
  for taxon 
 \begin_inset Formula $p$
@@ -309,7 +360,12 @@ The proportions,
 \end_inset
 
 This transformation is the multivariate analogue of the logit transformation.
- The result is a multinomial probit model.
+ 
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -321,17 +377,33 @@ The critical component of the statistical model is the representation of
  as a spatial process.
  This process is a prior structure that serves to smooth across noise in
  the observations and allows for interpolation to locations with no data.
- 
+ Apart from the sum to one constraints, the taxa are considered to be independen
+t in the prior, as we did not want to impose any structure that ties the
+ different taxa together, as any correlation will likely vary across space.
 \end_layout
 
 \begin_layout Standard
-We considered two spatial models to define the structure of the 
+In the next section, we consider two spatial models to define the structure
+ of the 
 \begin_inset Formula $\alpha_{p}(s)$
 \end_inset
 
  processes, a standard conditional autoregressive model (Bane:etal:2003)
- and a Gaussian Markov random field approximation to a Gaussian process
- with Matern covariance (Lind:etal:2011).
+ and a Gaussian Markov random field (MRF) approximation to a Gaussian process
+ with Matern covariance 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+citep{Lind:etal:2011}
+\end_layout
+
+\end_inset
+
+.
  
 \end_layout
 
@@ -339,198 +411,13 @@ We considered two spatial models to define the structure of the
 Spatial process models
 \end_layout
 
-\begin_layout Subsubsection
-Standard conditional autoregressive models
-\end_layout
-
 \begin_layout Standard
-Our first model is a standard conditional autoregressive (CAR) model (Bane:etal:
-2003), widely used in spatial statistics.
- We use a standard form of this model, which treats the four cardinal neighbors
- of each grid cell as the neighbors of the grid cell.
- The corresponding precision matrix has diagonal elements, 
-\begin_inset Formula $Q_{ii}$
+MRF models work directly with the precision matrix of the values of the
+ spatial process, so calculation of the prior density of 
+\begin_inset Formula $\alpha_{p}(s)$
 \end_inset
 
-, equal to the number of neighbors for the 
-\begin_inset Formula $i$
-\end_inset
-
-th area, while 
-\begin_inset Formula $Q_{ij}=-1$
-\end_inset
-
- (the negative of a weight of one) when areas 
-\begin_inset Formula $i$
-\end_inset
-
- and 
-\begin_inset Formula $j$
-\end_inset
-
- are neighbors and 
-\begin_inset Formula $Q_{ij}=0$
-\end_inset
-
- when they are not.
- This gives the following model for the values of 
-\begin_inset Formula $\alpha_{p}(s_{i})$
-\end_inset
-
- collected as a vector across all of the grid cells: 
-\begin_inset Formula 
-\[
-\alpha_{p}\sim\mbox{N}(0,\sigma_{p}^{2}Q^{-})
-\]
-
-\end_inset
-
-The use of the generalized inverse notation indicates that 
-\begin_inset Formula $Q$
-\end_inset
-
- is not full-rank, but is of rank 
-\begin_inset Formula $m-1$
-\end_inset
-
-; this gives an improper prior on an implicit overall mean for the process
- values.
- 
-\begin_inset Formula $Q$
-\end_inset
-
- is defined as follows.
- The diagonal elements, 
-\begin_inset Formula $Q_{ii}$
-\end_inset
-
-, is the number of neighbors for the 
-\begin_inset Formula $i$
-\end_inset
-
-th location, generally 4 except near the boundary.
- The off-diagonal elements are zero except that 
-\begin_inset Formula $Q_{ij}=-1$
-\end_inset
-
- when locations 
-\begin_inset Formula $i$
-\end_inset
-
- and 
-\begin_inset Formula $j$
-\end_inset
-
- are neighbors.
- Let 
-\begin_inset Formula $\alpha_{p}=(\alpha_{1p},...,\alpha_{Ip})^{T}$
-\end_inset
-
- denote the vector of conditional means of 
-\begin_inset Formula $W_{ijp}$
-\end_inset
-
- for location 
-\begin_inset Formula $i=1,...,I$
-\end_inset
-
- and category 
-\begin_inset Formula $p$
-\end_inset
-
-.
- Then, let 
-\begin_inset Formula 
-\begin{align}
-[\alpha_{p}|\sigma_{p}^{2}]\sim N(0,\sigma_{p}^{2}\big(D-C\big)^{-}),\label{secondlevel}
-\end{align}
-
-\end_inset
-
-where 
-\begin_inset Formula $\big(D-C\big)^{-}$
-\end_inset
-
- is a generalized inverse of 
-\begin_inset Formula $D-C$
-\end_inset
-
-, 
-\begin_inset Formula $\sigma_{p}^{2}$
-\end_inset
-
- is a variance component, and 
-\begin_inset Formula $p=1,...,P$
-\end_inset
-
-.
- Here, 
-\begin_inset Formula $C$
-\end_inset
-
- is the 
-\begin_inset Formula $I\times I$
-\end_inset
-
- adjacency matrix defining the neighborhood relation of the locations; that
- is, 
-\begin_inset Formula $(C)_{ii'}=I($
-\end_inset
-
-locations 
-\begin_inset Formula $i$
-\end_inset
-
- and 
-\begin_inset Formula $i'$
-\end_inset
-
- are neighbors).
- The matrix 
-\begin_inset Formula $D$
-\end_inset
-
- is an 
-\begin_inset Formula $I\times I$
-\end_inset
-
- diagonal matrix with row sums of matrix 
-\begin_inset Formula $C$
-\end_inset
-
- as the diagonal entries 
-\begin_inset Formula $(D)_{ii}={\displaystyle \sum_{i'=1}^{I}(C)_{ii'}}$
-\end_inset
-
-, 
-\begin_inset Formula $i=1,...,I$
-\end_inset
-
-.
- The covariance matrix specification 
-\begin_inset Formula $\sigma_{p}^{2}\big(D-C\big)^{-}$
-\end_inset
-
- is called an 
-\shape italic
-intrinsic conditional autoregression (ICAR)
-\shape default
-.
- Formally, the matrix 
-\begin_inset Formula $D-C$
-\end_inset
-
- is singular, but the full conditional distribution containing 
-\begin_inset Formula $D-C$
-\end_inset
-
- is proper.
- 
-\end_layout
-
-\begin_layout Standard
-MRF models work with the precision matrix directly, so calculation of the
- prior density is computationally simple 
+ is computationally simple 
 \begin_inset ERT
 status open
 
@@ -550,8 +437,136 @@ al space of
 \end_inset
 
 .
- We discuss a latent variable representation that helps to alleviate this
- problem in Section X.
+ The latent variable representation of Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Model-for-township"
+
+\end_inset
+
+ helps to alleviate this problem.
+\end_layout
+
+\begin_layout Subsubsection
+Standard conditional autoregressive models
+\end_layout
+
+\begin_layout Standard
+Our first model is a standard conditional autoregressive (CAR) model (Bane:etal:
+2003), widely used in spatial statistics.
+ We use a standard form of this model, which treats the four cardinal neighbors
+ of each grid cell as the neighbors of the grid cell.
+ The corresponding precision matrix has diagonal elements, 
+\begin_inset Formula $Q_{ii}$
+\end_inset
+
+, equal to the number of neighbors for the 
+\begin_inset Formula $i$
+\end_inset
+
+th area (i.e., four except for cells on the boundary of the domain), while
+ 
+\begin_inset Formula $Q_{ik}=-1$
+\end_inset
+
+ (the negative of a weight of one) when areas 
+\begin_inset Formula $i$
+\end_inset
+
+ and 
+\begin_inset Formula $k$
+\end_inset
+
+ are neighbors and 
+\begin_inset Formula $Q_{ik}=0$
+\end_inset
+
+ when they are not.
+ This gives the following model for the values of 
+\begin_inset Formula $\alpha_{p}(s_{i})$
+\end_inset
+
+ collected as a vector across all of the grid cells, 
+\begin_inset Formula $i=1,\ldots,m$
+\end_inset
+
+: 
+\begin_inset Formula 
+\[
+\alpha_{p}\sim\mbox{N}(0,\sigma_{p}^{2}Q^{-})
+\]
+
+\end_inset
+
+The use of the generalized inverse notation indicates that 
+\begin_inset Formula $Q$
+\end_inset
+
+ is not full-rank, but is of rank 
+\begin_inset Formula $m-1$
+\end_inset
+
+; this gives an improper prior on an implicit overall mean for the process
+ values.
+ This specification is called an 
+\shape italic
+intrinsic conditional autoregression (ICAR)
+\shape default
+ and 
+\begin_inset Formula $Q$
+\end_inset
+
+ can also be expressed as 
+\begin_inset Formula $D-C$
+\end_inset
+
+ where 
+\begin_inset Formula $C$
+\end_inset
+
+ is the 
+\begin_inset Formula $m\times m$
+\end_inset
+
+ adjacency matrix defining the neighborhood relation of the locations; that
+ is 
+\begin_inset Formula $(C)_{ik}=1$
+\end_inset
+
+ if locations 
+\begin_inset Formula $i$
+\end_inset
+
+ and 
+\begin_inset Formula $k$
+\end_inset
+
+ are neighbors.
+ The matrix 
+\begin_inset Formula $D$
+\end_inset
+
+ is an 
+\begin_inset Formula $m\times m$
+\end_inset
+
+ diagonal matrix containing the row sums of matrix 
+\begin_inset Formula $C$
+\end_inset
+
+ as the diagonal entries 
+\begin_inset Formula $(D)_{ii}={\displaystyle \sum_{k=1}^{m}(C)_{ik}}.$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We refer to this as the 
+\emph on
+CAR model
+\emph default
+.
 \end_layout
 
 \begin_layout Subsubsection
@@ -559,18 +574,20 @@ Gaussian process approximation
 \end_layout
 
 \begin_layout Standard
-Gaussian processes are also standard models for spatial processes.
+Gaussian processes (GP) are also standard models for spatial processes (
+\backslash
+citep{Bane:etal:2003}.
  GP models are computationally challenging for large datasets because of
  manipulations involving large covariance matrices.
  Given this, 
 \backslash
-citep{Lind:etal:2011} proposed a new framework for using GMRFs as approximations
- to GPs.
- 
+citep{Lind:etal:2011} proposed a new framework for using Gaussian MRFs (GMRFs)
+ as approximations to GPs, based on the use of stochastic partial differential
+ equations (SPDE).
 \end_layout
 
 \begin_layout Standard
-In this work I use a MRF models that approximates GPs in the 
+We consider Gaussian processes in the 
 \begin_inset ERT
 status open
 
@@ -583,7 +600,7 @@ matern
 
 \end_inset
 
- class, where I consider the following parameterization of the 
+ class, using the following parameterization of the 
 \begin_inset ERT
 status open
 
@@ -627,7 +644,22 @@ where
 \end_inset
 
  gives the exponential covariance.
- Note that the 
+ For any pair of locations, 
+\begin_inset Formula $R(d)$
+\end_inset
+
+ defines the correlation of the process, e.g., 
+\begin_inset Formula $\alpha_{p}(s)$
+\end_inset
+
+, as a function of the distance between the locations.
+ Considering all pairs of locations, this defines a correlation matrix for
+ all locations of interest.
+ 
+\end_layout
+
+\begin_layout Standard
+The 
 \begin_inset ERT
 status open
 
@@ -640,14 +672,8 @@ citet{Lind:etal:2011}
 
 \end_inset
 
- approach provides a computational strategy for fitting an approximate GP
- model via a MRF representation but in the material that follows I consider
- the explicit GP rather than an MRF approximation to it.
-\end_layout
-
-\begin_layout Standard
-The Lindgren et al approach allows us to consider GMRF approximations to
- the Matern-based GPs for 
+ approach allows us to consider MRF approximations to the Matern-based GPs
+ for 
 \begin_inset Formula $\nu=1$
 \end_inset
 
@@ -656,17 +682,56 @@ The Lindgren et al approach allows us to consider GMRF approximations to
 \end_inset
 
 .
- We use only 
+ Our second model is the Lindgren approximation for Matern-based GPs with
+ 
 \begin_inset Formula $\nu=1$
 \end_inset
 
- here.
- 
+.
+ To implement the Lindgren model, one modifies the 
+\begin_inset Formula $Q$
+\end_inset
+
+ matrix defined previously as follows.
+ Let 
+\begin_inset Formula $a=4+\frac{1}{\rho^{2}}$
+\end_inset
+
+.
+ The diagonal elements of 
+\begin_inset Formula $Q$
+\end_inset
+
+ are 
+\begin_inset Formula $4+a^{2}$
+\end_inset
+
+.
+ The entries corresponding to cardinal neighbors are 
+\begin_inset Formula $-2a$
+\end_inset
+
+.
+ Those for diagonal neighbors are 
+\begin_inset Formula $2$
+\end_inset
+
+ and those for 2nd-order cardinal neighbors are 
+\begin_inset Formula $1$
+\end_inset
+
+.
+ This extends the neighborhood structure relative to the CAR model and parameter
+izes it as a function of 
+\begin_inset Formula $\rho$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
 The primary difference between the CAR and Lindgren models is that the Lindgren
- model provides an additional degree of freedom through estimating 
+ model provides an additional degree of freedom by estimating 
 \begin_inset Formula $\rho$
 \end_inset
 
@@ -680,44 +745,16 @@ The primary difference between the CAR and Lindgren models is that the Lindgren
 \begin_inset Formula $\rho$
 \end_inset
 
- increases, the model will cause more smoothing over longer distances of
- the empirical proportions.
- In general, the Lindgren model will generally provide for a smoother estimate
- than the CAR model (
+ decreases, the model uses more and more local data to estimate the compositiona
+l proportions at a given location, effectively averaging the empirical proportio
+ns over smaller neighborhoods.
+ In general, the 
 \backslash
-citep{Paci:2013}).
+cite{Lind:etal:2011} model will generally provide for a smoother estimate
+ than the CAR model 
+\backslash
+citep{Paci:2013}.
  
-\end_layout
-
-\begin_layout Standard
-To implement the Lindgren model, one replaces the 
-\begin_inset Formula $Q$
-\end_inset
-
- indicated above.
- Let 
-\begin_inset Formula $a=4+\frac{1}{\rho^{2}}$
-\end_inset
-
-.
- The diagonal elements are 
-\begin_inset Formula $4+a^{2}$
-\end_inset
-
-.
- The entries corresponding to cardinal neighbors are 
-\begin_inset Formula $-2a$
-\end_inset
-
-.
- Those for diagonal neighbors are 2 and those for 2nd-order cardinal neighbors
- are 1.
- This extends the neighborhood structure relative to the CAR model and parametri
-zes as a function of 
-\begin_inset Formula $\rho$
-\end_inset
-
-.
 \end_layout
 
 \begin_layout Standard
@@ -725,16 +762,24 @@ To ensure that the
 \begin_inset Formula $\sigma^{2}$
 \end_inset
 
- parameter is equivalent between the two models, we reparameterize to give
- this model
+ parameter is equivalent between the two models, we reparameterize, producing
+ our second model:
 \begin_inset Formula 
 \[
-\alpha_{p}\sim\mbox{N}(\mu_{p},\sigma_{p}^{2}\cdot\frac{4\pi}{\rho_{p}^{2}}Q(\rho)^{-})
+\alpha_{p}\sim\mbox{N}(\mu_{p},\sigma_{p}^{2}\cdot\frac{4\pi}{\rho_{p}^{2}}Q(\rho_{p})^{-1})
 \]
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+We refer to this model as the 
+\emph on
+SPDE model
+\emph default
+.
 \end_layout
 
 \begin_layout Subsection
@@ -762,16 +807,20 @@ citep{Gelm:2006} we use a uniform distribution on each
 \begin_inset Formula $\sigma_{p}$
 \end_inset
 
- parameter, with upper bound of X.
+ parameter, with upper bound of [check max values].
  For the SPDE model we also have parameters 
 \begin_inset Formula $\mu_{p}$
 \end_inset
 
-, which we give a flat, non-informative prior, and 
+, which we give flat, non-informative priors (truncated at 
+\begin_inset Formula $\pm10$
+\end_inset
+
+), and 
 \begin_inset Formula $\rho_{p}$
 \end_inset
 
- which we give a uniform prior on the interval 
+ which we give uniform priors on the interval 
 \begin_inset Formula $(0.1,\exp(5))$
 \end_inset
 
@@ -786,29 +835,22 @@ Latent Variable Model
 \begin_layout Standard
 It is well-known that devising an effective MCMC algorithm for models with
  latent Gaussian process(es) and a non-Gaussian likelihood is difficult
- (who cite?).
+ (cite recent cent/noncent papers).
  To develop an algorithm, we make use of a latent variable representation
- due to 
-\begin_inset CommandInset citation
-LatexCommand citet
-key "mccuetal94"
-
+ for the multinomial probit model (
+\backslash
+citep{McCu:Ross:1994}).
+ The representation introduces latent variables that allow one to develop
+ a MCMC sampling strategy that takes advantage of closed form full conditional
+ distributions (so-called Gibbs sampling steps) for 
+\begin_inset Formula $\alpha_{p}$
 \end_inset
 
 .
- McCu:Ross:1994 introduced a representation of the multinomial probit model
- that pertains at each location.
- The representation introduces latent variables that allow one to develop
- a MCMC sampling strategy that takes advantage of closed form full conditional
- distributions (so-called Gibbs sampling steps).
 \end_layout
 
 \begin_layout Standard
-Suppose that data are aggregated to a total of 
-\begin_inset Formula $I$
-\end_inset
-
- locations.
+Suppose that compositional counts are available at a number of locations.
  At location 
 \begin_inset Formula $i$
 \end_inset
@@ -817,21 +859,13 @@ Suppose that data are aggregated to a total of
 \begin_inset Formula $n_{i}$
 \end_inset
 
- observations are collected, and each observation can be classfied into
- 
+ observations are collected, and each observation (i.e., each tree) can be
+ classified into 
 \begin_inset Formula $P$
 \end_inset
 
- distinct categories for 
-\begin_inset Formula $i$
-\end_inset
-
- = 
-\begin_inset Formula $1,...,I$
-\end_inset
-
-.
- For a given observation 
+ distinct categories.
+ For a given tree 
 \begin_inset Formula $j$
 \end_inset
 
@@ -844,11 +878,6 @@ Suppose that data are aggregated to a total of
 \end_inset
 
  denote the response variable indicating the category.
- Without loss of generality, let 
-\begin_inset Formula $\{1,...,P\}$
-\end_inset
-
- denote the set of categories.
  Let 
 \begin_inset Formula $Y_{ij}$
 \end_inset
@@ -870,7 +899,7 @@ Suppose that data are aggregated to a total of
 \end_inset
 
  if and only if 
-\begin_inset Formula $W_{ijp}={\displaystyle \max_{p*}\big\{ W_{ijp*}\big\}}$
+\begin_inset Formula $W_{ijp}={\displaystyle \max_{p'}\big\{ W_{ijp'}\big\}}$
 \end_inset
 
 ; in other words, the maximum of the set of latent variables 
@@ -886,12 +915,17 @@ Suppose that data are aggregated to a total of
 \end_inset
 
 .
- Define 
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Define 
 \begin_inset Formula $W$
 \end_inset
 
 
-\begin_inset Formula $=(W_{ijp},j=1,...,n_{i},i=1,...,I,p=1,...,P)^{T}$
+\begin_inset Formula $=(W_{ijp},j=1,...,n_{i},i=1,...,N,p=1,...,P)^{T}$
 \end_inset
 
  and 
@@ -905,7 +939,16 @@ Suppose that data are aggregated to a total of
 .
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
 Let 
 \begin_inset Formula $\pi(A|B)$
 \end_inset
@@ -956,41 +999,46 @@ where
 .
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
 \noindent
-Let 
-\begin_inset Formula $N(\mu,\Sigma)$
+The final piece of the latent variable representation is the relationship
+ between the 
+\begin_inset Formula $W$
 \end_inset
 
- denote a multivariate normal distribution with mean vector 
-\begin_inset Formula $\mu$
+ variables and the 
+\begin_inset Formula $\alpha_{p}(s)$
 \end_inset
 
- and covariance matrix 
-\begin_inset Formula $\Sigma$
-\end_inset
+ processes.
+ We have that
+\end_layout
 
-, and let 
-\begin_inset Formula $[A|B]$
-\end_inset
-
- denote the distribution of a random variable 
-\begin_inset Formula $A$
-\end_inset
-
- conditional on another random variable 
-\begin_inset Formula $B$
-\end_inset
-
-.
- The latent variable model is 
+\begin_layout Standard
+\noindent
 \begin_inset Formula 
-\begin{align}
-[W_{ijp}|\alpha_{ip}]\sim N(\alpha_{ip},1),\label{firstlevel}
-\end{align}
+\[
+W_{ijp}\sim\mbox{N}(\alpha_{p}(s_{i}),1)
+\]
 
 \end_inset
 
+independently for all of the 
+\begin_inset Formula $W_{ijp}$
+\end_inset
+
+ values.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\noindent
 where 
 \begin_inset Formula $j=1,...,n_{i},i=1,...,I,$
 \end_inset
@@ -1031,18 +1079,20 @@ where
 ,.
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
 \noindent
-Consider the following example with 
-\begin_inset Formula $I$
+Consider the following example with two locations that are neighbors and
+ 
+\begin_inset Formula $P=2$
 \end_inset
 
- = 2 locations that are neighbors and 
-\begin_inset Formula $P$
-\end_inset
-
- = 2 categories.
- Each observation 
+ categories.
+ Each tree 
 \begin_inset Formula $j$
 \end_inset
 
@@ -1076,7 +1126,7 @@ Consider the following example with
 \end_inset
 
 .
- Then this model implies that any observation 
+ Then this model implies that any tree 
 \begin_inset Formula $j$
 \end_inset
 
@@ -1130,34 +1180,48 @@ locations
 
 \begin_layout Subsection
 Model for township data
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Model-for-township"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-We developed an extension of this model to account for data at a different
- aggregation than our core 8 km grid.
- This extension introduces latent variables, one per tree, that indicate
- the grid cell in which the tree is located.
+We developed an extension of the model described in previous sections to
+ account for data at a different aggregation than our core 8 km grid.
+ This extension introduces a new set of latent variables, one per tree,
+ that indicate the grid cell in which the tree is located.
  These latent 'membership' variables, 
-\begin_inset Formula $m_{ki}$
+\begin_inset Formula $c_{tj}$
 \end_inset
 
 , for tree 
-\begin_inset Formula $k$
+\begin_inset Formula $j$
 \end_inset
 
  in township 
 \begin_inset Formula $t$
 \end_inset
 
- in can be sampled within the MCMC as additional unknown parameters.
- The prior for the latent variable for each tree is a discrete distribution
- that puts mass proportional to the overlap between the township in which
- the tree is located and the grid cells that intersect the township, with
- the priors across different trees in a township being independent.
+ can be sampled within the MCMC as additional unknown parameters.
+ The prior for 
+\begin_inset Formula $c_{tj}$
+\end_inset
+
+ is a discrete distribution that puts mass proportional to the overlap between
+ the township in which the tree is located and the grid cells that intersect
+ the township, 
+\begin_inset Formula $\psi_{1(t)},\ldots,\psi_{T(t)}$
+\end_inset
+
+, with the priors across different trees in a township being independent.
  
 \begin_inset Formula 
 \[
-m_{kt}\sim\mbox{Multinom}(1,\{\psi_{1(t)},\ldots\psi_{T(t)}\})
+c_{tj}\sim\mbox{Multinom}(1,\{\psi_{1(t)},\ldots\psi_{T(t)}\}).
 \]
 
 \end_inset
@@ -1166,10 +1230,28 @@ m_{kt}\sim\mbox{Multinom}(1,\{\psi_{1(t)},\ldots\psi_{T(t)}\})
 \end_layout
 
 \begin_layout Standard
+In updating the other parameters in the model, we condition on the current
+ values, 
+\begin_inset Formula $c_{tj}$
+\end_inset
+
+, which provides a 
+\begin_inset Quotes eld
+\end_inset
+
+soft
+\begin_inset Quotes erd
+\end_inset
+
+ assignment of trees to grid cells that respects both the township in which
+ the tree was sampled and the uncertainty in which grid cell the tree was
+ sampled.
+\end_layout
+
+\begin_layout Standard
 Note that this prior has the unrealistic feature that it does not represent
- our understanding that the trees in a township would be distributed more
- regularly across the area of the township than expected by such an independence
- prior.
+ our knowledge that the trees in a township would be distributed more regularly
+ across the area of the township than expected by such an independence prior.
 \end_layout
 
 \begin_layout Subsection
@@ -1181,22 +1263,36 @@ The
 \backslash
 citep{McCu:Ross:1994} representation is convenient for MCMC sampling, particular
 ly in this high-dimensional spatial context, as it allows us to draw from
- the conditional distribution of 
-\begin_inset Formula $w_{p}|\alpha_{p}$
+ the posterior conditional distribution of the 
+\begin_inset Formula $W_{ijp}$
 \end_inset
 
- in closed form, drawing the entire vector of alpha values for a given taxon
- at once using truncated normal distributions, accounting for the spatial
- dependence structure.
- 
+ variables (these distributions are truncated normal) in closed form and
+ to draw the entire vector of latent process values, 
+\begin_inset Formula $\alpha_{p}$
+\end_inset
+
+, as a single sample that respects the spatial dependence structure for
+ each taxon.
 \end_layout
 
 \begin_layout Standard
 While the latent variable representation provides great advantages in the
- MCMC sampling compared to joint Metropolis updates or single location at
- a time updates, there is still strong dependence between the hyperparameters
+ MCMC sampling for each 
+\begin_inset Formula $\alpha_{p}$
+\end_inset
+
+ compared to joint Metropolis updates or single location at a time updates,
+ there is still strong dependence between the hyperparameters, 
+\begin_inset Formula $\{\sigma_{p}^{2},\mu_{p},\rho_{p}\}$
+\end_inset
+
  and the the latent process values (as well as between the latent process
- values and the auxiliary variables).
+ values and the latent 
+\begin_inset Formula $W_{ijp}$
+\end_inset
+
+ variables).
  To address the first, we developed a 'cross-level' joint updating strategy
  in which we propose 
 \begin_inset Formula $\phi\in\{\sigma_{p}\},p=1,\ldots,P$
@@ -1212,12 +1308,12 @@ While the latent variable representation provides great advantages in the
 \end_inset
 
  propose 
-\begin_inset Formula $\alpha_{p}(\cdot)$
+\begin_inset Formula $\alpha_{p}$
 \end_inset
 
  from its full conditional distribution (Paci:2007).
  This approach is equivalent to integrating over 
-\begin_inset Formula $\alpha$
+\begin_inset Formula $\alpha_{p}$
 \end_inset
 
  and sampling from the marginalized distribution 
@@ -1258,138 +1354,34 @@ citep{Shab:Wells:2011}).
 
 \begin_layout Standard
 The full description of the MCMC sampling steps is provided in the Appendix.
-\end_layout
-
-\begin_layout Standard
-In the latent variable representation, 
-\begin_inset Formula $\theta$
+ In addition, in the latent variable representation, 
+\begin_inset Formula $\theta_{p}(s)$
 \end_inset
 
  never appears explicitly and cannot be calculated in close form.
  Instead we use Monte Carlo integration over 
-\begin_inset Formula $W$
+\begin_inset Formula $W_{ijp},\, p=1,\ldots,P$
 \end_inset
 
  to estimate 
-\begin_inset Formula $\theta$
+\begin_inset Formula $\theta_{p}(s_{i})$
 \end_inset
 
-.
- This requires one to choose the number of Monte Carlo samples, which we
- set at 10000.
- For each of the saved samples (one per saved iteration) we estimate 
-\begin_inset Formula $\theta$
-\end_inset
-
- numerically.
- Next, the quantity 
-\begin_inset Formula 
-\begin{align*}
-\theta_{ip}=P(W_{ijp}={\displaystyle \max_{p^{*}}W_{ijp^{*}}|\alpha_{ip'},p'=1,...,P)}
-\end{align*}
-
-\end_inset
-
-defines the probability of category 
-\begin_inset Formula $p$
-\end_inset
-
- at location 
-\begin_inset Formula $i$
-\end_inset
-
-.
- To obtain the posterior predictive distribution of 
-\begin_inset Formula $\theta_{ip}$
-\end_inset
-
- from a new sample of size 
-\begin_inset Formula $n_{i}$
-\end_inset
-
- at location 
-\begin_inset Formula $i$
-\end_inset
-
-, 
-\begin_inset Formula $i=1,...,I$
-\end_inset
-
-, we sample a new set of latent variables 
-\begin_inset Formula $\{W_{ijp}^{*}{}^{(m)},j=1,...,n_{i}\}$
-\end_inset
-
- given 
-\begin_inset Formula $\alpha_{ip}^{(m)}$
-\end_inset
-
-.
- Let 
-\begin_inset Formula 
-\begin{align*}
-\hat{\theta}_{ip}^{(m)}=n_{i}^{-1}{\displaystyle \sum_{j=1}^{n_{i}}1\big\{ W_{ijp}^{*}{}^{(m)}={\displaystyle \max_{p^{*}}W_{ijp^{*}}^{*}{}^{(m)}\big\}.}}
-\end{align*}
-
-\end_inset
-
-Thus, 
-\begin_inset Formula $\hat{\theta}_{ip}^{(m)}$
-\end_inset
-
- estimates the proportion of 
-\begin_inset Formula $n_{i}$
-\end_inset
-
- new observations of category 
-\begin_inset Formula $p$
-\end_inset
-
- at location 
-\begin_inset Formula $i$
-\end_inset
-
- as a function of the sampled 
-\begin_inset Formula $\alpha_{ip}^{(m)}$
-\end_inset
-
-.
- An estimate of the proportion of 
-\begin_inset Formula $n_{i}$
-\end_inset
-
- new observations of category 
-\begin_inset Formula $p$
-\end_inset
-
- at location 
-\begin_inset Formula $i$
-\end_inset
-
- is 
-\begin_inset Formula 
-\begin{align}
-\bar{\theta}_{ip}=M^{-1}{\displaystyle \sum_{m=1}^{M}\hat{\theta}_{ip}^{(m)}}\label{probest}
-\end{align}
-
-\end_inset
-
-and an estimate of the variance of 
-\begin_inset Formula $\bar{\theta}_{ip}$
-\end_inset
-
- is the sample variance of 
-\begin_inset Formula $\{\hat{\theta}_{ip}^{(m)}\}$
-\end_inset
-
+, also described in the Appendix.
  
-\begin_inset Formula 
-\begin{align*}
-\hat{\sigma}_{\bar{\theta}_{ip}}^{2}=(M-1)^{-1}{\displaystyle \sum_{m=1}^{M}\big(\hat{\theta}_{ip}^{(m)}-\bar{\theta}_{ip}\big)^{2}.}
-\end{align*}
+\end_layout
 
-\end_inset
-
-
+\begin_layout Standard
+The model is implemented in R with core computational calculations coded
+ in C++ using the Rcpp package 
+\backslash
+citep{Rcpp}.
+ We also make extensive use of sparse matrix representations and algorithms,
+ using the spam package in R 
+\backslash
+citep{spam}.
+ All code is available on Github, including pre- and post-processing code.
+ 
 \end_layout
 
 \begin_layout Section
@@ -1401,16 +1393,18 @@ Design
 \end_layout
 
 \begin_layout Standard
-We compared the CAR and Lindgren models by holding out data from the fitting
- process and assessing the fit of the model on the held-out data.
+We compared the CAR and SPDE models using cross-validation by holding out
+ data from the fitting process and assessing the fit of the model on the
+ held-out data.
  We used two types of test data:
 \end_layout
 
 \begin_layout Enumerate
 We held out all the data from 95% of the cells in Minnesota, with cells
  selected at random.
- This was meant to assess the ability of the model to interpolate from sparse
- observations and mimics the limited data in Illinois and Indiana
+ This was meant to assess the ability of the model to interpolate from a
+ sparse set of cells/townships and mimics the limited data in Illinois and
+ Indiana
 \begin_inset Note Note
 status open
 
@@ -1432,11 +1426,11 @@ We held out 5% of the trees from all of the trees in the dataset (leaving
 \end_layout
 
 \begin_layout Standard
-Finally, in a separate sensitivity analysis we also left out 80% of the
- cells in Minnesota, with cells selected at random.
+Finally, in a separate sensitivity analysis we instead left out 80% of the
+ cells in Minnesota at random.
  This variation on #1 above was meant to indicate whether our model comparison
  conclusions would be robust as the digitization process for Illinois and
- Indiana progresses and produces less sparse data.
+ Indiana progresses and provides us with increasingly dense data.
 \end_layout
 
 \begin_layout Standard
@@ -1461,22 +1455,58 @@ citep{Gnei:XXXX}.
 
 \begin_layout Standard
 We used the following criteria to compare models.
+ For experiment 1, 
+\begin_inset Formula $Y_{i}=\{Y_{i1},\ldots,Y_{iP}\}$
+\end_inset
+
+ is the count of all trees in the held-out cell and for experiment 2, 
+\begin_inset Formula $Y_{i}$
+\end_inset
+
+ is the count of held-out individual trees in the location.
 \end_layout
 
 \begin_layout Enumerate
 Brier score: 
+\backslash
+citep{Gnei} suggest this measure, which has been in use for decades.
+ For multi-category as opposed to binary outcomes, this takes the form
+\begin_inset Formula 
+\[
+\frac{1}{n_{i}}\sum_{j=1}^{n_{i}}\sum_{p=1}^{P}(y_{ijp}-\theta_{p}(s_{i}))^{2}
+\]
+
+\end_inset
+
+for each cell.
+ The full Brier score for the complete set of held-out locations sums over
+ all locations.
 \end_layout
 
 \begin_layout Enumerate
-log predictive density: While in principle, this metric should be optimal,
- it suffers from a lack of robustness in being very sensitive to small predictio
-ns near zero.
- Enhancing this, our Monte Carlo estimation of 
+Log predictive density: This measure takes the log of the density of held-out
+ observations under the fitted model, 
+\begin_inset Formula $Y_{i}\sim\mbox{Multinom}(n_{i},\{\theta_{1}(s_{i}),\ldots,\theta_{P}(s_{i})\})$
+\end_inset
+
+, summing on the log scale across all of the held-out data.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+While in principle, this metric should be optimal 
+\backslash
+citep{Krnj:Drap:????}, it suffers from a lack of robustness in being very
+ sensitive to small predictions near zero 
+\backslash
+citep{Gnei???}.
+ Even worse, our Monte Carlo estimation of 
 \begin_inset Formula $\theta$
 \end_inset
 
  used 10000 samples, so in some cases 
-\begin_inset Formula $\theta=0$
+\begin_inset Formula $\theta_{p}(s)=0$
 \end_inset
 
 .
@@ -1487,44 +1517,50 @@ ns near zero.
 
 , preventing use of the metric.
  As an informal solution to this we set 
-\begin_inset Formula $\theta=0.5\frac{1}{10000}$
+\begin_inset Formula $\theta_{p}(s)=0.5\frac{1}{10000}$
 \end_inset
 
- in such cases, but we treat the log predictive density as a secondary measure
- because of the general lack of robustness.
+ in such cases, but given these issues we treat the log predictive density
+ as a secondary measure.
 \end_layout
 
+\end_deeper
 \begin_layout Enumerate
-Finally, we calculated weighted RMSPE and MAE for individual cells based
- on the full cell hold-out design, where we weight by the number of held-out
- trees.
+Weighted root mean square prediction error (RMSPE) and mean absolute error
+ (MAE) for individual cells (only for experiment 1), where we weight by
+ the number of held-out trees to account for the greater variability in
+ the empirical proportions in locations with few held-out trees.
  
 \end_layout
 
 \begin_layout Enumerate
-coverage of 95% prediction intervals
-\end_layout
+Coverage and length of 95% prediction intervals for 
+\begin_inset Formula $Y_{ip}$
+\end_inset
 
-\begin_layout Enumerate
-length of 95% prediction intervals
+.
+ 
 \end_layout
 
 \begin_layout Standard
 For each of these metrics, we calculated the metric using the posterior
  mean composition estimates (as a measure of our core predictions) and averaging
- over the posterior samples (as a measure of our full data product, including
- uncertainty).
- 
+ the metric over the posterior samples (as a measure of our full data product,
+ including uncertainty).
+ In other words in the first we first average over the composition posterior
+ samples and in the second we average of the posterior values of the cross-valid
+ation metric.
 \end_layout
 
 \begin_layout Standard
-In our fitting we noticed that the Lindgren et al model produced boundary
- effects in the predicted composition near the edges of the convex hull
- of the observations.
+In our fitting we noticed that the SPDE model produced boundary effects
+ in the predicted composition near the edges of the convex hull of the observati
+ons.
  To attempt to alleviate this, we added a buffer zone of 6 grid cells around
- our entire original domain.
- For the model comparison we included this buffer for both the Lindgren
- and CAR models.
+ our entire original domain, though the boundary effects were still evident
+ even after inclusion of the buffer.
+ For the model comparison, for comparability, we included this buffer for
+ both the SPDE and CAR models.
  
 \end_layout
 
@@ -1533,8 +1569,16 @@ For the model comparison, we used an earlier version of the dataset than
  that used for the final data product as the model comparison runs involved
  substantial computation.
  This earlier version had incomplete data for southern Michigan and was
- missing a small number (39) of trees classified as other hardwood due to
- an update to our taxonomic aggregations of common names used by surveyors.
+ missing a small number of trees (39 individual trees) classified as 
+\begin_inset Quotes eld
+\end_inset
+
+other hardwood
+\begin_inset Quotes erd
+\end_inset
+
+ due to an update to our taxonomic aggregations of common names used by
+ surveyors.
  Given that part of the goal of the exercise is to understand the ability
  of the models to interpolate to areas without data and the ongoing nature
  of digitization, we believe this difference in datasets is not an issue.
@@ -1555,9 +1599,9 @@ Full cell hold-out experiment
 \end_layout
 
 \begin_layout Standard
-Table X shows prediction ability for those cells in Minnesota held out of
- the fitting process, for both the posterior mean predictions and the full
- posterior sample.
+Table X shows predictive ability for Experiment 1: those cells in Minnesota
+ held out of the fitting process, for both the posterior mean predictions
+ and the full posterior sample.
  
 \end_layout
 
@@ -1570,34 +1614,40 @@ Table Y shows the results when the proportion of cells that are held out
 Individual tree hold-out experiment
 \end_layout
 
+\begin_layout Standard
+Table Z shows the predictive ability for Experiment 2.
+\end_layout
+
 \begin_layout Subsection
 Data product
 \end_layout
 
 \begin_layout Standard
-For the final data product, we ran the model for X iterations, retaining
- Y to limit storage needs and limit the size of the data product.
+For the final data product, we ran the model for X iterations, discarding
+ the first Z iterations for burn-in and retaining Y to limit storage needs
+ and limit the size of the data product.
  Mixing was generally reasonable, but for some of the hyperparameters was
  relatively slow, particularly for less common taxa.
  Despite this, mixing for the variables of substantive interest, the proportions
  was good.
- 
+ [Report ESS values]
 \end_layout
 
 \begin_layout Standard
-In Figure X, we show maps of composition based on the posterior means, for
- the full domain for several taxa of substantive interest to illustrate
- the results: oak, pine, beech, and cherry.
+In Figure X, we show maps of estimated composition for the full domain for
+ several taxa of substantive interest to illustrate the results: oak, pine,
+ beech, and cherry.
  These maps contrast the raw data proportions, the posterior means and posterior
  standard deviations as pointwise estimates of uncertainty.
- 
+ Fig.
+ XXX shows posterior means for all Z taxa.
 \end_layout
 
 \begin_layout Standard
 While our data product is given for the full rectangular domain, including
  hypothetical vegetation over water, uncertainty is large outside of the
  core states with data and any analysis and inference should only be done
- within those states.
+ within those core states.
 \end_layout
 
 \begin_layout Section
@@ -1606,7 +1656,10 @@ Discussion
 
 \begin_layout Standard
 We expect this data product to be useful for understanding the state of
- northeastern vegetation prior to large-scale European settlement.
+ vegetation in the northeastern United States prior to large-scale European
+ settlement.
+ In addition to specific regional questions, the data product can also help
+ us to understand how forests and ecosystems change after intensive settlement.
 \end_layout
 
 \begin_layout Standard
@@ -1621,15 +1674,17 @@ Note that digitization of data from Illinois and Indiana is ongoing and
 \begin_layout Standard
 Given the density of data and the limited differences seen between the ICAR
  and SPDE models, we expect the data product to be reasonably robust to
- the choice of spatial model except in those areas with incomplete data.
+ the choice of spatial model, particularly in those areas with complete
+ data.
  However, additional investigation of other statistical representations
  is of interest, in particular nonstationary spatial models and use of covariate
 s.
  The biggest shortcoming of the current model is its inability to account
  for local features such as rivers (note the Minnesota River floodplain
- in evidence in the raw data), with the smoothing over these features not
- accounting for their presence and simply smoothing with no account for
- directionality or the size of the floodplain.
+ in evidence in the raw data).
+ The current model, by using a simple stationary spatial model that smooths
+ as a function of Euclidean distance, does not account for topographic,
+ soil, or other features.
  
 \end_layout
 
@@ -1650,11 +1705,28 @@ Acknowledgments
 \end_layout
 
 \begin_layout Standard
-The authors thank all of the researchers over the years who have preserved,
- collected, and digitized survey records, in particular {?? Brugam, ???}.
+The authors are deeply indebted to all of the researchers over the years
+ who have preserved, collected, and digitized survey records, in particular
+ {?? Brugam, ??? - Jody/Charlie/Jason/Jack/Simon please add names here}.
  This work was carried out by the PalEON Project with support from the National
  Science Foundation MacroSystems Program through grants DEB-1241874 and
  DEB-1241868.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+bibliographystyle{/accounts/gen/vis/paciorek/latex/RSSstylefile/Chicago}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1688,90 +1760,69 @@ MCMC details
 
 \begin_layout Standard
 Define 
-\begin_inset Formula $\bar{w}_{i.p}=n_{i}^{-1}{\displaystyle \sum_{j=1}^{n_{i}}W_{ijp}}$
+\begin_inset Formula $\bar{w}_{i\cdot p}=n_{i}^{-1}{\displaystyle \sum_{j=1}^{n_{i}}W_{ijp}}$
 \end_inset
 
-, 
-\begin_inset Formula $\bar{w}_{p}$
-\end_inset
-
-
-\begin_inset Formula $=(\bar{w}_{1.p},...,\bar{w}_{I.p})^{T}$
-\end_inset
-
-, 
-\begin_inset Formula $A=diag\{n_{1},...,n_{I}\}$
-\end_inset
-
-, 
-\begin_inset Formula $\alpha=(\alpha_{1}^{T},...,\alpha_{P}^{T})^{T}$
-\end_inset
-
-, 
-\begin_inset Formula $v=(\sigma_{1}^{2},...,\sigma_{P}^{2})^{T}$
-\end_inset
-
-, and 
-\begin_inset Formula $V_{p}^{-1}=\sigma_{p}^{-2}\big(D-C\big)$
-\end_inset
-
-.
- Let 
-\begin_inset Formula $W_{-ijp}$
-\end_inset
-
- denote the vector of all variables in 
+ be the average of the 
 \begin_inset Formula $W$
 \end_inset
 
- except 
-\begin_inset Formula $W_{ijp}$
+ values for the 
+\begin_inset Formula $p$
 \end_inset
 
-, 
-\begin_inset Formula $\alpha_{-p}$
+th taxon in the 
+\begin_inset Formula $i$
 \end_inset
 
- denote the vector of 
-\begin_inset Formula $\alpha_{iq}$
-\end_inset
-
- for all 
-\begin_inset Formula $q\neq p$
-\end_inset
-
-, and 
-\begin_inset Formula $v_{-p}$
-\end_inset
-
- denote the vector of 
-\begin_inset Formula $\sigma_{q}^{2}$
-\end_inset
-
- for all 
-\begin_inset Formula $q\neq p$
-\end_inset
-
-.
- Also, let 
-\begin_inset Formula $\phi(z)$
-\end_inset
-
- denote the standard normal density evaluated at 
-\begin_inset Formula $z$
-\end_inset
-
-.
+th grid cell.
  Let 
-\begin_inset Formula $TN(a,b,m,s^{2})$
+\begin_inset Formula $A$
+\end_inset
+
+ be a diagonal matrix where 
+\begin_inset Formula $A_{ii}$
+\end_inset
+
+ is the number of trees in the 
+\begin_inset Formula $i$
+\end_inset
+
+th grid cell.
+ When there are no trees in a grid cell, 
+\begin_inset Formula $\bar{w}_{i\cdot p}=0$
+\end_inset
+
+ and 
+\begin_inset Formula $A_{ii}=0$
+\end_inset
+
+.
+ For the township data, at each iteration, based on the current values of
+ the grid cell membership variables, 
+\begin_inset Formula $c_{tj}$
+\end_inset
+
+, trees are aggregated into grid cells and the calculations above can then
+ be carried out.
+\end_layout
+
+\begin_layout Standard
+The conditional distribution for 
+\begin_inset Formula $W_{mjp}$
+\end_inset
+
+ given the other unknowns in the model and the data is as follows.
+ Let 
+\begin_inset Formula $\mbox{TN}(a,b,\mu,\tau^{2})$
 \end_inset
 
  denote the truncated normal distribution with mean parameter 
-\begin_inset Formula $m$
+\begin_inset Formula $\mu$
 \end_inset
 
  and variance parameter 
-\begin_inset Formula $s^{2}$
+\begin_inset Formula $\tau^{2}$
 \end_inset
 
 , truncated below by 
@@ -1783,73 +1834,103 @@ Define
 \end_inset
 
 .
- With these notations, it can be shown that the full conditional distributions
- are as follows.
+ 
 \end_layout
 
 \begin_layout Standard
-The full conditional distribution of 
-\begin_inset Formula $W_{ijp}$
-\end_inset
-
- is 
 \begin_inset Formula 
 \begin{align}
-[w_{ijp}|y,w_{-ijp},\alpha,v] & \sim\begin{cases}
-TN\big({\displaystyle \max_{p^{*}\neq y_{ij}}w_{ijp^{*}},\infty,\alpha_{iy_{ij}},1\big),} & \mbox{if }p\mbox{ = \ensuremath{y_{ij}} }\\
-TN\big(-\infty,w_{ijy_{ij}},\alpha_{ip},1\big), & \mbox{if }p\mbox{ \ensuremath{\neq y_{ij}} }
+W_{ijp} & \sim\begin{cases}
+\mbox{TN}\big({\displaystyle \max_{p^{*}\neq y_{ij}}w_{ijp^{*}},\infty,\alpha_{y_{ij}}(s_{i}),1\big),} & \mbox{if }p\mbox{ = \ensuremath{y_{ij}}}\\
+\mbox{TN}\big(-\infty,w_{ijy_{ij}},\alpha_{p}(s_{i}),1\big), & \mbox{if }p\mbox{ \ensuremath{\neq y_{ij}}}
 \end{cases}\label{sampW}
 \end{align}
 
 \end_inset
 
-Thus, 
-\begin_inset Formula $W_{ijp}$
-\end_inset
-
- is drawn from a truncated normal distribution, and the truncation value
- is determined by the category of observation 
+In essence, the truncation value is determined by the taxon of the 
 \begin_inset Formula $j$
 \end_inset
 
- at location 
-\begin_inset Formula $i$
+th tree.
+ For a given 
+\begin_inset Formula $p$
 \end_inset
 
-.
+, the 
+\begin_inset Formula $W$
+\end_inset
+
+ values for all trees in all cells can be sampled in parallel.
+ 
 \end_layout
 
 \begin_layout Standard
-\noindent
-The full conditional distribution of 
+The conditional distribution of 
 \begin_inset Formula $\alpha_{p}$
 \end_inset
 
  is 
 \begin_inset Formula 
 \begin{align}
-[\alpha_{p}|y,w,\alpha_{-p},v] & \sim N\bigg(\Big(A+V_{p}^{-1}\Big)^{-1}A\bar{w}_{p},\Big(A+V_{p}^{-1}\Big)^{-1}\bigg).\label{sampalpha}
+\alpha_{p} & \sim\mbox{N}\bigg(\Big(A+Q_{p}\Big)^{-1}A\bar{w}_{p},\Big(A+Q_{p}\Big)^{-1}\bigg).\label{sampalpha}
 \end{align}
 
 \end_inset
 
-Thus, 
+where 
+\begin_inset Formula $Q_{p}=(\sigma_{p}^{2})^{-1}Q$
+\end_inset
+
+ for the CAR model and 
+\begin_inset Formula $\left(\sigma_{p}^{2}\cdot\frac{4\pi}{\rho_{p}^{2}}\right)^{-1}Q(\rho_{p})$
+\end_inset
+
+ for the SPDE model.
+ For each hyperparameter, 
+\begin_inset Formula $\phi\in\{\{\mu_{p}\},\{\log\sigma_{p},\rho_{p}\}\}$
+\end_inset
+
+, we sampled 
+\begin_inset Formula $\{\phi,\alpha_{p}\}$
+\end_inset
+
+ jointly, proposing 
+\begin_inset Formula $\phi$
+\end_inset
+
+ as a random walk and, conditional on the proposed value of 
+\begin_inset Formula $\phi$
+\end_inset
+
+, sampling 
 \begin_inset Formula $\alpha_{p}$
 \end_inset
 
- can be drawn from a multivariate normal distribution with mean parameter
- 
-\begin_inset Formula $\Big(A+V_{p}^{-1}\Big)^{-1}A\bar{w}_{p}$
+ from the distribution just above.
+ The joint proposal is accepted or rejected as a standard Metropolis-Hastings
+ proposal, with adaptation of the proposal (co)variance 
+\backslash
+citep{Shab:Well:2011}.
+ As mentioned previously, for the SPDE model, we jointly proposed 
+\begin_inset Formula $\phi=\{\log\sigma_{p},\rho_{p}\}$
 \end_inset
 
- and covariance matrix 
-\begin_inset Formula $\Big(A+V_{p}^{-1}\Big)^{-1}$
+ from a bivariate normal distribution to account for the posterior dependence
+ of these parameters, while for the CAR model, 
+\begin_inset Formula $\phi\in\{\{\log\sigma_{p}\}\}$
 \end_inset
 
 .
+ 
 \end_layout
 
 \begin_layout Standard
+\noindent
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
 \noindent
 The full conditional distribution of the hyperparameter 
 \begin_inset Formula $\sigma_{p}^{2}$
@@ -1889,10 +1970,57 @@ Then
  using sparse matrix computations.
 \end_layout
 
-\begin_layout Standard
-For the township-level data, we draw the latent tree membership variables
- as XXX.
+\end_inset
+
+
 \end_layout
+
+\begin_layout Standard
+For the township-level data, for a given tree, we draw the latent tree membershi
+p variable, 
+\begin_inset Formula $c_{tj}$
+\end_inset
+
+, from a discrete distribution by normalizing the weights, 
+\begin_inset Formula $\{\psi_{1(t)}L_{1(t)},\ldots,\psi_{T(t)}L_{T(t)}\}$
+\end_inset
+
+ where 
+\begin_inset Formula $L_{k}$
+\end_inset
+
+ is density of 
+\begin_inset Formula $W_{tj\cdot}$
+\end_inset
+
+ if 
+\begin_inset Formula $c_{tj}=k$
+\end_inset
+
+, namely the product of independent normal densities, 
+\begin_inset Formula $W_{tjp}\sim\mbox{N}(\alpha_{p}(s_{k}),1)$
+\end_inset
+
+, over 
+\begin_inset Formula $p=1,\ldots,P$
+\end_inset
+
+.
+ Thus the posterior weights the prior based on how consistent the 
+\begin_inset Formula $W$
+\end_inset
+
+ values are with the 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ values for the candidate grid cells.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
 
 \begin_layout Subsection
 Derivation of the Full Conditional Distribution of 
@@ -1902,7 +2030,7 @@ Derivation of the Full Conditional Distribution of
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
 name "fullconditionalW"
@@ -1912,7 +2040,7 @@ name "fullconditionalW"
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 The probability density function for the full conditional distribution of
  
 \begin_inset Formula $W_{ijp}$
@@ -1995,8 +2123,8 @@ The first product, taken over all observations
 \begin{align*}
  & \pi(w_{ijp}|y,w_{-ijp},\alpha,v)\\
  & \propto\begin{cases}
-\phi(w_{ijy_{ij}}-\alpha_{iy_{ij}})I(w_{ijy_{ij}}\geq{\displaystyle \max_{p^{*}\neq y_{ij}}w_{ijp^{*}}),} & \mbox{if }p\mbox{ = \ensuremath{y_{ij}} }\\
-\phi(w_{ijp}-\alpha_{ip})I(w_{ijp}\leq w_{ijy_{ij}}), & \mbox{if }p\mbox{ \ensuremath{\neq y_{ij}} }
+\phi(w_{ijy_{ij}}-\alpha_{iy_{ij}})I(w_{ijy_{ij}}\geq{\displaystyle \max_{p^{*}\neq y_{ij}}w_{ijp^{*}}),} & \mbox{if }p\mbox{ = \ensuremath{y_{ij}}}\\
+\phi(w_{ijp}-\alpha_{ip})I(w_{ijp}\leq w_{ijy_{ij}}), & \mbox{if }p\mbox{ \ensuremath{\neq y_{ij}}}
 \end{cases}
 \end{align*}
 
@@ -2056,7 +2184,7 @@ Derivation of the Full Conditional Distribution of
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \noindent
 \begin_inset CommandInset label
 LatexCommand label
@@ -2067,7 +2195,7 @@ name "fullconditionalalpha"
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 The full conditional distribution of 
 \begin_inset Formula $\alpha_{p}$
 \end_inset
@@ -2150,7 +2278,7 @@ Derivation of the Full Conditional Distribution of Hyperparameter
  
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \noindent
 \begin_inset CommandInset label
 LatexCommand label
@@ -2161,7 +2289,7 @@ name "fullconditionalsigmasq"
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 The probability density function for the full conditional distribution of
  
 \begin_inset Formula $\sigma_{p}^{2}$
@@ -2232,17 +2360,103 @@ The shape parameter is
  will have a larger mean.
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
-Computational details
+Estimating 
+\begin_inset Formula $\theta_{p}(s)$
+\end_inset
+
+ via Monte Carlo integration
 \end_layout
 
 \begin_layout Standard
-The model is implemented in R and all code is available on Github, including
- pre- and post-processing code.
- Core computational calculations are coded in C++ using the Rcpp package
- and the compiled binary code is executed from R.
- We also make extensive use of sparse matrix representations and algorithms,
- using the spam package in R.
+In the latent variable representation, 
+\begin_inset Formula $\theta_{p}(s)$
+\end_inset
+
+ never appears explicitly and cannot be calculated in close form.
+ Instead we use Monte Carlo integration over 
+\begin_inset Formula $W_{ijp},\, p=1,\ldots,P$
+\end_inset
+
+ to estimate 
+\begin_inset Formula $\theta_{p}(s_{i})$
+\end_inset
+
+.
+ The quantity 
+\begin_inset Formula $\theta_{p}(s_{i})=P(W_{ijp}={\displaystyle \max_{p^{*}}W_{ijp^{*}})}$
+\end_inset
+
+ defines the probability of taxon 
+\begin_inset Formula $p$
+\end_inset
+
+ at grid cell 
+\begin_inset Formula $i$
+\end_inset
+
+.
+ This requires one to choose the number of Monte Carlo samples, which we
+ set at 10000.
+ For each of the saved MCMC samples, 
+\begin_inset Formula $k=1,\ldots K$
+\end_inset
+
+, we estimate 
+\begin_inset Formula $\theta_{p}^{(k)}(s_{i})$
+\end_inset
+
+ numerically.
+ Specifically, for 
+\begin_inset Formula $t=1,\ldots,10000$
+\end_inset
+
+, we independently draw
+\begin_inset Formula 
+\[
+W_{ijpt}^{(k)}\sim\mbox{N}(\alpha_{p}^{(k)}(s_{i}),1),\, p=1,\ldots,P
+\]
+
+\end_inset
+
+and estimate 
+\begin_inset Formula 
+\[
+\hat{\theta}_{p}^{(k)}(s_{i})=\frac{1}{10000}{\displaystyle \sum_{t=1}^{10000}1(W_{ijpt}^{(k)}={\displaystyle \max_{p^{*}}W_{ijp^{*}t}^{(k)})}}
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $1(\cdot)$
+\end_inset
+
+ is the indicator function that evaluates to 1 if the expression is true
+ and 0 if false.
+ In other words, we calculate the proportion of times that the maximum of
+ 
+\begin_inset Formula $W_{ijp},\, p=1,\ldots,P$
+\end_inset
+
+ corresponds to taxon 
+\begin_inset Formula $p$
+\end_inset
+
+.
+ Considering 
+\begin_inset Formula $\hat{\theta}_{p}^{(k)}(s_{i}),\, k=1,\ldots,K$
+\end_inset
+
+, we have a sample from the posterior of 
+\begin_inset Formula $\theta_{p}(s_{i})$
+\end_inset
+
+.
 \end_layout
 
 \end_body
