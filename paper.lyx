@@ -11,6 +11,9 @@
 \newcommand{\N}{\mathcal{N}}
 \end_preamble
 \use_default_options true
+\begin_modules
+knitr
+\end_modules
 \maintain_unincluded_children false
 \language english
 \language_package default
@@ -80,7 +83,7 @@ Statistically-estimated tree composition for the northeastern United States
 at the time of European settlement
 \end_layout
 
-\begin_layout Author
+\begin_layout Quote
 Christopher J.
  Paciorek, Andrew Thurman, Simon J.
  Goring, Charlie V.
@@ -114,12 +117,28 @@ properly cite Goring stuff and reference details of data collection
 \end_layout
 
 \begin_layout Standard
-look at PLOS One and Ecology Stats Letters
+look at PLOS One and Ecology Stats Letters [Simon suggested Nature's scientific
+ data journal]
 \end_layout
 
-\begin_layout Standard
-Figs: 1: domain with data; 2 focal taxa with raw,pm,psd; 3 full taxa with
- pm only
+\begin_layout Chunk
+
+<<setup, echo=FALSE>>= 
+\end_layout
+
+\begin_layout Chunk
+
+inputDir <- '/var/tmp/paciorek/paleon/comp/output'
+\end_layout
+
+\begin_layout Chunk
+
+version <- 0.3
+\end_layout
+
+\begin_layout Chunk
+
+@
 \end_layout
 
 \begin_layout Section
@@ -130,7 +149,8 @@ Introduction
 We describe a data product providing estimated composition of tree taxa
  at the time of European settlement for the northeastern United States.
  Composition is defined as the proportion of stems larger than approximately
- X in 22 taxonomic groupings.
+ X cm diameter at breast height [Charlie? Simon? is X roughly 10?] in 22
+ taxonomic groupings.
  The product is based on a Bayesian statistical model that estimates composition
  on a regular 8 km grid based on settlement survey records providing raw
  data that are transcribed and then aggregated spatially, giving count data.
@@ -153,12 +173,64 @@ ern U.S.
  cells, with transcription ongoing.
  Data for the remaining states are a subset of the full set of townships.
  Fig.
- X shows the domain, indicating the grid cells and townships with data.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:domain"
+
+\end_inset
+
+ shows the domain, indicating the grid cells and townships with data.
 \end_layout
 
 \begin_layout Standard
-Note that surveys occurred over a period of more than 200 years as Europeans
- settled what is now the northeastern United States.
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:domain"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename fig1.pdf
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Spatial domain, with locations with data shown in gray.
+ Locations are grid cells in western portion and townships in eastern portion.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Note that surveys occurred over a period of more than 200 years as European
+ colonists (before U.S.
+ independence) and the United States settled what is now the northeastern
+ United States.
  Our estimates are for the period of settlement represented by the survey
  data and therefore are time-transgressive; they do not represent any single
  point in time across the domain, but rather the state of the landscape
@@ -166,9 +238,20 @@ Note that surveys occurred over a period of more than 200 years as Europeans
 \end_layout
 
 \begin_layout Standard
-Extensive details on the data are available in 
+Extensive details on the data are available in
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
 \backslash
-cite{Gori:etal:2015} and the data are available at XXX.
+cite{Gori:etal:2015}
+\end_layout
+
+\end_inset
+
+ and the data are available at XXX.
  The aggregation into taxonomic groups is primarily at the genus level,
  but in some cases of monospecific genera, is at the species level.
  In some other cases, because of ambiguity in the common tree names used
@@ -274,8 +357,19 @@ th location,
  Note that we use a standard multinomial distribution without overdispersion
  as the set of trees in the dataset is roughly uniformly sampled across
  the cells or townships 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
 \backslash
-citep{Gori:etal:2015}.
+citep{Gori:etal:201
+\end_layout
+
+\end_inset
+
+5}.
 \end_layout
 
 \begin_layout Standard
@@ -320,7 +414,14 @@ The proportions,
 \end_inset
 
  grid cells.
- In Section X we introduce a multinomial probit model that relates the 
+ In Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Latent-Variable-Model"
+
+\end_inset
+
+ we introduce a multinomial probit model that relates the 
 \begin_inset Formula $\alpha_{p}(s)$
 \end_inset
 
@@ -388,7 +489,19 @@ In the next section, we consider two spatial models to define the structure
 \begin_inset Formula $\alpha_{p}(s)$
 \end_inset
 
- processes, a standard conditional autoregressive model (Bane:etal:2003)
+ processes, a standard conditional autoregressive model 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+citep{Bane:etal:2003}
+\end_layout
+
+\end_inset
+
  and a Gaussian Markov random field (MRF) approximation to a Gaussian process
  with Matern covariance 
 \begin_inset ERT
@@ -452,8 +565,20 @@ Standard conditional autoregressive models
 \end_layout
 
 \begin_layout Standard
-Our first model is a standard conditional autoregressive (CAR) model (Bane:etal:
-2003), widely used in spatial statistics.
+Our first model is a standard conditional autoregressive (CAR) model 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+citep{Bane:etal:2003}
+\end_layout
+
+\end_inset
+
+.
  We use a standard form of this model, which treats the four cardinal neighbors
  of each grid cell as the neighbors of the grid cell.
  The corresponding precision matrix has diagonal elements, 
@@ -574,16 +699,37 @@ Gaussian process approximation
 \end_layout
 
 \begin_layout Standard
-Gaussian processes (GP) are also standard models for spatial processes (
+Gaussian processes (GP) are also standard models for spatial processes
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
 \backslash
-citep{Bane:etal:2003}.
+citep{Bane:etal:2003}
+\end_layout
+
+\end_inset
+
+.
  GP models are computationally challenging for large datasets because of
  manipulations involving large covariance matrices.
  Given this, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
 \backslash
-citep{Lind:etal:2011} proposed a new framework for using Gaussian MRFs (GMRFs)
- as approximations to GPs, based on the use of stochastic partial differential
- equations (SPDE).
+cite{Lind:etal:2011}
+\end_layout
+
+\end_inset
+
+ proposed a new framework for using Gaussian MRFs (GMRFs) as approximations
+ to GPs, based on the use of stochastic partial differential equations (SPDE).
 \end_layout
 
 \begin_layout Standard
@@ -749,11 +895,33 @@ The primary difference between the CAR and Lindgren models is that the Lindgren
 l proportions at a given location, effectively averaging the empirical proportio
 ns over smaller neighborhoods.
  In general, the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
 \backslash
-cite{Lind:etal:2011} model will generally provide for a smoother estimate
- than the CAR model 
+cite{Lind:etal:2011}
+\end_layout
+
+\end_inset
+
+ model will generally provide for a smoother estimate than the CAR model
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
 \backslash
-citep{Paci:2013}.
+citep{Paci:2013}
+\end_layout
+
+\end_inset
+
+.
  
 \end_layout
 
@@ -802,8 +970,19 @@ The ICAR specification contains a set of hyperparameters
 
 .
  Following 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
 \backslash
-citep{Gelm:2006} we use a uniform distribution on each 
+citep{Gelm:2006}
+\end_layout
+
+\end_inset
+
+ we use a uniform distribution on each 
 \begin_inset Formula $\sigma_{p}$
 \end_inset
 
@@ -830,6 +1009,13 @@ citep{Gelm:2006} we use a uniform distribution on each
 
 \begin_layout Subsection
 Latent Variable Model
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Latent-Variable-Model"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -837,9 +1023,20 @@ It is well-known that devising an effective MCMC algorithm for models with
  latent Gaussian process(es) and a non-Gaussian likelihood is difficult
  (cite recent cent/noncent papers).
  To develop an algorithm, we make use of a latent variable representation
- for the multinomial probit model (
+ for the multinomial probit model 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
 \backslash
-citep{McCu:Ross:1994}).
+citep{McCu:Ross:1994}
+\end_layout
+
+\end_inset
+
+.
  The representation introduces latent variables that allow one to develop
  a MCMC sampling strategy that takes advantage of closed form full conditional
  distributions (so-called Gibbs sampling steps) for 
@@ -1260,10 +1457,21 @@ Computation
 
 \begin_layout Standard
 The 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
 \backslash
-citep{McCu:Ross:1994} representation is convenient for MCMC sampling, particular
-ly in this high-dimensional spatial context, as it allows us to draw from
- the posterior conditional distribution of the 
+cite{McCu:Ross:1994}
+\end_layout
+
+\end_inset
+
+ representation is convenient for MCMC sampling, particularly in this high-dimen
+sional spatial context, as it allows us to draw from the posterior conditional
+ distribution of the 
 \begin_inset Formula $W_{ijp}$
 \end_inset
 
@@ -1311,8 +1519,9 @@ While the latent variable representation provides great advantages in the
 \begin_inset Formula $\alpha_{p}$
 \end_inset
 
- from its full conditional distribution (Paci:2007).
- This approach is equivalent to integrating over 
+ from its full conditional distribution 
+\backslash
+
 \begin_inset Formula $\alpha_{p}$
 \end_inset
 
@@ -1347,9 +1556,20 @@ and
 \begin_inset Formula $\alpha_{p}$
 \end_inset
 
-, we use adaptive Metropolis sampling (
+, we use adaptive Metropolis sampling 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
 \backslash
-citep{Shab:Wells:2011}).
+citep{Shab:Well:2011}
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -1374,12 +1594,34 @@ The full description of the MCMC sampling steps is provided in the Appendix.
 \begin_layout Standard
 The model is implemented in R with core computational calculations coded
  in C++ using the Rcpp package 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
 \backslash
-citep{Rcpp}.
+citep{Edde:Fran:2011}
+\end_layout
+
+\end_inset
+
+.
  We also make extensive use of sparse matrix representations and algorithms,
  using the spam package in R 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
 \backslash
-citep{spam}.
+citep{Furr:Sain:2010}
+\end_layout
+
+\end_inset
+
+.
  All code is available on Github, including pre- and post-processing code.
  
 \end_layout
@@ -1428,29 +1670,51 @@ We held out 5% of the trees from all of the trees in the dataset (leaving
 \begin_layout Standard
 Finally, in a separate sensitivity analysis we instead left out 80% of the
  cells in Minnesota at random.
- This variation on #1 above was meant to indicate whether our model comparison
- conclusions would be robust as the digitization process for Illinois and
- Indiana progresses and provides us with increasingly dense data.
+ This variation on the first test above was meant to indicate whether our
+ model comparison conclusions would be robust as the digitization process
+ for Illinois and Indiana progresses and provides us with increasingly dense
+ data.
 \end_layout
 
 \begin_layout Standard
 There has been extensive work in the statistical literature on good metrics
- to use to compare the predictive ability of models.
- In particular it is well-recognized that predictions should be both accurate
- in terms of being close to the truth and calibrated, in characterizing
- uncertainty accurately.
- This is also called 
-\begin_inset Quotes eld
-\end_inset
+ to use to compare the predictive ability of models; these metrics are referred
+ to as scoring rules.
+ In particular it is well-recognized that predictive distributions should
+ maximize sharpness subject to calibration.
+ That is the predictive distribution should be as narrow as possible while
+ being calibrated such that the observations are consistent with the distributio
+n 
+\begin_inset ERT
+status open
 
-blah and sharp
-\begin_inset Quotes erd
-\end_inset
+\begin_layout Plain Layout
 
- 
+
 \backslash
-citep{Gnei:XXXX}.
- Following the suggestions in XXX, we consider these metrics.
+citep{Gnei:etal:2007}
+\end_layout
+
+\end_inset
+
+.
+ When thinking in terms of prediction intervals, we seek intervals that
+ are as narrow as possible while still covering the truth the expected proportio
+n of the time.
+ Following the suggestions in 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+citep{Gnei:etal:2007}
+\end_layout
+
+\end_inset
+
+, we consider these metrics.
 \end_layout
 
 \begin_layout Standard
@@ -1468,8 +1732,19 @@ We used the following criteria to compare models.
 
 \begin_layout Enumerate
 Brier score: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
 \backslash
-citep{Gnei} suggest this measure, which has been in use for decades.
+citep{Gnei:etal:2007}
+\end_layout
+
+\end_inset
+
+ suggest this measure, which has been in use for decades.
  For multi-category as opposed to binary outcomes, this takes the form
 \begin_inset Formula 
 \[
@@ -1496,11 +1771,33 @@ Log predictive density: This measure takes the log of the density of held-out
 \begin_deeper
 \begin_layout Standard
 While in principle, this metric should be optimal 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
 \backslash
-citep{Krnj:Drap:????}, it suffers from a lack of robustness in being very
- sensitive to small predictions near zero 
+citep{Krnj:Drap:2014}
+\end_layout
+
+\end_inset
+
+, it suffers from a lack of robustness in being very sensitive to small
+ predictions near zero 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
 \backslash
-citep{Gnei???}.
+citep{Gnei:etal:2007}
+\end_layout
+
+\end_inset
+
+.
  Even worse, our Monte Carlo estimation of 
 \begin_inset Formula $\theta$
 \end_inset
@@ -1590,8 +1887,22 @@ We ran each model for XXX iterations, retaining YYY after burnin and subsampling
  
 \end_layout
 
+\begin_layout Chunk
+
+\end_layout
+
+\begin_layout Chunk
+
+\end_layout
+
 \begin_layout Subsection
 Results
+\end_layout
+
+\begin_layout Standard
+Here we summarize the results of our cross-validation analyses that inform
+ the choice between the CAR and SPDE models.
+ 
 \end_layout
 
 \begin_layout Subsubsection
@@ -1599,15 +1910,2873 @@ Full cell hold-out experiment
 \end_layout
 
 \begin_layout Standard
-Table X shows predictive ability for Experiment 1: those cells in Minnesota
- held out of the fitting process, for both the posterior mean predictions
- and the full posterior sample.
+Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:score_cell_fivepercent"
+
+\end_inset
+
+ shows predictive ability for Experiment 1: those cells in Minnesota held
+ out of the fitting process, for both the posterior mean predictions and
+ the full posterior sample.
+ Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:coverage_cell_fivepercent"
+
+\end_inset
+
+ shows performance of the uncertainty estimates.
+ For the posterior distribution over the predictive score values, the CAR
+ model generally outperforms the SPDE model, while for the posterior mean
+ predictions, the SPDE model appears to outperform the CAR model, but we
+ do not have any uncertainty estimates for this comparison.
+ Coverage and interval lengths are similar between the two models.
+ From a practical perspective, based on the difference in mean absolute
+ error, which is on a readily interpretable scale, the differences between
+ the models are small.
  
 \end_layout
 
+\begin_layout Chunk
+
+\end_layout
+
+\begin_layout Chunk
+
+<<tab1prep, echo=FALSE>>= 
+\end_layout
+
+\begin_layout Chunk
+
+setwd(inputDir)
+\end_layout
+
+\begin_layout Chunk
+
+for(run in 10:14) {
+\end_layout
+
+\begin_layout Chunk
+
+	load(paste0('PLScomposition_western_',version,'-',run,'-cvResults.Rda'))
+\end_layout
+
+\begin_layout Chunk
+
+	assign(paste0('results',run), results)
+\end_layout
+
+\begin_layout Chunk
+
+	assign(paste0('samples',run), samples)
+\end_layout
+
+\begin_layout Chunk
+
+}
+\end_layout
+
+\begin_layout Chunk
+
+resultsCAR = results10
+\end_layout
+
+\begin_layout Chunk
+
+resultsSPDE = results11
+\end_layout
+
+\begin_layout Chunk
+
+resultsTPS = results12
+\end_layout
+
+\begin_layout Chunk
+
+samplesCAR = samples10
+\end_layout
+
+\begin_layout Chunk
+
+samplesSPDE = samples11
+\end_layout
+
+\begin_layout Chunk
+
+postProbsCell <- rep(0, 4)
+\end_layout
+
+\begin_layout Chunk
+
+postProbsCell[1] <- mean(samplesCAR[1,'cell',] < samplesSPDE[1,'cell',])
+\end_layout
+
+\begin_layout Chunk
+
+postProbsCell[2] <- mean(-samplesCAR[2,'cell',] < -samplesSPDE[2,'cell',])
+\end_layout
+
+\begin_layout Chunk
+
+postProbsCell[3] <- mean(samplesCAR[3,'cell',] < samplesSPDE[3,'cell',])
+\end_layout
+
+\begin_layout Chunk
+
+postProbsCell[4] <- mean(samplesCAR[4,'cell',] < samplesSPDE[4,'cell',])
+\end_layout
+
+\begin_layout Chunk
+
+#val_1_1 = sprintf("%5.0f", resultsCAR['brier','cell','post_mean_of_score'])
+\end_layout
+
+\begin_layout Chunk
+
+@
+\end_layout
+
 \begin_layout Standard
-Table Y shows the results when the proportion of cells that are held out
- decreases from 95% to 80%, indicating performance on less sparse data.
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Predictive ability based on several predictive score criteria for the CAR
+ and SPDE spatial models when holding out 95% of entire cells of data in
+ Minnesota.
+ Smaller values are better.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="6">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="3cm">
+<column alignment="center" valignment="top" width="2.5cm">
+<column alignment="center" valignment="top" width="2.5cm">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Posterior mean of score
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Score of posterior mean predictions
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+CAR model
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+SPDE model
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Posterior Prob.
+ CAR < SPDE
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+CAR model
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+SPDE model
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Brier
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.0f", resultsCAR['brier','cell','post_mean_of_score'])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.0f", resultsSPDE['brier','cell','post_mean_of_score'])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%1.2f", postProbsCell[1])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.0f", resultsCAR['brier','cell','score_of_post_mean'])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.0f", resultsSPDE['brier','cell','score_of_post_mean'])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Negative Log Density
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.0f", -resultsCAR['logdensity','cell','post_mean_of_score'])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.0f", -resultsSPDE['logdensity','cell','post_mean_of_score'])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%1.2f",postProbsCell[2])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.0f", -resultsCAR['logdensity','cell','score_of_post_mean'])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.0f", -resultsSPDE['logdensity','cell','score_of_post_mean'])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Mean Absolute Error
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.4f", resultsCAR['mae','cell','post_mean_of_score'])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.4f", resultsSPDE['mae','cell','post_mean_of_score'])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%1.2f",postProbsCell[3])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.4f", resultsCAR['mae','cell','score_of_post_mean'])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.4f", resultsSPDE['mae','cell','score_of_post_mean'])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Root Mean Square Error
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.4f", sqrt(resultsCAR['mspe','cell','post_mean_of_score']))}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.4f", sqrt(resultsSPDE['mspe','cell','post_mean_of_score']))}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%1.2f",postProbsCell[4])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.4f", sqrt(resultsCAR['mspe','cell','score_of_post_mean']))}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.4f", sqrt(resultsSPDE['mspe','cell','score_of_post_mean']))}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:score_cell_fivepercent"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Coverage and length of prediction intervals for the CAR and SPDE spatial
+ models when holding out 95% of entire cells of data in Minnesota.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="3">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+CAR model
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+SPDE model
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Coverage
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.3f", resultsCAR['coverage','cell','post_mean_of_score'])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.3f", resultsSPDE['coverage','cell','post_mean_of_score'])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Mean Interval Length
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.3f", resultsCAR['mean_int_len','cell','post_mean_of_score'])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.3f", resultsSPDE['mean_int_len','cell','post_mean_of_score'])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Median Interval Length
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.3f", resultsCAR['median_int_len','cell','post_mean_of_score'])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.3f", resultsSPDE['median_int_len','cell','post_mean_of_score'])
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:coverage_cell_fivepercent"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Predictive ability based on several predictive score criteria for the CAR
+ and TPS spatial models when holding out 95% of entire cells of data in
+ Minnesota.
+ Smaller values are better, except for coverage, where values near 0.95 are
+ optimal.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="9" columns="5">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Posterior mean of score
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Score of posterior mean predictions
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+CAR model
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+TPS model
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+CAR model
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+TPS model
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Brier
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.0f", resultsCAR['brier','cell','post_mean_of_score'])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.0f", resultsTPS['brier','cell','post_mean_of_score'])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.0f", resultsCAR['brier','cell','score_of_post_mean'])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.0f", resultsTPS['brier','cell','score_of_post_mean'])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Negative Log Density
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.0f", -resultsCAR['logdensity','cell','post_mean_of_score'])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.0f", -resultsTPS['logdensity','cell','post_mean_of_score'])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.0f", -resultsCAR['logdensity','cell','score_of_post_mean'])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.0f", -resultsTPS['logdensity','cell','score_of_post_mean'])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Mean Absolute Error
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.4f", resultsCAR['mae','cell','post_mean_of_score'])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.4f", resultsTPS['mae','cell','post_mean_of_score'])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.4f", resultsCAR['mae','cell','score_of_post_mean'])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.4f", resultsTPS['mae','cell','score_of_post_mean'])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Root Mean Square Error
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.4f", sqrt(resultsCAR['mspe','cell','post_mean_of_score']))}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.4f", sqrt(resultsTPS['mspe','cell','post_mean_of_score']))}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.4f", sqrt(resultsCAR['mspe','cell','score_of_post_mean']))}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.4f", sqrt(resultsTPS['mspe','cell','score_of_post_mean']))}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Coverage
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.3f", resultsCAR['coverage','cell','post_mean_of_score'])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.3f", resultsTPS['coverage','cell','post_mean_of_score'])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+NA
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+NA
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Mean Interval Length
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.3f", resultsCAR['mean_int_len','cell','post_mean_of_score'])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.3f", resultsTPS['mean_int_len','cell','post_mean_of_score'])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+NA
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+NA
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Median Interval Length
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.3f", resultsCAR['median_int_len','cell','post_mean_of_score'])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.3f", resultsTPS['median_int_len','cell','post_mean_of_score'])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+NA
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+NA
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:score_cell_fivepercent-1"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:score_cell_20percent"
+
+\end_inset
+
+ shows the results when the proportion of cells that are held out decreases
+ from 95% to 80%, indicating performance on less sparse data.
+ Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:coverage_cell_fivepercent"
+
+\end_inset
+
+ shows performance of the uncertainty estimates.
+ For denser data, unlike the results when data are more sparse, the SPDE
+ model generally outperforms the CAR model, but again differences from a
+ practical perspective based on mean absolute error, are limited.
+\end_layout
+
+\begin_layout Chunk
+
+<<tab2prep, echo=FALSE>>= 
+\end_layout
+
+\begin_layout Chunk
+
+resultsCAR = results13
+\end_layout
+
+\begin_layout Chunk
+
+resultsSPDE = results14
+\end_layout
+
+\begin_layout Chunk
+
+samplesCAR = samples13
+\end_layout
+
+\begin_layout Chunk
+
+samplesSPDE = samples14
+\end_layout
+
+\begin_layout Chunk
+
+postProbsCell <- rep(0, 4)
+\end_layout
+
+\begin_layout Chunk
+
+postProbsCell[1] <- mean(samplesCAR[1,'cell',] < samplesSPDE[1,'cell',])
+\end_layout
+
+\begin_layout Chunk
+
+postProbsCell[2] <- mean(-samplesCAR[2,'cell',] < -samplesSPDE[2,'cell',])
+\end_layout
+
+\begin_layout Chunk
+
+postProbsCell[3] <- mean(samplesCAR[3,'cell',] < samplesSPDE[3,'cell',])
+\end_layout
+
+\begin_layout Chunk
+
+postProbsCell[4] <- mean(samplesCAR[4,'cell',] < samplesSPDE[4,'cell',])
+\end_layout
+
+\begin_layout Chunk
+
+#val_1_1 = sprintf("%5.0f", resultsCAR['brier','cell','post_mean_of_score'])
+\end_layout
+
+\begin_layout Chunk
+
+@
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Predictive ability based on several predictive score criteria for the CAR
+ and SPDE spatial models when holding out 80% of entire cells of data in
+ Minnesota.
+ Smaller values are better, except for coverage, where values near 0.95 are
+ optimal.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="6">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="3cm">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Posterior mean of score
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Score of posterior mean predictions
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+CAR model
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+SPDE model
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Posterior Prob.
+ CAR < SPDE
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+CAR model
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+SPDE model
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Brier
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.0f", resultsCAR['brier','cell','post_mean_of_score'])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.0f", resultsSPDE['brier','cell','post_mean_of_score'])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%1.2f", postProbsCell[1])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.0f", resultsCAR['brier','cell','score_of_post_mean'])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.0f", resultsSPDE['brier','cell','score_of_post_mean'])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Negative Log Density
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.0f", -resultsCAR['logdensity','cell','post_mean_of_score'])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.0f", -resultsSPDE['logdensity','cell','post_mean_of_score'])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%1.2f",postProbsCell[2])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.0f", -resultsCAR['logdensity','cell','score_of_post_mean'])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.0f", -resultsSPDE['logdensity','cell','score_of_post_mean'])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Mean Absolute Error
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.4f", resultsCAR['mae','cell','post_mean_of_score'])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.4f", resultsSPDE['mae','cell','post_mean_of_score'])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%1.2f",postProbsCell[3])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.4f", resultsCAR['mae','cell','score_of_post_mean'])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.4f", resultsSPDE['mae','cell','score_of_post_mean'])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Root Mean Square Error
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.4f", sqrt(resultsCAR['mspe','cell','post_mean_of_score']))}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.4f", sqrt(resultsSPDE['mspe','cell','post_mean_of_score']))}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%1.2f",postProbsCell[4])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.4f", sqrt(resultsCAR['mspe','cell','score_of_post_mean']))}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.4f", sqrt(resultsSPDE['mspe','cell','score_of_post_mean']))}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:score_cell_20percent"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Coverage and length of prediction intervals for the CAR and SPDE spatial
+ models when holding out % of entire cells of data in Minnesota.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="3">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+CAR model
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+SPDE model
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Coverage
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.3f", resultsCAR['coverage','cell','post_mean_of_score'])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.3f", resultsSPDE['coverage','cell','post_mean_of_score'])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Mean Interval Length
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.3f", resultsCAR['mean_int_len','cell','post_mean_of_score'])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.3f", resultsSPDE['mean_int_len','cell','post_mean_of_score'])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Median Interval Length
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.3f", resultsCAR['median_int_len','cell','post_mean_of_score'])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.3f", resultsSPDE['median_int_len','cell','post_mean_of_score'])
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:coverage_cell_20percent"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection
@@ -1615,7 +4784,521 @@ Individual tree hold-out experiment
 \end_layout
 
 \begin_layout Standard
-Table Z shows the predictive ability for Experiment 2.
+Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:score_tree"
+
+\end_inset
+
+ shows the predictive ability for Experiment 2.
+ Here we have limited evidence (posterior probability of 0.84) that the SPDE
+ model is better based on the Brier score.
+\end_layout
+
+\begin_layout Chunk
+
+<<tab3prep, echo=FALSE>>= 
+\end_layout
+
+\begin_layout Chunk
+
+resultsCAR = results10
+\end_layout
+
+\begin_layout Chunk
+
+resultsSPDE = results11
+\end_layout
+
+\begin_layout Chunk
+
+samplesCAR = samples10
+\end_layout
+
+\begin_layout Chunk
+
+samplesSPDE = samples11
+\end_layout
+
+\begin_layout Chunk
+
+postProbsTree <- rep(0, 4)
+\end_layout
+
+\begin_layout Chunk
+
+postProbsTree[1] <- mean(samplesCAR[1,'tree',] < samplesSPDE[1,'tree',])
+\end_layout
+
+\begin_layout Chunk
+
+postProbsTree[2] <- mean(-samplesCAR[2,'tree',] < -samplesSPDE[2,'tree',])
+\end_layout
+
+\begin_layout Chunk
+
+#val_1_1 = sprintf("%5.0f", resultsCAR['brier','cell','post_mean_of_score'])
+\end_layout
+
+\begin_layout Chunk
+
+@
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Predictive ability based on several predictive score criteria for the CAR
+ and SPDE spatial models when holding out 5% of trees.
+ Smaller values are better.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="6">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="3cm">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Posterior mean of score
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Score of posterior mean predictions
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+CAR model
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+SPDE model
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Posterior Prob.
+ CAR < SPDE
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+CAR model
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+SPDE model
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Brier
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.0f", resultsCAR['brier','tree','post_mean_of_score'])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.0f", resultsSPDE['brier','tree','post_mean_of_score'])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%1.2f",postProbsTree[1])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.0f", resultsCAR['brier','tree','score_of_post_mean'])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.0f", resultsSPDE['brier','tree','score_of_post_mean'])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Negative Log Density
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.0f", -resultsCAR['logdensity','tree','post_mean_of_score'])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.0f", -resultsSPDE['logdensity','tree','post_mean_of_score'])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%1.2f",postProbsTree[2])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.0f", -resultsCAR['logdensity','tree','score_of_post_mean'])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.0f", -resultsSPDE['logdensity','tree','score_of_post_mean'])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:score_tree"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Choice of spatial model
+\end_layout
+
+\begin_layout Standard
+The differences between models are not consistent across the various comparisons
+, so there is not a clear choice.
+ In our final data product we use the CAR model, for three reasons.
+ First, the CAR model has modestly better performance when data are sparse,
+ as is still the case for Illinois and Indiana).
+ Second, the model is simpler and easier to explain and computations can
+ be done more quickly.
+ Third, predictions from the SPDE model showed boundary effects, with taxa
+ showing non-negligible posterior mean values at the edges of the domain,
+ well away from where the taxon was present in the empirical data.
+ This included non-negligible values within (but near the edge of) the convex
+ hull of locations with data.
+ 
 \end_layout
 
 \begin_layout Subsection
@@ -1623,9 +5306,9 @@ Data product
 \end_layout
 
 \begin_layout Standard
-For the final data product, we ran the model for X iterations, discarding
- the first Z iterations for burn-in and retaining Y to limit storage needs
- and limit the size of the data product.
+For the final data product, we ran the model using the CAR specification
+ for X iterations, discarding the first Z iterations for burn-in and retaining
+ Y to limit storage needs and limit the size of the data product.
  Mixing was generally reasonable, but for some of the hyperparameters was
  relatively slow, particularly for less common taxa.
  Despite this, mixing for the variables of substantive interest, the proportions
@@ -1634,13 +5317,162 @@ For the final data product, we ran the model for X iterations, discarding
 \end_layout
 
 \begin_layout Standard
-In Figure X, we show maps of estimated composition for the full domain for
- several taxa of substantive interest to illustrate the results: oak, pine,
- beech, and cherry.
+In Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:select_maps"
+
+\end_inset
+
+, we show maps of estimated composition for the full domain for several
+ taxa of substantive interest to illustrate the results: beech, cherry,
+ chestnut, elm, hemlock, oak, and pine.
  These maps contrast the raw data proportions, the posterior means and posterior
  standard deviations as pointwise estimates of uncertainty.
  Fig.
- XXX shows posterior means for all Z taxa.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:all_predictions"
+
+\end_inset
+
+ shows posterior means for all 22 (???) taxa.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:select_maps"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename fig2.pdf
+	scale 75
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace{3mm}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename legendRaw.pdf
+	lyxscale 25
+	scale 17
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename legendProp.pdf
+	lyxscale 25
+	scale 17
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename legendSD.pdf
+	lyxscale 25
+	scale 17
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+[THIS IS AN OLD VERSION FOR ILLUSTRATION ONLY - TO BE REPLACED WHEN VERSION
+ 0.3 FITS ARE DONE] Empirical proportions from raw data (column 1), posterior
+ mean predictions (column 2) and posterior standard deviations -- representing
+ standard errors of prediction (column 3) for select taxa.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:all_predictions"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /var/tmp/paciorek/paleon/comp_0.2/output/PLScomposition_full_0.1_fits.pdf
+	scale 35
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+[THIS IS AN OLD VERSION FOR ILLUSTRATION ONLY - TO BE REPLACED AND PUT IN
+ 8 ROW X 3 COLUMN FORM WHEN VERSION 0.3 FITS ARE DONE] Posterior mean predictions
+ for all taxa over the entire domain.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1707,7 +5539,7 @@ Acknowledgments
 \begin_layout Standard
 The authors are deeply indebted to all of the researchers over the years
  who have preserved, collected, and digitized survey records, in particular
- {?? Brugam, ??? - Jody/Charlie/Jason/Jack/Simon please add names here}.
+ {Brugam, ??? - Jody/Charlie/David/Jason/Jack/Simon please add names here}.
  This work was carried out by the PalEON Project with support from the National
  Science Foundation MacroSystems Program through grants DEB-1241874 and
  DEB-1241868.
@@ -1738,11 +5570,9 @@ status open
 
 \backslash
 bibliography{/accounts/gen/vis/paciorek/bibfiles/abbrev.stat,/accounts/gen/vis/pa
-ciorek/bibfiles/abbrev.other,/accounts/gen/vis/paciorek/bibfiles/spatfit,/account
-s/gen/vis/paciorek/bibfiles/spatstat,/accounts/gen/vis/paciorek/bibfiles/statgen
-eral,/accounts/gen/vis/paciorek/bibfiles/paciorek,/accounts/gen/vis/paciorek/bib
-files/ml,/accounts/gen/vis/paciorek/bibfiles/thesis,/accounts/gen/vis/paciorek/b
-ibfiles/env}
+ciorek/bibfiles/abbrev.other,/accounts/gen/vis/paciorek/bibfiles/spatstat,/accoun
+ts/gen/vis/paciorek/bibfiles/statgeneral,/accounts/gen/vis/paciorek/bibfiles/pac
+iorek,/accounts/gen/vis/paciorek/bibfiles/ecology}
 \end_layout
 
 \end_inset
