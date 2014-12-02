@@ -97,7 +97,8 @@ John W.
 \begin_inset Newline newline
 \end_inset
 
-and Jason McLachlan [author order to be discussed]
+and Jason S.
+ McLachlan [author order to be discussed]
 \begin_inset Newline newline
 \end_inset
 
@@ -121,22 +122,18 @@ focus on PLOS One, but Nature's Scientific Data is a possibility
 \end_layout
 
 \begin_layout Chunk
-
 <<setup, echo=FALSE>>= 
 \end_layout
 
 \begin_layout Chunk
-
 inputDir <- '/var/tmp/paciorek/paleon/comp/output'
 \end_layout
 
 \begin_layout Chunk
-
 version <- 0.3
 \end_layout
 
 \begin_layout Chunk
-
 @
 \end_layout
 
@@ -259,7 +256,8 @@ Note that surveys occurred over a period of more than 200 years as European
  Our estimates are for the period of settlement represented by the survey
  data and therefore are time-transgressive; they do not represent any single
  point in time across the domain, but rather the state of the landscape
- at the time at which settlement occurred.
+ at the time just before settlement occurred [get ref from Charlie or Jason's
+ historian pal]
 \end_layout
 
 \begin_layout Standard
@@ -1969,97 +1967,78 @@ reference "tab:coverage_cell_fivepercent"
 \end_layout
 
 \begin_layout Chunk
-
 <<tab1prep, echo=FALSE>>= 
 \end_layout
 
 \begin_layout Chunk
-
 setwd(inputDir)
 \end_layout
 
 \begin_layout Chunk
-
 for(run in 10:14) {
 \end_layout
 
 \begin_layout Chunk
-
 	load(paste0('PLScomposition_western_',version,'-',run,'-cvResults.Rda'))
 \end_layout
 
 \begin_layout Chunk
-
 	assign(paste0('results',run), results)
 \end_layout
 
 \begin_layout Chunk
-
 	assign(paste0('samples',run), samples)
 \end_layout
 
 \begin_layout Chunk
-
 }
 \end_layout
 
 \begin_layout Chunk
-
 resultsCAR = results10
 \end_layout
 
 \begin_layout Chunk
-
 resultsSPDE = results11
 \end_layout
 
 \begin_layout Chunk
-
 resultsTPS = results12
 \end_layout
 
 \begin_layout Chunk
-
 samplesCAR = samples10
 \end_layout
 
 \begin_layout Chunk
-
 samplesSPDE = samples11
 \end_layout
 
 \begin_layout Chunk
-
 postProbsCell <- rep(0, 4)
 \end_layout
 
 \begin_layout Chunk
-
 postProbsCell[1] <- mean(samplesCAR[1,'cell',] < samplesSPDE[1,'cell',])
 \end_layout
 
 \begin_layout Chunk
-
 postProbsCell[2] <- mean(-samplesCAR[2,'cell',] < -samplesSPDE[2,'cell',])
 \end_layout
 
 \begin_layout Chunk
-
 postProbsCell[3] <- mean(samplesCAR[3,'cell',] < samplesSPDE[3,'cell',])
 \end_layout
 
 \begin_layout Chunk
-
 postProbsCell[4] <- mean(samplesCAR[4,'cell',] < samplesSPDE[4,'cell',])
 \end_layout
 
 \begin_layout Chunk
-
 #val_1_1 = sprintf("%5.0f", resultsCAR['brier','cell','post_mean_of_score'])
 \end_layout
 
 \begin_layout Chunk
-
 @
 \end_layout
 
@@ -3788,66 +3767,54 @@ reference "tab:coverage_cell_fivepercent"
  shows performance of the uncertainty estimates.
  For denser data, unlike the results when data are more sparse, the SPDE
  model generally outperforms the CAR model, but again differences from a
- practical perspective based on mean absolute error, are limited.
+ practical perspective, based on mean absolute error, are limited.
 \end_layout
 
 \begin_layout Chunk
-
 <<tab2prep, echo=FALSE>>= 
 \end_layout
 
 \begin_layout Chunk
-
 resultsCAR = results13
 \end_layout
 
 \begin_layout Chunk
-
 resultsSPDE = results14
 \end_layout
 
 \begin_layout Chunk
-
 samplesCAR = samples13
 \end_layout
 
 \begin_layout Chunk
-
 samplesSPDE = samples14
 \end_layout
 
 \begin_layout Chunk
-
 postProbsCell <- rep(0, 4)
 \end_layout
 
 \begin_layout Chunk
-
 postProbsCell[1] <- mean(samplesCAR[1,'cell',] < samplesSPDE[1,'cell',])
 \end_layout
 
 \begin_layout Chunk
-
 postProbsCell[2] <- mean(-samplesCAR[2,'cell',] < -samplesSPDE[2,'cell',])
 \end_layout
 
 \begin_layout Chunk
-
 postProbsCell[3] <- mean(samplesCAR[3,'cell',] < samplesSPDE[3,'cell',])
 \end_layout
 
 \begin_layout Chunk
-
 postProbsCell[4] <- mean(samplesCAR[4,'cell',] < samplesSPDE[4,'cell',])
 \end_layout
 
 \begin_layout Chunk
-
 #val_1_1 = sprintf("%5.0f", resultsCAR['brier','cell','post_mean_of_score'])
 \end_layout
 
 \begin_layout Chunk
-
 @
 \end_layout
 
@@ -4555,7 +4522,7 @@ status open
 
 \begin_layout Plain Layout
 Coverage and length of prediction intervals for the CAR and SPDE spatial
- models when holding out % of entire cells of data in Minnesota.
+ models when holding out 80% of entire cells of data in Minnesota.
  
 \end_layout
 
@@ -4822,52 +4789,42 @@ reference "tab:score_tree"
 \end_layout
 
 \begin_layout Chunk
-
 <<tab3prep, echo=FALSE>>= 
 \end_layout
 
 \begin_layout Chunk
-
 resultsCAR = results10
 \end_layout
 
 \begin_layout Chunk
-
 resultsSPDE = results11
 \end_layout
 
 \begin_layout Chunk
-
 samplesCAR = samples10
 \end_layout
 
 \begin_layout Chunk
-
 samplesSPDE = samples11
 \end_layout
 
 \begin_layout Chunk
-
 postProbsTree <- rep(0, 4)
 \end_layout
 
 \begin_layout Chunk
-
 postProbsTree[1] <- mean(samplesCAR[1,'tree',] < samplesSPDE[1,'tree',])
 \end_layout
 
 \begin_layout Chunk
-
 postProbsTree[2] <- mean(-samplesCAR[2,'tree',] < -samplesSPDE[2,'tree',])
 \end_layout
 
 \begin_layout Chunk
-
 #val_1_1 = sprintf("%5.0f", resultsCAR['brier','cell','post_mean_of_score'])
 \end_layout
 
 \begin_layout Chunk
-
 @
 \end_layout
 
