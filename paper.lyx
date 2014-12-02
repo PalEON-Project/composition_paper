@@ -117,8 +117,7 @@ properly cite Goring stuff and reference details of data collection
 \end_layout
 
 \begin_layout Standard
-look at PLOS One and Ecology Stats Letters [Simon suggested Nature's scientific
- data journal]
+focus on PLOS One, but Nature's Scientific Data is a possibility
 \end_layout
 
 \begin_layout Chunk
@@ -141,19 +140,45 @@ version <- 0.3
 @
 \end_layout
 
+\begin_layout Abstract
+We present a data product of the estimated composition of tree taxa at the
+ time of European settlement of the United States and the statistical methodolog
+y used to produce the product.
+ Composition is defined as the proportion of stems larger than approximately
+ X cm diameter at breast height [Charlie? Simon? is X roughly 10?] in 22
+ taxonomic groupings, generally at the genus level.
+ The data come from settlement survey records that provide raw data that
+ are transcribed and then aggregated spatially, giving count data.
+ For the western portion of the domain (Indiana through Minnesota) we use
+ data at survey points that are aggregated to a regular 8 km grid, while
+ for the eastern portion (Ohio through Maine), we use data aggregated into
+ townships.
+ The product is based on a Bayesian statistical model fit to the count data
+ that estimates composition on a regular 8 km grid.
+ The statistical model allows us to estimate composition at locations with
+ no data and to smooth over noise caused by limited counts in locations
+ with data.
+ Critically, it also allows us to quantify uncertainty in our composition
+ estimates.
+ We expect this data product to be useful for understanding the state of
+ vegetation in the northeastern United States prior to large-scale European
+ settlement.
+ In addition to specific regional questions, the data product can also serve
+ as a baseline against which to investigate how forests and ecosystems change
+ after intensive settlement.
+\end_layout
+
 \begin_layout Section
 Introduction
 \end_layout
 
 \begin_layout Standard
-We describe a data product providing estimated composition of tree taxa
- at the time of European settlement for the northeastern United States.
- Composition is defined as the proportion of stems larger than approximately
- X cm diameter at breast height [Charlie? Simon? is X roughly 10?] in 22
- taxonomic groupings.
- The product is based on a Bayesian statistical model that estimates composition
- on a regular 8 km grid based on settlement survey records providing raw
- data that are transcribed and then aggregated spatially, giving count data.
+[insert paragraph (Jack has volunteered) on context and importance of historical
+ datasets]
+\end_layout
+
+\begin_layout Section
+Data
 \end_layout
 
 \begin_layout Standard
@@ -251,7 +276,7 @@ cite{Gori:etal:2015}
 
 \end_inset
 
- and the data are available at XXX.
+ and the raw data are available at XXX.
  The aggregation into taxonomic groups is primarily at the genus level,
  but in some cases of monospecific genera, is at the species level.
  In some other cases, because of ambiguity in the common tree names used
@@ -278,6 +303,10 @@ Our domain is a rectangle covering all of the states, in the Albers projection,
  and omit 23 cells in the north and 17 cells in the south.
  [check 23 in N vs 17 in N; also check what is in netCDF product - should
  be for the full domain with missing values?]
+\end_layout
+
+\begin_layout Section
+Statistical model
 \end_layout
 
 \begin_layout Standard
@@ -312,10 +341,6 @@ standard error
 
  for the estimate.
  
-\end_layout
-
-\begin_layout Section
-Statistical model
 \end_layout
 
 \begin_layout Subsection
@@ -364,12 +389,12 @@ status open
 
 
 \backslash
-citep{Gori:etal:201
+citep{Gori:etal:2015}
 \end_layout
 
 \end_inset
 
-5}.
+.
 \end_layout
 
 \begin_layout Standard
@@ -5290,7 +5315,7 @@ The differences between models are not consistent across the various comparisons
 , so there is not a clear choice.
  In our final data product we use the CAR model, for three reasons.
  First, the CAR model has modestly better performance when data are sparse,
- as is still the case for Illinois and Indiana).
+ as is still the case for Illinois and Indiana.
  Second, the model is simpler and easier to explain and computations can
  be done more quickly.
  Third, predictions from the SPDE model showed boundary effects, with taxa
@@ -5301,7 +5326,7 @@ The differences between models are not consistent across the various comparisons
  
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Section
 Data product
 \end_layout
 
@@ -5445,6 +5470,7 @@ name "fig:all_predictions"
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename /var/tmp/paciorek/paleon/comp_0.2/output/PLScomposition_full_0.1_fits.pdf
+	lyxscale 20
 	scale 35
 
 \end_inset
@@ -5482,16 +5508,19 @@ While our data product is given for the full rectangular domain, including
  within those core states.
 \end_layout
 
-\begin_layout Section
-Discussion
+\begin_layout Standard
+The data product is publically available at XX under YY license as version
+ 1.0 as of January 2015.
+ The product is in the form of a netCDF-4 file, with dimensions x, y, and
+ MCMC iteration.
+ There is one variable per taxon.
+ The PalEON project will continue to maintain this product, releasing new
+ versions as additional data in Illinois, Indiana and Ohio are digitized.
+ 
 \end_layout
 
-\begin_layout Standard
-We expect this data product to be useful for understanding the state of
- vegetation in the northeastern United States prior to large-scale European
- settlement.
- In addition to specific regional questions, the data product can also help
- us to understand how forests and ecosystems change after intensive settlement.
+\begin_layout Section
+Discussion
 \end_layout
 
 \begin_layout Standard
@@ -5521,13 +5550,36 @@ s.
 \end_layout
 
 \begin_layout Standard
+Other related data products that are under development include:
+\end_layout
+
+\begin_layout Itemize
+The gridded raw count data for the western subdomain and data aggregated
+ to township for the eastern subdomain.
+ The raw data product is available at XXX and that product provides the
+ input data for the product described in this work.
+ Note that we cannot provide the raw data at point locations because of
+ limitations specified in the data use agreements under which we have access
+ to the data.
+\end_layout
+
+\begin_layout Itemize
+Gridded raw biomass estimates for Minnesota, Wisconsin, and Michigan [right
+ Simon, or also for IL and IN] based on the PLS data.
+\end_layout
+
+\begin_layout Itemize
+Statistically estimated biomass for Minnesota, Wisconsin, and Michigan [also
+ IL and IN?] using a statistical model applied to the raw biomass estimates.
+\end_layout
+
+\begin_layout Standard
 An additional drawback of the product is its focus on composition, which
  does not directly tell us about vegetation structure, in particular does
  not distinguish between closed forest, savanna, and prairie, of particular
  note in Minnesota, Wisconsin, Illinois, and into Indiana.
- We are currently developing a biomass product for the western half of our
- domain also using PLSS data and expect this product to directly inform
- questions about vegetation structure.
+ The statistically-estimated biomass product mentioned just above will directly
+ inform questions about vegetation structure.
  Extensions of that product will also estimate basal area and stem density.
  
 \end_layout
@@ -5539,10 +5591,12 @@ Acknowledgments
 \begin_layout Standard
 The authors are deeply indebted to all of the researchers over the years
  who have preserved, collected, and digitized survey records, in particular
- {Brugam, ??? - Jody/Charlie/David/Jason/Jack/Simon please add names here}.
+ Ed Schools (Michigan DNR, { Brugam, ??? - Jody/Charlie/David/Jason/Simon
+ please add names here}.
  This work was carried out by the PalEON Project with support from the National
- Science Foundation MacroSystems Program through grants DEB-1241874 and
- DEB-1241868.
+ Science Foundation MacroSystems Program through grants EF-1065656, EF-1241868,
+ DEB-1241874 and DEB-1241868.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -5740,8 +5794,19 @@ where
  from the distribution just above.
  The joint proposal is accepted or rejected as a standard Metropolis-Hastings
  proposal, with adaptation of the proposal (co)variance 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
 \backslash
-citep{Shab:Well:2011}.
+citep{Shab:Well:2011}
+\end_layout
+
+\end_inset
+
+.
  As mentioned previously, for the SPDE model, we jointly proposed 
 \begin_inset Formula $\phi=\{\log\sigma_{p},\rho_{p}\}$
 \end_inset
