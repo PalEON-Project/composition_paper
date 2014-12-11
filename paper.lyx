@@ -93,7 +93,8 @@ Christopher J.
 
 John W.
  Williams, David J.
- Mladenoff, Jody Peters, Jun Zhu, 
+ Mladenoff, Jody A.
+ Peters, Jun Zhu, 
 \begin_inset Newline newline
 \end_inset
 
@@ -122,18 +123,22 @@ focus on PLOS One, but Nature's Scientific Data is a possibility
 \end_layout
 
 \begin_layout Chunk
+
 <<setup, echo=FALSE>>= 
 \end_layout
 
 \begin_layout Chunk
+
 inputDir <- '/var/tmp/paciorek/paleon/comp/output'
 \end_layout
 
 \begin_layout Chunk
+
 version <- 0.3
 \end_layout
 
 \begin_layout Chunk
+
 @
 \end_layout
 
@@ -146,10 +151,11 @@ y used to produce the product.
  taxonomic groupings, generally at the genus level.
  The data come from settlement survey records that provide raw data that
  are transcribed and then aggregated spatially, giving count data.
- For the western portion of the domain (Indiana through Minnesota) we use
- data at survey points that are aggregated to a regular 8 km grid, while
- for the eastern portion (Ohio through Maine), we use data aggregated into
- townships.
+ The domain is divided into two regions, western (Indiana through Minnesota)
+ and eastern (Ohio to Maine).
+ Public Land Survey point data in the western region is aggregated to a
+ regular 8 km grid, while data in the eastern region, from Town Proprietor
+ Surveys is aggregated at the township level.
  The product is based on a Bayesian statistical model fit to the count data
  that estimates composition on a regular 8 km grid.
  The statistical model allows us to estimate composition at locations with
@@ -170,8 +176,107 @@ Introduction
 \end_layout
 
 \begin_layout Standard
-[insert paragraph (Jack has volunteered) on context and importance of historical
- datasets]
+Historical datasets provide critical context to understand forest ecology.
+ Historical datasets allow researchers to define 'baseline' conditions in
+ conservation management, to understand ecosystem processes at decadal and
+ centennial scales, and, particularly in regions with widespread land use
+ change, to understand the extent to which forest conversion and regeneration
+ differ from the original forest cover.
+\end_layout
+
+\begin_layout Standard
+Euro-American settlement and subsequent land use change occured in a time
+ transient fashion across North America, and surveys of vegetation followed
+ a similar pattern.
+ Early surveys (from 1620 until 1825) in the northeastern United States
+ were areal surveys at a township level 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "cogbill2002forests,thompson2013four"
+
+\end_inset
+
+, which we call the Town Proprietor Survey (TPS).
+ These surveys reporting percent composition of major tree species using
+ sometimes inconsistent common names.
+ Later surveys, after the establishment of the Public Land Survey System
+ (PLSS) - from 1819 to 1904 - were point estimates along a regular grid,
+ with 1 mile spacing 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "schulte2001original, bourdo1956review,goring2015composition"
+
+\end_inset
+
+.
+ Survey instructions during the PLSS varied through time, and by point type.
+ This required the application of spatially varying correction factors 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "cogbill2015corrections, goring2015composition"
+
+\end_inset
+
+ to accurately assess stem density, basal area and biomass from the early
+ settlement records.
+\end_layout
+
+\begin_layout Standard
+Logging, agriculture and abandonment has left an indelible mark on forests
+ in the northeastern United States 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "foster1998land,goring2015composition,rhemtulla2009legacies,thompson2013four"
+
+\end_inset
+
+, however most studies have studied these effects at the state level or
+ below 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "rhemtulla2009historical,friedman2005regional"
+
+\end_inset
+
+, and with varying spatial resolution, from townships (36 square miles)
+ to forest zones of hundreds or thousands of square miles.
+ 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "goring2015composition"
+
+\end_inset
+
+ provide a dataset across the upper Midwest that is resolved to an 8 x 8
+ km grid size, providing broad spatial coverage at a meso-spatial scale
+ that can be compared to the Forest Inventory and Analysis products 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "gray2012forest"
+
+\end_inset
+
+.
+ The limitation of this dataset is that it provides only estimates of variance
+ within cell for PLSS data in the western region, and no township estimates
+ of error for regions surveyed as part of the Town Proprietor Survey.
+\end_layout
+
+\begin_layout Standard
+Properly assessing uncertainty in ecological data is imperative to understanding
+ and modelling ecological processes 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "cressie2009accounting"
+
+\end_inset
+
+.
+ In this way, a model that can account for the spatial structure of the
+ underlying PLSS and TPS data, and provide reliable estimates of uncertainty
+ across the northeastern United States provides an enormously valuable tool
+ for researchers interested in the ecological structure and function of
+ forests at longer time scales.
 \end_layout
 
 \begin_layout Section
@@ -192,7 +297,7 @@ ern U.S.
  in northern Delaware.
  Data are essentially complete in Minnesota, Wisconsin and Michigan but
  data in Illinois and Indiana represent a sample of the full set of grid
- cells, with transcription ongoing.
+ cells, with survey record transcription ongoing.
  Data for the remaining states are a subset of the full set of townships.
  Fig.
  
@@ -202,7 +307,9 @@ reference "fig:domain"
 
 \end_inset
 
- shows the domain, indicating the grid cells and townships with data.
+ [Fig.
+ 1 - Lyx is having a numbering problem] shows the domain, indicating the
+ grid cells and townships with data.
 \end_layout
 
 \begin_layout Standard
@@ -219,9 +326,6 @@ name "fig:domain"
 \end_inset
 
 
-\end_layout
-
-\begin_layout Plain Layout
 \begin_inset Graphics
 	filename fig1.pdf
 
@@ -277,10 +381,42 @@ cite{Gori:etal:2015}
  and the raw data are available at XXX.
  The aggregation into taxonomic groups is primarily at the genus level,
  but in some cases of monospecific genera, is at the species level.
- In some other cases, because of ambiguity in the common tree names used
- by surveyors, a group represents trees from different families (orders?).
- We model the following taxa: [list all].
- [include description of size cutoff]
+ We model the following 22 taxa plus an 
+\begin_inset Quotes eld
+\end_inset
+
+other hardwood
+\begin_inset Quotes erd
+\end_inset
+
+ category: Atlantic white cedar (Chamaecyparis thyoides), Ash (Fraxinus
+ spp.), Basswood (Tilia americana), Beech (Fagus grandifolia), Birch (Betula
+ spp.), Black gum/sweet gum (Nyssa sylvatica and Liquidambar styraciflua),
+ Cedar/juniper (what is in here other than Juniperus and is the Juniperus
+ only Juniperus virginiana), Cherry (Prunus spp.), Chestnut (Castanea dentata),
+ Dogwood (Cornus spp.), Elm (Ulmus spp.
+ or Ulmus americana???) , Fir (Abies spp.), Hemlock (Tsuga canadensis), Hickory
+ (Carya spp.), Ironwood (Carpinus caroliniana and Ostrya virginiana (anything
+ else?)), Maple (Acer spp.), Oak (Quercus spp.), Pine (Pinus spp.), Poplar/tulip
+ poplar (Populus spp.
+ and Liriodendron tulipifera), Spruce (Picea spp.), Tamarack (Larix laricina),
+ Walnut (Juglans nigra).
+ [Simon/Charlie to check my Latin and whether I've left out anything that
+ falls into a given common name] Note that in several cases (e.g., black gum/sweet
+ gum, ironwood, poplar/tulip poplar, cedar/juniper), because of ambiguity
+ in the common tree names used by surveyors, a group represents trees from
+ different families and even orders.
+ For the western subdomain we do not fit statistical models for Atlantic
+ white cedar and chestnut as these have 0 and 5 trees present in the dataset,
+ respectively.
+ The taxa grouped into other hardwood are those for which fewer than roughly
+ 3000 trees were present in the dataset.
+\end_layout
+
+\begin_layout Standard
+[include description of size cutoff] [Simon, Jody mentioned that ther are
+ 402 trees in IN below ~10 cm and at least 43 in IL.
+ Do you screen those out or do we just live with it?]
 \end_layout
 
 \begin_layout Standard
@@ -292,13 +428,17 @@ There are approximately 520,000 trees from the western subdomain and 420,000
 \end_layout
 
 \begin_layout Standard
-Our domain is a rectangle covering all of the states, in the Albers projection,
- with the rectangle split into 8 km cells, arranged in a 296 by 180 grid
- of cells, with the centroid of the cell in the southeast corner located
- at (-71000, 58000).
- For the modeling of the western subdomain we use the western-most 146 cells.
- For the modeling of the western subdomain we use the eastern-most 180 cells
- and omit 23 cells in the north and 17 cells in the south.
+Our domain is a rectangle covering all of the states, in the Albers projection
+ (NAD 1983 Great Lakes and St.
+ Lawrence Albers) [Simon, please confirm this language is right], with the
+ rectangle split into 8 km cells, arranged in a 296 by 180 grid of cells,
+ with the centroid of the cell in the southeast corner located at (-71000,
+ 58000).
+ For the modeling of the western subdomain we use the western-most 146 by
+ 180 grid of cells.
+ For the modeling of the eastern subdomain we use the eastern-most 180 by
+ 180 grid of cells and then omit 23 cells in the north and 17 cells in the
+ south.
  [check 23 in N vs 17 in N; also check what is in netCDF product - should
  be for the full domain with missing values?]
 \end_layout
@@ -1967,78 +2107,97 @@ reference "tab:coverage_cell_fivepercent"
 \end_layout
 
 \begin_layout Chunk
+
 <<tab1prep, echo=FALSE>>= 
 \end_layout
 
 \begin_layout Chunk
+
 setwd(inputDir)
 \end_layout
 
 \begin_layout Chunk
+
 for(run in 10:14) {
 \end_layout
 
 \begin_layout Chunk
+
 	load(paste0('PLScomposition_western_',version,'-',run,'-cvResults.Rda'))
 \end_layout
 
 \begin_layout Chunk
+
 	assign(paste0('results',run), results)
 \end_layout
 
 \begin_layout Chunk
+
 	assign(paste0('samples',run), samples)
 \end_layout
 
 \begin_layout Chunk
+
 }
 \end_layout
 
 \begin_layout Chunk
+
 resultsCAR = results10
 \end_layout
 
 \begin_layout Chunk
+
 resultsSPDE = results11
 \end_layout
 
 \begin_layout Chunk
+
 resultsTPS = results12
 \end_layout
 
 \begin_layout Chunk
+
 samplesCAR = samples10
 \end_layout
 
 \begin_layout Chunk
+
 samplesSPDE = samples11
 \end_layout
 
 \begin_layout Chunk
+
 postProbsCell <- rep(0, 4)
 \end_layout
 
 \begin_layout Chunk
+
 postProbsCell[1] <- mean(samplesCAR[1,'cell',] < samplesSPDE[1,'cell',])
 \end_layout
 
 \begin_layout Chunk
+
 postProbsCell[2] <- mean(-samplesCAR[2,'cell',] < -samplesSPDE[2,'cell',])
 \end_layout
 
 \begin_layout Chunk
+
 postProbsCell[3] <- mean(samplesCAR[3,'cell',] < samplesSPDE[3,'cell',])
 \end_layout
 
 \begin_layout Chunk
+
 postProbsCell[4] <- mean(samplesCAR[4,'cell',] < samplesSPDE[4,'cell',])
 \end_layout
 
 \begin_layout Chunk
+
 #val_1_1 = sprintf("%5.0f", resultsCAR['brier','cell','post_mean_of_score'])
 \end_layout
 
 \begin_layout Chunk
+
 @
 \end_layout
 
@@ -3760,7 +3919,7 @@ reference "tab:score_cell_20percent"
  Table 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "tab:coverage_cell_fivepercent"
+reference "tab:coverage_cell_20percent"
 
 \end_inset
 
@@ -3771,50 +3930,62 @@ reference "tab:coverage_cell_fivepercent"
 \end_layout
 
 \begin_layout Chunk
+
 <<tab2prep, echo=FALSE>>= 
 \end_layout
 
 \begin_layout Chunk
+
 resultsCAR = results13
 \end_layout
 
 \begin_layout Chunk
+
 resultsSPDE = results14
 \end_layout
 
 \begin_layout Chunk
+
 samplesCAR = samples13
 \end_layout
 
 \begin_layout Chunk
+
 samplesSPDE = samples14
 \end_layout
 
 \begin_layout Chunk
+
 postProbsCell <- rep(0, 4)
 \end_layout
 
 \begin_layout Chunk
+
 postProbsCell[1] <- mean(samplesCAR[1,'cell',] < samplesSPDE[1,'cell',])
 \end_layout
 
 \begin_layout Chunk
+
 postProbsCell[2] <- mean(-samplesCAR[2,'cell',] < -samplesSPDE[2,'cell',])
 \end_layout
 
 \begin_layout Chunk
+
 postProbsCell[3] <- mean(samplesCAR[3,'cell',] < samplesSPDE[3,'cell',])
 \end_layout
 
 \begin_layout Chunk
+
 postProbsCell[4] <- mean(samplesCAR[4,'cell',] < samplesSPDE[4,'cell',])
 \end_layout
 
 \begin_layout Chunk
+
 #val_1_1 = sprintf("%5.0f", resultsCAR['brier','cell','post_mean_of_score'])
 \end_layout
 
 \begin_layout Chunk
+
 @
 \end_layout
 
@@ -4789,42 +4960,52 @@ reference "tab:score_tree"
 \end_layout
 
 \begin_layout Chunk
+
 <<tab3prep, echo=FALSE>>= 
 \end_layout
 
 \begin_layout Chunk
+
 resultsCAR = results10
 \end_layout
 
 \begin_layout Chunk
+
 resultsSPDE = results11
 \end_layout
 
 \begin_layout Chunk
+
 samplesCAR = samples10
 \end_layout
 
 \begin_layout Chunk
+
 samplesSPDE = samples11
 \end_layout
 
 \begin_layout Chunk
+
 postProbsTree <- rep(0, 4)
 \end_layout
 
 \begin_layout Chunk
+
 postProbsTree[1] <- mean(samplesCAR[1,'tree',] < samplesSPDE[1,'tree',])
 \end_layout
 
 \begin_layout Chunk
+
 postProbsTree[2] <- mean(-samplesCAR[2,'tree',] < -samplesSPDE[2,'tree',])
 \end_layout
 
 \begin_layout Chunk
+
 #val_1_1 = sprintf("%5.0f", resultsCAR['brier','cell','post_mean_of_score'])
 \end_layout
 
 \begin_layout Chunk
+
 @
 \end_layout
 
@@ -5548,7 +5729,7 @@ Acknowledgments
 \begin_layout Standard
 The authors are deeply indebted to all of the researchers over the years
  who have preserved, collected, and digitized survey records, in particular
- Ed Schools (Michigan DNR, { Brugam, ??? - Jody/Charlie/David/Jason/Simon
+ Ed Schools (Michigan DNR), { Brugam, ??? - Jody/Charlie/David/Jason/Simon
  please add names here}.
  This work was carried out by the PalEON Project with support from the National
  Science Foundation MacroSystems Program through grants EF-1065656, EF-1241868,
@@ -5583,7 +5764,7 @@ status open
 bibliography{/accounts/gen/vis/paciorek/bibfiles/abbrev.stat,/accounts/gen/vis/pa
 ciorek/bibfiles/abbrev.other,/accounts/gen/vis/paciorek/bibfiles/spatstat,/accoun
 ts/gen/vis/paciorek/bibfiles/statgeneral,/accounts/gen/vis/paciorek/bibfiles/pac
-iorek,/accounts/gen/vis/paciorek/bibfiles/ecology}
+iorek,/accounts/gen/vis/paciorek/bibfiles/ecology,goring_intro}
 \end_layout
 
 \end_inset
@@ -5650,7 +5831,7 @@ th grid cell.
 
 \begin_layout Standard
 The conditional distribution for 
-\begin_inset Formula $W_{mjp}$
+\begin_inset Formula $W_{ijp}$
 \end_inset
 
  given the other unknowns in the model and the data is as follows.

@@ -59,6 +59,7 @@
 \usepackage{array}
 \usepackage{amsmath}
 \usepackage{graphicx}
+\usepackage[authoryear]{natbib}
 
 \makeatletter
 
@@ -85,7 +86,7 @@ at the time of European settlement}
 \begin{quote}
 Christopher J. Paciorek, Andrew Thurman, Simon J. Goring, Charlie
 V. Cogbill, \\
-John W. Williams, David J. Mladenoff, Jody Peters, Jun Zhu, \\
+John W. Williams, David J. Mladenoff, Jody A. Peters, Jun Zhu, \\
 and Jason S. McLachlan {[}author order to be discussed{]}\\
 {[}please tell me if you do/don't want your middle initial{]}
 \end{quote}
@@ -99,6 +100,7 @@ focus on PLOS One, but Nature's Scientific Data is a possibility
 
 
 
+%
 \begin{abstract}
 We present a data product of the estimated composition of tree taxa
 at the time of European settlement of the United States and the statistical
@@ -107,10 +109,11 @@ the proportion of stems larger than approximately X cm diameter at
 breast height {[}Charlie? Simon? is X roughly 10?{]} in 22 taxonomic
 groupings, generally at the genus level. The data come from settlement
 survey records that provide raw data that are transcribed and then
-aggregated spatially, giving count data. For the western portion of
-the domain (Indiana through Minnesota) we use data at survey points
-that are aggregated to a regular 8 km grid, while for the eastern
-portion (Ohio through Maine), we use data aggregated into townships.
+aggregated spatially, giving count data. The domain is divided into
+two regions, western (Indiana through Minnesota) and eastern (Ohio
+to Maine). Public Land Survey point data in the western region is
+aggregated to a regular 8 km grid, while data in the eastern region,
+from Town Proprietor Surveys is aggregated at the township level.
 The product is based on a Bayesian statistical model fit to the count
 data that estimates composition on a regular 8 km grid. The statistical
 model allows us to estimate composition at locations with no data
@@ -126,8 +129,50 @@ intensive settlement.
 
 \section{Introduction}
 
-{[}insert paragraph (Jack has volunteered) on context and importance
-of historical datasets{]}
+Historical datasets provide critical context to understand forest
+ecology. Historical datasets allow researchers to define 'baseline'
+conditions in conservation management, to understand ecosystem processes
+at decadal and centennial scales, and, particularly in regions with
+widespread land use change, to understand the extent to which forest
+conversion and regeneration differ from the original forest cover.
+
+Euro-American settlement and subsequent land use change occured in
+a time transient fashion across North America, and surveys of vegetation
+followed a similar pattern. Early surveys (from 1620 until 1825) in
+the northeastern United States were areal surveys at a township level
+\citep{cogbill2002forests,thompson2013four}, which we call the Town
+Proprietor Survey (TPS). These surveys reporting percent composition
+of major tree species using sometimes inconsistent common names. Later
+surveys, after the establishment of the Public Land Survey System
+(PLSS) - from 1819 to 1904 - were point estimates along a regular
+grid, with 1 mile spacing \citep{schulte2001original,bourdo1956review,goring2015composition}.
+Survey instructions during the PLSS varied through time, and by point
+type. This required the application of spatially varying correction
+factors \citep{cogbill2015corrections,goring2015composition} to accurately
+assess stem density, basal area and biomass from the early settlement
+records.
+
+Logging, agriculture and abandonment has left an indelible mark on
+forests in the northeastern United States \citep{foster1998land,goring2015composition,rhemtulla2009legacies,thompson2013four},
+however most studies have studied these effects at the state level
+or below \citep{rhemtulla2009historical,friedman2005regional}, and
+with varying spatial resolution, from townships (36 square miles)
+to forest zones of hundreds or thousands of square miles. \citet{goring2015composition}
+provide a dataset across the upper Midwest that is resolved to an
+8 x 8 km grid size, providing broad spatial coverage at a meso-spatial
+scale that can be compared to the Forest Inventory and Analysis products
+\citet{gray2012forest}. The limitation of this dataset is that it
+provides only estimates of variance within cell for PLSS data in the
+western region, and no township estimates of error for regions surveyed
+as part of the Town Proprietor Survey.
+
+Properly assessing uncertainty in ecological data is imperative to
+understanding and modelling ecological processes \citep{cressie2009accounting}.
+In this way, a model that can account for the spatial structure of
+the underlying PLSS and TPS data, and provide reliable estimates of
+uncertainty across the northeastern United States provides an enormously
+valuable tool for researchers interested in the ecological structure
+and function of forests at longer time scales.
 
 
 \section{Data}
@@ -142,15 +187,14 @@ New England states (the eastern subdomain), data are aggregated at
 the township level. There is also data from a single township in Quebec
 and a single township in northern Delaware. Data are essentially complete
 in Minnesota, Wisconsin and Michigan but data in Illinois and Indiana
-represent a sample of the full set of grid cells, with transcription
-ongoing. Data for the remaining states are a subset of the full set
-of townships. Fig. \ref{fig:domain} shows the domain, indicating
-the grid cells and townships with data.
+represent a sample of the full set of grid cells, with survey record
+transcription ongoing. Data for the remaining states are a subset
+of the full set of townships. Fig. \ref{fig:domain} {[}Fig. 1 - Lyx
+is having a numbering problem{]} shows the domain, indicating the
+grid cells and townships with data.
 
 \begin{figure}
-\label{fig:domain}
-
-\includegraphics{0_accounts_gen_vis_paciorek_research_jmac_composition_paper_fig1.pdf}
+\label{fig:domain}\includegraphics{0_accounts_gen_vis_paciorek_research_jmac_composition_paper_fig1.pdf}
 
 \caption{Spatial domain, with locations with data shown in gray. Locations
 are grid cells in western portion and townships in eastern portion.}
@@ -169,24 +213,46 @@ or Jason's historian pal{]}
 Extensive details on the data are available in \cite{Gori:etal:2015}
 and the raw data are available at XXX. The aggregation into taxonomic
 groups is primarily at the genus level, but in some cases of monospecific
-genera, is at the species level. In some other cases, because of ambiguity
-in the common tree names used by surveyors, a group represents trees
-from different families (orders?). We model the following taxa: {[}list
-all{]}. {[}include description of size cutoff{]}
+genera, is at the species level. We model the following 22 taxa plus
+an ``other hardwood'' category: Atlantic white cedar (Chamaecyparis
+thyoides), Ash (Fraxinus spp.), Basswood (Tilia americana), Beech
+(Fagus grandifolia), Birch (Betula spp.), Black gum/sweet gum (Nyssa
+sylvatica and Liquidambar styraciflua), Cedar/juniper (what is in
+here other than Juniperus and is the Juniperus only Juniperus virginiana),
+Cherry (Prunus spp.), Chestnut (Castanea dentata), Dogwood (Cornus
+spp.), Elm (Ulmus spp. or Ulmus americana???) , Fir (Abies spp.),
+Hemlock (Tsuga canadensis), Hickory (Carya spp.), Ironwood (Carpinus
+caroliniana and Ostrya virginiana (anything else?)), Maple (Acer spp.),
+Oak (Quercus spp.), Pine (Pinus spp.), Poplar/tulip poplar (Populus
+spp. and Liriodendron tulipifera), Spruce (Picea spp.), Tamarack (Larix
+laricina), Walnut (Juglans nigra). {[}Simon/Charlie to check my Latin
+and whether I've left out anything that falls into a given common
+name{]} Note that in several cases (e.g., black gum/sweet gum, ironwood,
+poplar/tulip poplar, cedar/juniper), because of ambiguity in the common
+tree names used by surveyors, a group represents trees from different
+families and even orders. For the western subdomain we do not fit
+statistical models for Atlantic white cedar and chestnut as these
+have 0 and 5 trees present in the dataset, respectively.
+
+{[}include description of size cutoff{]} {[}Simon, Jody mentioned
+that ther are 402 trees in IN below \textasciitilde{}10 cm and at
+least 43 in IL. Do you screen those out or do we just live with it?{]}
 
 There are approximately 520,000 trees from the western subdomain and
 420,000 trees from the eastern subdomain. In each subdomain, oak is
 the most common taxon and pine the second most common. 
 
 Our domain is a rectangle covering all of the states, in the Albers
-projection, with the rectangle split into 8 km cells, arranged in
-a 296 by 180 grid of cells, with the centroid of the cell in the southeast
-corner located at (-71000, 58000). For the modeling of the western
-subdomain we use the western-most 146 cells. For the modeling of the
-western subdomain we use the eastern-most 180 cells and omit 23 cells
-in the north and 17 cells in the south. {[}check 23 in N vs 17 in
-N; also check what is in netCDF product - should be for the full domain
-with missing values?{]}
+projection (NAD 1983 Great Lakes and St. Lawrence Albers) {[}Simon,
+please confirm this language is right{]}, with the rectangle split
+into 8 km cells, arranged in a 296 by 180 grid of cells, with the
+centroid of the cell in the southeast corner located at (-71000, 58000).
+For the modeling of the western subdomain we use the western-most
+146 by 180 grid of cells. For the modeling of the eastern subdomain
+we use the eastern-most 180 by 180 grid of cells and then omit 23
+cells in the north and 17 cells in the south. {[}check 23 in N vs
+17 in N; also check what is in netCDF product - should be for the
+full domain with missing values?{]}
 
 
 \section{Statistical model}
@@ -606,6 +672,7 @@ the differences between the models are small.
 
 
 
+%
 \begin{table}
 
 
@@ -695,7 +762,7 @@ models when holding out 95\% of entire cells of data in Minnesota. }
 
 Table \ref{tab:score_cell_20percent} shows the results when the proportion
 of cells that are held out decreases from 95\% to 80\%, indicating
-performance on less sparse data. Table \ref{tab:coverage_cell_fivepercent}
+performance on less sparse data. Table \ref{tab:coverage_cell_20percent}
 shows performance of the uncertainty estimates. For denser data, unlike
 the results when data are more sparse, the SPDE model generally outperforms
 the CAR model, but again differences from a practical perspective,
@@ -703,6 +770,7 @@ based on mean absolute error, are limited.
 
 
 
+%
 \begin{table}
 \caption{Predictive ability based on several predictive score criteria for
 the CAR and SPDE spatial models when holding out 80\% of entire cells
@@ -796,6 +864,7 @@ the SPDE model is better based on the Brier score.
 
 
 
+%
 \begin{table}
 \caption{Predictive ability based on several predictive score criteria for
 the CAR and SPDE spatial models when holding out 5\% of trees. Smaller
@@ -958,14 +1027,14 @@ that product will also estimate basal area and stem density.
 
 The authors are deeply indebted to all of the researchers over the
 years who have preserved, collected, and digitized survey records,
-in particular Ed Schools (Michigan DNR, \{ Brugam, ??? - Jody/Charlie/David/Jason/Simon
+in particular Ed Schools (Michigan DNR), \{ Brugam, ??? - Jody/Charlie/David/Jason/Simon
 please add names here\}. This work was carried out by the PalEON Project
 with support from the National Science Foundation MacroSystems Program
 through grants EF-1065656, EF-1241868, DEB-1241874 and DEB-1241868. 
 
 \bibliographystyle{/accounts/gen/vis/paciorek/latex/RSSstylefile/Chicago}
 
-\bibliography{/accounts/gen/vis/paciorek/bibfiles/abbrev.stat,/accounts/gen/vis/paciorek/bibfiles/abbrev.other,/accounts/gen/vis/paciorek/bibfiles/spatstat,/accounts/gen/vis/paciorek/bibfiles/statgeneral,/accounts/gen/vis/paciorek/bibfiles/paciorek,/accounts/gen/vis/paciorek/bibfiles/ecology}
+\bibliography{/accounts/gen/vis/paciorek/bibfiles/abbrev.stat,/accounts/gen/vis/paciorek/bibfiles/abbrev.other,/accounts/gen/vis/paciorek/bibfiles/spatstat,/accounts/gen/vis/paciorek/bibfiles/statgeneral,/accounts/gen/vis/paciorek/bibfiles/paciorek,/accounts/gen/vis/paciorek/bibfiles/ecology,goring_intro}
 
 
 \section{Appendix}
@@ -982,7 +1051,7 @@ at each iteration, based on the current values of the grid cell membership
 variables, $c_{tj}$, trees are aggregated into grid cells and the
 calculations above can then be carried out.
 
-The conditional distribution for $W_{mjp}$ given the other unknowns
+The conditional distribution for $W_{ijp}$ given the other unknowns
 in the model and the data is as follows. Let $\mbox{TN}(a,b,\mu,\tau^{2})$
 denote the truncated normal distribution with mean parameter $\mu$
 and variance parameter $\tau^{2}$, truncated below by $a$ and above
