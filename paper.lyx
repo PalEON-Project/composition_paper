@@ -340,6 +340,7 @@ name "fig:domain"
 \begin_layout Plain Layout
 Spatial domain, with locations with data shown in gray.
  Locations are grid cells in western portion and townships in eastern portion.
+ [FIX plot so that points with no_tree and just no actual trees are grey]
 \end_layout
 
 \end_inset
