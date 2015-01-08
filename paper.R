@@ -16,19 +16,10 @@ source(file.path(codeDir, "plot.R"))
 source(file.path(codeDir, "set_domain.R"))
 
 require(ncdf4)
-
-require(reshape) # reshape2?
 require(ggplot2)
-require(gridExtra)
 require(maptools)
-require(gpclib)
-require(sp)
 require(rgdal)
-require(fields)
 require(raster)
-require(maps)
-require(RColorBrewer)
-require(gridExtra, quietly=TRUE)
 
 usShp <- readShapeLines(file.path(dataDir, 'us_alb.shp'), proj4string=CRS('+init=epsg:3175'))
 usShp@data$id <- rownames(usShp@data)
@@ -182,18 +173,26 @@ west_fort <- cbind(west_fort, raw_west[west_fort$id, ])
   
 
 northeast_fort <- fortify(eastern_townships)
+northeast_fort$id <- as.numeric(northeast_fort$id)
 ohio_fort <- fortify(ohio_townships)
+ohio_fort$id <- as.numeric(ohio_fort$id)
 
-idMap = c(eastern_townships@data$ID, ohio_townships@data$ID + 1 + length(eastern_townships))
-# this is dangerous as it relies on data$town corresponding to $id+1 values where $id is from the @polygons 
-northeast_fort$id = as.numeric(northeast_fort$id) + 1
-ohio_fort$id = as.numeric(ohio_fort$id) + 1 + length(eastern_townships)
+northeast_idMap <- data.frame(id = sort(eastern_townships@data$ID), town = seq_along(eastern_townships))
+ohio_idMap <- data.frame(id = sort(ohio_townships@data$ID), town = length(eastern_townships) + seq_along(ohio_townships))
+
+northeast_fort <- merge(northeast_fort, northeast_idMap, by.x = 'id', by.y = 'id', all.x = TRUE, all.y = FALSE)
+northeast_fort <- northeast_fort[order(as.numeric(northeast_fort$id), northeast_fort$order), ]
+
+ohio_fort <- merge(ohio_fort, ohio_idMap, by.x = 'id', by.y = 'id', all.x = TRUE, all.y = FALSE)
+ohio_fort <- ohio_fort[order(as.numeric(ohio_fort$id), ohio_fort$order), ]
+
 east_fort <- rbind(northeast_fort, ohio_fort)
-east_fort$id = idMap[east_fort$id]
-east_fort <- cbind(east_fort, raw_east[east_fort$id,])
-names(east_fort)[1:2] <- c('X', 'Y')
+east_fort <- cbind(east_fort, raw_east[east_fort$town,])
+east_fort$id <- east_fort$town + max(west_fort$id)
+names(east_fort)[2:3] <- c('X', 'Y')
+east_fort$town <- NULL
+east_fort <- east_fort[ , names(west_fort)]
 
-east_fort$id <- east_fort$id + max(west_fort$id)
 fort <- rbind(west_fort, east_fort)
 #ggplot(fort, aes(long, lat, group = id)) + geom_polygon(aes(fill = Oak))
 
@@ -227,9 +226,10 @@ make_areal_map <- function(data, variables = NULL, breaks, legendName = 'Raw pro
 
     col <- col(length(breaks)-1)
     if(reverse_colors) col <- rev(col)
+    if(legend) guide <- "legend" else guide <- "none"
     col[1] <- zero_color
     d <- ggplot(data, aes(X, Y, group = id)) + geom_polygon(aes(fill = as.factor(value))) + 
-      scale_fill_manual(values = col, labels = breaklabels, name = legendName, guide = legend) +
+      scale_fill_manual(values = col, labels = breaklabels, name = legendName, guide = guide) +
         theme(strip.text.x = element_text(size = 16), legend.key.size = unit(1.5, "cm"), legend.text = element_text(size = 16), legend.title = element_text(size = 16))
     d <- add_map_albers(plot_obj = d, map_data = map_data, dat = data)
     if(facet) {
@@ -260,7 +260,7 @@ make_areal_map <- function(data, variables = NULL, breaks, legendName = 'Raw pro
   invisible(d)
 }
 
-
+# need to deal with no trees vs missing in western
 fort$data <- as.numeric(rowSums(fort[ , 8:ncol(fort)], na.rm = TRUE) > 0)
 presence_long <- melt(fort[ , c(1:7, ncol(fort))], c('X', 'Y', 'order', 'hole', 'piece', 'group', 'id'))
 presence_long <- presence_long[presence_long$value == 1, ]
