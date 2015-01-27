@@ -38,7 +38,7 @@ maskWater = is.na(water)
 # raw stuff would need more work to show raw data
 # western data/results
 
-load(file.path(dataDir, 'westernData.Rda'))
+load(file.path(dataDir, paste0('data_western_', runID, '.Rda')))
 coordsWest <- coord
 
 raw_west <- matrix(0, nrow = nCells, ncol = nTaxa)
@@ -51,6 +51,15 @@ raw_west[total == 0] = NA
 total[total == 0] <- 1
 raw_west <- raw_west / total
 dimnames(raw_west)[[2]] <- gsub("/", "ZZZ", taxa$taxonName)  # otherwise both / and " " become "." so can't distinguish when I substitute back in for "."
+
+# for distinguishing no trees from no data
+west_presence <- read.csv(file.path(dataDir, 'western.csv'))
+west_presence <- west_presence[west_presence$x <= easternLimitOfWesternDomain, ]
+west_presence$data <- as.numeric(rowSums(west_presence[ , c(3:ncol(west_presence))]) > 0)
+# west_presence$data = as.numeric(rowSums(west_presence[ , c(3:ncol(west_presence))]) == west_presence$no.tree)
+# get in same order as data for fitting (from far N, W to E in rows)
+tmp <- matrix(west_presence$data, length(westernDomainY), length(westernDomainX))
+west_presence <- c(t(tmp[rev(seq_along(westernDomainY)), ]))
 
 finalNcdfName <- paste0('PLScomposition_western_', productVersion, '-release.nc')
 
@@ -77,14 +86,14 @@ psdWest <- apply(preds, c(1, 2), 'sd')
 
 # eastern data/results
 
-load(file.path(dataDir, 'easternData.Rda'))
-load(file.path(dataDir, 'intersection.Rda'))
+load(file.path(dataDir, paste0('data_eastern_', runID, '.Rda')))
+load(file.path(dataDir, paste0('intersection_eastern_', productVersion, '.Rda')))
 
 nTowns <- dim(townCellOverlap)[1]
-easternDataDir <- paste0(easternVersionID, '.', easternVersion)
-ohioDataDir <- paste0(ohioVersionID, '.', ohioVersion)
-eastern_townships <- readOGR(file.path(dataDir, easternDataDir), paste0(easternVersionID, 'polygonsver', easternVersion))
-ohio_townships <- readOGR(file.path(dataDir, ohioDataDir), paste0('OH', ohioVersionID, 'polygonsver', ohioVersion))
+easternDataDir <- 'eastern'
+ohioDataDir <- 'ohio'
+eastern_townships <- readOGR(file.path(dataDir, easternDataDir), paste0(easternVersionID, 'polygons_v', easternVersion))
+ohio_townships <- readOGR(file.path(dataDir, ohioDataDir), paste0('OH', ohioVersionID, 'polygons_v', ohioVersion))
 ohio_townships <- spTransform(ohio_townships, CRSobj=CRS('+init=epsg:3175'))  # transform to Albers
 
 raw_east <- matrix(0, nrow = nTowns, ncol = nTaxa)
@@ -162,6 +171,7 @@ raw_west_poly <- rasterToPolygons(raster(ncols = length(westernDomainX), nrows =
                       fun=NULL, n=4, na.rm=TRUE, digits=12, dissolve=FALSE)
 west_fort <- fortify(raw_west_poly)
 names(west_fort)[1:2] <- c('X', 'Y')
+west_presence_fort <- west_fort
 if(TMP) {
   tmp <- dimnames(raw_west)[[2]]
   NAs <- rep(as.numeric(NA), nrow(raw_west))
@@ -170,7 +180,10 @@ if(TMP) {
 }
 west_fort$id <- as.numeric(west_fort$id)
 west_fort <- cbind(west_fort, raw_west[west_fort$id, ])
-  
+
+west_presence_fort$id <- as.numeric(west_presence_fort$id)
+west_presence_fort <- cbind(west_presence_fort, west_presence[west_presence_fort$id])
+names(west_presence_fort)[ncol(west_presence_fort)] <- "data"
 
 northeast_fort <- fortify(eastern_townships)
 northeast_fort$id <- as.numeric(northeast_fort$id)
@@ -192,6 +205,11 @@ east_fort$id <- east_fort$town + max(west_fort$id)
 names(east_fort)[2:3] <- c('X', 'Y')
 east_fort$town <- NULL
 east_fort <- east_fort[ , names(west_fort)]
+
+east_presence_fort <- east_fort
+east_presence_fort$data <- as.numeric(rowSums(east_presence_fort[ , 8:ncol(east_presence_fort)], na.rm = TRUE) > 0)
+
+fort_presence <- rbind(west_presence_fort, east_presence_fort[ , c(1:7, ncol(east_presence_fort))])
 
 fort <- rbind(west_fort, east_fort)
 #ggplot(fort, aes(long, lat, group = id)) + geom_polygon(aes(fill = Oak))
@@ -260,9 +278,7 @@ make_areal_map <- function(data, variables = NULL, breaks, legendName = 'Raw pro
   invisible(d)
 }
 
-# need to deal with no trees vs missing in western
-fort$data <- as.numeric(rowSums(fort[ , 8:ncol(fort)], na.rm = TRUE) > 0)
-presence_long <- melt(fort[ , c(1:7, ncol(fort))], c('X', 'Y', 'order', 'hole', 'piece', 'group', 'id'))
+presence_long <- melt(fort_presence, c('X', 'Y', 'order', 'hole', 'piece', 'group', 'id'))
 presence_long <- presence_long[presence_long$value == 1, ]
 
 col = gray(c(.2,.5,.8))
