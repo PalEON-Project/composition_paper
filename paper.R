@@ -20,6 +20,7 @@ require(ggplot2)
 require(maptools)
 require(rgdal)
 require(raster)
+require(gridExtra)
 
 usShp <- readShapeLines(file.path(dataDir, 'us_alb.shp'), proj4string=CRS('+init=epsg:3175'))
 usShp@data$id <- rownames(usShp@data)
@@ -56,12 +57,12 @@ dimnames(raw_west)[[2]] <- gsub("/", "ZZZ", taxa$taxonName)  # otherwise both / 
 west_presence <- read.csv(file.path(dataDir, 'western.csv'))
 west_presence <- west_presence[west_presence$x <= easternLimitOfWesternDomain, ]
 west_presence$data <- as.numeric(rowSums(west_presence[ , c(3:ncol(west_presence))]) > 0)
-# west_presence$data = as.numeric(rowSums(west_presence[ , c(3:ncol(west_presence))]) == west_presence$no.tree)
+# west_presence$data = as.numeric(rowSums(west_presence[ , c(3:ncol(west_presence))]) == west_presence$no.tree & west_presence$no.tree > 0)
 # get in same order as data for fitting (from far N, W to E in rows)
 tmp <- matrix(west_presence$data, length(westernDomainY), length(westernDomainX))
 west_presence <- c(t(tmp[rev(seq_along(westernDomainY)), ]))
 
-finalNcdfName <- paste0('PLScomposition_western_', productVersion, '-release.nc')
+finalNcdfName <- paste0('PLScomposition_western_', productVersion, '.nc')
 
 ncdfPtr <- nc_open(file.path(outputDir, finalNcdfName))
 test <- ncvar_get(ncdfPtr, "Oak", c(1, 1, 1), c(-1, -1, -1))
@@ -108,7 +109,7 @@ attributes(raw_east)$dimnames[[2]] <- gsub("/", "ZZZ", taxa$taxonName)
 #  raw_east[ , p] <- cut(raw_east[ , p], propBreaks, include.lowest = TRUE, labels = FALSE)
   
 
-finalNcdfName <- paste0('PLScomposition_eastern_', productVersion, '-release.nc')
+finalNcdfName <- paste0('PLScomposition_eastern_', productVersion, '.nc')
 
 ncdfPtr <- nc_open(file.path(outputDir, finalNcdfName))
 test <- ncvar_get(ncdfPtr, "Oak", c(1, 1, 1), c(-1, -1, -1))
@@ -172,12 +173,15 @@ raw_west_poly <- rasterToPolygons(raster(ncols = length(westernDomainX), nrows =
 west_fort <- fortify(raw_west_poly)
 names(west_fort)[1:2] <- c('X', 'Y')
 west_presence_fort <- west_fort
-if(TMP) {
-  tmp <- dimnames(raw_west)[[2]]
-  NAs <- rep(as.numeric(NA), nrow(raw_west))
-  raw_west <- cbind(raw_west[ , 1], NAs, raw_west[ , c(2:7)], NAs, raw_west[ , c(8:21)])
-  dimnames(raw_west)[[2]] <- c(tmp[1], 'Atlantic white cedar', tmp[2:7], 'Chestnut', tmp[8:21])
-}
+
+# put 0 in for taxa not modeled in west
+eastTaxa <- dimnames(raw_east)[[2]]
+taxaMissingInWest <- eastTaxa[!eastTaxa %in% dimnames(raw_west)[[2]]]
+old_raw_west <- raw_west
+raw_west <- matrix(0, nrow(old_raw_west), ncol(raw_east))
+dimnames(raw_west)[[2]] <- eastTaxa
+raw_west[ , dimnames(old_raw_west)[[2]]] <- old_raw_west
+
 west_fort$id <- as.numeric(west_fort$id)
 west_fort <- cbind(west_fort, raw_west[west_fort$id, ])
 

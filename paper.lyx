@@ -421,7 +421,7 @@ other hardwood
 
 \begin_layout Standard
 There are approximately 520,000 trees from the western subdomain and 420,000
- trees from the eastern subdomain.
+ trees from the eastern subdomain [fix this].
  In each subdomain, oak is the most common taxon and pine the second most
  common.
  
@@ -5528,10 +5528,9 @@ hspace{3mm}
 \begin_inset Caption
 
 \begin_layout Plain Layout
-[THIS IS AN OLD VERSION FOR ILLUSTRATION ONLY - TO BE REPLACED WHEN VERSION
- 0.3 FITS ARE DONE] Empirical proportions from raw data (column 1), posterior
- mean predictions (column 2) and posterior standard deviations -- representing
- standard errors of prediction (column 3) for select taxa.
+Empirical proportions from raw data (column 1), posterior mean predictions
+ (column 2) and posterior standard deviations -- representing standard errors
+ of prediction (column 3) for select taxa.
 \end_layout
 
 \end_inset
