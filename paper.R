@@ -6,7 +6,7 @@ setwd('~/research/jmac/composition')
 source("config")
 
 # TMP
-TMP <- TRUE
+TMP <- FALSE
 if(TMP){
 productVersion <- 0.2
 outputDir="/var/tmp/paciorek/paleon/comp_0.2/output"
@@ -287,8 +287,9 @@ presence_long <- presence_long[presence_long$value == 1, ]
 
 col = gray(c(.2,.5,.8))
 d <- ggplot(presence_long, aes(X, Y, group = id)) + geom_polygon(aes(fill = as.factor(value))) + 
-  scale_fill_manual(values = col, guide = FALSE)
+  scale_fill_manual(values = col, guide = FALSE) 
 d <- add_map_albers(plot_obj = d, map_data = usFortified, dat = presence_long)
+d <- d + scale_y_continuous(limits = c(70000, 1490000)) 
 d <- theme_clean(d)
 
 pdf('fig1.pdf', width=4, height=3)
