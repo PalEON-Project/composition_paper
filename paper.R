@@ -49,6 +49,8 @@ d <- add_map_albers(plot_obj = d, map_data = usFortified, dat = presence_long)
 d <- d + scale_y_continuous(limits = c(70000, 1490000)) 
 d <- theme_clean(d)
 
+setwd(paperDir)
+
 pdf('fig1.pdf', width=4.85, height=3)
 print(d)
 dev.off()

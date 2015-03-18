@@ -92,15 +92,17 @@ and Jason S. McLachlan {[}author order to be discussed{]}\\
 \end{quote}
 TODO:
 
-look through code and labbook to make sure have all details
+full edit
 
-properly cite Goring stuff and reference details of data collection
+properly cite Goring stuff 
 
 focus on PLOS One, but Nature's Scientific Data is a possibility
 
+check journal requirements for archiving and presentation; talk to
+Jody/Ann about archiving/DOI
 
 
-%
+
 \begin{abstract}
 We present a data product of the estimated composition of tree taxa
 at the time of European settlement of the United States and the statistical
@@ -111,7 +113,7 @@ groupings, generally at the genus level. The data come from settlement
 survey records that provide raw data that are transcribed and then
 aggregated spatially, giving count data. The domain is divided into
 two regions, western (Indiana through Minnesota) and eastern (Ohio
-to Maine). Public Land Survey point data in the western region is
+to Maine). Public Land Survey point data in the western region are
 aggregated to a regular 8 km grid, while data in the eastern region,
 from Town Proprietor Surveys is aggregated at the township level.
 The product is based on a Bayesian statistical model fit to the count
@@ -143,10 +145,10 @@ the northeastern United States were areal surveys at a township level
 \citep{cogbill2002forests,thompson2013four}, which we call the Town
 Proprietor Survey (TPS). These surveys reporting percent composition
 of major tree species using sometimes inconsistent common names. Later
-surveys, after the establishment of the Public Land Survey System
-(PLSS) - from 1819 to 1904 - were point estimates along a regular
-grid, with 1 mile spacing \citep{schulte2001original,bourdo1956review,goring2015composition}.
-Survey instructions during the PLSS varied through time, and by point
+surveys, after the establishment of the U.S. Public Land Survey System
+(PLS) - from 1832 to 1907 - were point estimates along a regular grid,
+with 1 mile spacing \citep{schulte2001original,bourdo1956review,goring2015composition}.
+Survey instructions during the PLS varied through time, and by point
 type. This required the application of spatially varying correction
 factors \citep{cogbill2015corrections,goring2015composition} to accurately
 assess stem density, basal area and biomass from the early settlement
@@ -162,9 +164,9 @@ provide a dataset across the upper Midwest that is resolved to an
 8 x 8 km grid size, providing broad spatial coverage at a meso-spatial
 scale that can be compared to the Forest Inventory and Analysis products
 \citet{gray2012forest}. The limitation of this dataset is that it
-provides only estimates of variance within cell for PLSS data in the
+provides only estimates of variance within cell for PLS data in the
 western region, and no township estimates of error for regions surveyed
-as part of the Town Proprietor Survey.
+as part of the TPS.
 
 Properly assessing uncertainty in ecological data is imperative to
 understanding and modelling ecological processes \citep{cressie2009accounting}.
@@ -181,23 +183,28 @@ The raw data are obtained from survey records collated from across
 the northeastern U.S. by a number of researchers. For the states of
 Minnesota, Wisconsin, Illinois, Indiana, and Michigan (the western
 subdomain), data are available at survey point locations and have
-been aggregated to a regular 8 km grid in the Albers projection. For
-the states of Ohio, Pennsylvania, New Jersey, New York and the six
-New England states (the eastern subdomain), data are aggregated at
-the township level. There is also data from a single township in Quebec
-and a single township in northern Delaware. Data are essentially complete
-in Minnesota, Wisconsin and Michigan but data in Illinois and Indiana
-represent a sample of the full set of grid cells, with survey record
-transcription ongoing. Data for the remaining states are a subset
-of the full set of townships. Fig. \ref{fig:domain} {[}Fig. 1 - Lyx
-is having a numbering problem{]} shows the domain, indicating the
-grid cells and townships with data.
+been aggregated to a regular 8 km grid in the Albers projection. (Note
+that for Indiana and Illinois, at the moment trees are associated
+with township centroids and then assigned to 8 km grid cells based
+on the centroid but in the near future we will have point locations
+available for each tree.) For the states of Ohio, Pennsylvania, New
+Jersey, New York and the six New England states (the eastern subdomain),
+data are aggregated at the township level. There is also data from
+a single township in Quebec and a single township in northern Delaware.
+Data are essentially complete in Minnesota, Wisconsin and Michigan
+but data in Illinois and Indiana represent a sample of the full set
+of grid cells, with survey record transcription ongoing. Data for
+the remaining states are a subset of the full set of townships. Fig.
+\ref{fig:domain} {[}Fig. 1 - Lyx is having a numbering problem{]}
+shows the domain, indicating the grid cells and townships with data.
 
 \begin{figure}
 \label{fig:domain}\includegraphics{0_accounts_gen_vis_paciorek_research_jmac_composition_paper_fig1.pdf}
 
 \caption{Spatial domain, with locations with data shown in gray. Locations
-are grid cells in western portion and townships in eastern portion.}
+are grid cells in western portion and townships in eastern portion.
+Grid cells completely covered in water are white (e.g., a few locations
+in Minnesota and Wisconsin).}
 \end{figure}
 
 
@@ -218,7 +225,7 @@ an ``other hardwood'' category: Atlantic white cedar (Chamaecyparis
 thyoides), Ash (Fraxinus spp.), Basswood (Tilia americana), Beech
 (Fagus grandifolia), Birch (Betula spp.), Black gum/sweet gum (Nyssa
 sylvatica and Liquidambar styraciflua), Cedar/juniper (what is in
-here other than Juniperus and is the Juniperus only Juniperus virginiana),
+here other than Juniperus and is the Juniperus only Juniperus virginiana?),
 Cherry (Prunus spp.), Chestnut (Castanea dentata), Dogwood (Cornus
 spp.), Elm (Ulmus spp. or Ulmus americana???) , Fir (Abies spp.),
 Hemlock (Tsuga canadensis), Hickory (Carya spp.), Ironwood (Carpinus
@@ -232,27 +239,29 @@ poplar/tulip poplar, cedar/juniper), because of ambiguity in the common
 tree names used by surveyors, a group represents trees from different
 families and even orders. For the western subdomain we do not fit
 statistical models for Atlantic white cedar and chestnut as these
-have 0 and 5 trees present in the dataset, respectively.
+have 0 and 6 trees present, respectively. The taxa grouped into other
+hardwood are those for which fewer than roughly 2000 trees were present
+in the dataset; however we include Atlantic white cedar explicitly
+despite it only having 336 trees in the dataset.
 
 {[}include description of size cutoff{]} {[}Simon, Jody mentioned
 that ther are 402 trees in IN below \textasciitilde{}10 cm and at
 least 43 in IL. Do you screen those out or do we just live with it?{]}
 
-There are approximately 520,000 trees from the western subdomain and
-420,000 trees from the eastern subdomain. In each subdomain, oak is
-the most common taxon and pine the second most common. 
+There are approximately 860,000 trees from the western subdomain and
+420,000 trees from the eastern subdomain. In the western subdomain,
+oak is the most common taxon and pine the second most common, while
+in the eastern subdomain oak is the most common and beech the second
+most common.
 
 Our domain is a rectangle covering all of the states, in the Albers
-projection (NAD 1983 Great Lakes and St. Lawrence Albers) {[}Simon,
-please confirm this language is right{]}, with the rectangle split
-into 8 km cells, arranged in a 296 by 180 grid of cells, with the
-centroid of the cell in the southeast corner located at (-71000, 58000).
-For the modeling of the western subdomain we use the western-most
-146 by 180 grid of cells. For the modeling of the eastern subdomain
-we use the eastern-most 180 by 180 grid of cells and then omit 23
-cells in the north and 17 cells in the south. {[}check 23 in N vs
-17 in N; also check what is in netCDF product - should be for the
-full domain with missing values?{]}
+projection (NAD 1983 Albers Great Lakes and St. Lawrence), with the
+rectangle split into 8 km cells, arranged in a 296 by 180 grid of
+cells, with the centroid of the cell in the southeast corner located
+at (-71000, 58000). For the modeling of the western subdomain we use
+the western-most 146 by 180 grid of cells. For the modeling of the
+eastern subdomain we use the eastern-most 180 by 180 grid of cells
+and then omit 23 cells in the north and 17 cells in the south.
 
 
 \section{Statistical model}
@@ -550,22 +559,27 @@ on Github, including pre- and post-processing code.
 
 We compared the CAR and SPDE models using cross-validation by holding
 out data from the fitting process and assessing the fit of the model
-on the held-out data. We used two types of test data:
+on the held-out data. This cross-validation used a subregion containing
+most of Minnesota and a small amount of western Wisconsin, defined
+to be the cells whose x-coordinate was less than 300,000 (this defines
+a north-south line that approximately goes through Duluth, Minnesota)
+and hereafter referred to as the ``Minnesota subregion'' . We used
+two types of test data:
 \begin{enumerate}
-\item We held out all the data from 95\% of the cells in Minnesota, with
-cells selected at random. This was meant to assess the ability of
-the model to interpolate from a sparse set of cells/townships and
+\item We held out all the data from 95\% of the cells in the Minnesota subregion,
+with cells selected at random. This was meant to assess the ability
+of the model to interpolate from a sparse set of cells/townships and
 mimics the limited data in Illinois and Indiana.
 \item We held out 5\% of the trees from all of the trees in the dataset
-(leaving aside the held-out Minnesota cells). This was meant to assess
-the ability of the model to estimate the composition in cells in which
-data were available. 
+(leaving aside the held-out Minnesota subregion cells). This was meant
+to assess the ability of the model to estimate the composition in
+cells in which data were available. 
 \end{enumerate}
 Finally, in a separate sensitivity analysis we instead left out 80\%
-of the cells in Minnesota at random. This variation on the first test
-above was meant to indicate whether our model comparison conclusions
-would be robust as the digitization process for Illinois and Indiana
-progresses and provides us with increasingly dense data.
+of the cells in Minnesota subregion at random. This variation on the
+first test above was meant to indicate whether our model comparison
+conclusions would be robust as the digitization process for Illinois
+and Indiana progresses and provides us with increasingly dense data. 
 
 There has been extensive work in the statistical literature on good
 metrics to use to compare the predictive ability of models; these
@@ -641,8 +655,8 @@ of the models to interpolate to areas without data and the ongoing
 nature of digitization, we believe this difference in datasets is
 not an issue.
 
-We ran each model for XXX iterations, retaining YYY after burnin and
-subsampling to reduce storage needs. 
+We ran each model for 150,000 iterations, retaining 250 after a burnin
+(25,000 iterations) and subsampling to reduce storage needs. 
 
 
 
@@ -657,13 +671,13 @@ inform the choice between the CAR and SPDE models.
 \subsubsection{Full cell hold-out experiment}
 
 Table \ref{tab:score_cell_fivepercent} shows predictive ability for
-Experiment 1: those cells in Minnesota held out of the fitting process,
-for both the posterior mean predictions and the full posterior sample.
-Table \ref{tab:coverage_cell_fivepercent} shows performance of the
-uncertainty estimates. For the posterior distribution over the predictive
-score values, the CAR model generally outperforms the SPDE model,
-while for the posterior mean predictions, the SPDE model appears to
-outperform the CAR model, but we do not have any uncertainty estimates
+Experiment 1: those cells in the Minnesota subregion held out of the
+fitting process, for both the posterior mean predictions and the full
+posterior sample. Table \ref{tab:coverage_cell_fivepercent} shows
+performance of the uncertainty estimates. For the posterior distribution
+over the predictive score values, the CAR model outperforms the SPDE
+model, while for the posterior mean predictions, the SPDE model appears
+to outperform the CAR model, but we do not have any uncertainty estimates
 for this comparison. Coverage and interval lengths are similar between
 the two models. From a practical perspective, based on the difference
 in mean absolute error, which is on a readily interpretable scale,
@@ -672,10 +686,7 @@ the differences between the models are small.
 
 
 
-%
 \begin{table}
-
-
 \caption{Predictive ability based on several predictive score criteria for
 the CAR and SPDE spatial models when holding out 95\% of entire cells
 of data in Minnesota. Smaller values are better.}
@@ -696,32 +707,32 @@ of data in Minnesota. Smaller values are better.}
 {\small{SPDE model}}\tabularnewline
 \hline 
 {\small{Brier}} &
-{\small{84997}} &
-{\small{86803}} &
-{\small{0.92}} &
-{\small{76068}} &
-{\small{75330}}\tabularnewline
+{\small{180688}} &
+{\small{186045}} &
+{\small{0.98}} &
+{\small{162813}} &
+{\small{161559}}\tabularnewline
 \hline 
 {\small{Negative Log Density}} &
-{\small{222144}} &
-{\small{242676}} &
+{\small{468397}} &
+{\small{513144}} &
 {\small{1.00}} &
-{\small{185748}} &
-{\small{185843}}\tabularnewline
+{\small{395685}} &
+{\small{395998}}\tabularnewline
 \hline 
 {\small{Mean Absolute Error}} &
-{\small{0.0382}} &
-{\small{0.0390}} &
-{\small{0.92}} &
-{\small{0.0303}} &
-{\small{0.0293}}\tabularnewline
+{\small{0.0364}} &
+{\small{0.0383}} &
+{\small{0.98}} &
+{\small{0.0275}} &
+{\small{0.0269}}\tabularnewline
 \hline 
 {\small{Root Mean Square Error}} &
-{\small{0.0944}} &
-{\small{0.0986}} &
-{\small{0.77}} &
-{\small{0.0701}} &
-{\small{0.0677}}\tabularnewline
+{\small{0.0897}} &
+{\small{0.0959}} &
+{\small{0.96}} &
+{\small{0.0647}} &
+{\small{0.0626}}\tabularnewline
 \hline 
 \end{tabular}
 
@@ -741,16 +752,16 @@ models when holding out 95\% of entire cells of data in Minnesota. }
 {\small{SPDE model}}\tabularnewline
 \hline 
 {\small{Coverage}} &
-{\small{0.977}} &
+{\small{0.976}} &
 {\small{0.978}}\tabularnewline
 \hline 
 {\small{Mean Interval Length}} &
-{\small{0.135}} &
+{\small{0.129}} &
 {\small{0.142}}\tabularnewline
 \hline 
 {\small{Median Interval Length}} &
-{\small{0.040}} &
-{\small{0.031}}\tabularnewline
+{\small{0.037}} &
+{\small{0.033}}\tabularnewline
 \hline 
 \end{tabular}
 
@@ -770,7 +781,6 @@ based on mean absolute error, are limited.
 
 
 
-%
 \begin{table}
 \caption{Predictive ability based on several predictive score criteria for
 the CAR and SPDE spatial models when holding out 80\% of entire cells
@@ -793,32 +803,32 @@ where values near 0.95 are optimal.}
 {\small{SPDE model}}\tabularnewline
 \hline 
 {\small{Brier}} &
-{\small{65870}} &
-{\small{65004}} &
-{\small{0.08}} &
-{\small{60169}} &
-{\small{60020}}\tabularnewline
+{\small{141546}} &
+{\small{140211}} &
+{\small{0.10}} &
+{\small{130006}} &
+{\small{129910}}\tabularnewline
 \hline 
 {\small{Negative Log Density}} &
-{\small{167947}} &
-{\small{167536}} &
-{\small{0.43}} &
-{\small{145404}} &
-{\small{145750}}\tabularnewline
+{\small{356985}} &
+{\small{355640}} &
+{\small{0.31}} &
+{\small{312509}} &
+{\small{312950}}\tabularnewline
 \hline 
 {\small{Mean Absolute Error}} &
-{\small{0.0322}} &
-{\small{0.0307}} &
-{\small{0.08}} &
-{\small{0.0246}} &
-{\small{0.0240}}\tabularnewline
+{\small{0.0309}} &
+{\small{0.0297}} &
+{\small{0.10}} &
+{\small{0.0225}} &
+{\small{0.0222}}\tabularnewline
 \hline 
 {\small{Root Mean Square Error}} &
-{\small{0.0800}} &
-{\small{0.0771}} &
-{\small{0.01}} &
-{\small{0.0578}} &
-{\small{0.0571}}\tabularnewline
+{\small{0.0763}} &
+{\small{0.0740}} &
+{\small{0.04}} &
+{\small{0.0531}} &
+{\small{0.0528}}\tabularnewline
 \hline 
 \end{tabular}
 
@@ -838,15 +848,15 @@ models when holding out 80\% of entire cells of data in Minnesota. }
 {\small{SPDE model}}\tabularnewline
 \hline 
 {\small{Coverage}} &
-{\small{0.982}} &
-{\small{0.974}}\tabularnewline
+{\small{0.981}} &
+{\small{0.971}}\tabularnewline
 \hline 
 {\small{Mean Interval Length}} &
-{\small{0.117}} &
-{\small{0.107}}\tabularnewline
+{\small{0.112}} &
+{\small{0.103}}\tabularnewline
 \hline 
 {\small{Median Interval Length}} &
-{\small{0.030}} &
+{\small{0.028}} &
 {\small{0.021}}\tabularnewline
 \hline 
 \end{tabular}
@@ -859,12 +869,11 @@ models when holding out 80\% of entire cells of data in Minnesota. }
 \subsubsection{Individual tree hold-out experiment}
 
 Table \ref{tab:score_tree} shows the predictive ability for Experiment
-2. Here we have limited evidence (posterior probability of 0.84) that
-the SPDE model is better based on the Brier score.
+2. Here we have evidence (posterior probability of 0.94) that the
+SPDE model is better based on the Brier score.
 
 
 
-%
 \begin{table}
 \caption{Predictive ability based on several predictive score criteria for
 the CAR and SPDE spatial models when holding out 5\% of trees. Smaller
@@ -886,18 +895,18 @@ values are better.}
 {\small{SPDE model}}\tabularnewline
 \hline 
 {\small{Brier}} &
-{\small{13158}} &
-{\small{13143}} &
-{\small{0.16}} &
-{\small{13040}} &
-{\small{13039}}\tabularnewline
+{\small{21296}} &
+{\small{21277}} &
+{\small{0.06}} &
+{\small{21146}} &
+{\small{21143}}\tabularnewline
 \hline 
 {\small{Negative Log Density}} &
-{\small{31984}} &
-{\small{31870}} &
-{\small{0.02}} &
-{\small{31212}} &
-{\small{31229}}\tabularnewline
+{\small{52199}} &
+{\small{52052}} &
+{\small{0.01}} &
+{\small{51141}} &
+{\small{51156}}\tabularnewline
 \hline 
 \end{tabular}
 
@@ -924,58 +933,48 @@ with data.
 \section{Data product}
 
 For the final data product, we ran the model using the CAR specification
-for X iterations, discarding the first Z iterations for burn-in and
-retaining Y to limit storage needs and limit the size of the data
-product. Mixing was generally reasonable, but for some of the hyperparameters
-was relatively slow, particularly for less common taxa. Despite this,
-mixing for the variables of substantive interest, the proportions
-was good. {[}Report ESS values{]}
+for 150,000 iterations, discarding the first 25,000 iterations for
+burn-in and retaining 250 to limit storage needs and limit the size
+of the data product. Mixing was generally reasonable, but for some
+of the hyperparameters was relatively slow, particularly for less
+common taxa. Despite this, mixing for the variables of substantive
+interest, the proportions was good. {[}Report ESS values{]}
 
 In Figure \ref{fig:select_maps}, we show maps of estimated composition
 for the full domain for several taxa of substantive interest to illustrate
 the results: beech, cherry, chestnut, elm, hemlock, oak, and pine.
 These maps contrast the raw data proportions, the posterior means
 and posterior standard deviations as pointwise estimates of uncertainty.
-Fig. \ref{fig:all_predictions} shows posterior means for all 22 (???)
-taxa.
+Fig. \ref{fig:all_predictions} shows posterior means for all 23 taxa.
 
 \begin{figure}
 \label{fig:select_maps}
 
 \includegraphics[scale=0.75]{1_accounts_gen_vis_paciorek_research_jmac_composition_paper_fig2.pdf}
 
-\hspace{3mm}\includegraphics[scale=0.17]{2_accounts_gen_vis_paciorek_research_jmac_composition_paper_legendRaw.pdf}\includegraphics[scale=0.17]{3_accounts_gen_vis_paciorek_research_jmac_composition_paper_legendProp.pdf}\includegraphics[scale=0.17]{4_accounts_gen_vis_paciorek_research_jmac_composition_paper_legendSD.pdf}
+\hspace{4mm}\includegraphics[scale=0.16]{2_accounts_gen_vis_paciorek_research_jmac_composition_paper_legendRaw.pdf}\hspace{4mm}\includegraphics[scale=0.16]{3_accounts_gen_vis_paciorek_research_jmac_composition_paper_legendProp.pdf}\hspace{3.5mm}\includegraphics[scale=0.16]{4_accounts_gen_vis_paciorek_research_jmac_composition_paper_legendSD.pdf}
 
-\caption{{[}THIS IS AN OLD VERSION FOR ILLUSTRATION ONLY - TO BE REPLACED WHEN
-VERSION 0.3 FITS ARE DONE{]} Empirical proportions from raw data (column
-1), posterior mean predictions (column 2) and posterior standard deviations
--- representing standard errors of prediction (column 3) for select
-taxa.}
+\caption{Empirical proportions from raw data (column 1), posterior mean predictions
+(column 2) and posterior standard deviations -- representing standard
+errors of prediction (column 3) for select taxa.}
 \end{figure}
 
 
 \begin{figure}
 \label{fig:all_predictions}
 
-\includegraphics[scale=0.35]{5_var_tmp_paciorek_paleon_comp_0_2_output_PLScomposition_full_0_1_fits.pdf}
+\includegraphics[scale=0.9]{5_accounts_gen_vis_paciorek_research_jmac_composition_paper_fig3.pdf}
 
-\caption{{[}THIS IS AN OLD VERSION FOR ILLUSTRATION ONLY - TO BE REPLACED AND
-PUT IN 8 ROW X 3 COLUMN FORM WHEN VERSION 0.3 FITS ARE DONE{]} Posterior
-mean predictions for all taxa over the entire domain.}
+\caption{Posterior mean predictions for all taxa over the entire domain.}
 
 
 \end{figure}
 
 
-While our data product is given for the full rectangular domain, including
-hypothetical vegetation over water, uncertainty is large outside of
-the core states with data and any analysis and inference should only
-be done within those core states.
-
-The data product is publically available at XX under YY license as
-version 1.0 as of January 2015. The product is in the form of a netCDF-4
-file, with dimensions x, y, and MCMC iteration. There is one variable
-per taxon. The PalEON project will continue to maintain this product,
+The data product is publicly available at XX under YY license as version
+0.3 as of April 2015. The product is in the form of a netCDF-4 file,
+with dimensions x, y, and MCMC iteration. There is one variable per
+taxon. The PalEON project will continue to maintain this product,
 releasing new versions as additional data in Illinois, Indiana and
 Ohio are digitized. 
 
@@ -1009,10 +1008,10 @@ in this work. Note that we cannot provide the raw data at point locations
 because of limitations specified in the data use agreements under
 which we have access to the data.
 \item Gridded raw biomass estimates for Minnesota, Wisconsin, and Michigan
-{[}right Simon, or also for IL and IN{]} based on the PLS data.
+based on the PLS data, with extension to Illinois and Indiana planned.
 \item Statistically estimated biomass for Minnesota, Wisconsin, and Michigan
-{[}also IL and IN?{]} using a statistical model applied to the raw
-biomass estimates.
+using a statistical model applied to the raw biomass estimates, with
+extension to Illinois and Indiana planned.
 \end{itemize}
 An additional drawback of the product is its focus on composition,
 which does not directly tell us about vegetation structure, in particular

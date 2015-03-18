@@ -111,15 +111,20 @@ TODO:
 \end_layout
 
 \begin_layout Standard
-look through code and labbook to make sure have all details
+full edit
 \end_layout
 
 \begin_layout Standard
-properly cite Goring stuff and reference details of data collection
+properly cite Goring stuff 
 \end_layout
 
 \begin_layout Standard
 focus on PLOS One, but Nature's Scientific Data is a possibility
+\end_layout
+
+\begin_layout Standard
+check journal requirements for archiving and presentation; talk to Jody/Ann
+ about archiving/DOI
 \end_layout
 
 \begin_layout Chunk
@@ -127,7 +132,7 @@ focus on PLOS One, but Nature's Scientific Data is a possibility
 \end_layout
 
 \begin_layout Chunk
-inputDir <- '/var/tmp/paciorek/paleon/comp_0.3/output'
+inputDir <- '/var/tmp/paciorek/paleon/comp/output'
 \end_layout
 
 \begin_layout Chunk
@@ -1799,12 +1804,24 @@ Design
 We compared the CAR and SPDE models using cross-validation by holding out
  data from the fitting process and assessing the fit of the model on the
  held-out data.
+ This cross-validation used a subregion containing most of Minnesota and
+ a small amount of western Wisconsin, defined to be the cells whose x-coordinate
+ was less than 300,000 (this defines a north-south line that approximately
+ goes through Duluth, Minnesota) and hereafter referred to as the 
+\begin_inset Quotes eld
+\end_inset
+
+Minnesota subregion
+\begin_inset Quotes erd
+\end_inset
+
+ .
  We used two types of test data:
 \end_layout
 
 \begin_layout Enumerate
-We held out all the data from 95% of the cells in Minnesota, with cells
- selected at random.
+We held out all the data from 95% of the cells in the Minnesota subregion,
+ with cells selected at random.
  This was meant to assess the ability of the model to interpolate from a
  sparse set of cells/townships and mimics the limited data in Illinois and
  Indiana
@@ -1822,7 +1839,7 @@ status open
 
 \begin_layout Enumerate
 We held out 5% of the trees from all of the trees in the dataset (leaving
- aside the held-out Minnesota cells).
+ aside the held-out Minnesota subregion cells).
  This was meant to assess the ability of the model to estimate the composition
  in cells in which data were available.
  
@@ -1830,11 +1847,12 @@ We held out 5% of the trees from all of the trees in the dataset (leaving
 
 \begin_layout Standard
 Finally, in a separate sensitivity analysis we instead left out 80% of the
- cells in Minnesota at random.
+ cells in Minnesota subregion at random.
  This variation on the first test above was meant to indicate whether our
  model comparison conclusions would be robust as the digitization process
  for Illinois and Indiana progresses and provides us with increasingly dense
  data.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -1889,6 +1907,11 @@ We used the following criteria to compare models.
 \end_inset
 
  is the count of held-out individual trees in the location.
+\end_layout
+
+\begin_layout Standard
+[CHECK on exclusion of small-count cells - where is 50 tree cutoff applied
+ - mention this here]
 \end_layout
 
 \begin_layout Enumerate
@@ -2043,8 +2066,8 @@ other hardwood
 \end_layout
 
 \begin_layout Standard
-We ran each model for XXX iterations, retaining YYY after burnin and subsampling
- to reduce storage needs.
+We ran each model for 150,000 iterations, retaining 250 after a burnin (25,000
+ iterations) and subsampling to reduce storage needs.
  
 \end_layout
 
@@ -2078,9 +2101,9 @@ reference "tab:score_cell_fivepercent"
 
 \end_inset
 
- shows predictive ability for Experiment 1: those cells in Minnesota held
- out of the fitting process, for both the posterior mean predictions and
- the full posterior sample.
+ shows predictive ability for Experiment 1: those cells in the Minnesota
+ subregion held out of the fitting process, for both the posterior mean
+ predictions and the full posterior sample.
  Table 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -2090,9 +2113,9 @@ reference "tab:coverage_cell_fivepercent"
 
  shows performance of the uncertainty estimates.
  For the posterior distribution over the predictive score values, the CAR
- model generally outperforms the SPDE model, while for the posterior mean
- predictions, the SPDE model appears to outperform the CAR model, but we
- do not have any uncertainty estimates for this comparison.
+ model outperforms the SPDE model, while for the posterior mean predictions,
+ the SPDE model appears to outperform the CAR model, but we do not have
+ any uncertainty estimates for this comparison.
  Coverage and interval lengths are similar between the two models.
  From a practical perspective, based on the difference in mean absolute
  error, which is on a readily interpretable scale, the differences between
@@ -2113,7 +2136,7 @@ setwd(inputDir)
 \end_layout
 
 \begin_layout Chunk
-for(run in 10:14) {
+for(run in 101:106) {
 \end_layout
 
 \begin_layout Chunk
@@ -2133,23 +2156,23 @@ for(run in 10:14) {
 \end_layout
 
 \begin_layout Chunk
-resultsCAR = results10
+resultsCAR = results101
 \end_layout
 
 \begin_layout Chunk
-resultsSPDE = results11
+resultsSPDE = results102
 \end_layout
 
 \begin_layout Chunk
-resultsTPS = results12
+resultsTPS = results103
 \end_layout
 
 \begin_layout Chunk
-samplesCAR = samples10
+samplesCAR = samples101
 \end_layout
 
 \begin_layout Chunk
-samplesSPDE = samples11
+samplesSPDE = samples102
 \end_layout
 
 \begin_layout Chunk
@@ -3909,19 +3932,19 @@ reference "tab:coverage_cell_20percent"
 \end_layout
 
 \begin_layout Chunk
-resultsCAR = results13
+resultsCAR = results104
 \end_layout
 
 \begin_layout Chunk
-resultsSPDE = results14
+resultsSPDE = results105
 \end_layout
 
 \begin_layout Chunk
-samplesCAR = samples13
+samplesCAR = samples104
 \end_layout
 
 \begin_layout Chunk
-samplesSPDE = samples14
+samplesSPDE = samples105
 \end_layout
 
 \begin_layout Chunk
@@ -4918,8 +4941,8 @@ reference "tab:score_tree"
 \end_inset
 
  shows the predictive ability for Experiment 2.
- Here we have limited evidence (posterior probability of 0.84) that the SPDE
- model is better based on the Brier score.
+ Here we have evidence (posterior probability of 0.94) that the SPDE model
+ is better based on the Brier score.
 \end_layout
 
 \begin_layout Chunk
@@ -4927,19 +4950,19 @@ reference "tab:score_tree"
 \end_layout
 
 \begin_layout Chunk
-resultsCAR = results10
+resultsCAR = results101
 \end_layout
 
 \begin_layout Chunk
-resultsSPDE = results11
+resultsSPDE = results102
 \end_layout
 
 \begin_layout Chunk
-samplesCAR = samples10
+samplesCAR = samples101
 \end_layout
 
 \begin_layout Chunk
-samplesSPDE = samples11
+samplesSPDE = samples102
 \end_layout
 
 \begin_layout Chunk
@@ -5735,7 +5758,8 @@ status open
 bibliography{/accounts/gen/vis/paciorek/bibfiles/abbrev.stat,/accounts/gen/vis/pa
 ciorek/bibfiles/abbrev.other,/accounts/gen/vis/paciorek/bibfiles/spatstat,/accoun
 ts/gen/vis/paciorek/bibfiles/statgeneral,/accounts/gen/vis/paciorek/bibfiles/pac
-iorek,/accounts/gen/vis/paciorek/bibfiles/ecology,goring_intro}
+iorek,/accounts/gen/vis/paciorek/bibfiles/ecology,/accounts/gen/vis/paciorek/res
+earch/jmac/composition_paper/goring_intro}
 \end_layout
 
 \end_inset
