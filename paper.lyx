@@ -85,33 +85,80 @@ at the time of European settlement
 
 \begin_layout Quote
 Christopher J.
- Paciorek, Andrew Thurman, Simon J.
- Goring, Charlie V.
- Cogbill, 
+ Paciorek 1*, Andrew Thurman 2&, Simon J.
+ Goring 3&, Charles V.
+ Cogbill 4, 
 \begin_inset Newline newline
 \end_inset
 
 John W.
- Williams, David J.
- Mladenoff, Jody A.
- Peters, Jun Zhu, 
+ Williams 3,5, David J.
+ Mladenoff 6, Jody A.
+ Peters 7, Jun Zhu 8, 
 \begin_inset Newline newline
 \end_inset
 
 and Jason S.
- McLachlan [author order to be discussed]
+ McLachlan 7 [author order to be discussed]
 \begin_inset Newline newline
 \end_inset
 
 [please tell me if you do/don't want your middle initial]
 \end_layout
 
-\begin_layout Standard
-TODO:
+\begin_layout Quote
+1 Department of Statistics, University of California, Berkeley, California,
+ USA
+\end_layout
+
+\begin_layout Quote
+2 Department of Statistics, University of Iowa, Iowa City, Iowa, USA
+\end_layout
+
+\begin_layout Quote
+3 Department of Geography, University of Wisconsin, Madison, Wisconsin,
+ USA
+\end_layout
+
+\begin_layout Quote
+4 Harvard Forest, Harvard University, Petersham, Massachusetts, USA
+\end_layout
+
+\begin_layout Quote
+5 Center for Climatic Research, University of Wisconsin, Madison, Wisconsin,
+ USA
+\end_layout
+
+\begin_layout Quote
+6 Department of Forestry and Wildlife Ecology, University of Wisconsin,
+ Madison, Wisconsin, USA
+\end_layout
+
+\begin_layout Quote
+7 Department of Biological Sciences, University of Notre Dame, Notre Dame,
+ Indiana, USA
+\end_layout
+
+\begin_layout Quote
+8 Department of Statistics, University of Wisconsin, Madison, Wisconsin,
+ USA
+\end_layout
+
+\begin_layout Quote
+* Corresponding author
+\end_layout
+
+\begin_layout Quote
+E-mail paciorek@stat.berkeley.edu (CJP)
+\end_layout
+
+\begin_layout Quote
+& These authors contributed equally to this work.
+ 
 \end_layout
 
 \begin_layout Standard
-full edit
+TODO:
 \end_layout
 
 \begin_layout Standard
@@ -145,18 +192,18 @@ version <- 0.3
 
 \begin_layout Abstract
 We present a data product of the estimated composition of tree taxa at the
- time of European settlement of the United States and the statistical methodolog
-y used to produce the product.
+ time of European settlement of the northeastern United States and the statistic
+al methodology used to produce the product.
  Composition is defined as the proportion of stems larger than approximately
  20 cm diameter at breast height in 22 taxonomic groupings, generally at
  the genus level.
  The data come from settlement survey records that provide raw data that
  are transcribed and then aggregated spatially, giving count data.
- The domain is divided into two regions, western (Indiana through Minnesota)
- and eastern (Ohio to Maine).
+ The domain is divided into two regions, eastern (Maine to Ohio) and western
+ (Indian to Minnesota).
  Public Land Survey point data in the western region are aggregated to a
  regular 8 km grid, while data in the eastern region, from Town Proprietor
- Surveys is aggregated at the township level.
+ Surveys, is aggregated at the township level.
  The product is based on a Bayesian statistical model fit to the count data
  that estimates composition on a regular 8 km grid.
  The statistical model allows us to estimate composition at locations with
@@ -261,6 +308,9 @@ key "gray2012forest"
  The limitation of this dataset is that it provides only estimates of variance
  within cell for PLS data in the western region, and no township estimates
  of error for regions surveyed as part of the TPS.
+ Furthermore, missing townships are common in the eastern region and the
+ data in Indiani and Illinois represent a limited sample of cells.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -275,9 +325,9 @@ key "cressie2009accounting"
 .
  In this way, a model that can account for the spatial structure of the
  underlying PLSS and TPS data, and provide reliable estimates of uncertainty
- across the northeastern United States provides an enormously valuable tool
- for researchers interested in the ecological structure and function of
- forests at longer time scales.
+ across the northeastern United States, provides an valuable tool for researcher
+s interested in the ecological structure and function of forests at longer
+ time scales.
 \end_layout
 
 \begin_layout Section
@@ -344,8 +394,9 @@ name "fig:domain"
 \begin_layout Plain Layout
 Spatial domain, with locations with data shown in gray.
  Locations are grid cells in western portion and townships in eastern portion.
- Grid cells completely covered in water are white (e.g., a few locations in
- Minnesota and Wisconsin).
+ In addition to locations without data being indicated in white, grid cells
+ completely covered in water are white (e.g., a few locations in Minnesota
+ and Wisconsin).
 \end_layout
 
 \end_inset
@@ -396,7 +447,8 @@ cite{Gori:etal:2015}
 
 \end_inset
 
- and the raw data are available at XXX.
+ and the raw data are available at XXX [ask Simon/Charlie about public access
+ to Paleon composition data].
  The aggregation into taxonomic groups is primarily at the genus level,
  but in some cases of monospecific genera, is at the species level.
  We model the following 22 taxa plus an 
@@ -411,8 +463,8 @@ other hardwood
  spp.), Basswood (Tilia americana), Beech (Fagus grandifolia), Birch (Betula
  spp.), Black gum/sweet gum (Nyssa sylvatica and Liquidambar styraciflua),
  Cedar/juniper (Juniperus virginiana and Thuja occidentalis), Cherry (Prunus
- spp.), Chestnut (Castanea dentata), Dogwood (Cornus spp.), Elm (Ulmus spp.)
- , Fir (Abies spp.), Hemlock (Tsuga canadensis), Hickory (Carya spp.), Ironwood
+ spp.), Chestnut (Castanea dentata), Dogwood (Cornus spp.), Elm (Ulmus spp.),
+ Fir (Abies spp.), Hemlock (Tsuga canadensis), Hickory (Carya spp.), Ironwood
  (Carpinus caroliniana and Ostrya virginiana), Maple (Acer spp.), Oak (Quercus
  spp.), Pine (Pinus spp.), Poplar/tulip poplar (Populus spp.
  and Liriodendron tulipifera), Spruce (Picea spp.), Tamarack (Larix laricina),
@@ -5629,9 +5681,10 @@ hspace{3.5mm}
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Empirical proportions from raw data (column 1), posterior mean predictions
- (column 2) and posterior standard deviations -- representing standard errors
- of prediction (column 3) for select taxa.
+Empirical proportions from raw data (column 1), predictions in the form
+ of posterior means (column 2) and uncertainty estimates in the form of
+ posterior standard deviations -- representing standard errors of prediction
+ (column 3) for select taxa.
 \end_layout
 
 \end_inset
@@ -5675,7 +5728,7 @@ name "fig:all_predictions"
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Posterior mean predictions for all taxa over the entire domain.
+Predictions (posterior means) for all taxa over the entire domain.
 \end_layout
 
 \end_inset
@@ -5693,14 +5746,18 @@ Posterior mean predictions for all taxa over the entire domain.
 \end_layout
 
 \begin_layout Standard
-The data product is publicly available at XX under YY license as version
- 0.3 as of April 2015.
+The data product is publicly available at XX (insert accession number) under
+ YY license as version 0.3 as of April 2015.
  The product is in the form of a netCDF-4 file, with dimensions x, y, and
  MCMC iteration.
  There is one variable per taxon.
  The PalEON project will continue to maintain this product, releasing new
  versions as additional data in Illinois, Indiana and Ohio are digitized.
  
+\end_layout
+
+\begin_layout Standard
+[comment on stability of hosting once get better feel for this]
 \end_layout
 
 \begin_layout Section
