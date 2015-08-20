@@ -1,8 +1,8 @@
 # code to generate figures for paper
+# run this code from ~/research/jmac/composition so use packrat controlled packages
 
-paperDir <- getwd()
+paperDir <- '~/research/jmac/composition_paper'
 
-setwd('~/research/jmac/composition')
 source("config")
 
 source(file.path(codeDir, "plot.R"))
@@ -15,6 +15,7 @@ require(maptools)
 require(rgdal)
 require(raster)
 require(gridExtra)
+
 
 # for distinguishing no trees from no data
 west_presence <- read.csv(file.path(dataDir, 'western.csv'))
