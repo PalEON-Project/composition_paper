@@ -53,6 +53,7 @@ d <- theme_clean(d)
 setwd(paperDir)
 
 pdf('fig1.pdf', width=4.85, height=3)
+#postscript('fig1.eps', width=4.85, height=3)
 print(d)
 dev.off()
 
@@ -87,6 +88,7 @@ for( taxon in focalTaxa ) {
 setwd(paperDir)
 
 pdf('fig2.pdf', width=7, height=10)
+#postscript('fig2.eps', width=7, height=10)
 do.call(grid.arrange, c(figs, nrow = length(focalTaxa), ncol = 3))
 dev.off()
 
@@ -94,7 +96,8 @@ scaling = .5
 ix=1
 iy=seq(0,1,len=300)
 iz=matrix(iy,nc=300)
-pdf(file='legendRaw.pdf',width=5/scaling,height=.7/scaling,paper="special")
+#postscript(file='legendRaw.pdf',width=5/scaling,height=.7/scaling,paper="special")
+pdf(file='legendRaw.eps',width=5/scaling,height=.7/scaling,paper="special")
 par(fig=c(0,1,0,1),mai=c(0.6,.2,0,.3),mgp=c(1.8,.7,0),cex.axis=1.5)
 cols <- rev(terrain.colors(length(propBreaks)-1))
 cols[1] <- terrain.colors(40)[39]
@@ -109,6 +112,7 @@ ix=1
 iy=seq(0,1,len=300)
 iz=matrix(iy,nc=300)
 pdf(file='legendProp.pdf',width=5/scaling,height=.7/scaling,paper="special")
+#postscript(file='legendProp.eps',width=5/scaling,height=.7/scaling,paper="special")
 par(fig=c(0,1,0,1),mai=c(0.6,.2,0,.3),mgp=c(1.8,.7,0),cex.axis=1.5)
 image(iy,ix,t(iz), yaxt = "n", xlab = "", xaxt='n', 
             ylab = "", col = rev(terrain.colors(length(propBreaks)-1)))
@@ -121,6 +125,7 @@ ix=1
 iy=seq(0,1,len=300)
 iz=matrix(iy,nc=300)
 pdf(file='legendSD.pdf',width=5/scaling,height=.7/scaling,paper="special")
+pdf(file='legendSD.eps',width=5/scaling,height=.7/scaling,paper="special")
 par(fig=c(0,1,0,1),mai=c(0.6,.2,0,.3),mgp=c(1.8,.7,0),cex.axis=1.5)
 image(iy,ix,t(iz), yaxt = "n", xlab = "", xaxt='n', 
             ylab = "", col = rev(heat.colors(length(psdBreaks)-1)))
@@ -140,8 +145,10 @@ propBreaks = c(0, 0.01, 0.05, 0.10, 0.15, 0.2, 0.3, 0.4, 0.5, 0.6, 0.8, 1)
 figHgt = 11
 figWth = 8.5
 
-pdf(file = 'fig3.pdf', height = figHgt, width = figWth)
-make_veg_map(data = pm, breaks = propBreaks, coords = coord, legendName = 'fitted proportions', map_data = usFortified, facet = TRUE, ncol = 3)
+
+pdf(file = 'fig3.eps', height = figHgt, width = figWth)m
+#postscript(file = 'fig3.pdf', height = figHgt, width = figWth)
+take_veg_map(data = pm, breaks = propBreaks, coords = coord, legendName = 'fitted proportions', map_data = usFortified, facet = TRUE, ncol = 3)
 dev.off()
 
 

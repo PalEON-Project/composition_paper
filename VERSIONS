@@ -1,0 +1,17 @@
+paper.lyx was final version converted to arXiv format in arxiv directory
+
+paper.lyx outputted to paper.tex 
+
+paper-plos.tex is result of applying plos template to paper.tex
+
+
+much monkeying to get fig2 to include all images
+eps in arxiv are from conversions (see arxiv/labbook)
+
+fig2: use fig2-eps-converted-to.pdf because it's smaller and when save as eps it blows up
+in ppt insert->photo->from file 
+shrink legend files (pdf input) to 20% (format->picture->size)
+save as pdf; open in acrobat and save as eps
+result is fig2.eps
+
+in submission use arxiv/fig{1,3}.eps

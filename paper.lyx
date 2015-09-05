@@ -359,22 +359,18 @@ check journal requirements for archiving and presentation; talk to Jody/Ann
 \end_layout
 
 \begin_layout Chunk
-
 <<setup, echo=FALSE>>= 
 \end_layout
 
 \begin_layout Chunk
-
 inputDir <- '/var/tmp/paciorek/paleon/comp/output'
 \end_layout
 
 \begin_layout Chunk
-
 version <- 0.4
 \end_layout
 
 \begin_layout Chunk
-
 @
 \end_layout
 
@@ -409,8 +405,8 @@ We present a gridded 8 km-resolution data product of the estimated composition
  In addition to specific regional questions, the data product can also serve
  as a baseline against which to investigate how forests and ecosystems change
  after intensive settlement.
- The data product is publicly available at [insert NIS information] as version
- 0.4 under the MIT license.
+ The data product is being made available at the NIS data portal as version
+ 0.4 under the CC BY license.
 \end_layout
 
 \begin_layout Abstract
@@ -2900,97 +2896,78 @@ reference "tab:score_cell_fivepercent"
 \end_layout
 
 \begin_layout Chunk
-
 <<tab1prep, echo=FALSE>>= 
 \end_layout
 
 \begin_layout Chunk
-
 setwd(inputDir)
 \end_layout
 
 \begin_layout Chunk
-
 for(run in c(101,102,104,105)) {
 \end_layout
 
 \begin_layout Chunk
-
 	load(paste0('PLScomposition_western_',version,'-',run,'-cvResults.Rda'))
 \end_layout
 
 \begin_layout Chunk
-
 	assign(paste0('results',run), results)
 \end_layout
 
 \begin_layout Chunk
-
 	assign(paste0('samples',run), samples)
 \end_layout
 
 \begin_layout Chunk
-
 }
 \end_layout
 
 \begin_layout Chunk
-
 resultsCAR = results101
 \end_layout
 
 \begin_layout Chunk
-
 resultsSPDE = results102
 \end_layout
 
 \begin_layout Chunk
-
 #resultsTPS = results103
 \end_layout
 
 \begin_layout Chunk
-
 samplesCAR = samples101
 \end_layout
 
 \begin_layout Chunk
-
 samplesSPDE = samples102
 \end_layout
 
 \begin_layout Chunk
-
 postProbsCell <- rep(0, 4)
 \end_layout
 
 \begin_layout Chunk
-
 postProbsCell[1] <- mean(samplesCAR[1,'cell',] < samplesSPDE[1,'cell',])
 \end_layout
 
 \begin_layout Chunk
-
 postProbsCell[2] <- mean(-samplesCAR[2,'cell',] < -samplesSPDE[2,'cell',])
 \end_layout
 
 \begin_layout Chunk
-
 postProbsCell[3] <- mean(samplesCAR[3,'cell',] < samplesSPDE[3,'cell',])
 \end_layout
 
 \begin_layout Chunk
-
 postProbsCell[4] <- mean(samplesCAR[4,'cell',] < samplesSPDE[4,'cell',])
 \end_layout
 
 \begin_layout Chunk
-
 #val_1_1 = sprintf("%5.0f", resultsCAR['brier','cell','post_mean_of_score'])
 \end_layout
 
 \begin_layout Chunk
-
 @
 \end_layout
 
@@ -4718,62 +4695,50 @@ reference "tab:coverage_cell_20percent"
 \end_layout
 
 \begin_layout Chunk
-
 <<tab2prep, echo=FALSE>>= 
 \end_layout
 
 \begin_layout Chunk
-
 resultsCAR = results104
 \end_layout
 
 \begin_layout Chunk
-
 resultsSPDE = results105
 \end_layout
 
 \begin_layout Chunk
-
 samplesCAR = samples104
 \end_layout
 
 \begin_layout Chunk
-
 samplesSPDE = samples105
 \end_layout
 
 \begin_layout Chunk
-
 postProbsCell <- rep(0, 4)
 \end_layout
 
 \begin_layout Chunk
-
 postProbsCell[1] <- mean(samplesCAR[1,'cell',] < samplesSPDE[1,'cell',])
 \end_layout
 
 \begin_layout Chunk
-
 postProbsCell[2] <- mean(-samplesCAR[2,'cell',] < -samplesSPDE[2,'cell',])
 \end_layout
 
 \begin_layout Chunk
-
 postProbsCell[3] <- mean(samplesCAR[3,'cell',] < samplesSPDE[3,'cell',])
 \end_layout
 
 \begin_layout Chunk
-
 postProbsCell[4] <- mean(samplesCAR[4,'cell',] < samplesSPDE[4,'cell',])
 \end_layout
 
 \begin_layout Chunk
-
 #val_1_1 = sprintf("%5.0f", resultsCAR['brier','cell','post_mean_of_score'])
 \end_layout
 
 \begin_layout Chunk
-
 @
 \end_layout
 
@@ -5747,52 +5712,42 @@ reference "tab:score_tree"
 \end_layout
 
 \begin_layout Chunk
-
 <<tab3prep, echo=FALSE>>= 
 \end_layout
 
 \begin_layout Chunk
-
 resultsCAR = results101
 \end_layout
 
 \begin_layout Chunk
-
 resultsSPDE = results102
 \end_layout
 
 \begin_layout Chunk
-
 samplesCAR = samples101
 \end_layout
 
 \begin_layout Chunk
-
 samplesSPDE = samples102
 \end_layout
 
 \begin_layout Chunk
-
 postProbsTree <- rep(0, 4)
 \end_layout
 
 \begin_layout Chunk
-
 postProbsTree[1] <- mean(samplesCAR[1,'tree',] < samplesSPDE[1,'tree',])
 \end_layout
 
 \begin_layout Chunk
-
 postProbsTree[2] <- mean(-samplesCAR[2,'tree',] < -samplesSPDE[2,'tree',])
 \end_layout
 
 \begin_layout Chunk
-
 #val_1_1 = sprintf("%5.0f", resultsCAR['brier','cell','post_mean_of_score'])
 \end_layout
 
 \begin_layout Chunk
-
 @
 \end_layout
 
@@ -6461,12 +6416,15 @@ name "fig:all_predictions"
 \end_layout
 
 \begin_layout Standard
-The data product is publicly available at the NIS Data Portal (accession
- number to be inserted when available) under the MIT license as version
- 0.4 as of August 2015.
+The data product is being made publicly available at the NIS Data Portal
+ (accession number to be inserted when available) under the CC BY license
+ as version 0.4 as of August 2015.
  The product is in the form of a netCDF-4 file, with dimensions x-coordinate,
  y-coordinate, and MCMC iteration.
  There is one variable per taxon.
+ In addition, dynamic visualizations of the product using the Shiny tool
+ are available at http://gandalf.berkeley.edu:3838/paciorek/setVegComp [this
+ URL is temporary and will be updated].
  The PalEON Project (in particular the first author) will continue to maintain
  this product, releasing new versions as additional data in Illinois, Indiana
  and Ohio are digitized.
