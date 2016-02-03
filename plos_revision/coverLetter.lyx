@@ -1,0 +1,148 @@
+#LyX 1.6.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 345
+\begin_document
+\begin_header
+\textclass letter
+\begin_preamble
+\usepackage{times,graphics}
+\end_preamble
+\options times
+\use_default_options false
+\language english
+\inputencoding auto
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\paperfontsize 12
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_amsmath 1
+\use_esint 0
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\leftmargin 1in
+\topmargin 1in
+\rightmargin 1in
+\bottommargin 1in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout My Address
+Department of Biostatistics
+\begin_inset Newline newline
+\end_inset
+
+Harvard School of Public Health
+\begin_inset Newline newline
+\end_inset
+
+655 Huntington Avenue
+\begin_inset Newline newline
+\end_inset
+
+Boston, MA 02115
+\end_layout
+
+\begin_layout Send To Address
+Editor, Theory and Methods
+\begin_inset Newline newline
+\end_inset
+
+Journal of the American Statistical Association
+\end_layout
+
+\begin_layout Opening
+To the editor:
+\end_layout
+
+\begin_layout Standard
+I am submitting the manuscript entitled "The importance of scale for spatial-con
+founding bias and precision of spatial regression estimators" to JASA, Theory
+ and Methods.
+ The manuscript addresses the performance of regression estimators in the
+ presence of residual spatial correlation.
+ While such analyses are common in applied statistics, to my knowledge there
+ has been little rigorous assessment of the statistical properties of models
+ that account for spatial correlation.
+ I develop a new framework to consider bias in such models, when the residual
+ spatial correlation is induced by an unmeasured confounder, as well as
+ assessing the precision of GLS and OLS estimation, showing the critical
+ importance of the spatial scales involved, both of the residual and of
+ the spatially-varying covariate of interest.
+ While the analytic calculations are straightforward, I believe the development
+ of the framework and the results shed light on an area about which little
+ appears to be known, despite the wide range of problems in which regressions
+ with spatial structure are conducted.
+ 
+\end_layout
+
+\begin_layout Standard
+Please note that the article contains a number of color figures.
+ I could easily convert Figs.
+ 1, 7, and 8 to black and white (possibly with color versions in the electronic
+ version), but I believe that ease of interpretation of Figs.
+ 2-6 would suffer in black and white as greyscale images are often difficult
+ to interpret.
+ However, I would be happy to discuss this further if the article were accepted
+ for publication.
+\end_layout
+
+\begin_layout Standard
+Also, please note that the research reported in the submitted manuscript
+ has been funded, in whole or in part, through the U.S.
+ National Institutes of Health, and the article's publication must comply
+ with the NIH Public Access Policy.
+ It appears that this is satisfied through JASA's policy that allows posting
+ of published articles in digital archives.
+\end_layout
+
+\begin_layout Standard
+As potential reviewers, you might consider Roger Peng (Johns Hopkins Biostatisti
+cs), Scott Zeger (Johns Hopkins Biostatistics), Thomas Lumley (Univ.
+ Washington Biostatistics), Paul Gustafson (Univ.
+ British Columbia Statistics), Jon Wakefield (Univ.
+ Washington Biostatistics), Lance Waller (Emory Biostatistics).
+\end_layout
+
+\begin_layout Standard
+Thank you for consideration of the manuscript.
+\end_layout
+
+\begin_layout Signature
+Christopher J.
+ Paciorek
+\begin_inset Newline newline
+\end_inset
+
+Assistant Professor, Department of Biostatistics
+\end_layout
+
+\begin_layout Closing
+Sincerely,
+\end_layout
+
+\end_body
+\end_document

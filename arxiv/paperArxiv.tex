@@ -105,7 +105,7 @@ Jason S. McLachlan\textsuperscript{7}}
 Madison, Wisconsin, USA}
 
 
-\lyxaddress{\textsuperscript{6}Department of Forestry and Wildlife Ecology,
+\lyxaddress{\textsuperscript{6}Department of Forest and Wildlife Ecology,
 University of Wisconsin, Madison, Wisconsin, USA}
 
 
@@ -141,7 +141,7 @@ Surveys, are aggregated at the township level in irregularly-shaped
 local administrative units. The product is based on a Bayesian statistical
 model fit to the count data that estimates composition on a regular
 8 km grid across the entire domain. The statistical model is designed
-to handle data from both the regular grid and the irregularly-sized
+to handle data from both the regular grid and the irregularly-shaped
 townships and allows us to estimate composition at locations with
 no data and to smooth over noise caused by limited counts in locations
 with data. Critically, the model also allows us to quantify uncertainty
@@ -363,7 +363,7 @@ filling gaps where no data are available, and
 cells and townships with data, we wish to quantify uncertainty because
 the empirical proportions represent estimates of the true proportions
 that could be calculated using the full population of all the trees
-in grid cell or township.
+in a grid cell or township.
 \end{enumerate}
 The result of fitting the Bayesian model via Markov chain Monte Carlo
 (MCMC) is a set of representative samples from the posterior distribution
@@ -418,7 +418,7 @@ taxa together, as any correlation will likely vary across space.
 In the next section, we consider two spatial models to define the
 structure of the $\alpha_{p}(s)$ processes, a standard conditional
 autoregressive model \citep{Bane:etal:2004} and a Gaussian Markov
-random field (MRF) approximation to a Gaussian process with Matern
+random field (MRF) approximation to a Gaussian process with \matern
 covariance \citep{Lind:etal:2011}. 
 
 
@@ -489,7 +489,7 @@ this defines a correlation matrix for all locations of interest.
 
 The \citet{Lind:etal:2011} approach allows us to consider MRF approximations
 to the \matern-based GP for $\nu=1$ and $\nu=2$. Our second spatial
-model is the Lindgren approximation for \matern-based GPs with $\nu=1$.
+model is this Lindgren approximation for \matern-based GPs with $\nu=1$.
 To implement the Lindgren model, one modifies the $Q$ matrix defined
 previously as follows. Let $a=4+\frac{1}{\rho^{2}}$. The diagonal
 elements of $Q$ are $4+a^{2}$. The entries corresponding to cardinal
@@ -581,7 +581,7 @@ the \textit{correlation} between the probabilities at \textit{locations}
 We developed an extension of the model described in previous sections
 to account for data at a different aggregation than our core 8 km
 grid. This extension introduces a new set of latent variables, one
-per tree, that indicate the grid cell in which the tree is located
+per tree,  that indicate  the grid cells in which the trees are located
 and can be sampled within the MCMC as additional unknown parameters.
 Specifically, $c_{tj}$ is the latent ``membership'' variable for
 tree $j$ in township $t$, $t=1,\ldots,T$. The prior for $c_{tj}$
@@ -649,7 +649,7 @@ calculations coded in C++ using the \emph{Rcpp} package \citep{Edde:Fran:2011}.
 We also make extensive use of sparse matrix representations and algorithms,
 using the \emph{spam} package in R \citep{Furr:Sain:2010}. All code
 is available on Github, including pre- and post-processing code, at
-https://github.com/Paleon-Project/composition. 
+https://github.com/PalEON-Project/composition. 
 
 
 \section{Model comparison\label{sec:Model-comparison}}
@@ -1151,7 +1151,7 @@ The authors are deeply indebted to all of the researchers over the
 years who have preserved, collected, and digitized survey records,
 in particular John Burk, Jim Dyer, Peter Marks, Robert McIntosh, Ed
 Schools, Ted Sickley, Ronald Stuckey, and the Ohio Biological Survey.
-We thank Madeline Ruid, Ben Seliger, Morgan Ross and Daniel Handel
+We thank Madeline Ruid, Ben Seliger, Morgan Ripp and Daniel Handel
 for processing of the southern Michigan data. Indiana and Illinois
 data were made possible through the hard work of many Notre Dame undergraduates
 in the McLachlan lab. This work was carried out by the PalEON Project
@@ -1170,7 +1170,7 @@ and from the Notre Dame Environmental Change Initiative.
 \subsection{MCMC details}
 
 Define $\bar{w}_{ip}=\frac{1}{n_{i}}{\displaystyle \sum_{j=1}^{n_{i}}W_{ijp}}$
-be the average of the $W$ values for the $p$th taxon in the $i$th
+as the average of the $W$ values for the $p$th taxon in the $i$th
 grid cell and $\bar{w}_{p}=\{\bar{w}_{ip}\},$ $i=1,\ldots,m$. Let
 $A$ be a diagonal matrix where $A_{ii}$ is the number of trees in
 the $i$th grid cell. When there are no trees in a grid cell, $\bar{w}_{ip}=0$

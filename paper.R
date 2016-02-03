@@ -46,14 +46,14 @@ presence_long <- presence_long[presence_long$value == 1, ]
 col = gray(c(.2,.5,.8))
 d <- ggplot(presence_long, aes(X, Y, group = id)) + geom_polygon(aes(fill = as.factor(value))) + 
   scale_fill_manual(values = col, guide = FALSE) 
-d <- add_map_albers(plot_obj = d, map_data = usFortified, dat = presence_long)
+d <- add_map_albers(plot_obj = d, map_data = paleonFortified, dat = presence_long)
 d <- d + scale_y_continuous(limits = c(70000, 1490000)) 
 d <- theme_clean(d)
 
 setwd(paperDir)
 
-pdf('fig1.pdf', width=4.85, height=3)
-#postscript('fig1.eps', width=4.85, height=3)
+#pdf('fig1.pdf', width=4.85, height=3)
+postscript('fig1.eps', width=4.85, height=3)
 print(d)
 dev.off()
 
@@ -72,6 +72,10 @@ figWthIndiv = 22*.5
 psd[psd > .25] = 0.25
 psdBreaks = c(0, 0.01, 0.03, 0.05, 0.075, 0.10, 0.15, 0.2, 0.25)
 
+cv = psd/pm
+cv[cv > 1.4] = 1.4
+cvBreaks = seq(0, 1.4, by = 0.2)
+
 
 
 
@@ -79,25 +83,27 @@ figs <- list()
 length(figs) <- length(focalTaxa) * 3
 cnt <- 1
 for( taxon in focalTaxa ) {
-  figs[[cnt]] <- make_areal_map(data = taxon_dat_long, variables = taxon, breaks = propBreaks, legendName = 'raw proportions', map_data = usFortified, facet = FALSE, ncol = 1, legend = FALSE, title = FALSE) + theme(plot.margin = unit(rep(0,4), 'lines'))
-  figs[[cnt + 1]] <- make_veg_map(data = pm[ , taxon, drop = FALSE], breaks = propBreaks, coords = coord, legendName = 'fitted proportions', map_data = usFortified, facet = FALSE, ncol = 1, legend = FALSE) + theme(plot.margin = unit(rep(0,4), 'lines'))
-  figs[[cnt + 2]] <- make_veg_map(data = psd[ , taxon, drop = FALSE], breaks = psdBreaks, coords = coord, legendName = 'standard error', map_data = usFortified, facet = FALSE, ncol = 1, legend = FALSE, col = heat.colors, title = FALSE) + theme(plot.margin = unit(rep(0,4), 'lines'))
+  figs[[cnt]] <- make_areal_map(data = taxon_dat_long, variables = taxon, breaks = propBreaks, legendName = 'raw proportions', map_data = paleonFortified, facet = FALSE, ncol = 1, legend = FALSE, title = FALSE) + theme(plot.margin = unit(rep(0,4), 'lines'))
+  figs[[cnt + 1]] <- make_veg_map(data = pm[ , taxon, drop = FALSE], breaks = propBreaks, coords = coord, legendName = 'fitted proportions', map_data = paleonFortified, facet = FALSE, ncol = 1, legend = FALSE) + theme(plot.margin = unit(rep(0,4), 'lines'))
+  figs[[cnt + 2]] <- make_veg_map(data = psd[ , taxon, drop = FALSE], breaks = psdBreaks, coords = coord, legendName = 'standard error', map_data = paleonFortified, facet = FALSE, ncol = 1, legend = FALSE, col = heat.colors, title = FALSE) + theme(plot.margin = unit(rep(0,4), 'lines'))
+#  figs[[cnt + 2]] <- make_veg_map(data = cv[ , taxon, drop = FALSE], breaks = cvBreaks, coords = coord, legendName = 'standard error', map_data = paleonFortified, facet = FALSE, ncol = 1, legend = FALSE, col = heat.colors, title = FALSE) + theme(plot.margin = unit(rep(0,4), 'lines'))
   cnt <- cnt + 3
 }
 
 setwd(paperDir)
 
-pdf('fig2.pdf', width=7, height=10)
+#pdf('fig2.pdf', width=7, height=10)
 #postscript('fig2.eps', width=7, height=10)
-do.call(grid.arrange, c(figs, nrow = length(focalTaxa), ncol = 3))
-dev.off()
+#do.call(grid.arrange, c(figs, nrow = length(focalTaxa), ncol = 3))
+#dev.off()
 
 scaling = .5
+
 ix=1
 iy=seq(0,1,len=300)
 iz=matrix(iy,nc=300)
 #postscript(file='legendRaw.pdf',width=5/scaling,height=.7/scaling,paper="special")
-pdf(file='legendRaw.eps',width=5/scaling,height=.7/scaling,paper="special")
+#pdf(file='legendRaw.eps',width=5/scaling,height=.7/scaling,paper="special")
 par(fig=c(0,1,0,1),mai=c(0.6,.2,0,.3),mgp=c(1.8,.7,0),cex.axis=1.5)
 cols <- rev(terrain.colors(length(propBreaks)-1))
 cols[1] <- terrain.colors(40)[39]
@@ -106,12 +112,12 @@ image(iy,ix,t(iz), yaxt = "n", xlab = "", xaxt='n',
 axis(1, at = seq(0,1, len = length(propBreaks)), labels = as.character(propBreaks),
      cex.axis = 1.8, tick = FALSE)
 box()
-dev.off()
+#dev.off()
 
 ix=1
 iy=seq(0,1,len=300)
 iz=matrix(iy,nc=300)
-pdf(file='legendProp.pdf',width=5/scaling,height=.7/scaling,paper="special")
+#pdf(file='legendProp.pdf',width=5/scaling,height=.7/scaling,paper="special")
 #postscript(file='legendProp.eps',width=5/scaling,height=.7/scaling,paper="special")
 par(fig=c(0,1,0,1),mai=c(0.6,.2,0,.3),mgp=c(1.8,.7,0),cex.axis=1.5)
 image(iy,ix,t(iz), yaxt = "n", xlab = "", xaxt='n', 
@@ -119,21 +125,33 @@ image(iy,ix,t(iz), yaxt = "n", xlab = "", xaxt='n',
 axis(1, at = seq(0,1, len = length(propBreaks)), labels = as.character(propBreaks),
      cex.axis = 1.8, tick = FALSE)
 box()
-dev.off()
+#dev.off()
 
 ix=1
 iy=seq(0,1,len=300)
 iz=matrix(iy,nc=300)
 pdf(file='legendSD.pdf',width=5/scaling,height=.7/scaling,paper="special")
-pdf(file='legendSD.eps',width=5/scaling,height=.7/scaling,paper="special")
+# postscript(file='legendSD.eps',width=5/scaling,height=.7/scaling,paper="special")
 par(fig=c(0,1,0,1),mai=c(0.6,.2,0,.3),mgp=c(1.8,.7,0),cex.axis=1.5)
 image(iy,ix,t(iz), yaxt = "n", xlab = "", xaxt='n', 
             ylab = "", col = rev(heat.colors(length(psdBreaks)-1)))
 axis(1, at = seq(0,1, len = length(psdBreaks)), labels = as.character(psdBreaks),
      cex.axis = 1.8, tick = FALSE)
 box()
-dev.off()
+#dev.off()
 
+ix=1
+iy=seq(0,1,len=300)
+iz=matrix(iy,nc=300)
+#pdf(file='legendCV.pdf',width=5/scaling,height=.7/scaling,paper="special")
+# postscript(file='legendSD.eps',width=5/scaling,height=.7/scaling,paper="special")
+par(fig=c(0,1,0,1),mai=c(0.6,.2,0,.3),mgp=c(1.8,.7,0),cex.axis=1.5)
+image(iy,ix,t(iz), yaxt = "n", xlab = "", xaxt='n', 
+            ylab = "", col = rev(heat.colors(length(cvBreaks)-1)))
+axis(1, at = seq(0,1, len = length(cvBreaks)), labels = as.character(cvBreaks),
+     cex.axis = 1.8, tick = FALSE)
+box()
+#dev.off()
 
   
 # Fig 3
@@ -146,10 +164,10 @@ figHgt = 11
 figWth = 8.5
 
 
-pdf(file = 'fig3.eps', height = figHgt, width = figWth)m
-#postscript(file = 'fig3.pdf', height = figHgt, width = figWth)
-take_veg_map(data = pm, breaks = propBreaks, coords = coord, legendName = 'fitted proportions', map_data = usFortified, facet = TRUE, ncol = 3)
-dev.off()
+#pdf(file = 'fig3.pdf', height = figHgt, width = figWth)
+#postscript(file = 'fig3.eps', height = figHgt, width = figWth)
+make_veg_map(data = pm, breaks = propBreaks, coords = coord, legendName = 'fitted proportions', map_data = paleonFortified, facet = TRUE, ncol = 3)
+#dev.off()
 
 
   

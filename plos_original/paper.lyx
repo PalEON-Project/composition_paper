@@ -1,0 +1,7409 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+\usepackage{times}
+\usepackage{graphics,natbib}
+
+\newcommand{\matern}{Mat\'{e}rn }
+\newcommand{\N}{\mathcal{N}}
+\end_preamble
+\use_default_options true
+\begin_modules
+knitr
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine natbib_authoryear
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1in
+\topmargin 1in
+\rightmargin 1in
+\bottommargin 1in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Statistically-estimated tree composition for the northeastern United States
+ 
+\begin_inset Newline newline
+\end_inset
+
+at the time of Euro-American settlement
+\end_layout
+
+\begin_layout Author
+Christopher J.
+ Paciorek
+\begin_inset script superscript
+
+\begin_layout Plain Layout
+1,*
+\end_layout
+
+\end_inset
+
+, Simon J.
+ Goring
+\begin_inset script superscript
+
+\begin_layout Plain Layout
+2,&
+\end_layout
+
+\end_inset
+
+, Andrew L.
+ Thurman
+\begin_inset script superscript
+
+\begin_layout Plain Layout
+3,&
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Newline newline
+\end_inset
+
+Charles V.
+ Cogbill
+\begin_inset script superscript
+
+\begin_layout Plain Layout
+4
+\end_layout
+
+\end_inset
+
+, John W.
+ Williams
+\begin_inset script superscript
+
+\begin_layout Plain Layout
+2,3
+\end_layout
+
+\end_inset
+
+, David J.
+ Mladenoff
+\begin_inset script superscript
+
+\begin_layout Plain Layout
+6
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Newline newline
+\end_inset
+
+Jody A.
+ Peters
+\begin_inset script superscript
+
+\begin_layout Plain Layout
+7
+\end_layout
+
+\end_inset
+
+, Jun Zhu
+\begin_inset script superscript
+
+\begin_layout Plain Layout
+8
+\end_layout
+
+\end_inset
+
+, and Jason S.
+ McLachlan
+\begin_inset script superscript
+
+\begin_layout Plain Layout
+7
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Address
+\begin_inset script superscript
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+Department of Statistics, University of California, Berkeley, California,
+ USA
+\end_layout
+
+\begin_layout Address
+\begin_inset script superscript
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+
+Department of Geography, University of Wisconsin, Madison, Wisconsin, USA
+\end_layout
+
+\begin_layout Address
+\begin_inset script superscript
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+
+Department of Statistics, University of Iowa, Iowa City, Iowa, USA
+\end_layout
+
+\begin_layout Address
+\begin_inset script superscript
+
+\begin_layout Plain Layout
+4
+\end_layout
+
+\end_inset
+
+Harvard Forest, Harvard University, Petersham, Massachusetts, USA
+\end_layout
+
+\begin_layout Address
+\begin_inset script superscript
+
+\begin_layout Plain Layout
+5
+\end_layout
+
+\end_inset
+
+Center for Climatic Research, University of Wisconsin, Madison, Wisconsin,
+ USA
+\end_layout
+
+\begin_layout Address
+\begin_inset script superscript
+
+\begin_layout Plain Layout
+6
+\end_layout
+
+\end_inset
+
+Department of Forest and Wildlife Ecology, University of Wisconsin, Madison,
+ Wisconsin, USA
+\end_layout
+
+\begin_layout Address
+\begin_inset script superscript
+
+\begin_layout Plain Layout
+7
+\end_layout
+
+\end_inset
+
+Department of Biological Sciences, University of Notre Dame, Notre Dame,
+ Indiana, USA
+\end_layout
+
+\begin_layout Address
+\begin_inset script superscript
+
+\begin_layout Plain Layout
+8
+\end_layout
+
+\end_inset
+
+Department of Statistics, University of Wisconsin, Madison, Wisconsin, USA
+\end_layout
+
+\begin_layout Address
+\begin_inset script superscript
+
+\begin_layout Plain Layout
+*
+\end_layout
+
+\end_inset
+
+Corresponding author; E-mail: paciorek@stat.berkeley.edu
+\end_layout
+
+\begin_layout Address
+\begin_inset script superscript
+
+\begin_layout Plain Layout
+&
+\end_layout
+
+\end_inset
+
+These authors contributed equally to this work.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Quote
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Short title: Settlement-era northeastern U.S.
+ tree composition
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO:
+\end_layout
+
+\begin_layout Plain Layout
+focus on PLOS One, but Nature's Scientific Data is a possibility
+\end_layout
+
+\begin_layout Plain Layout
+check journal requirements for archiving and presentation; talk to Jody/Ann
+ about archiving/DOI
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chunk
+
+<<setup, echo=FALSE>>= 
+\end_layout
+
+\begin_layout Chunk
+
+inputDir <- '/var/tmp/paciorek/paleon/comp/output'
+\end_layout
+
+\begin_layout Chunk
+
+version <- 0.4
+\end_layout
+
+\begin_layout Chunk
+
+@
+\end_layout
+
+\begin_layout Abstract
+We present a gridded 8 km-resolution data product of the estimated composition
+ of tree taxa at the time of Euro-American settlement of the northeastern
+ United States and the statistical methodology used to produce the product
+ from trees recorded by land surveyors.
+ Composition is defined as the proportion of stems larger than approximately
+ 20 cm diameter at breast height for 22 tree taxa, generally at the genus
+ level.
+ The data come from settlement-era public survey records that are transcribed
+ and then aggregated spatially, giving count data.
+ The domain is divided into two regions, eastern (Maine to Ohio) and midwestern
+ (Indiana to Minnesota).
+ Public Land Survey point data in the midwestern region (ca.
+ 0.8-km resolution) are aggregated to a regular 8 km grid, while data in
+ the eastern region, from Town Proprietor Surveys, are aggregated at the
+ township level in irregularly-shaped local administrative units.
+ The product is based on a Bayesian statistical model fit to the count data
+ that estimates composition on a regular 8 km grid across the entire domain.
+ The statistical model is designed to handle data from both the regular
+ grid and the irregularly-shaped townships and allows us to estimate composition
+ at locations with no data and to smooth over noise caused by limited counts
+ in locations with data.
+ Critically, the model also allows us to quantify uncertainty in our composition
+ estimates, making the product suitable for applications employing data
+ assimilation.
+ We expect this data product to be useful for understanding the state of
+ vegetation in the northeastern United States prior to large-scale Euro-American
+ settlement.
+ In addition to specific regional questions, the data product can also serve
+ as a baseline against which to investigate how forests and ecosystems change
+ after intensive settlement.
+ The data product is being made available at the NIS data portal as version
+ 0.4 under the CC BY license.
+\end_layout
+
+\begin_layout Abstract
+Keywords: biogeography, species composition, old-growth forests, spatial
+ modeling, Bayesian statistical model, vegetation mapping
+\end_layout
+
+\begin_layout Section
+Introduction
+\end_layout
+
+\begin_layout Standard
+Historical datasets provide critical context to understand forest ecology.
+ They allow researchers to define `baseline' conditions for conservation
+ management, to understand ecosystem processes at decadal and centennial
+ scales, to track forest responses to shifting climates, and, particularly
+ in regions with widespread land use change, to understand the extent to
+ which forests after conversion and regeneration differ from the original
+ forest cover.
+\end_layout
+
+\begin_layout Standard
+Euro-American settlement and subsequent land use change occurred in a time-trans
+ient fashion across North America and were accompanied by land surveys needed
+ to demarcate land for land tenure and use.
+ Various systems were used by surveyors to locate legal boundary markers,
+ usually by recording and marking trees adjacent to survey markers.
+ These data provide vegetation information that can be mapped and used quantitat
+ively to represent the period of settlement.
+ Early surveys (from 1620 until 1825) in the northeastern United States
+ provide spatially-aggregated data at the township level 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+citep{Cogb:etal:2002,thompson2013four}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+, with typical township size on the order of 200 
+\begin_inset Formula $\mbox{km}^{2}$
+\end_inset
+
+ and no information about the locations of individual trees; we refer to
+ these as the Town Proprietor Survey (TPS).
+ Later surveys after the establishment of the U.S.
+ Public Land Survey System (PLS) by the General Land Office (GLO) provide
+ point-level data along a regular grid, with one-half mile (800 m) spacing,
+ for Ohio and westward during the period 1785 to 1907 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+citep{bourdo1956review,pattison1957beginnings,schulte2001original,goring2015comp
+osition}
+\end_layout
+
+\end_inset
+
+.
+ At each point 2-4 trees were identified, and the common name, diameter
+ at breast height, and distance and bearing from the point were recorded.
+ Survey instructions during the PLS varied through time and by point type.
+ Accounting for this variation requires data screening to maximize consistency
+ among points and the application of spatially-varying correction factors
+ 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "cogbill2015corrections, goring2015composition"
+
+\end_inset
+
+ to accurately assess tree stem density, basal area and biomass from the
+ early settlement records, but the impact on composition estimates is limited
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+citep{liu2011broadscale}
+\end_layout
+
+\end_inset
+
+.
+ Surveyors sometimes used ambiguous common names, which requires matching
+ to scientific names and standardization 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+citep{mladenoff2002narrowing,goring2015composition}
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Logging, agriculture, and land abandonment have left an indelible mark on
+ forests in the northeastern United States 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+citep{foster1998land,rhemtulla2009legacies,thompson2013four,goring2015compositio
+n}
+\end_layout
+
+\end_inset
+
+.
+ However most studies have assessed these effects in individual states or
+ smaller domains 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+citep{friedman2005regional,rhemtulla2009historical}
+\end_layout
+
+\end_inset
+
+ and with various spatial resolutions, from townships (36 square miles)
+ to forest zones of hundreds or thousands of square miles.
+ 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "goring2015composition"
+
+\end_inset
+
+ provide a new dataset of forest composition, biomass, and stem density
+ based on PLS data for the upper Midwest that is resolved to an 8 km by
+ 8 km grid cell scale, providing broad spatial coverage at a spatial scale
+ that can be compared to modern forests using Forest Inventory and Analysis
+ products 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+citep{gray2012forest}
+\end_layout
+
+\end_inset
+
+.
+ Combined with additional, coarsely-sampled PLS data from Illinois and Indiana,
+ newly-digitized data from southern Michigan, and with the TPS data, this
+ gives us raw data for much of the northeastern United States.
+ However, there are several limitations of using the raw data that can be
+ alleviated by the use of a statistical model to develop a statistically-estimat
+ed data product.
+ First, the PLS and TPS data only provide estimates of within-cell variance
+ that do not account for information from nearby locations.
+ Second, there are data gaps: the available digitized data from Illinois
+ and Indiana represent a small fraction of those states and missing townships
+ are common in the TPS data.
+ Third, the TPS and PLS data have fundamentally different sampling design
+ and spatial resolution.
+ Our statistical model allows us to provide a spatially-complete data product
+ of settlement-era tree composition for a common 8 km grid with uncertainty
+ across the northeastern U.S.
+\end_layout
+
+\begin_layout Standard
+In Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Data"
+
+\end_inset
+
+ we describe the data sources, while Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Statistical-model"
+
+\end_inset
+
+ describes our statistical models.
+ In Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Model-comparison"
+
+\end_inset
+
+ we quantitatively compare competing statistical specifications, and in
+ Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Data-product"
+
+\end_inset
+
+ we describe the final data product.
+ In Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Discussion"
+
+\end_inset
+
+ we discuss limitations of the statistical model, and we list related data
+ products under development.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Properly assessing uncertainty in ecological data is imperative to understanding
+ and modelling ecological processes 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "cressie2009accounting"
+
+\end_inset
+
+.
+ In this way, a model that can account for the spatial structure of the
+ underlying PLS and TPS data, and provide reliable estimates of uncertainty
+ across the northeastern United States, provides a valuable tool for researchers
+ interested in the ecological structure and function of forests at longer
+ time scales.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Data
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Data"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The raw data were obtained from land division survey records collated and
+ digitized from across the northeastern U.S.
+ by a number of researchers (Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Spatial-domain"
+
+\end_inset
+
+).
+ For the states of Minnesota, Wisconsin, Illinois, Indiana, and Michigan
+ (the midwestern subdomain), digitized data are available at PLS survey
+ point locations and have been aggregated to a regular 8 km grid in the
+ Albers projection.
+ (Note that for Indiana and Illinois, at the moment trees are associated
+ with township centroids and then assigned to 8 km grid cells based on the
+ centroid but in the near future we will have point locations available
+ for each tree.) For the states of Ohio, Pennsylvania, New Jersey, New York
+ and the six New England states (the eastern subdomain), data are aggregated
+ at the township level.
+ There are also data from a single township in Quebec and a single township
+ in northern Delaware.
+ Digitization of PLS data in Minnesota, Wisconsin and Michigan is essentially
+ complete, with PLS data for nearly all 8 km grid cells, but data in Illinois
+ and Indiana represent a sample of the full set of grid cells, with survey
+ record transcription ongoing.
+ Data for the eastern states are available for a subset of the full set
+ of townships covering the domain; the TPS data for some townships were
+ lost, incomplete, or have not been located 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+citep{Cogb:etal:2002}
+\end_layout
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:domain"
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename fig1.pdf
+	scale 130
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Spatial domain of the northeastern United States, with locations with data
+ shown in gray.
+ Locations are grid cells in midwestern portion and townships in eastern
+ portion.
+ In addition to locations without data being indicated in white, grid cells
+ completely covered in water are white (e.g., a few locations in the northwestern
+ portion of the domain in the states of Minnesota and Wisconsin).
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Spatial-domain"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Note that surveys occurred over a period of more than 200 years as European
+ colonists (before U.S.
+ independence) and the United States settled what is now the northeastern
+ and midwestern United States.
+ Our estimates are for the period of settlement represented by the survey
+ data and therefore are time-transgressive; they do not represent any single
+ point in time across the domain, but rather the state of the landscape
+ at the time just prior to widespread Euro-American settlement and land
+ use 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+citep{Whit:1996,Cogb:etal:2002}
+\end_layout
+
+\end_inset
+
+.
+ These forest composition datasets do include the effects of Native American
+ land use and early Euro-American settlement activities 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+citep[e.g.,][]{Blac:etal:2006}
+\end_layout
+
+\end_inset
+
+, but it is likely that the imprint of this earlier land use is highly concentra
+ted rather than spatially extensive 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+citep{munoz2014defining}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Extensive details on the upper Midwest (Minnesota, Wisconsin, Michigan)
+ data and processing steps are available in 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cite{goring2015composition}
+\end_layout
+
+\end_inset
+
+; key elements include the use of only corner points, the use of only the
+ two closest trees at each corner point, spatially-varying correction factors
+ for sampling effort, and a standardized taxonomy table.
+ The lower Midwest (Illinois, Indiana) data were purchased from the Indiana
+ State Archives (Indiana) and Hubtack Document Resources (hubtack.com; Illinois)
+ and processed using similar steps as for the upper Midwest data.
+ Digitization of the Illinois and Indiana data is still underway, so many
+ grid cells contained no data at the time the statistical model was fit.
+ Note that the number of trees per grid cell varies depending on the number
+ of survey points in a cell, with an average of 124 trees per cell.
+ The gridded data at the 8 km resolution for the upper Midwest are available
+ through the NIS Data portal (accession number and version to be inserted
+ when available).
+ The TPS data were compiled by C.V.
+ Cogbill from a myriad of archival sources representing land division surveys
+ conducted in connection with local settlement.
+ 
+\end_layout
+
+\begin_layout Standard
+The aggregation into taxonomic groups is primarily at the genus level but
+ is at the species level in some cases of monospecific genera.
+ We model the following 22 taxa plus an 
+\begin_inset Quotes eld
+\end_inset
+
+other hardwood
+\begin_inset Quotes erd
+\end_inset
+
+ category: Atlantic white cedar (
+\emph on
+Chamaecyparis thyoides
+\emph default
+), Ash (
+\emph on
+Fraxinus spp.
+\emph default
+), Basswood (
+\emph on
+Tilia americana
+\emph default
+), Beech (
+\emph on
+Fagus grandifolia)
+\emph default
+, Birch (
+\emph on
+Betula spp.
+\emph default
+), Black gum/sweet gum (
+\emph on
+Nyssa sylvatica
+\emph default
+ and 
+\emph on
+Liquidambar styraciflua
+\emph default
+), Cedar/juniper (
+\emph on
+Juniperus virginiana
+\emph default
+ and 
+\emph on
+Thuja occidentalis
+\emph default
+), Cherry (
+\emph on
+Prunus spp.
+\emph default
+), Chestnut (
+\emph on
+Castanea dentata
+\emph default
+), Dogwood (
+\emph on
+Cornus spp.
+\emph default
+), Elm (
+\emph on
+Ulmus spp.
+\emph default
+), Fir (
+\emph on
+Abies balsamea
+\emph default
+), Hemlock (
+\emph on
+Tsuga canadensis
+\emph default
+), Hickory (
+\emph on
+Carya spp.
+\emph default
+), Ironwood (
+\emph on
+Carpinus caroliniana
+\emph default
+ and 
+\emph on
+Ostrya virginiana
+\emph default
+), Maple (
+\emph on
+Acer spp.
+\emph default
+), Oak (
+\emph on
+Quercus spp.
+\emph default
+), Pine (
+\emph on
+Pinus spp.
+\emph default
+), Poplar/tulip poplar (
+\emph on
+Populus spp.
+\emph default
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+~
+\end_layout
+
+\end_inset
+
+and 
+\emph on
+Liriodendron tulipifera
+\emph default
+), Spruce (
+\emph on
+Picea spp.
+\emph default
+), Tamarack (
+\emph on
+Larix laricina
+\emph default
+), and Walnut (
+\emph on
+Juglans spp.
+\emph default
+).
+ Note that in several cases (black gum/sweet gum, ironwood, poplar/tulip
+ poplar, cedar/juniper), because of ambiguity in the common tree names used
+ by surveyors, a group represents trees from different genera or even families.
+ For the midwestern subdomain we do not fit statistical models for Atlantic
+ white cedar and chestnut as these species have 0 and 7 trees present, respectiv
+ely.
+ The taxa grouped into the other hardwood category are those for which fewer
+ than roughly 2000 trees were present in the dataset; however we include
+ Atlantic white cedar explicitly despite it only having 336 trees in the
+ dataset because of specific ecological interest in Atlantic white cedar
+ wetlands.
+ 
+\end_layout
+
+\begin_layout Standard
+Diameters are only recorded in the PLS data.
+ Although surveyors avoided using small trees, there was no consistent lower
+ diameter limit.
+ The PLS data generally represent trees greater than 8 inches (~20 cm) diameter
+ at breast height (dbh), but with some trees as small as 1 inch dbh (smaller
+ trees were much more common in far northern Minnesota).
+ TPS data have no information about dbh, but the trees were large enough
+ to blaze and are presumed to be relatively large trees useful for marking
+ property boundaries.
+\end_layout
+
+\begin_layout Standard
+There are approximately 860,000 trees in the midwestern subdomain and 420,000
+ trees in the eastern subdomain.
+ In the midwestern subdomain, oak is the most common taxon and pine the
+ second most common, while in the eastern subdomain oak is the most common
+ and beech the second most common.
+\end_layout
+
+\begin_layout Standard
+Our domain is a rectangle covering all of the states using a metric Albers
+ (Great Lakes and St.
+ Lawrence) projection (PROJ4: EPSG:3175), with the rectangle split into
+ 8 km cells, arranged in a 296 by 180 grid of cells, with the centroid of
+ the cell in the southwest corner located at (-71000 m, 58000 m).
+ For the midwestern subdomain we use the western-most 146 by 180 grid of
+ cells.
+ For the eastern subdomain we use the eastern-most 180 by 180 grid of cells
+ and then omit 23 rows of cells in the north and 17 rows of cells in the
+ south, as these grid cells are outside of the states containing data.
+\end_layout
+
+\begin_layout Section
+Statistical model
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Statistical-model"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We fit a Bayesian statistical model to the data, with two primary goals:
+\end_layout
+
+\begin_layout Enumerate
+To estimate composition on a regular grid across the entire domain, filling
+ gaps where no data are available, and
+\end_layout
+
+\begin_layout Enumerate
+To quantify uncertainty in composition at all locations.
+ Even in grid cells and townships with data, we wish to quantify uncertainty
+ because the empirical proportions represent estimates of the true proportions
+ that could be calculated using the full population of all the trees in
+ a grid cell or township.
+\end_layout
+
+\begin_layout Standard
+The result of fitting the Bayesian model via Markov chain Monte Carlo (MCMC)
+ is a set of representative samples from the posterior distribution for
+ the composition in the 23 taxonomic groupings at each of the grid cells.
+ These samples are the data product (described further in the Data Product
+ section) and can be used in subsequent analyses.
+ The mean and standard deviation of the samples for each pair of cell and
+ taxon represent our best estimate (i.e., prediction) of composition and a
+ Bayesian 
+\begin_inset Quotes eld
+\end_inset
+
+standard error
+\begin_inset Quotes erd
+\end_inset
+
+ quantifying the uncertainty in the estimate.
+ 
+\end_layout
+
+\begin_layout Subsection
+Data model
+\end_layout
+
+\begin_layout Standard
+We start by describing the basic model for those states for which we have
+ raw data on the 8 km grid, and in Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Model-for-township"
+
+\end_inset
+
+ we describe the extension of the model to accommodate data aggregated at
+ the township level.
+\end_layout
+
+\begin_layout Standard
+The statistical model treats the observations as coming from a multinomial
+ distribution with a (latent) vector of proportions for each grid cell,
+ 
+\begin_inset Formula 
+\[
+y_{i}\sim\mbox{Multi}(n_{i},\theta(s_{i})),
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $y_{i}$
+\end_inset
+
+ is the vector of counts for the 
+\begin_inset Formula $P$
+\end_inset
+
+ taxa at the 
+\begin_inset Formula $i$
+\end_inset
+
+th cell, 
+\begin_inset Formula $n_{i}$
+\end_inset
+
+ is the number of trees counted in the cell, and 
+\begin_inset Formula $\theta(s_{i})$
+\end_inset
+
+ is the vector of unknown proportions for those taxa at that cell.
+ Note that we use a standard multinomial distribution without overdispersion,
+ because the set of trees in the dataset is roughly uniformly sampled across
+ the cells or townships 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+citep{goring2015composition}
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The proportions, 
+\begin_inset Formula $\theta_{p}(s_{i}),\, p=1,\ldots,P$
+\end_inset
+
+, are modeled spatially by a set of 
+\begin_inset Formula $P$
+\end_inset
+
+ Gaussian spatial processes, one per taxon, 
+\begin_inset Formula $\alpha_{p}(s_{i}),\, p=1,\ldots,P$
+\end_inset
+
+.
+ This collection of processes defines a multivariate spatial process for
+ composition.
+ The 
+\begin_inset Formula $\alpha_{p}(s)$
+\end_inset
+
+ processes are defined on the 8 km grid, 
+\begin_inset Formula $\alpha_{p}=\{\alpha_{p}(s_{1}),\ldots,\alpha_{p}(s_{m})\}$
+\end_inset
+
+ for the 
+\begin_inset Formula $m$
+\end_inset
+
+ grid cells.
+ In Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Latent-Variable-Model"
+
+\end_inset
+
+ we introduce a multinomial probit model that relates the 
+\begin_inset Formula $\alpha_{p}(s)$
+\end_inset
+
+ processes to the proportion processes, 
+\begin_inset Formula $\theta_{p}(s)$
+\end_inset
+
+, via the introduction of latent variables, with an implicit sum-to-one
+ constraint, 
+\begin_inset Formula $\sum_{p=1}^{P}\theta_{p}(s)=1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+At each grid cell, the proportions necessarily sum to one; this constraint
+ is imposed via the log-ratio transformation, which defines the proportion
+ for taxon 
+\begin_inset Formula $p$
+\end_inset
+
+ at cell 
+\begin_inset Formula $i$
+\end_inset
+
+ to be
+\begin_inset Formula 
+\[
+\theta_{p}(s_{i})=\frac{\log(\alpha_{p}(s_{i}))}{\sum_{j=1}^{P}\exp(\alpha_{j}(s_{i})};
+\]
+
+\end_inset
+
+This transformation is the multivariate analogue of the logit transformation.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The critical component of the statistical model is the representation of
+ 
+\begin_inset Formula $\alpha_{p}(s)$
+\end_inset
+
+ as a spatial process.
+ This process is a prior structure that serves to smooth across noise in
+ the observations and allows for interpolation to locations with no data.
+ Apart from the sum-to-one constraint, the taxa are considered to be independent
+ in the prior.
+ We did not want to impose any structure that ties the different taxa together,
+ as any correlation will likely vary across space.
+\end_layout
+
+\begin_layout Standard
+In the next section, we consider two spatial models to define the structure
+ of the 
+\begin_inset Formula $\alpha_{p}(s)$
+\end_inset
+
+ processes, a standard conditional autoregressive model 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+citep{Bane:etal:2004}
+\end_layout
+
+\end_inset
+
+ and a Gaussian Markov random field (MRF) approximation to a Gaussian process
+ with 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+matern
+\end_layout
+
+\end_inset
+
+ covariance 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+citep{Lind:etal:2011}
+\end_layout
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Subsection
+Spatial process models
+\end_layout
+
+\begin_layout Standard
+MRF models work directly with the precision matrix of the values of the
+ spatial process, so calculation of the prior density of 
+\begin_inset Formula $\alpha_{p}$
+\end_inset
+
+ is computationally simple 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+citep{Rue:Held:2005}
+\end_layout
+
+\end_inset
+
+, but in situations where the likelihood is not normal, it can be difficult
+ to set up effective MCMC algorithms that are able to move in the high-dimension
+al space of 
+\begin_inset Formula $\alpha_{p}$
+\end_inset
+
+.
+ The latent variable representation of Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Latent-Variable-Model"
+
+\end_inset
+
+ helps to alleviate this problem.
+ Next we describe two alternative spatial models that we considered; in
+ Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Model-comparison"
+
+\end_inset
+
+, we use cross-validation to choose between these two representations.
+\end_layout
+
+\begin_layout Paragraph
+Standard conditional autoregressive models
+\end_layout
+
+\begin_layout Standard
+Our first model is a standard conditional autoregressive (CAR) model 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+citep{Bane:etal:2004}
+\end_layout
+
+\end_inset
+
+.
+ We use a standard form of this model, which treats the four cardinal neighbors
+ of each grid cell as the neighbors of the grid cell.
+ The corresponding precision matrix has diagonal elements, 
+\begin_inset Formula $Q_{ii}$
+\end_inset
+
+, equal to the number of neighbors for the 
+\begin_inset Formula $i$
+\end_inset
+
+th area (i.e., four except for cells on the boundary of the domain), while
+ 
+\begin_inset Formula $Q_{ik}=-1$
+\end_inset
+
+ (the negative of a weight of one) when areas 
+\begin_inset Formula $i$
+\end_inset
+
+ and 
+\begin_inset Formula $k$
+\end_inset
+
+ are neighbors and 
+\begin_inset Formula $Q_{ik}=0$
+\end_inset
+
+ when they are not.
+ This gives the following model for the values of 
+\begin_inset Formula $\alpha_{p}(s_{i})$
+\end_inset
+
+ collected as a vector across all of the grid cells, 
+\begin_inset Formula $i=1,\ldots,m$
+\end_inset
+
+: 
+\begin_inset Formula 
+\[
+\alpha_{p}\sim\mbox{N}(0,\sigma_{p}^{2}Q^{-}).
+\]
+
+\end_inset
+
+The use of the generalized inverse notation indicates that 
+\begin_inset Formula $Q$
+\end_inset
+
+ is not full-rank, but is of rank 
+\begin_inset Formula $m-1$
+\end_inset
+
+; this gives an improper prior on an implicit overall mean for the process
+ values.
+ This specification is called an 
+\shape italic
+intrinsic conditional autoregression (ICAR)
+\shape default
+ and we can write 
+\begin_inset Formula $Q=D-C$
+\end_inset
+
+ where 
+\begin_inset Formula $C$
+\end_inset
+
+ is the 
+\begin_inset Formula $m\times m$
+\end_inset
+
+ adjacency matrix defining the neighborhood relation of the locations; that
+ is 
+\begin_inset Formula $C{}_{ik}=1$
+\end_inset
+
+ if locations 
+\begin_inset Formula $i$
+\end_inset
+
+ and 
+\begin_inset Formula $k$
+\end_inset
+
+ are neighbors and zero otherwise.
+ The matrix 
+\begin_inset Formula $D$
+\end_inset
+
+ is an 
+\begin_inset Formula $m\times m$
+\end_inset
+
+ diagonal matrix containing the row sums of matrix 
+\begin_inset Formula $C$
+\end_inset
+
+ as the diagonal entries, 
+\begin_inset Formula $D{}_{ii}={\displaystyle \sum_{k=1}^{m}C{}_{ik}}.$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We refer to this as the 
+\emph on
+CAR model
+\emph default
+.
+\end_layout
+
+\begin_layout Paragraph
+Gaussian process approximation
+\end_layout
+
+\begin_layout Standard
+Gaussian processes (GP) are also standard models for spatial processes
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+citep{Bane:etal:2004}
+\end_layout
+
+\end_inset
+
+.
+ GP models are computationally challenging for large datasets because of
+ manipulations involving large covariance matrices.
+ Given this, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cite{Lind:etal:2011}
+\end_layout
+
+\end_inset
+
+ proposed a new framework for using Gaussian MRFs (GMRFs) as approximations
+ to GPs, based on the use of stochastic partial differential equations (SPDEs).
+\end_layout
+
+\begin_layout Standard
+We consider Gaussian processes in the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+matern
+\end_layout
+
+\end_inset
+
+ class, using the following parameterization of the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+matern
+\end_layout
+
+\end_inset
+
+ correlation function, 
+\begin_inset Formula 
+\begin{equation}
+R(d)=\frac{1}{\Gamma(\nu)2^{\nu-1}}\left(\frac{2\sqrt{\nu}d}{\rho}\right)^{\nu}\mathcal{K}_{\nu}\left(\frac{2\sqrt{\nu}d}{\rho}\right),\label{eq:Matern}
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula $d$
+\end_inset
+
+ is Euclidean distance, 
+\begin_inset Formula $\rho$
+\end_inset
+
+ is the spatial range parameter, and 
+\begin_inset Formula $\mathcal{K}_{\nu}(\cdot)$
+\end_inset
+
+ is the modified Bessel function of the second kind, whose order is the
+ smoothness (differentiability) parameter, 
+\begin_inset Formula $\nu>0$
+\end_inset
+
+.
+ 
+\begin_inset Formula $\nu=0.5$
+\end_inset
+
+ gives the exponential covariance.
+ For any pair of locations, 
+\begin_inset Formula $R(d)$
+\end_inset
+
+ defines the correlation of the process, (i.e., 
+\begin_inset Formula $\alpha_{p}(s)$
+\end_inset
+
+ in our context), as a function of the distance between the locations.
+ Considering all pairs of locations, this defines a correlation matrix for
+ all locations of interest.
+ 
+\end_layout
+
+\begin_layout Standard
+The 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+citet{Lind:etal:2011}
+\end_layout
+
+\end_inset
+
+ approach allows us to consider MRF approximations to the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+matern
+\end_layout
+
+\end_inset
+
+-based GP for 
+\begin_inset Formula $\nu=1$
+\end_inset
+
+ and 
+\begin_inset Formula $\nu=2$
+\end_inset
+
+.
+ Our second spatial model is this Lindgren approximation for 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+matern
+\end_layout
+
+\end_inset
+
+-based GPs with 
+\begin_inset Formula $\nu=1$
+\end_inset
+
+.
+ To implement the Lindgren model, one modifies the 
+\begin_inset Formula $Q$
+\end_inset
+
+ matrix defined previously as follows.
+ Let 
+\begin_inset Formula $a=4+\frac{1}{\rho^{2}}$
+\end_inset
+
+.
+ The diagonal elements of 
+\begin_inset Formula $Q$
+\end_inset
+
+ are 
+\begin_inset Formula $4+a^{2}$
+\end_inset
+
+.
+ The entries corresponding to cardinal neighbors are 
+\begin_inset Formula $-2a$
+\end_inset
+
+.
+ Those for diagonal neighbors are 
+\begin_inset Formula $2$
+\end_inset
+
+, and those for 2nd-order cardinal neighbors are 
+\begin_inset Formula $1$
+\end_inset
+
+.
+ This extends the neighborhood structure relative to the CAR model and parameter
+izes it as a function of 
+\begin_inset Formula $\rho$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The primary difference between the CAR and Lindgren models is that the Lindgren
+ model provides an additional degree of freedom by estimating 
+\begin_inset Formula $\rho$
+\end_inset
+
+.
+ In particular 
+\begin_inset Formula $\rho$
+\end_inset
+
+ allows us to estimate the locality of the smoothing.
+ As 
+\begin_inset Formula $\rho$
+\end_inset
+
+ decreases, the model uses increasingly localized data to estimate the compositi
+onal proportions at a given location, effectively averaging the empirical
+ proportions over smaller neighborhoods.
+ In general, the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cite{Lind:etal:2011}
+\end_layout
+
+\end_inset
+
+ model will generally provide for a smoother estimate than the CAR model
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+citep{Paci:2013}
+\end_layout
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+To ensure that the 
+\begin_inset Formula $\sigma^{2}$
+\end_inset
+
+ parameter is mathematically equivalent between the two models, we reparameteriz
+e, producing our second model:
+\begin_inset Formula 
+\[
+\alpha_{p}\sim\mbox{N}\left(\mu_{p},\sigma_{p}^{2}\cdot\frac{4\pi}{\rho_{p}^{2}}Q(\rho_{p})^{-1}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We refer to this model as the 
+\emph on
+SPDE model
+\emph default
+.
+\end_layout
+
+\begin_layout Subsection
+Prior Distributions
+\end_layout
+
+\begin_layout Standard
+\noindent
+The ICAR specification contains a set of hyperparameters 
+\begin_inset Formula $\{\sigma_{p}^{2}\},$
+\end_inset
+
+ 
+\begin_inset Formula $p=1,\ldots P$
+\end_inset
+
+.
+ Following 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cite{Gelm:2006}
+\end_layout
+
+\end_inset
+
+ we use a uniform distribution on each 
+\begin_inset Formula $\sigma_{p}$
+\end_inset
+
+ parameter, with upper bound of 1000.
+ For the SPDE model we also have parameters 
+\begin_inset Formula $\{\mu_{p}\}$
+\end_inset
+
+, which we give flat, non-informative priors (truncated at 
+\begin_inset Formula $\pm10$
+\end_inset
+
+), and 
+\begin_inset Formula $\{\rho_{p}\}$
+\end_inset
+
+, which we give uniform priors on the interval 
+\begin_inset Formula $(0.1,\exp(5))$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Subsection
+Latent Variable Model
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Latent-Variable-Model"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+It is well-known that devising an effective MCMC algorithm for models with
+ latent Gaussian process(es) and a non-Gaussian likelihood is difficult
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+citep{Rue:Held:2005,Chri:etal:2006,Tan:Nott:2013}
+\end_layout
+
+\end_inset
+
+.
+ To develop an algorithm, we make use of a latent variable representation
+ for the multinomial probit model 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+citep{McCu:Ross:1994}
+\end_layout
+
+\end_inset
+
+.
+ The representation introduces latent variables that allow one to develop
+ a MCMC sampling strategy that takes advantage of closed form full conditional
+ distributions (so-called Gibbs sampling steps) for 
+\begin_inset Formula $\alpha_{p}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Suppose that compositional counts are available at a number of locations.
+ At location 
+\begin_inset Formula $i$
+\end_inset
+
+, a sample of size 
+\begin_inset Formula $n_{i}$
+\end_inset
+
+ observations is collected, and each observation (i.e., each tree) can be
+ classified into 
+\begin_inset Formula $P$
+\end_inset
+
+ distinct categories.
+ For a given tree 
+\begin_inset Formula $j$
+\end_inset
+
+ at location 
+\begin_inset Formula $i$
+\end_inset
+
+, let 
+\begin_inset Formula $Y_{ij}$
+\end_inset
+
+ denote the response variable indicating the category.
+ Let 
+\begin_inset Formula $Y_{ij}$
+\end_inset
+
+ be associated with 
+\begin_inset Formula $P$
+\end_inset
+
+ latent variables 
+\begin_inset Formula $W_{ij1},...,W_{ijP}$
+\end_inset
+
+ such that 
+\begin_inset Formula $Y_{ij}$
+\end_inset
+
+ = 
+\begin_inset Formula $p$
+\end_inset
+
+ if and only if 
+\begin_inset Formula $W_{ijp}={\displaystyle \max_{p'}\big\{ W_{ijp'}\big\}}$
+\end_inset
+
+; in other words, the maximum of the set of latent variables 
+\begin_inset Formula $\{W_{ijp}\}{\displaystyle _{p=1}^{P}}$
+\end_inset
+
+ determines the category of observation 
+\begin_inset Formula $j$
+\end_inset
+
+ at location 
+\begin_inset Formula $i$
+\end_inset
+
+.
+ The final piece of the latent variable representation is the relationship
+ between the 
+\begin_inset Formula $W$
+\end_inset
+
+ variables and the 
+\begin_inset Formula $\alpha_{p}(s)$
+\end_inset
+
+ processes.
+ We have that
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset Formula 
+\[
+W_{ijp}\sim\mbox{N}(\alpha_{p}(s_{i}),1)
+\]
+
+\end_inset
+
+independently for all of the 
+\begin_inset Formula $W_{ijp}$
+\end_inset
+
+ values.
+ Consider the following example with two locations that are neighbors and
+ 
+\begin_inset Formula $P=2$
+\end_inset
+
+ categories.
+ Each tree 
+\begin_inset Formula $j$
+\end_inset
+
+ at location 
+\begin_inset Formula $i$
+\end_inset
+
+ is associated with two variables 
+\begin_inset Formula $W_{ij1}$
+\end_inset
+
+ and 
+\begin_inset Formula $W_{ij2}$
+\end_inset
+
+, governed by the latent variables 
+\begin_inset Formula $\alpha_{1i}$
+\end_inset
+
+ and 
+\begin_inset Formula $\alpha_{2i}$
+\end_inset
+
+, respectively.
+ Suppose that 
+\begin_inset Formula $\alpha_{1i}>\alpha_{2i}$
+\end_inset
+
+ for a given location 
+\begin_inset Formula $i$
+\end_inset
+
+.
+ Then this model implies that any tree 
+\begin_inset Formula $j$
+\end_inset
+
+ is more likely to be labeled 1 than 2 at location 
+\begin_inset Formula $i$
+\end_inset
+
+.
+ The difference between 
+\begin_inset Formula $\alpha_{1i}$
+\end_inset
+
+ and 
+\begin_inset Formula $\alpha_{2i}$
+\end_inset
+
+ explains the 
+\shape italic
+difference
+\shape default
+ in probability of 
+\shape italic
+categories
+\shape default
+ 1 and 2 at location 
+\begin_inset Formula $i$
+\end_inset
+
+, and the similarity between 
+\begin_inset Formula $\alpha_{p1}$
+\end_inset
+
+ and 
+\begin_inset Formula $\alpha_{p2}$
+\end_inset
+
+ explains the 
+\shape italic
+correlation
+\shape default
+ between the probabilities at 
+\shape italic
+locations
+\shape default
+ 1 and 2 for category 
+\begin_inset Formula $p$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Define 
+\begin_inset Formula $W$
+\end_inset
+
+
+\begin_inset Formula $=(W_{ijp},j=1,...,n_{i},i=1,...,N,p=1,...,P)^{T}$
+\end_inset
+
+ and 
+\begin_inset Formula $Y$
+\end_inset
+
+
+\begin_inset Formula $=(Y_{ij},j=1,...,n_{i},i=1,...,I)^{T}$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Let 
+\begin_inset Formula $\pi(A|B)$
+\end_inset
+
+ denote the conditional probability density function of a random variable
+ 
+\begin_inset Formula $A$
+\end_inset
+
+ conditional on a random variable 
+\begin_inset Formula $B$
+\end_inset
+
+.
+ The response variable model is 
+\begin_inset Formula 
+\begin{align}
+\pi(y|w)={\displaystyle \prod_{i=1}^{I}{\displaystyle \prod_{j=1}^{n_{i}}{\displaystyle \prod_{p=1}^{P}I(w_{ijy_{ij}}\geq w_{ijp}),}}}\label{likelihood}
+\end{align}
+
+\end_inset
+
+where 
+\begin_inset Formula $I(\cdot)$
+\end_inset
+
+ is an indicator function.
+ Conditional on 
+\begin_inset Formula $W_{ijp},p=1,...,P$
+\end_inset
+
+, the probability mass function of 
+\begin_inset Formula $Y_{ij}$
+\end_inset
+
+ is a point mass on 
+\begin_inset Formula $p$
+\end_inset
+
+ such that 
+\begin_inset Formula $W_{ijp}$
+\end_inset
+
+ = 
+\begin_inset Formula ${\displaystyle \max_{p^{*}}\big\{ W_{ijp^{*}}\big\}}$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\noindent
+where 
+\begin_inset Formula $j=1,...,n_{i},i=1,...,I,$
+\end_inset
+
+ and 
+\begin_inset Formula $p=1,...,P$
+\end_inset
+
+.
+ Here, 
+\begin_inset Formula $\alpha_{ip}$
+\end_inset
+
+ is the conditional mean of 
+\begin_inset Formula $W_{ijp}$
+\end_inset
+
+ for location 
+\begin_inset Formula $i$
+\end_inset
+
+ and category 
+\begin_inset Formula $p$
+\end_inset
+
+, and 
+\begin_inset Formula $\{W_{ijp},j=1,...,n_{i}\}$
+\end_inset
+
+ are identically-distributed for 
+\begin_inset Formula $i=1,...,I$
+\end_inset
+
+ and 
+\begin_inset Formula $p=1,...,P$
+\end_inset
+
+,.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Model for township data
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Model-for-township"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We developed an extension of the model described in previous sections to
+ account for data at a different aggregation than our core 8 km grid.
+ This extension introduces a new set of latent variables, one per tree,
+ that indicate the grid cells in which the trees are located and can be
+ sampled within the MCMC as additional unknown parameters.
+ Specifically, 
+\begin_inset Formula $c_{tj}$
+\end_inset
+
+ is the latent 
+\begin_inset Quotes eld
+\end_inset
+
+membership
+\begin_inset Quotes erd
+\end_inset
+
+ variable for tree 
+\begin_inset Formula $j$
+\end_inset
+
+ in township 
+\begin_inset Formula $t$
+\end_inset
+
+, 
+\begin_inset Formula $t=1,\ldots,T$
+\end_inset
+
+.
+ The prior for 
+\begin_inset Formula $c_{tj}$
+\end_inset
+
+ is a discrete distribution that puts mass, 
+\begin_inset Formula $\psi_{ti}$
+\end_inset
+
+, 
+\begin_inset Formula $i=1,\ldots,m$
+\end_inset
+
+, proportional to the areal overlap between the township in which the tree
+ is located and the 
+\begin_inset Formula $m$
+\end_inset
+
+ grid cells, giving 
+\begin_inset Formula 
+\[
+c_{tj}\sim\mbox{Multinom}(1,\{\psi_{t1},\ldots,\psi_{tm}\}),
+\]
+
+\end_inset
+
+independently across all trees.
+ Because the townships overlap a limited number of grid cells, most of the
+ 
+\begin_inset Formula $\psi_{t1},\ldots,\psi_{tm}$
+\end_inset
+
+ values are zero.
+\end_layout
+
+\begin_layout Standard
+Using the latent variable representation, we have that 
+\begin_inset Formula $W_{tjp}\sim\mbox{N}(\alpha_{p}(s_{c_{tj}}),1)$
+\end_inset
+
+ for tree 
+\begin_inset Formula $j$
+\end_inset
+
+ in township 
+\begin_inset Formula $t$
+\end_inset
+
+.
+ In updating the other parameters in the model during the MCMC (specifically
+ the 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ values), we condition on the current values, 
+\begin_inset Formula $\{c_{tj}\}$
+\end_inset
+
+, which provides a 
+\begin_inset Quotes eld
+\end_inset
+
+soft
+\begin_inset Quotes erd
+\end_inset
+
+ (i.e., probabilistic) assignment of trees to grid cells that respects both
+ the known township in which the trees occurred and the uncertainty in which
+ grid cells the trees occurred.
+\end_layout
+
+\begin_layout Standard
+Note that this prior represents the location of each tree in a township
+ as being independent of the other trees; this is somewhat unrealistic because
+ it does not represent our knowledge that the trees in a township would
+ be distributed somewhat regularly across the area of the township because
+ the witness trees were used to indicate property boundaries.
+\end_layout
+
+\begin_layout Subsection
+Computation
+\end_layout
+
+\begin_layout Standard
+The 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cite{McCu:Ross:1994}
+\end_layout
+
+\end_inset
+
+ representation is convenient for MCMC sampling, particularly in this high-dimen
+sional spatial context, as it allows us to draw from the posterior conditional
+ distributions of the 
+\begin_inset Formula $W_{ijp}$
+\end_inset
+
+ variables (these distributions are truncated normal) in closed form and
+ to draw the entire vector of latent process values for each taxon, 
+\begin_inset Formula $\alpha_{p}$
+\end_inset
+
+, as a single sample that respects the spatial dependence structure for
+ each taxon.
+\end_layout
+
+\begin_layout Standard
+While the latent variable representation provides great advantages in the
+ MCMC sampling for each 
+\begin_inset Formula $\alpha_{p}$
+\end_inset
+
+ compared to joint Metropolis updates or updating each location individually,
+ there is still strong dependence between the hyperparameters, 
+\begin_inset Formula $\{\sigma_{p}^{2},\mu_{p},\rho_{p}\}$
+\end_inset
+
+ and the latent process values (as well as between the latent process values
+ and the latent 
+\begin_inset Formula $W_{ijp}$
+\end_inset
+
+ variables).
+ To address the first, we developed a 
+\begin_inset Quotes eld
+\end_inset
+
+cross-level
+\begin_inset Quotes erd
+\end_inset
+
+ joint updating strategy for the CAR model in which we propose 
+\begin_inset Formula $\phi_{p}=\sigma_{p},p=1,\ldots,P,$
+\end_inset
+
+ (and for the SPDE model, 
+\begin_inset Formula $\phi_{p}\in\{\mu_{p},(\sigma_{p},\rho_{p})\}$
+\end_inset
+
+) via a Metropolis-style random walk and then given the proposed value,
+ 
+\begin_inset Formula $\phi_{p}^{*}$
+\end_inset
+
+, propose 
+\begin_inset Formula $\alpha_{p}$
+\end_inset
+
+ from its full conditional distribution given 
+\begin_inset Formula $\phi_{p}^{*}$
+\end_inset
+
+ and the latent 
+\begin_inset Formula $W_{p}$
+\end_inset
+
+ variables, where 
+\begin_inset Formula $W_{p}$
+\end_inset
+
+ is the vector of all 
+\begin_inset Formula $W_{ijp}$
+\end_inset
+
+ values for taxon 
+\begin_inset Formula $p$
+\end_inset
+
+: 
+\begin_inset Formula $W_{p}=\{W_{ijp}\},i=1,\ldots,m;j=1,\ldots,n_{i}$
+\end_inset
+
+.
+ This is equivalent to sampling from the marginalized (with respect to 
+\begin_inset Formula $\alpha_{p}$
+\end_inset
+
+) distribution of 
+\begin_inset Formula $\phi_{p}$
+\end_inset
+
+ conditional on 
+\begin_inset Formula $W_{p}$
+\end_inset
+
+.
+ For these various joint samples of hyperparameters and 
+\begin_inset Formula $\alpha_{p}$
+\end_inset
+
+, we use adaptive Metropolis sampling 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+citep{Shab:Well:2011}
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The full description of the MCMC sampling steps is provided in the Appendix.
+ In addition, in the latent variable representation, 
+\begin_inset Formula $\theta_{p}(s)$
+\end_inset
+
+ never appears explicitly and cannot be calculated in close form.
+ Instead we use Monte Carlo integration over 
+\begin_inset Formula $W_{ijp},\, p=1,\ldots,P$
+\end_inset
+
+ to estimate 
+\begin_inset Formula $\theta_{p}(s_{i})$
+\end_inset
+
+, also described in the Appendix.
+ 
+\end_layout
+
+\begin_layout Standard
+The model is implemented in R 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+citep{R:2014}
+\end_layout
+
+\end_inset
+
+ with core computational calculations coded in C++ using the 
+\emph on
+Rcpp
+\emph default
+ package 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+citep{Edde:Fran:2011}
+\end_layout
+
+\end_inset
+
+.
+ We also make extensive use of sparse matrix representations and algorithms,
+ using the 
+\emph on
+spam
+\emph default
+ package in R 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+citep{Furr:Sain:2010}
+\end_layout
+
+\end_inset
+
+.
+ All code is available on Github, including pre- and post-processing code,
+ at https://github.com/PalEON-Project/composition.
+ 
+\end_layout
+
+\begin_layout Section
+Model comparison
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Model-comparison"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Design
+\end_layout
+
+\begin_layout Standard
+We compared the CAR and SPDE models using cross-validation by holding out
+ data from the fitting process and assessing the fit of the model on the
+ held-out data.
+ We used two cross-validation experiments:
+\end_layout
+
+\begin_layout Enumerate
+The first experiment used a subregion containing most of Minnesota and a
+ small amount of western Wisconsin, defined to be the cells whose x-coordinate
+ was less than 300,000 m (this defines a north-south line that approximately
+ goes through Duluth, Minnesota) and hereafter referred to as the 
+\begin_inset Quotes eld
+\end_inset
+
+Minnesota subregion
+\begin_inset Quotes erd
+\end_inset
+
+.
+ We chose this subregion for cross-validation because of its high data density,
+ allowing us to experiment with the effects of increasing data sparsity
+ on model performance.
+ We held out all data from 95% of the cells in this Minnesota subregion,
+ with cells selected at random.
+ This was meant to assess the ability of the model to interpolate from a
+ sparse set of cells/townships and mimics the limited data in Illinois and
+ Indiana.
+\end_layout
+
+\begin_layout Enumerate
+We held out 5% of the trees from all of the trees in the dataset for the
+ midwestern subdomain (leaving aside the held-out Minnesota subregion cells).
+ This was meant to assess the ability of the model to estimate the composition
+ in cells in which data were available.
+ 
+\end_layout
+
+\begin_layout Standard
+Finally, in a separate sensitivity analysis we instead left out 80% of the
+ cells in Minnesota subregion at random.
+ This variation on the first experiment above was meant to indicate whether
+ our model comparison conclusions would be robust as the digitization process
+ for Illinois and Indiana progresses and provides us with increasingly dense
+ data.
+ 
+\end_layout
+
+\begin_layout Standard
+There has been extensive work in the statistical literature on good metrics
+ to use to compare the predictive ability of models; these metrics are referred
+ to as scoring rules.
+ A general conclusion from this work is that predictive distributions should
+ maximize sharpness subject to calibration.
+ That is, the predictive distribution should be as narrow as possible while
+ being calibrated such that the observations are consistent with the distributio
+n 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+citep{Gnei:etal:2007}
+\end_layout
+
+\end_inset
+
+.
+ When thinking in terms of prediction intervals as summaries of the predictive
+ distribution, we seek intervals that are as narrow as possible while still
+ covering the truth the expected proportion (e.g., 95% for a 95% prediction
+ interval) of the time.
+ 
+\end_layout
+
+\begin_layout Standard
+Following the suggestions in 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cite{Gnei:etal:2007}
+\end_layout
+
+\end_inset
+
+, we considered the following metrics: Brier score, log predictive density,
+ mean square prediction error, mean absolute error, and coverage and length
+ of prediction intervals.
+ Further details on each are given below.
+ For experiment 1, we define 
+\begin_inset Formula $Y_{i}=\{Y_{i1},\ldots,Y_{iP}\}$
+\end_inset
+
+ as the count of all trees in held-out cell 
+\begin_inset Formula $i$
+\end_inset
+
+ and for experiment 2, 
+\begin_inset Formula $Y_{i}$
+\end_inset
+
+ is the count of held-out individual trees in the cell, while 
+\begin_inset Formula $y_{ijp}$
+\end_inset
+
+ is an indicator variable taking value either 0 or 1 depending on whether
+ the 
+\begin_inset Formula $j$
+\end_inset
+
+th held-out tree in the 
+\begin_inset Formula $i$
+\end_inset
+
+th cell is of taxon 
+\begin_inset Formula $p$
+\end_inset
+
+.
+ We calculated each of the metrics in two ways.
+ First, we used the posterior mean composition estimates (as an evaluation
+ of our core predictions), with 
+\begin_inset Formula $\tilde{\theta}_{p}(s)$
+\end_inset
+
+ being the posterior mean.
+ Second, we averaged the metric over the posterior samples (as an evaluation
+ of our full data product, including uncertainty), taking 
+\begin_inset Formula $\tilde{\theta}_{p}(s)$
+\end_inset
+
+ to be an individual MCMC sample and then averaging the metric over all
+ the posterior samples.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Brier score: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cite{Gnei:etal:2007}
+\end_layout
+
+\end_inset
+
+ suggest this metric, which has been in use for decades.
+ For multi-category as opposed to binary outcomes, this takes the form
+\begin_inset Formula 
+\[
+\frac{1}{n}\sum_{i=1}^{m}\sum_{j=1}^{n_{i}}\sum_{p=1}^{P}(y_{ijp}-\tilde{\theta}_{p}(s_{i}))^{2}
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $n=\sum_{i=1}^{m}n_{i}$
+\end_inset
+
+ is the total number of held-out trees for a given experiment and 
+\begin_inset Formula $j$
+\end_inset
+
+ indexes across held-out trees in cell 
+\begin_inset Formula $i$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Log predictive density: This metric takes the log of the density of held-out
+ observations under the fitted model, 
+\begin_inset Formula $Y_{i}\sim\mbox{Multinom}(n_{i},\{\tilde{\theta}_{1}(s_{i}),\ldots,\tilde{\theta}_{P}(s_{i})\})$
+\end_inset
+
+, summing on the log scale across all of the held-out data.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+While in principle, this metric should be optimal 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+citep{Krnj:Drap:2014}
+\end_layout
+
+\end_inset
+
+, it is very sensitive to small predictions near zero 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+citep{Gnei:etal:2007}
+\end_layout
+
+\end_inset
+
+.
+ Even worse, our Monte Carlo estimation of 
+\begin_inset Formula $\theta$
+\end_inset
+
+ used 10000 samples, so in some cases 
+\begin_inset Formula $\tilde{\theta}_{p}(s)=0$
+\end_inset
+
+.
+ When a tree is present in a cell but its corresponding proportion is 0,
+ this gives a log density of 
+\begin_inset Formula $-\infty$
+\end_inset
+
+, preventing use of the metric.
+ As an informal solution to this we set 
+\begin_inset Formula $\tilde{\theta}_{p}(s)=\frac{1}{100000}$
+\end_inset
+
+ in such cases, but given these issues we treat the log predictive density
+ as a secondary measure.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+(Experiment 1 only) Weighted root mean square prediction error (RMSPE) and
+ mean absolute error (MAE): These metrics calculate the error of the estimated
+ proportions relative to the empirical proportions based on the held-out
+ trees, averaging over cells and taxa.
+ We weight by the number of held-out trees in each cell to account for the
+ greater variability in the empirical proportions in locations with few
+ held-out trees.
+ 
+\end_layout
+
+\begin_layout Enumerate
+(Experiment 1 only) Coverage and length of 95% prediction intervals for
+ 
+\begin_inset Formula $Y_{ip}$
+\end_inset
+
+.
+ We considered only cells with at least 50 trees to focus our assessment
+ on cases where empirical proportions were reasonably certain and avoid
+ being strongly influenced by predictive inference for cells where observational
+ variability dominates.
+\end_layout
+
+\begin_layout Standard
+Note that all of the metrics except coverage and interval length can be
+ applied to individual posterior samples and therefore allow us to estimate
+ the posterior probability that one model has a lower (better) value of
+ the metric than the other model by simply calculating the proportion of
+ samples for which the model has a lower value of the metric.
+\end_layout
+
+\begin_layout Standard
+In our initial exploratory fitting, we noticed that the SPDE model produced
+ boundary effects in the predicted composition near the edges of the convex
+ hull of the observations.
+ To attempt to alleviate this, we added a buffer zone with a width of six
+ grid cells around our entire original domain, but note that the boundary
+ effects were still evident even after inclusion of the buffer.
+ For the model comparison, we included this buffer for both the SPDE and
+ CAR models.
+ 
+\end_layout
+
+\begin_layout Standard
+We ran each model for 150,000 iterations.
+ After discarding 25,000 iterations for burn-in, we retained a posterior
+ sample of 250 subsampled iterations -- we use a subsample instead of the
+ full 125,000 post-burn-in iterations to reduce post-processing computations
+ and storage needs.
+ 
+\end_layout
+
+\begin_layout Chunk
+
+\end_layout
+
+\begin_layout Chunk
+
+\end_layout
+
+\begin_layout Subsection
+Results
+\end_layout
+
+\begin_layout Standard
+Here we summarize the results of our cross-validation analyses that inform
+ the choice between the CAR and SPDE models.
+ 
+\end_layout
+
+\begin_layout Paragraph
+Full cell hold-out experiment
+\end_layout
+
+\begin_layout Standard
+For Experiment 1 for cells in the Minnesota subregion held out of the fitting
+ process, the CAR model outperforms the SPDE model based on the posterior
+ distribution over the predictive metric values (Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:score_cell_fivepercent"
+
+\end_inset
+
+).
+ For the posterior mean predictions, the SPDE model appears to outperform
+ the CAR model to a lesser degree, but we do not have any uncertainty estimates
+ for this comparison.
+ Coverage and interval lengths are similar between the two models (Table
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:coverage_cell_fivepercent"
+
+\end_inset
+
+).
+ From a practical perspective, based on the difference in mean absolute
+ error, the differences between the models are small (Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:score_cell_fivepercent"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Chunk
+
+<<tab1prep, echo=FALSE>>= 
+\end_layout
+
+\begin_layout Chunk
+
+setwd(inputDir)
+\end_layout
+
+\begin_layout Chunk
+
+for(run in c(101,102,104,105)) {
+\end_layout
+
+\begin_layout Chunk
+
+	load(paste0('PLScomposition_western_',version,'-',run,'-cvResults.Rda'))
+\end_layout
+
+\begin_layout Chunk
+
+	assign(paste0('results',run), results)
+\end_layout
+
+\begin_layout Chunk
+
+	assign(paste0('samples',run), samples)
+\end_layout
+
+\begin_layout Chunk
+
+}
+\end_layout
+
+\begin_layout Chunk
+
+resultsCAR = results101
+\end_layout
+
+\begin_layout Chunk
+
+resultsSPDE = results102
+\end_layout
+
+\begin_layout Chunk
+
+#resultsTPS = results103
+\end_layout
+
+\begin_layout Chunk
+
+samplesCAR = samples101
+\end_layout
+
+\begin_layout Chunk
+
+samplesSPDE = samples102
+\end_layout
+
+\begin_layout Chunk
+
+postProbsCell <- rep(0, 4)
+\end_layout
+
+\begin_layout Chunk
+
+postProbsCell[1] <- mean(samplesCAR[1,'cell',] < samplesSPDE[1,'cell',])
+\end_layout
+
+\begin_layout Chunk
+
+postProbsCell[2] <- mean(-samplesCAR[2,'cell',] < -samplesSPDE[2,'cell',])
+\end_layout
+
+\begin_layout Chunk
+
+postProbsCell[3] <- mean(samplesCAR[3,'cell',] < samplesSPDE[3,'cell',])
+\end_layout
+
+\begin_layout Chunk
+
+postProbsCell[4] <- mean(samplesCAR[4,'cell',] < samplesSPDE[4,'cell',])
+\end_layout
+
+\begin_layout Chunk
+
+#val_1_1 = sprintf("%5.0f", resultsCAR['brier','cell','post_mean_of_score'])
+\end_layout
+
+\begin_layout Chunk
+
+@
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Predictive ability based on several predictive metric criteria for the CAR
+ and SPDE spatial models when holding out 95% of entire cells of data in
+ Minnesota.
+ Smaller values are better.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="6">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="3cm">
+<column alignment="center" valignment="top" width="2.5cm">
+<column alignment="center" valignment="top" width="2.5cm">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Posterior mean of metric
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Metric of posterior mean predictions
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+CAR model
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+SPDE model
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Posterior Prob.
+ CAR < SPDE
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+CAR model
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+SPDE model
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Brier
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.3f", resultsCAR['brier','cell','post_mean_of_score'])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.3f", resultsSPDE['brier','cell','post_mean_of_score'])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%1.2f", postProbsCell[1])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.03f", resultsCAR['brier','cell','score_of_post_mean'])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.3f", resultsSPDE['brier','cell','score_of_post_mean'])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Negative Log Density
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.0f", -resultsCAR['logdensity','cell','post_mean_of_score'])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.0f", -resultsSPDE['logdensity','cell','post_mean_of_score'])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%1.2f",postProbsCell[2])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.0f", -resultsCAR['logdensity','cell','score_of_post_mean'])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.0f", -resultsSPDE['logdensity','cell','score_of_post_mean'])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Mean Absolute Error
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.4f", resultsCAR['mae','cell','post_mean_of_score'])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.4f", resultsSPDE['mae','cell','post_mean_of_score'])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%1.2f",postProbsCell[3])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.4f", resultsCAR['mae','cell','score_of_post_mean'])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.4f", resultsSPDE['mae','cell','score_of_post_mean'])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Root Mean Square Error
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.4f", sqrt(resultsCAR['mspe','cell','post_mean_of_score']))}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.4f", sqrt(resultsSPDE['mspe','cell','post_mean_of_score']))}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%1.2f",postProbsCell[4])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.4f", sqrt(resultsCAR['mspe','cell','score_of_post_mean']))}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.4f", sqrt(resultsSPDE['mspe','cell','score_of_post_mean']))}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:score_cell_fivepercent"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Coverage and length of prediction intervals for the CAR and SPDE spatial
+ models when holding out 95% of entire cells of data in Minnesota.
+ Coverage values near 0.95 are optimal, while shorter intervals are better.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="3">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+CAR model
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+SPDE model
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Coverage
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.3f", resultsCAR['coverage','cell','post_mean_of_score'])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.3f", resultsSPDE['coverage','cell','post_mean_of_score'])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Mean Interval Length
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.3f", resultsCAR['mean_int_len','cell','post_mean_of_score'])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.3f", resultsSPDE['mean_int_len','cell','post_mean_of_score'])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Median Interval Length
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.3f", resultsCAR['median_int_len','cell','post_mean_of_score'])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.3f", resultsSPDE['median_int_len','cell','post_mean_of_score'])
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:coverage_cell_fivepercent"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Predictive ability based on several predictive score criteria for the CAR
+ and TPS spatial models when holding out 95% of entire cells of data in
+ Minnesota.
+ Smaller values are better, except for coverage, where values near 0.95 are
+ optimal.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="9" columns="5">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Posterior mean of score
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Score of posterior mean predictions
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+CAR model
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+TPS model
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+CAR model
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+TPS model
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Brier
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.0f", resultsCAR['brier','cell','post_mean_of_score'])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.0f", resultsTPS['brier','cell','post_mean_of_score'])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.0f", resultsCAR['brier','cell','score_of_post_mean'])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.0f", resultsTPS['brier','cell','score_of_post_mean'])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Negative Log Density
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.0f", -resultsCAR['logdensity','cell','post_mean_of_score'])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.0f", -resultsTPS['logdensity','cell','post_mean_of_score'])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.0f", -resultsCAR['logdensity','cell','score_of_post_mean'])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.0f", -resultsTPS['logdensity','cell','score_of_post_mean'])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Mean Absolute Error
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.4f", resultsCAR['mae','cell','post_mean_of_score'])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.4f", resultsTPS['mae','cell','post_mean_of_score'])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.4f", resultsCAR['mae','cell','score_of_post_mean'])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.4f", resultsTPS['mae','cell','score_of_post_mean'])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Root Mean Square Error
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.4f", sqrt(resultsCAR['mspe','cell','post_mean_of_score']))}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.4f", sqrt(resultsTPS['mspe','cell','post_mean_of_score']))}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.4f", sqrt(resultsCAR['mspe','cell','score_of_post_mean']))}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.4f", sqrt(resultsTPS['mspe','cell','score_of_post_mean']))}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Coverage
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.3f", resultsCAR['coverage','cell','post_mean_of_score'])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.3f", resultsTPS['coverage','cell','post_mean_of_score'])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+NA
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+NA
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Mean Interval Length
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.3f", resultsCAR['mean_int_len','cell','post_mean_of_score'])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.3f", resultsTPS['mean_int_len','cell','post_mean_of_score'])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+NA
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+NA
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Median Interval Length
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.3f", resultsCAR['median_int_len','cell','post_mean_of_score'])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.3f", resultsTPS['median_int_len','cell','post_mean_of_score'])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+NA
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+NA
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:score_cell_fivepercent-1"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The results for the variation on Experiment 1 in which the proportion of
+ cells that are held out decreases from 95% to 80% show that the SPDE model
+ generally outperforms the CAR model, but again differences from a practical
+ perspective, based on mean absolute error, are limited (Tables 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:score_cell_20percent"
+
+\end_inset
+
+-
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:coverage_cell_20percent"
+
+\end_inset
+
+).
+ 
+\end_layout
+
+\begin_layout Chunk
+
+<<tab2prep, echo=FALSE>>= 
+\end_layout
+
+\begin_layout Chunk
+
+resultsCAR = results104
+\end_layout
+
+\begin_layout Chunk
+
+resultsSPDE = results105
+\end_layout
+
+\begin_layout Chunk
+
+samplesCAR = samples104
+\end_layout
+
+\begin_layout Chunk
+
+samplesSPDE = samples105
+\end_layout
+
+\begin_layout Chunk
+
+postProbsCell <- rep(0, 4)
+\end_layout
+
+\begin_layout Chunk
+
+postProbsCell[1] <- mean(samplesCAR[1,'cell',] < samplesSPDE[1,'cell',])
+\end_layout
+
+\begin_layout Chunk
+
+postProbsCell[2] <- mean(-samplesCAR[2,'cell',] < -samplesSPDE[2,'cell',])
+\end_layout
+
+\begin_layout Chunk
+
+postProbsCell[3] <- mean(samplesCAR[3,'cell',] < samplesSPDE[3,'cell',])
+\end_layout
+
+\begin_layout Chunk
+
+postProbsCell[4] <- mean(samplesCAR[4,'cell',] < samplesSPDE[4,'cell',])
+\end_layout
+
+\begin_layout Chunk
+
+#val_1_1 = sprintf("%5.0f", resultsCAR['brier','cell','post_mean_of_score'])
+\end_layout
+
+\begin_layout Chunk
+
+@
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Predictive ability based on several predictive metric criteria for the CAR
+ and SPDE spatial models when holding out 80% of entire cells of data in
+ Minnesota.
+ Smaller values are better.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="6">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="3cm">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Posterior mean of score
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Score of posterior mean predictions
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+CAR model
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+SPDE model
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Posterior Prob.
+ CAR < SPDE
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+CAR model
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+SPDE model
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Brier
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.3f", resultsCAR['brier','cell','post_mean_of_score'])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.3f", resultsSPDE['brier','cell','post_mean_of_score'])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%1.2f", postProbsCell[1])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.3f", resultsCAR['brier','cell','score_of_post_mean'])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.3f", resultsSPDE['brier','cell','score_of_post_mean'])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Negative Log Density
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.0f", -resultsCAR['logdensity','cell','post_mean_of_score'])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.0f", -resultsSPDE['logdensity','cell','post_mean_of_score'])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%1.2f",postProbsCell[2])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.0f", -resultsCAR['logdensity','cell','score_of_post_mean'])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.0f", -resultsSPDE['logdensity','cell','score_of_post_mean'])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Mean Absolute Error
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.4f", resultsCAR['mae','cell','post_mean_of_score'])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.4f", resultsSPDE['mae','cell','post_mean_of_score'])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%1.2f",postProbsCell[3])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.4f", resultsCAR['mae','cell','score_of_post_mean'])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.4f", resultsSPDE['mae','cell','score_of_post_mean'])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Root Mean Square Error
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.4f", sqrt(resultsCAR['mspe','cell','post_mean_of_score']))}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.4f", sqrt(resultsSPDE['mspe','cell','post_mean_of_score']))}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%1.2f",postProbsCell[4])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.4f", sqrt(resultsCAR['mspe','cell','score_of_post_mean']))}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.4f", sqrt(resultsSPDE['mspe','cell','score_of_post_mean']))}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:score_cell_20percent"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Coverage and length of prediction intervals for the CAR and SPDE spatial
+ models when holding out 80% of entire cells of data in Minnesota.
+ Coverage values near 0.95 are optimal, while shorter intervals are better.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="3">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+CAR model
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+SPDE model
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Coverage
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.3f", resultsCAR['coverage','cell','post_mean_of_score'])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.3f", resultsSPDE['coverage','cell','post_mean_of_score'])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Mean Interval Length
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.3f", resultsCAR['mean_int_len','cell','post_mean_of_score'])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.3f", resultsSPDE['mean_int_len','cell','post_mean_of_score'])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Median Interval Length
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.3f", resultsCAR['median_int_len','cell','post_mean_of_score'])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.3f", resultsSPDE['median_int_len','cell','post_mean_of_score'])
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:coverage_cell_20percent"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Individual tree hold-out experiment
+\end_layout
+
+\begin_layout Standard
+In Experiment 2, we have evidence (posterior probability of 0.93) that the
+ SPDE model is better based on the Brier score, but the Brier score values
+ for the two models are numerically almost the same (Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:score_tree"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Chunk
+
+<<tab3prep, echo=FALSE>>= 
+\end_layout
+
+\begin_layout Chunk
+
+resultsCAR = results101
+\end_layout
+
+\begin_layout Chunk
+
+resultsSPDE = results102
+\end_layout
+
+\begin_layout Chunk
+
+samplesCAR = samples101
+\end_layout
+
+\begin_layout Chunk
+
+samplesSPDE = samples102
+\end_layout
+
+\begin_layout Chunk
+
+postProbsTree <- rep(0, 4)
+\end_layout
+
+\begin_layout Chunk
+
+postProbsTree[1] <- mean(samplesCAR[1,'tree',] < samplesSPDE[1,'tree',])
+\end_layout
+
+\begin_layout Chunk
+
+postProbsTree[2] <- mean(-samplesCAR[2,'tree',] < -samplesSPDE[2,'tree',])
+\end_layout
+
+\begin_layout Chunk
+
+#val_1_1 = sprintf("%5.0f", resultsCAR['brier','cell','post_mean_of_score'])
+\end_layout
+
+\begin_layout Chunk
+
+@
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Predictive ability based on several predictive metric criteria for the CAR
+ and SPDE spatial models when holding out 5% of trees.
+ Smaller values are better.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="6">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="3cm">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Posterior mean of metric
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Metric of posterior mean predictions
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+CAR model
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+SPDE model
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Posterior Prob.
+ CAR < SPDE
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+CAR model
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+SPDE model
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Brier
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.3f", resultsCAR['brier','tree','post_mean_of_score'])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.3f", resultsSPDE['brier','tree','post_mean_of_score'])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%1.2f",postProbsTree[1])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.3f", resultsCAR['brier','tree','score_of_post_mean'])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.3f", resultsSPDE['brier','tree','score_of_post_mean'])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Negative Log Density
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.0f", -resultsCAR['logdensity','tree','post_mean_of_score'])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.0f", -resultsSPDE['logdensity','tree','post_mean_of_score'])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%1.2f",postProbsTree[2])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.0f", -resultsCAR['logdensity','tree','score_of_post_mean'])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{sprintf("%5.0f", -resultsSPDE['logdensity','tree','score_of_post_mean'])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:score_tree"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Choice of spatial model
+\end_layout
+
+\begin_layout Standard
+The differences between models are not consistent across the various comparisons
+, so there is not a clear choice.
+ In our final data product we use the CAR model, for three reasons.
+ First, the CAR model has modestly better performance when data are sparse,
+ as is still the case for Illinois and Indiana.
+ Second, the model is simpler and easier to explain and computations can
+ be done more quickly.
+ Third, predictions from the SPDE model showed boundary effects, with some
+ taxa showing non-negligible posterior mean values at the edges of the domain,
+ well away from where the taxa were present in the empirical data.
+ This included non-negligible values within (but near the edge of) the convex
+ hull of locations with data.
+ 
+\end_layout
+
+\begin_layout Section
+Data product
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Data-product"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The final data product is a dataset that contains 250 posterior samples
+ of the proportions of each of the 23 tree taxa at each grid cell in the
+ states in our domain of the northeastern United States.
+\end_layout
+
+\begin_layout Standard
+For this final data product, we ran the model using the CAR specification
+ for 150,000 iterations, discarding the first 25,000 iterations for burn-in
+ and retaining 250 subsampled iterations from the remaining 125,000 iterations
+ (subsampled to limit storage needs and the size of the data product).
+ Based on graphical checks and calculation of effective sample size values,
+ mixing was generally reasonable, but for some of the hyperparameters was
+ relatively slow, particularly for less common taxa.
+ Despite this, mixing for the variables of substantive interest -- the proportio
+ns -- was good, with effective sample sizes for the final product generally
+ near 250.
+\end_layout
+
+\begin_layout Standard
+Maps of estimated composition for the full domain for several taxa of substantiv
+e interest illustrate the results, contrasting the raw data proportions,
+ the posterior means, and posterior standard deviations as pointwise estimates
+ of uncertainty (Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:select_maps"
+
+\end_inset
+
+).
+ We also present the posterior means for all 23 taxa (Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:all_predictions"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename fig2.pdf
+	scale 75
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace{4mm}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename legendRaw.pdf
+	lyxscale 25
+	scale 16
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace{4mm}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename legendProp.pdf
+	lyxscale 25
+	scale 16
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace{3.5mm}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename legendSD.pdf
+	lyxscale 25
+	scale 16
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Empirical proportions from raw data (column 1), predictions in the form
+ of posterior means (column 2) and uncertainty estimates in the form of
+ posterior standard deviations -- representing standard errors of prediction
+ (column 3) for select taxa.
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:select_maps"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename fig3.pdf
+	lyxscale 20
+	scale 80
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Predictions (posterior means) for all taxa over the entire domain.
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:all_predictions"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The data product is being made publicly available at the NIS Data Portal
+ (accession number to be inserted when available) under the CC BY license
+ as version 0.4 as of August 2015.
+ The product is in the form of a netCDF-4 file, with dimensions x-coordinate,
+ y-coordinate, and MCMC iteration.
+ There is one variable per taxon.
+ In addition, dynamic visualizations of the product using the Shiny tool
+ are available at http://gandalf.berkeley.edu:3838/paciorek/setVegComp [this
+ URL is temporary and will be updated].
+ The PalEON Project (in particular the first author) will continue to maintain
+ this product, releasing new versions as additional data in Illinois, Indiana
+ and Ohio are digitized.
+ Note that digitization of data from Illinois and Indiana is ongoing, and
+ digitization of additional data from Ohio is planned as well.
+ As a result, at some point we expect to have complete data for the midwestern
+ half of the domain.
+ 
+\end_layout
+
+\begin_layout Section
+Discussion
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Discussion"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Given the density of data and the limited differences seen between the CAR
+ and SPDE models, we expect the data product to be reasonably robust to
+ the choice of spatial model, particularly in those areas with complete
+ data.
+ However, additional investigation of other statistical representations
+ is of interest, in particular nonstationary spatial models and use of covariate
+s.
+ The biggest shortcoming of the current model is its inability to account
+ for local features such as rivers (e.g., the Minnesota River riparian corridor
+ can be seen in the raw data but is missing in the statistical estimates).
+ The current model, by using a simple stationary spatial model that smooths
+ as a function of Euclidean distance, does not account for topographic,
+ soil, or other features.
+ An additional drawback of the product is its focus on composition, which
+ does not directly tell us about tree density or other aspects of vegetation
+ structure, and in particular does not distinguish between closed forest,
+ savanna, and prairie.
+ This limitation is particularly critical at the prairie-forest transition
+ in Minnesota, Wisconsin, Illinois, and into Indiana 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+citep{transeau1935prairie}
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+This latter limitation can be addressed by developing estimates of absolute
+ abundance (e.g., biomass) rather than the relative abundance compositional
+ data used here.
+ A gridded dataset of biomass, stem density, and basal area is already available
+ for Minnesota, Wisconsin, and northern Michigan 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+citep{goring2015composition}
+\end_layout
+
+\end_inset
+
+, based on the PLS data.
+ An extension to southern Michigan, Illinois, and Indiana is planned.
+ We are currently developing statistical estimates of biomass for Minnesota,
+ Wisconsin, and Michigan using a statistical model applied to the gridded
+ biomass dataset, with extension to Illinois and Indiana planned.
+ We also plan to estimate stem density and basal area using a similar approach
+ to that used for biomass.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Itemize
+The gridded raw count data for the western subdomain and data aggregated
+ to township for the eastern subdomain (NIS Data Portal #XXX) that provides
+ the input data for the product described in this work.
+ Note that we cannot provide the raw data at point locations because of
+ limitations specified in the data use agreements under which we have access
+ to the data.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Author contributions
+\end_layout
+
+\begin_layout Standard
+CJP, AT, and JZ developed the statistical model and code.
+ CJP carried out the model comparison and created the data product.
+ CJP wrote the paper based on an initial draft by AT and with feedback and
+ editing from SJG, CVC, JWW, DJM, JAP, JZ and JSM.
+ SJG, JAP, CVC, DJM, JSM, and JWW led the processing and analysis of the
+ PLS and TPS data and assisted with interpretation of results.
+ 
+\end_layout
+
+\begin_layout Section*
+Acknowledgments
+\end_layout
+
+\begin_layout Standard
+The authors are deeply indebted to all of the researchers over the years
+ who have preserved, collected, and digitized survey records, in particular
+ John Burk, Jim Dyer, Peter Marks, Robert McIntosh, Ed Schools, Ted Sickley,
+ Ronald Stuckey, and the Ohio Biological Survey.
+ We thank Madeline Ruid, Ben Seliger, Morgan Ripp and Daniel Handel for
+ processing of the southern Michigan data.
+ Indiana and Illinois data were made possible through the hard work of many
+ Notre Dame undergraduates in the McLachlan lab.
+ This work was carried out by the PalEON Project with support from the National
+ Science Foundation MacroSystems Program through grants EF-1065702, EF-1065656,
+ DEB-1241874 and DEB-1241868 and from the Notre Dame Environmental Change
+ Initiative.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+bibliographystyle{/accounts/gen/vis/paciorek/latex/RSSstylefile/Chicago}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+bibliography{/accounts/gen/vis/paciorek/bibfiles/abbrev.stat,/accounts/gen/vis/pa
+ciorek/bibfiles/abbrev.other,/accounts/gen/vis/paciorek/bibfiles/spatstat,/accoun
+ts/gen/vis/paciorek/bibfiles/statgeneral,/accounts/gen/vis/paciorek/bibfiles/pac
+iorek,/accounts/gen/vis/paciorek/bibfiles/ecology,/accounts/gen/vis/paciorek/res
+earch/jmac/composition_paper/goring_intro}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Appendix
+\end_layout
+
+\begin_layout Subsection
+MCMC details
+\end_layout
+
+\begin_layout Standard
+Define 
+\begin_inset Formula $\bar{w}_{ip}=\frac{1}{n_{i}}{\displaystyle \sum_{j=1}^{n_{i}}W_{ijp}}$
+\end_inset
+
+ as the average of the 
+\begin_inset Formula $W$
+\end_inset
+
+ values for the 
+\begin_inset Formula $p$
+\end_inset
+
+th taxon in the 
+\begin_inset Formula $i$
+\end_inset
+
+th grid cell and 
+\begin_inset Formula $\bar{w}_{p}=\{\bar{w}_{ip}\},$
+\end_inset
+
+ 
+\begin_inset Formula $i=1,\ldots,m$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $A$
+\end_inset
+
+ be a diagonal matrix where 
+\begin_inset Formula $A_{ii}$
+\end_inset
+
+ is the number of trees in the 
+\begin_inset Formula $i$
+\end_inset
+
+th grid cell.
+ When there are no trees in a grid cell, 
+\begin_inset Formula $\bar{w}_{ip}=0$
+\end_inset
+
+ and 
+\begin_inset Formula $A_{ii}=0$
+\end_inset
+
+.
+ For the township data, at each iteration, based on the current values of
+ the grid cell membership variables, 
+\begin_inset Formula $\{c_{tj}\}$
+\end_inset
+
+, trees are aggregated into grid cells and the calculations above can then
+ be carried out.
+\end_layout
+
+\begin_layout Standard
+The conditional distribution for 
+\begin_inset Formula $W_{ijp}$
+\end_inset
+
+ given the other unknowns in the model and the data is as follows.
+ Let 
+\begin_inset Formula $\mbox{TN}(a,b,\mu,\tau^{2})$
+\end_inset
+
+ denote the truncated normal distribution with mean parameter 
+\begin_inset Formula $\mu$
+\end_inset
+
+ and variance parameter 
+\begin_inset Formula $\tau^{2}$
+\end_inset
+
+, truncated below by 
+\begin_inset Formula $a$
+\end_inset
+
+ and above by 
+\begin_inset Formula $b$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align}
+W_{ijp} & \sim\begin{cases}
+\mbox{TN}\big({\displaystyle \max_{p^{*}\neq y_{ij}}w_{ijp^{*}},\infty,\alpha_{y_{ij}}(s_{i}),1\big),} & \mbox{if }p\mbox{ = \ensuremath{y_{ij}}}\\
+\mbox{TN}\big(-\infty,w_{ijy_{ij}},\alpha_{p}(s_{i}),1\big), & \mbox{if }p\mbox{ \ensuremath{\neq y_{ij}}}
+\end{cases}\label{sampW}
+\end{align}
+
+\end_inset
+
+In essence, the truncation value is determined by the taxon of the 
+\begin_inset Formula $j$
+\end_inset
+
+th tree.
+ For a given 
+\begin_inset Formula $p$
+\end_inset
+
+, the 
+\begin_inset Formula $W$
+\end_inset
+
+ values for all trees in all cells can be sampled in parallel.
+ 
+\end_layout
+
+\begin_layout Standard
+The conditional distribution of 
+\begin_inset Formula $\alpha_{p}$
+\end_inset
+
+ is 
+\begin_inset Formula 
+\begin{align}
+\alpha_{p} & \sim\mbox{N}\bigg(\Big(A+Q_{p}\Big)^{-1}A\bar{w}_{p},\Big(A+Q_{p}\Big)^{-1}\bigg).\label{sampalpha}
+\end{align}
+
+\end_inset
+
+where 
+\begin_inset Formula $Q_{p}=(\sigma_{p}^{2})^{-1}Q$
+\end_inset
+
+ for the CAR model and 
+\begin_inset Formula $\left(\sigma_{p}^{2}\cdot\frac{4\pi}{\rho_{p}^{2}}\right)^{-1}Q(\rho_{p})$
+\end_inset
+
+ for the SPDE model.
+ For each hyperparameter, 
+\begin_inset Formula $\phi_{p}=\log\sigma_{p}$
+\end_inset
+
+ for the CAR model and 
+\begin_inset Formula $\phi_{p}\in\{\mu_{p},(\log\sigma_{p},\log\rho_{p})\}$
+\end_inset
+
+ for the SPDE model, we sample 
+\begin_inset Formula $\{\phi_{p},\alpha_{p}\}$
+\end_inset
+
+ jointly, proposing 
+\begin_inset Formula $\phi_{p}$
+\end_inset
+
+ as a random walk and, conditional on the proposed value of 
+\begin_inset Formula $\phi_{p}$
+\end_inset
+
+, sampling 
+\begin_inset Formula $\alpha_{p}$
+\end_inset
+
+ from the distribution just above.
+ The joint proposal is accepted or rejected as a standard Metropolis-Hastings
+ proposal, with adaptation of the proposal (co)variance 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+citep{Shab:Well:2011}
+\end_layout
+
+\end_inset
+
+.
+ The proposal distribution for 
+\begin_inset Formula $\phi_{p}$
+\end_inset
+
+ is a normal distribution (bivariate for 
+\begin_inset Formula $\phi_{p}=(\log\sigma_{p},\log\rho_{p})$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\noindent
+The full conditional distribution of the hyperparameter 
+\begin_inset Formula $\sigma_{p}^{2}$
+\end_inset
+
+ is 
+\begin_inset Formula 
+\begin{align}
+[\sigma_{p}^{2}|y,w,\alpha,v_{-p}] & \sim IG\bigg(I/2+\beta_{p},\gamma_{p}+1/2\alpha_{p}^{T}(D-C)\alpha_{p}\bigg).\label{sampsigmasq}
+\end{align}
+
+\end_inset
+
+Then 
+\begin_inset Formula $\sigma_{p}^{2}$
+\end_inset
+
+ can be sampled from an inverse gamma distribution with shape parameter
+ 
+\begin_inset Formula $I/2+\beta_{p}$
+\end_inset
+
+ and scale parameter 
+\begin_inset Formula $\gamma_{p}+1/2\alpha_{p}^{T}(D-C)\alpha_{p}$
+\end_inset
+
+.
+ In order to speed up computations, we take advantage of the sparsity of
+ 
+\begin_inset Formula $C$
+\end_inset
+
+ to sample 
+\begin_inset Formula $\alpha_{p}$
+\end_inset
+
+ using sparse matrix computations.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+For the township-level data, for a given tree 
+\begin_inset Formula $j$
+\end_inset
+
+ in township 
+\begin_inset Formula $t$
+\end_inset
+
+, we draw the latent tree membership variable, 
+\begin_inset Formula $c_{tj}\in\{1,\ldots,m\}$
+\end_inset
+
+, from a discrete distribution by normalizing posterior weights, 
+\begin_inset Formula $\{\psi_{1}L_{tj1},\ldots,\psi_{m}L_{tjm}\}$
+\end_inset
+
+, produced by multiplying the prior weights by a likelihood contribution,
+ 
+\begin_inset Formula $L_{tji}$
+\end_inset
+
+, 
+\begin_inset Formula $i=1,\ldots,m$
+\end_inset
+
+.
+ 
+\begin_inset Formula $L_{tji}$
+\end_inset
+
+ is the density of the latent 
+\begin_inset Formula $W_{tj1},\ldots,W_{tjP}$
+\end_inset
+
+ values for the given tree under the condition that 
+\begin_inset Formula $c_{tj}=i$
+\end_inset
+
+, namely the product of independent normal densities, 
+\begin_inset Formula $W_{tjp}\sim\mbox{N}(\alpha_{p}(s_{i}),1)$
+\end_inset
+
+, over 
+\begin_inset Formula $p=1,\ldots,P$
+\end_inset
+
+.
+ Thus the posterior reweights the prior based on how consistent the current
+ 
+\begin_inset Formula $W_{tj}$
+\end_inset
+
+ values for a tree are with the 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ values for the candidate grid cells.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Subsection
+Derivation of the Full Conditional Distribution of 
+\begin_inset Formula $W$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fullconditionalW"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+The probability density function for the full conditional distribution of
+ 
+\begin_inset Formula $W_{ijp}$
+\end_inset
+
+ is proportional to 
+\begin_inset Formula 
+\begin{align*}
+ & \pi(w_{ijp}|y,w_{-ijp},\alpha,v)\propto\pi(y|w)\pi(w|\alpha)\\
+ & \propto\bigg\{{\displaystyle \prod_{i=1}^{I}{\displaystyle \prod_{j=1}^{n_{i}}{\displaystyle \prod_{p=1}^{P}I(w_{ijy_{ij}}\geq w_{ijp})\bigg\}\bigg\{{\displaystyle \prod_{i=1}^{I}{\displaystyle \prod_{j=1}^{n_{i}}{\displaystyle \prod_{p=1}^{P}\phi(w_{ijp}-\alpha_{ip})\bigg\}}}}}}}
+\end{align*}
+
+\end_inset
+
+The first product, taken over all observations 
+\begin_inset Formula $j$
+\end_inset
+
+ at location 
+\begin_inset Formula $i$
+\end_inset
+
+ and over all locations 
+\begin_inset Formula $i$
+\end_inset
+
+, involves the indicator that 
+\begin_inset Formula $w_{ijy_{ij}}$
+\end_inset
+
+ is greater than 
+\begin_inset Formula $w_{ijp}$
+\end_inset
+
+ for all 
+\begin_inset Formula $p$
+\end_inset
+
+.
+ The second term involves the product of the conditionally-independent and
+ normally-distributed 
+\begin_inset Formula $W_{ijp}$
+\end_inset
+
+ given 
+\begin_inset Formula $\alpha_{ip}$
+\end_inset
+
+, 
+\begin_inset Formula $j$
+\end_inset
+
+ = 
+\begin_inset Formula $1,...,n_{i}$
+\end_inset
+
+; 
+\begin_inset Formula $i$
+\end_inset
+
+ = 
+\begin_inset Formula $1,...,I$
+\end_inset
+
+; 
+\begin_inset Formula $p$
+\end_inset
+
+ = 
+\begin_inset Formula $1,...,P$
+\end_inset
+
+.
+ Because the conditional distribution only depends on terms involving 
+\begin_inset Formula $w_{ijp}$
+\end_inset
+
+, observe that this product simplifies to 
+\begin_inset Formula 
+\begin{align*}
+ & \pi(w_{ijp}|y,w_{-ijp},\alpha,v)\\
+ & \propto\begin{cases}
+\phi(w_{ijy_{ij}}-\alpha_{iy_{ij}})I(w_{ijy_{ij}}\geq{\displaystyle \max_{p^{*}\neq y_{ij}}w_{ijp^{*}}),} & \mbox{if }p\mbox{ = \ensuremath{y_{ij}}}\\
+\phi(w_{ijp}-\alpha_{ip})I(w_{ijp}\leq w_{ijy_{ij}}), & \mbox{if }p\mbox{ \ensuremath{\neq y_{ij}}}
+\end{cases}
+\end{align*}
+
+\end_inset
+
+That is, the full conditional distribution of 
+\begin_inset Formula $W_{ijp}$
+\end_inset
+
+ is a truncated normal distribution with mean 
+\begin_inset Formula $\alpha_{ip}$
+\end_inset
+
+ and variance 1.
+ The truncation values are determined by the category of observation 
+\begin_inset Formula $j$
+\end_inset
+
+ at location 
+\begin_inset Formula $i$
+\end_inset
+
+.
+ If the category is 
+\begin_inset Formula $p$
+\end_inset
+
+, then the lower truncation value is 
+\begin_inset Formula ${\displaystyle \max_{p^{*}\neq y_{ij}}w_{ijp^{*}}}$
+\end_inset
+
+ and the upper truncation value is 
+\begin_inset Formula $\infty$
+\end_inset
+
+.
+ If the category is 
+\begin_inset Formula $q\neq p$
+\end_inset
+
+, then the lower truncation value is 
+\begin_inset Formula $-\infty$
+\end_inset
+
+ and the upper truncation value is 
+\begin_inset Formula $w_{ijq}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Derivation of the Full Conditional Distribution of 
+\begin_inset Formula $\alpha_{p}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\begin_inset CommandInset label
+LatexCommand label
+name "fullconditionalalpha"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+The full conditional distribution of 
+\begin_inset Formula $\alpha_{p}$
+\end_inset
+
+ is 
+\begin_inset Formula 
+\begin{align*}
+ & \pi(\alpha_{p}|y,w,\alpha_{-p},v)\propto\pi(w|\alpha)\pi(\alpha|v)\\
+ & \propto\bigg[{\displaystyle \prod_{i=1}^{I}\exp\Big\{-(1/2){\displaystyle \sum_{j=1}^{n_{i}}(w_{ijp}-\alpha_{ip})^{2}\Big\}\bigg]\exp\bigg[-(1/2)\alpha_{p}^{T}\big\{\sigma_{p}^{-2}(D-C)\big\}\alpha_{p}\bigg]}}\\
+ & \propto\bigg[{\displaystyle \prod_{i=1}^{I}\exp\Big\{-(1/2)(-2\alpha_{ip}{\displaystyle \sum_{j=1}^{n_{i}}w_{ijp}+n_{i}\alpha_{ip}^{2})\Big\}\bigg]\exp\bigg[-(1/2)\alpha_{p}^{T}\big\{\sigma_{p}^{-2}(D-C)\big\}\alpha_{p}\bigg]}}\\
+ & \propto\bigg[{\displaystyle \prod_{i=1}^{I}\exp\Big\{-\frac{1}{2n_{i}^{-1}}(-2\bar{w}_{i.p}\alpha_{ip}+\alpha_{ip}^{2})\Big\}\bigg]\exp\bigg[-(1/2)\alpha_{p}^{T}\big\{\sigma_{p}^{-2}(D-C)\big\}\alpha_{p}\bigg]}\\
+ & \propto\bigg[{\displaystyle \prod_{i=1}^{I}\exp\Big\{-(1/2)\frac{(\alpha_{ip}-\bar{w}_{i.p})^{2}}{n_{i}^{-1}}\Big\}\bigg]\exp\bigg[-(1/2)\alpha_{p}^{T}\big\{\sigma_{p}^{-2}(D-C)\big\}\alpha_{p}\bigg]}
+\end{align*}
+
+\end_inset
+
+Above, the square was completed and the quadratic form in the first term
+ was simplified.
+ Next, we combine the two quadratic forms to obtain 
+\begin_inset Formula 
+\begin{align*}
+ & \pi(\alpha_{p}|y,w,\alpha_{-p},v)\\
+ & \propto\bigg[\exp\Big\{-(1/2)(\alpha_{p}-\bar{w}_{p})^{T}A(\alpha_{p}-\bar{w}_{p})\Big\}\bigg]\exp\bigg[-(1/2)\alpha_{p}^{T}\big\{\sigma_{p}^{-2}(D-C)\big\}\alpha_{p}\bigg]\\
+ & \propto\exp\bigg[-(1/2)\bigg\{\alpha_{p}^{T}A\alpha_{p}-2\bar{w}_{p}^{T}A\alpha_{p}+\bar{w}_{p}^{T}A\bar{w}_{p}+\alpha_{p}^{T}V_{p}^{-1}\alpha_{p}\bigg\}\bigg]\\
+ & \propto\exp\bigg[-(1/2)\bigg\{\alpha_{p}^{T}\big(A+V_{p}^{-1}\big)\alpha_{p}-2\bar{w}_{p}^{T}A\alpha_{p}\bigg\}\bigg]\\
+ & \propto\exp\bigg[-(1/2)\bigg\{\big(A+V_{p}^{-1}\big)^{(1/2)}\alpha_{p}-\big(A+V_{p}^{-1}\big)^{-(1/2)}A\bar{w}_{p}\bigg\}^{T}\notag\\
+ & \indent\indent\bigg\{\big(A+V_{p}^{-1}\big)^{(1/2)}\alpha_{p}-\big(A+V_{p}^{-1}\big)^{-(1/2)}A\bar{w}_{p}\bigg\}\bigg]\\
+ & \propto\exp\bigg[-(1/2)\bigg\{\alpha_{p}-\big(A+V_{p}^{-1}\big)^{-1}A\bar{w}_{p}\bigg\}^{T}\big(A+V_{p}^{-1}\big)\notag\\
+ & \indent\indent\bigg\{\alpha_{p}-\big(A+V_{p}^{-1}\big)^{-1}A\bar{w}_{p}\bigg\}\bigg]
+\end{align*}
+
+\end_inset
+
+Above, the square was completed and the resulting terms were simplified.
+ Thus, the full conditional distribution 
+\begin_inset Formula $[\alpha_{p}|y,w,\alpha_{-p},v]$
+\end_inset
+
+ is a multivariate normal distribution 
+\begin_inset Formula 
+\begin{align*}
+[\alpha_{p}|y,w,\alpha_{-p},v]\sim N\bigg(\big(A+V_{p}^{-1}\big)^{-1}A\bar{w}_{p},\big(A+V_{p}^{-1}\big)^{-1}\bigg).
+\end{align*}
+
+\end_inset
+
+The mean vector 
+\begin_inset Formula $\big(A+V_{p}^{-1}\big)^{-1}A\bar{w}$
+\end_inset
+
+
+\begin_inset Formula $_{p}$
+\end_inset
+
+ is a linear combination of the means of the latent variable values 
+\begin_inset Formula $w_{ijp}$
+\end_inset
+
+ at each location for category 
+\begin_inset Formula $p$
+\end_inset
+
+, and the values of 
+\begin_inset Formula $\big(A+V_{p}^{-1}\big)^{-1}A$
+\end_inset
+
+ depend on the number of observations and number of neighbors at each location.
+ Similarly, the covariance matrix 
+\begin_inset Formula $\big(A+V_{p}^{-1}\big)^{-1}$
+\end_inset
+
+ varies by the number of observations and number of neighbors of each location.
+\end_layout
+
+\begin_layout Subsection
+Derivation of the Full Conditional Distribution of Hyperparameter 
+\begin_inset Formula $\sigma_{p}^{2}$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\begin_inset CommandInset label
+LatexCommand label
+name "fullconditionalsigmasq"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+The probability density function for the full conditional distribution of
+ 
+\begin_inset Formula $\sigma_{p}^{2}$
+\end_inset
+
+ is proportional to 
+\begin_inset Formula 
+\begin{align*}
+ & \pi(\sigma_{p}^{2}|y,w,\alpha,v_{-p})\propto\pi(\alpha_{p}|\sigma_{p}^{2})\pi(\sigma_{p}^{2})\\
+ & \propto\bigg(|\sigma_{p}^{2}(D-C)^{-}|^{-1/2}\exp\Big[(-(1/2))\alpha_{p}^{T}\big\{\sigma_{p}^{-2}(D-C)\big\}\alpha_{p}\Big]\bigg)\exp(-\gamma_{p}\sigma_{p}^{2})(\sigma_{p}^{2})^{-\beta_{p}-1}\\
+ & \propto(\sigma_{p}^{2})^{-I/2}\exp\bigg[-\Big\{\gamma_{p}+(1/2)\alpha_{p}^{T}(D-C)\alpha_{p}\Big\}\sigma_{p}^{-2}\bigg](\sigma_{p}^{2})^{-\beta_{p}-1}.
+\end{align*}
+
+\end_inset
+
+Factors of the form 
+\begin_inset Formula $\exp\{c(\sigma_{p}^{2})^{k}\}$
+\end_inset
+
+, where 
+\begin_inset Formula $c$
+\end_inset
+
+ and 
+\begin_inset Formula $k$
+\end_inset
+
+ are constants, were combined.
+ Factors of the form 
+\begin_inset Formula $(\sigma_{p}^{2})^{l}$
+\end_inset
+
+, where 
+\begin_inset Formula $l$
+\end_inset
+
+ is a constant, were also combined, and the form of the density is that
+ of the inverse gamma family.
+ Thus, 
+\begin_inset Formula 
+\begin{align*}
+[\sigma_{p}^{2}|y,w,\alpha,v_{-p}]\sim IG\bigg(I/2+\beta_{p},\gamma_{p}+(1/2)\alpha_{p}^{T}(D-C)\alpha_{p}\bigg).
+\end{align*}
+
+\end_inset
+
+The shape parameter is 
+\begin_inset Formula $I/2+\beta_{p}$
+\end_inset
+
+, and the scale parameter is 
+\begin_inset Formula $\gamma_{p}+(1/2)\alpha_{p}^{T}(D-C)\alpha_{p}$
+\end_inset
+
+.
+ More variability in 
+\begin_inset Formula $\alpha_{p}$
+\end_inset
+
+ yields larger values of the quadratic form 
+\begin_inset Formula $\alpha_{p}^{T}(D-C)\alpha_{p}$
+\end_inset
+
+, and thus, the full conditional distribution of 
+\begin_inset Formula $\sigma_{p}^{2}$
+\end_inset
+
+ will have a larger mean.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Estimating 
+\begin_inset Formula $\theta_{p}(s)$
+\end_inset
+
+ via Monte Carlo integration
+\end_layout
+
+\begin_layout Standard
+In the latent variable representation, 
+\begin_inset Formula $\theta_{p}(s)$
+\end_inset
+
+ never appears explicitly and cannot be calculated in closed form.
+ Instead we use Monte Carlo integration over 
+\begin_inset Formula $W_{ijp},\, p=1,\ldots,P$
+\end_inset
+
+ to estimate 
+\begin_inset Formula $\theta_{p}(s_{i})$
+\end_inset
+
+.
+ The quantity 
+\begin_inset Formula $\theta_{p}(s_{i})=\mbox{Prob}(W_{ijp}={\displaystyle \max_{p^{*}}W_{ijp^{*}})}$
+\end_inset
+
+ defines the probability of taxon 
+\begin_inset Formula $p$
+\end_inset
+
+ at grid cell 
+\begin_inset Formula $i$
+\end_inset
+
+.
+ This requires one to choose the number of Monte Carlo samples, which we
+ set at 10000, effectively sampling 10000 hypothetical trees and estimating
+ the probabilities of the different taxa in the population from the empirical
+ proportions in this sample of trees.
+ For each of the saved MCMC samples, 
+\begin_inset Formula $k=1,\ldots K$
+\end_inset
+
+, we estimate 
+\begin_inset Formula $\theta_{p}^{(k)}(s_{i})$
+\end_inset
+
+ numerically.
+ Specifically, for 
+\begin_inset Formula $t=1,\ldots,10000$
+\end_inset
+
+ samples (i.e., hypothetical trees), we independently draw
+\begin_inset Formula 
+\[
+W_{itp}^{(k)}\sim\mbox{N}(\alpha_{p}^{(k)}(s_{i}),1),\, p=1,\ldots,P
+\]
+
+\end_inset
+
+and estimate using 
+\begin_inset Formula 
+\[
+\theta_{p}^{(k)}(s_{i})\approx\frac{1}{10000}{\displaystyle \sum_{t=1}^{10000}1(W_{itp}^{(k)}={\displaystyle \max_{p^{*}}W_{itp^{*}}^{(k)})}},\, p=1,\ldots,P
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $1(\cdot)$
+\end_inset
+
+ is the indicator function that evaluates to 1 if the expression is true
+ and 0 if false.
+ In other words, we calculate the proportion of times that the maximum of
+ 
+\begin_inset Formula $W_{itp},\, p=1,\ldots,P$
+\end_inset
+
+ corresponds to taxon 
+\begin_inset Formula $p$
+\end_inset
+
+.
+ Considering 
+\begin_inset Formula $\theta_{p}^{(k)}(s_{i}),\, k=1,\ldots,K$
+\end_inset
+
+, we have a sample from the posterior of 
+\begin_inset Formula $\theta_{p}(s_{i})$
+\end_inset
+
+.
+\end_layout
+
+\end_body
+\end_document

@@ -1,8 +1,34 @@
+analyses: see run.sh for overview of what to do to fit model and create product
+
+==== Jan 2016 ====
+
+paper.lyx is now version revised for PLOS ONE
+
+outputted to paper.tex and then revised to give paper-plos.tex as result of applying plos template
+
+have version w/ and w/o changes marked in red (paper-plos-track.tex)
+
+compile to get the bbl info and paste into paperPlos.tex
+
+# pdftops -eps fig1.pdf # doesnt work well
+pdf2ps fig1.pdf; ps2eps fig1.ps  # smaller
+
+# combine fig2.pdf and legend{Raw,Prop,SD}.pdf in ppt (letter portrait, 95% of fig2.pdf, 20% of legends); save as fig2comb.pdf
+# pdftops -eps fig2comb.pdf  # doesn't work well
+pdf2ps fig2comb.pdf; ps2eps fig2comb.ps  # state lines better
+
+pdf2ps fig3.pdf; ps2eps fig3.ps 
+
+# direct creation of eps in R works well but creates much bigger files that are too big for PLOS ONE
+
+create pdf with red track changes and mv to paperPlos_track.pdf and paperPlos_track.tex
+
+==== fall 2015 =====
 paper.lyx was final version converted to arXiv format in arxiv directory
 
 paper.lyx outputted to paper.tex 
 
-paper-plos.tex is result of applying plos template to paper.tex
+paperPlos.tex is result of applying plos template to paper.tex
 
 
 much monkeying to get fig2 to include all images
@@ -15,3 +41,4 @@ save as pdf; open in acrobat and save as eps
 result is fig2.eps
 
 in submission use arxiv/fig{1,3}.eps
+
