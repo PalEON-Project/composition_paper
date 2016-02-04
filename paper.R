@@ -1,4 +1,5 @@
 # code to generate figures for paper
+
 # run this code from ~/research/jmac/composition so use packrat controlled packages
 
 paperDir <- '~/research/jmac/composition_paper'
@@ -52,8 +53,8 @@ d <- theme_clean(d)
 
 setwd(paperDir)
 
-#pdf('fig1.pdf', width=4.85, height=3)
-postscript('fig1.eps', width=4.85, height=3)
+pdf('fig1.pdf', width=4.85, height=3)
+#postscript('fig1.eps', width=4.85, height=3)
 print(d)
 dev.off()
 
@@ -92,18 +93,18 @@ for( taxon in focalTaxa ) {
 
 setwd(paperDir)
 
-#pdf('fig2.pdf', width=7, height=10)
+pdf('fig2.pdf', width=7, height=10)
 #postscript('fig2.eps', width=7, height=10)
-#do.call(grid.arrange, c(figs, nrow = length(focalTaxa), ncol = 3))
-#dev.off()
+do.call(grid.arrange, c(figs, nrow = length(focalTaxa), ncol = 3))
+dev.off()
 
 scaling = .5
 
 ix=1
 iy=seq(0,1,len=300)
 iz=matrix(iy,nc=300)
-#postscript(file='legendRaw.pdf',width=5/scaling,height=.7/scaling,paper="special")
-#pdf(file='legendRaw.eps',width=5/scaling,height=.7/scaling,paper="special")
+pdf(file='legendRaw.pdf',width=5/scaling,height=.7/scaling,paper="special")
+#postscript(file='legendRaw.eps',width=5/scaling,height=.7/scaling,paper="special")
 par(fig=c(0,1,0,1),mai=c(0.6,.2,0,.3),mgp=c(1.8,.7,0),cex.axis=1.5)
 cols <- rev(terrain.colors(length(propBreaks)-1))
 cols[1] <- terrain.colors(40)[39]
@@ -112,12 +113,12 @@ image(iy,ix,t(iz), yaxt = "n", xlab = "", xaxt='n',
 axis(1, at = seq(0,1, len = length(propBreaks)), labels = as.character(propBreaks),
      cex.axis = 1.8, tick = FALSE)
 box()
-#dev.off()
+dev.off()
 
 ix=1
 iy=seq(0,1,len=300)
 iz=matrix(iy,nc=300)
-#pdf(file='legendProp.pdf',width=5/scaling,height=.7/scaling,paper="special")
+pdf(file='legendProp.pdf',width=5/scaling,height=.7/scaling,paper="special")
 #postscript(file='legendProp.eps',width=5/scaling,height=.7/scaling,paper="special")
 par(fig=c(0,1,0,1),mai=c(0.6,.2,0,.3),mgp=c(1.8,.7,0),cex.axis=1.5)
 image(iy,ix,t(iz), yaxt = "n", xlab = "", xaxt='n', 
@@ -125,7 +126,7 @@ image(iy,ix,t(iz), yaxt = "n", xlab = "", xaxt='n',
 axis(1, at = seq(0,1, len = length(propBreaks)), labels = as.character(propBreaks),
      cex.axis = 1.8, tick = FALSE)
 box()
-#dev.off()
+dev.off()
 
 ix=1
 iy=seq(0,1,len=300)
@@ -138,12 +139,12 @@ image(iy,ix,t(iz), yaxt = "n", xlab = "", xaxt='n',
 axis(1, at = seq(0,1, len = length(psdBreaks)), labels = as.character(psdBreaks),
      cex.axis = 1.8, tick = FALSE)
 box()
-#dev.off()
+dev.off()
 
 ix=1
 iy=seq(0,1,len=300)
 iz=matrix(iy,nc=300)
-#pdf(file='legendCV.pdf',width=5/scaling,height=.7/scaling,paper="special")
+pdf(file='legendCV.pdf',width=5/scaling,height=.7/scaling,paper="special")
 # postscript(file='legendSD.eps',width=5/scaling,height=.7/scaling,paper="special")
 par(fig=c(0,1,0,1),mai=c(0.6,.2,0,.3),mgp=c(1.8,.7,0),cex.axis=1.5)
 image(iy,ix,t(iz), yaxt = "n", xlab = "", xaxt='n', 
@@ -151,7 +152,7 @@ image(iy,ix,t(iz), yaxt = "n", xlab = "", xaxt='n',
 axis(1, at = seq(0,1, len = length(cvBreaks)), labels = as.character(cvBreaks),
      cex.axis = 1.8, tick = FALSE)
 box()
-#dev.off()
+dev.off()
 
   
 # Fig 3
@@ -164,10 +165,10 @@ figHgt = 11
 figWth = 8.5
 
 
-#pdf(file = 'fig3.pdf', height = figHgt, width = figWth)
+pdf(file = 'fig3.pdf', height = figHgt, width = figWth)
 #postscript(file = 'fig3.eps', height = figHgt, width = figWth)
 make_veg_map(data = pm, breaks = propBreaks, coords = coord, legendName = 'fitted proportions', map_data = paleonFortified, facet = TRUE, ncol = 3)
-#dev.off()
+dev.off()
 
 
   
