@@ -874,7 +874,7 @@ cite{goring2015composition}
  The gridded data at the 8 km resolution for the midwest subdomain are available
  through the NIS data portal 
 \color red
-as DOI:10.5072/FK2/e9c144ab83af70e29b8d6647aaae58f5
+as DOI:10.6073/pasta/aa0ef9828d41569a96651b056ad89fb3
 \color inherit
  
 \color red
@@ -898,8 +898,9 @@ citep{Gori:etal:data:2016}
  Cogbill from a myriad of archival sources representing land division surveys
  conducted in connection with local settlement
 \color red
- and are available through the NIS data portal as DOI:10.5072/FK2/4d44aebe71dbf65
-290d8ce1bde03598b and DOI:10.5072/FK2/88e167487b22d5f657e7ce7e033772e1 
+ and are available through the NIS data portal as DOI:10.6073/pasta/e40c1ad172882
+d5113844296611451f6 and DOI:10.6073/pasta/d09bb56c6af8ef0783cd7e76f8113b34
+ 
 \begin_inset ERT
 status open
 
@@ -6719,7 +6720,7 @@ name "fig:all_predictions"
 \begin_layout Standard
 The data product is publicly available at the 
 \color red
-NIS Data Portal as DOI:10.5072/FK2/dfc5e9748c8df4c3c275eab0f42d9744
+NIS Data Portal as DOI:10.6073/pasta/8544e091b64db26fdbbbafd0699fa4f9
 \color inherit
  under the CC BY 4.0 license as version 0.4 as of January 2016 
 \begin_inset ERT

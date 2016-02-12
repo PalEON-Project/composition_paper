@@ -1,0 +1,10 @@
+8/28/15:
+generating .eps files as pdftops -eps fig*pdf
+fig1 looks good; not so sure about fig2,3
+
+but fig1 is too big and over 10 Mb arxiv limit
+pdf2ps fig1.pdf seems to be fine
+
+then ps2eps fig1.ps to get pdflatex to work on smeagol
+
+and put only .eps on arxiv
