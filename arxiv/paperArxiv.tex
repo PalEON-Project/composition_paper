@@ -49,6 +49,7 @@
 \usepackage{amsmath}
 \usepackage{graphicx}
 \usepackage[authoryear]{natbib}
+\usepackage[unicode=true]{hyperref}
 
 \makeatletter
 
@@ -89,24 +90,28 @@ Jason S. McLachlan\textsuperscript{7}}
 
 \maketitle
 
-\lyxaddress{\textsuperscript{1}Department of Statistics, University of California, Berkeley, California, USA}
+\lyxaddress{\textsuperscript{1}Department of Statistics, University of California,
+Berkeley, California, USA}
 
 
-\lyxaddress{\textsuperscript{2}Department of Geography, University of Wisconsin, Madison, Wisconsin, USA}
+\lyxaddress{\textsuperscript{2}Department of Geography, University of Wisconsin,
+Madison, Wisconsin, USA}
 
 
-\lyxaddress{\textsuperscript{3}Department of Statistics, University of Iowa, Iowa City, Iowa, USA}
+\lyxaddress{\textsuperscript{3}VA Office of Rural Health, Veterans Rural Health
+Resource Center, Iowa City VAMC, Iowa City, Iowa, USA}
 
 
-\lyxaddress{\textsuperscript{4}Harvard Forest, Harvard University, Petersham, Massachusetts, USA}
+\lyxaddress{\textsuperscript{4}Harvard Forest, Harvard University, Petersham,
+Massachusetts, USA}
 
 
 \lyxaddress{\textsuperscript{5}Center for Climatic Research, University of Wisconsin,
 Madison, Wisconsin, USA}
 
 
-\lyxaddress{\textsuperscript{6}Department of Forest and Wildlife Ecology,
-University of Wisconsin, Madison, Wisconsin, USA}
+\lyxaddress{\textsuperscript{6}Department of Forest and Wildlife Ecology, University
+of Wisconsin, Madison, Wisconsin, USA}
 
 
 \lyxaddress{\textsuperscript{7}Department of Biological Sciences, University
@@ -122,7 +127,6 @@ Madison, Wisconsin, USA}
 
 \lyxaddress{\textsuperscript{\&}These authors contributed equally to this work.
 \newpage}
-
 
 \begin{abstract}
 We present a gridded 8 km-resolution data product of the estimated
@@ -152,7 +156,7 @@ States prior to large-scale Euro-American settlement. In addition
 to specific regional questions, the data product can also serve as
 a baseline against which to investigate how forests and ecosystems
 change after intensive settlement. The data product is being made
-available at the NIS data portal as version 0.4 under the CC BY license.
+available at the NIS data portal as version 1.0.
 
 Keywords: biogeography, species composition, old-growth forests, spatial
 modeling, Bayesian statistical model, vegetation mapping
@@ -189,12 +193,11 @@ at breast height, and distance and bearing from the point were recorded.
 Survey instructions during the PLS varied through time and by point
 type. Accounting for this variation requires data screening to maximize
 consistency among points and the application of spatially-varying
-correction factors \citep{cogbill2015corrections,goring2015composition}
-to accurately assess tree stem density, basal area and biomass from
-the early settlement records, but the impact on composition estimates
-is limited \citep{liu2011broadscale}. Surveyors sometimes used ambiguous
-common names, which requires matching to scientific names and standardization
-\citep{mladenoff2002narrowing,goring2015composition}.
+correction factors \citet{goring2015composition} to accurately assess
+tree stem density, basal area and biomass from the early settlement
+records, but the impact on composition estimates is limited \citep{liu2011broadscale}.
+Surveyors sometimes used ambiguous common names, which requires matching
+to scientific names and standardization \citep{mladenoff2002narrowing,goring2015composition}.
 
 Logging, agriculture, and land abandonment have left an indelible
 mark on forests in the northeastern United States \citep{foster1998land,rhemtulla2009legacies,thompson2013four,goring2015composition}.
@@ -215,7 +218,7 @@ by the use of a statistical model to develop a statistically-estimated
 data product. First, the PLS and TPS data only provide estimates of
 within-cell variance that do not account for information from nearby
 locations. Second, there are data gaps: the available digitized data
-from Illinois and Indiana represent a small fraction of those states
+from Illinois and Indiana represent a small fraction of those states,
 and missing townships are common in the TPS data. Third, the TPS and
 PLS data have fundamentally different sampling design and spatial
 resolution. Our statistical model allows us to provide a spatially-complete
@@ -227,11 +230,9 @@ In Section \ref{sec:Data} we describe the data sources, while Section
 Section \ref{sec:Model-comparison} we quantitatively compare competing
 statistical specifications, and in Section \ref{sec:Data-product}
 we describe the final data product. In Section \ref{sec:Discussion}
-we discuss limitations of the statistical model, and we list related
-data products under development.
-
-
-
+we discuss the uncertainties estimated by and the
+limitations of the statistical model, and we list related data products
+under development.
 
 \section{Data\label{sec:Data}}
 
@@ -242,19 +243,22 @@ Illinois, Indiana, and Michigan (the midwestern subdomain), digitized
 data are available at PLS survey point locations and have been aggregated
 to a regular 8 km grid in the Albers projection. (Note that for Indiana
 and Illinois, at the moment trees are associated with township centroids
-and then assigned to 8 km grid cells based on the centroid but in
+and then assigned to 8 km grid cells based on the centroid, but in
 the near future we will have point locations available for each tree.)
 For the states of Ohio, Pennsylvania, New Jersey, New York and the
 six New England states (the eastern subdomain), data are aggregated
-at the township level. There are also data from a single township
-in Quebec and a single township in northern Delaware. Digitization
-of PLS data in Minnesota, Wisconsin and Michigan is essentially complete,
-with PLS data for nearly all 8 km grid cells, but data in Illinois
-and Indiana represent a sample of the full set of grid cells, with
-survey record transcription ongoing. Data for the eastern states are
-available for a subset of the full set of townships covering the domain;
-the TPS data for some townships were lost, incomplete, or have not
-been located \citep{Cogb:etal:2002}. 
+at the township level. We make predictions for all
+of the states listed above; these constitute our core domain. There
+are also data from a single township in Quebec and a single township
+in northern Delaware; these data help inform predictions
+in nearby locations within our core domain, but predictions are not
+made for Quebec or Delaware. Digitization of PLS data in Minnesota,
+Wisconsin and Michigan is essentially complete, with PLS data for
+nearly all 8 km grid cells, but data in Illinois and Indiana represent
+a sample of the full set of grid cells, with survey record transcription
+ongoing. Data for the eastern states are available for a subset of
+the full set of townships covering the domain; the TPS data for some
+townships were lost, incomplete, or have not been located \citep{Cogb:etal:2002}. 
 
 \begin{figure}
 \label{fig:domain}\includegraphics[scale=1.3]{fig1}
@@ -282,7 +286,7 @@ but it is likely that the imprint of this earlier land use is highly
 concentrated rather than spatially extensive \citep{munoz2014defining}.
 
 Extensive details on the upper Midwest (Minnesota, Wisconsin, Michigan)
-data and processing steps are available in \cite{goring2015composition};
+data and processing steps are available \cite{goring2015composition};
 key elements include the use of only corner points, the use of only
 the two closest trees at each corner point, spatially-varying correction
 factors for sampling effort, and a standardized taxonomy table. The
@@ -293,11 +297,12 @@ data. Digitization of the Illinois and Indiana data is still underway,
 so many grid cells contained no data at the time the statistical model
 was fit. Note that the number of trees per grid cell varies depending
 on the number of survey points in a cell, with an average of 124 trees
-per cell. The gridded data at the 8 km resolution for the upper Midwest
-are available through the NIS Data portal (accession number and version
-to be inserted when available). The TPS data were compiled by C.V.
-Cogbill from a myriad of archival sources representing land division
-surveys conducted in connection with local settlement. 
+per cell. The gridded data at the 8 km resolution for the midwest
+subdomain are available through the NIS data portal \citep{Gori:etal:data:2016}.
+The TPS data were compiled by C.V. Cogbill from a myriad of archival
+sources representing land division surveys conducted in connection
+with local settlement and are available through the
+NIS data portal \citep{Cogb:dataNE:2016,Cogb:dataOH:2016}. 
 
 The aggregation into taxonomic groups is primarily at the genus level
 but is at the species level in some cases of monospecific genera.
@@ -321,7 +326,7 @@ from different genera or even families. For the midwestern subdomain
 we do not fit statistical models for Atlantic white cedar and chestnut
 as these species have 0 and 7 trees present, respectively. The taxa
 grouped into the other hardwood category are those for which fewer
-than roughly 2000 trees were present in the dataset; however we include
+than roughly 2000 trees were present in the dataset; however, we include
 Atlantic white cedar explicitly despite it only having 336 trees in
 the dataset because of specific ecological interest in Atlantic white
 cedar wetlands. 
@@ -346,10 +351,11 @@ Albers (Great Lakes and St. Lawrence) projection (PROJ4: EPSG:3175),
 with the rectangle split into 8 km cells, arranged in a 296 by 180
 grid of cells, with the centroid of the cell in the southwest corner
 located at (-71000 m, 58000 m). For the midwestern subdomain we use
-the western-most 146 by 180 grid of cells. For the eastern subdomain
-we use the eastern-most 180 by 180 grid of cells and then omit 23
-rows of cells in the north and 17 rows of cells in the south, as these
-grid cells are outside of the states containing data.
+the western-most 146 by 180 grid of cells when fitting
+the statistical models. For the eastern subdomain we use the eastern-most
+180 by 180 grid of cells and then omit 23 rows of cells in the north
+and 17 rows of cells in the south, as these grid cells are outside
+of the states containing data.
 
 
 \section{Statistical model\label{sec:Statistical-model}}
@@ -365,15 +371,32 @@ the empirical proportions represent estimates of the true proportions
 that could be calculated using the full population of all the trees
 in a grid cell or township.
 \end{enumerate}
+At a high level, the Bayesian statistical model estimates
+composition across the domain, even in locations with sparse or no
+data, by combining the raw composition data with the assumption that
+composition varies in a smooth spatial fashion across the domain.
+The information in the data is quantified by the data model, also
+known as the likelihood. The assumption of smoothness is built into
+the model by representing the true unknown spatially-varying composition
+using a statistical spatial process representation that induces smoothing
+of estimates across nearby locations. This spatial process representation
+is a form of prior distribution and is a function of model parameters
+called hyperparameters that determine the correlation structure of
+the process and are also estimated based on the data.
+
 The result of fitting the Bayesian model via Markov chain Monte Carlo
 (MCMC) is a set of representative samples from the posterior distribution
 for the composition in the 23 taxonomic groupings at each of the grid
 cells. These samples are the data product (described further in the
-Data Product section) and can be used in subsequent analyses. The
-mean and standard deviation of the samples for each pair of cell and
-taxon represent our best estimate (i.e., prediction) of composition
+Section \ref{sec:Data-product}) and can be used in subsequent analyses.
+The mean and standard deviation of the samples for each pair of cell
+and taxon represent our best estimate (i.e., prediction) of composition
 and a Bayesian ``standard error'' quantifying the uncertainty in
 the estimate. 
+
+In the remainder of this section we provide the technical
+specification of the model and of the computations involved in fitting
+the model.
 
 
 \subsection{Data model}
@@ -404,56 +427,72 @@ for the $m$ grid cells. In Section \ref{sub:Latent-Variable-Model}
 we introduce a multinomial probit model that relates the $\alpha_{p}(s)$
 processes to the proportion processes, $\theta_{p}(s)$, via the introduction
 of latent variables, with an implicit sum-to-one constraint, $\sum_{p=1}^{P}\theta_{p}(s)=1$.
+A multinomial probit model is similar to logistic
+regression, used for modeling a binary outcome based on an underlying
+probability the outcome will occur, but generalizes to modeling a
+categorical variable based on probabilities for each category. 
 
 
 
 The critical component of the statistical model is the representation
-of $\alpha_{p}(s)$ as a spatial process. This process is a prior
-structure that serves to smooth across noise in the observations and
-allows for interpolation to locations with no data. Apart from the
-sum-to-one constraint, the taxa are considered to be independent in
-the prior. We did not want to impose any structure that ties the different
-taxa together, as any correlation will likely vary across space.
+of $\alpha_{p}(s)$ as a spatial process. A spatial
+process is a statistical representation that models spatially-correlated
+values. It provides a prior structure that serves to smooth across
+noise in the observations and allows for prediction at locations based
+on information from nearby locations, including interpolation to locations
+with no data. Apart from the sum-to-one constraint, the taxa are considered
+to be independent in the prior. We did not want to impose any structure
+that ties the different taxa together, as any correlation will likely
+vary across space.
 
 In the next section, we consider two spatial models to define the
 structure of the $\alpha_{p}(s)$ processes, a standard conditional
 autoregressive model \citep{Bane:etal:2004} and a Gaussian Markov
 random field (MRF) approximation to a Gaussian process with \matern
-covariance \citep{Lind:etal:2011}. 
+covariance \citep{Lind:etal:2011}. These models are
+specific statistical formulations of spatial processes that represent
+spatial correlation by defining neighborhoods around each location
+that are used to help inform predictions at the location. 
 
 
 \subsection{Spatial process models}
 
-MRF models work directly with the precision matrix of the values of
-the spatial process, so calculation of the prior density of $\alpha_{p}$
-is computationally simple \citep{Rue:Held:2005}, but in situations
-where the likelihood is not normal, it can be difficult to set up
-effective MCMC algorithms that are able to move in the high-dimensional
-space of $\alpha_{p}$. The latent variable representation of Section
-\ref{sub:Latent-Variable-Model} helps to alleviate this problem.
-Next we describe two alternative spatial models that we considered;
-in Section \ref{sec:Model-comparison}, we use cross-validation to
-choose between these two representations.
+MRF models represent the neighborhood information
+by working directly with the precision matrix (the
+inverse of the covariance matrix) of the values of the spatial process,
+so calculation of the prior density of $\alpha_{p}$ is computationally
+simple \citep{Rue:Held:2005}. However, in situations
+in which the likelihood is not normal, such
+as our multinomial likelihood, it can be difficult to set up effective
+MCMC algorithms that are able to move in the high-dimensional space
+of $\alpha_{p}$. The latent variable representation of Section \ref{sub:Latent-Variable-Model}
+helps to alleviate this problem. Next we describe two alternative
+spatial models that we considered; in Section \ref{sec:Model-comparison},
+we evaluate the models on held-out data to choose
+between the two.
 
 
 \paragraph{Standard conditional autoregressive models}
 
-Our first model is a standard conditional autoregressive (CAR) model
-\citep{Bane:etal:2004}. We use a standard form of this model, which
-treats the four cardinal neighbors of each grid cell as the neighbors
-of the grid cell. The corresponding precision matrix has diagonal
-elements, $Q_{ii}$, equal to the number of neighbors for the $i$th
-area (i.e., four except for cells on the boundary of the domain),
-while $Q_{ik}=-1$ (the negative of a weight of one) when areas $i$
-and $k$ are neighbors and $Q_{ik}=0$ when they are not. This gives
-the following model for the values of $\alpha_{p}(s_{i})$ collected
-as a vector across all of the grid cells, $i=1,\ldots,m$: 
+Our first model is a standard conditional autoregressive (CAR) model;
+technical details can be found in \citep{Bane:etal:2004}. We use
+a standard form of this model that treats the four
+cardinal neighbors of each grid cell as the neighbors of the grid
+cell. The corresponding precision matrix has diagonal elements, $Q_{ii}$,
+equal to the number of neighbors for the $i$th area (i.e., four except
+for cells on the boundary of the domain), while $Q_{ik}=-1$ (the
+negative of a weight of one) when areas $i$ and $k$ are neighbors
+and $Q_{ik}=0$ when they are not. This gives the following model
+for the values of $\alpha_{p}(s_{i})$ collected as a vector across
+all of the grid cells, $i=1,\ldots,m$: 
 \[
 \alpha_{p}\sim\mbox{N}(0,\sigma_{p}^{2}Q^{-}).
 \]
 The use of the generalized inverse notation indicates that $Q$ is
 not full-rank, but is of rank $m-1$; this gives an improper prior
-on an implicit overall mean for the process values. This specification
+on an implicit overall mean for the process values. Note
+that we specify an explicit mean of zero because a non-zero mean would
+not be identifiable in light of the implicit mean. This specification
 is called an \textit{intrinsic conditional autoregression (ICAR)}
 and we can write $Q=D-C$ where $C$ is the $m\times m$ adjacency
 matrix defining the neighborhood relation of the locations; that is
@@ -468,15 +507,20 @@ We refer to this as the \emph{CAR model}.
 
 Gaussian processes (GP) are also standard models for spatial processes \citep{Bane:etal:2004}.
 GP models are computationally challenging for large datasets because
-of manipulations involving large covariance matrices. Given this,
-\cite{Lind:etal:2011} proposed a new framework for using Gaussian
-MRFs (GMRFs) as approximations to GPs, based on the use of stochastic
-partial differential equations (SPDEs).
+of computational manipulations involving large covariance
+matrices. Given this, \cite{Lind:etal:2011} proposed a new framework
+for using Gaussian MRFs (GMRFs) as approximations to GPs, based on
+the use of stochastic partial differential equations (SPDEs).
 
-We consider Gaussian processes in the \matern class, using the following
-parameterization of the \matern correlation function, 
+Gaussian processes are generally constructed using
+one of a number of correlation functions that define how the strength
+of correlation between the values of the process at two locations
+decays as a function of the distance between the locations. We consider
+Gaussian processes in the commonly-used \matern
+class, using the following parameterization of the \matern correlation
+function, 
 \begin{equation}
-R(d)=\frac{1}{\Gamma(\nu)2^{\nu-1}}\left(\frac{2\sqrt{\nu}d}{\rho}\right)^{\nu}\mathcal{K}_{\nu}\left(\frac{2\sqrt{\nu}d}{\rho}\right),\label{eq:Matern}
+R(d)=\frac{1}{\Gamma(\nu)2^{\nu-1}}\left(\frac{2\sqrt{\nu}d}{\rho}\right)^{\nu}\mathcal{K}_{\nu}\left(\frac{2\sqrt{\nu}d}{\rho}\right),\nonumber
 \end{equation}
 where $d$ is Euclidean distance, $\rho$ is the spatial range parameter,
 and $\mathcal{K}_{\nu}(\cdot)$ is the modified Bessel function of
@@ -487,11 +531,13 @@ process, (i.e., $\alpha_{p}(s)$ in our context), as a function of
 the distance between the locations. Considering all pairs of locations,
 this defines a correlation matrix for all locations of interest. 
 
-The \citet{Lind:etal:2011} approach allows us to consider MRF approximations
-to the \matern-based GP for $\nu=1$ and $\nu=2$. Our second spatial
-model is this Lindgren approximation for \matern-based GPs with $\nu=1$.
-To implement the Lindgren model, one modifies the $Q$ matrix defined
-previously as follows. Let $a=4+\frac{1}{\rho^{2}}$. The diagonal
+The approach of \citet{Lind:etal:2011} allows us to consider MRF
+approximations to the \matern-based GP for $\nu=1$ and $\nu=2$.
+Our second spatial model is this Lindgren approximation for \matern-based
+GPs with $\nu=1$. To implement this Lindgren model, one modifies
+the $Q$ matrix defined previously as follows based
+on the technical specification of the precision matrix provided in
+\citet{Lind:etal:2011}. Let $a=4+\frac{1}{\rho^{2}}$. The diagonal
 elements of $Q$ are $4+a^{2}$. The entries corresponding to cardinal
 neighbors are $-2a$. Those for diagonal neighbors are $2$, and those
 for 2nd-order cardinal neighbors are $1$. This extends the neighborhood
@@ -501,11 +547,12 @@ of $\rho$.
 The primary difference between the CAR and Lindgren models is that
 the Lindgren model provides an additional degree of freedom by estimating
 $\rho$. In particular $\rho$ allows us to estimate the locality
-of the smoothing. As $\rho$ decreases, the model uses increasingly
-localized data to estimate the compositional proportions at a given
-location, effectively averaging the empirical proportions over smaller
-neighborhoods. In general, the \cite{Lind:etal:2011} model will generally
-provide for a smoother estimate than the CAR model \citep{Paci:2013}. 
+of the spatial smoothing. As $\rho$ decreases, the
+model uses increasingly localized data to estimate the compositional
+proportions at a given location, effectively averaging the empirical
+proportions over smaller neighborhoods. In general, the \cite{Lind:etal:2011}
+model will generally provide for a smoother estimate than the CAR
+model \citep{Paci:2013}. 
 
 To ensure that the $\sigma^{2}$ parameter is mathematically equivalent
 between the two models, we reparameterize, producing our second model:
@@ -522,10 +569,13 @@ We refer to this model as the \emph{SPDE model}.
 \noindent The ICAR specification contains a set of hyperparameters
 $\{\sigma_{p}^{2}\},$ $p=1,\ldots P$. Following \cite{Gelm:2006}
 we use a uniform distribution on each $\sigma_{p}$ parameter, with
-upper bound of 1000. For the SPDE model we also have parameters $\{\mu_{p}\}$,
-which we give flat, non-informative priors (truncated at $\pm10$),
-and $\{\rho_{p}\}$, which we give uniform priors on the interval
-$(0.1,\exp(5))$. 
+upper bound of 1000. For the SPDE model we also have hyperparameters
+$\{\mu_{p}\}$, which we give flat, non-informative priors (truncated
+at $\pm10$), and $\{\rho_{p}\}$, which we give uniform priors on
+the interval $(0.1,\exp(5))$. These various hyperparameters
+are unknown parameters that control the spatial structure of the two
+spatial models and are estimated from both the data and the prior
+distributions just specified based on the Bayesian approach.
 
 
 \subsection{Latent Variable Model\label{sub:Latent-Variable-Model}}
@@ -535,8 +585,8 @@ with latent Gaussian process(es) and a non-Gaussian likelihood is
 difficult \citep{Rue:Held:2005,Chri:etal:2006,Tan:Nott:2013}. To
 develop an algorithm, we make use of a latent variable representation
 for the multinomial probit model \citep{McCu:Ross:1994}. The representation
-introduces latent variables that allow one to develop a MCMC sampling
-strategy that takes advantage of closed form full conditional distributions
+introduces latent variables that allow one to develop an MCMC sampling
+strategy that takes advantage of closed-form full conditional distributions
 (so-called Gibbs sampling steps) for $\alpha_{p}$.
 
 Suppose that compositional counts are available at a number of locations.
@@ -559,15 +609,15 @@ W_{ijp}\sim\mbox{N}(\alpha_{p}(s_{i}),1)
 independently for all of the $W_{ijp}$ values. Consider the following
 example with two locations that are neighbors and $P=2$ categories.
 Each tree $j$ at location $i$ is associated with two variables $W_{ij1}$
-and $W_{ij2}$, governed by the latent variables $\alpha_{1i}$ and
-$\alpha_{2i}$, respectively. Suppose that $\alpha_{1i}>\alpha_{2i}$
+and $W_{ij2}$, governed by the latent variables $\alpha_{1}(s_{i})$
+and $\alpha_{2}(s_{i})$, respectively. Suppose that $\alpha_{1}(s_{i})>\alpha_{2}(s_{i})$
 for a given location $i$. Then this model implies that any tree $j$
 is more likely to be labeled 1 than 2 at location $i$. The difference
-between $\alpha_{1i}$ and $\alpha_{2i}$ explains the \textit{difference}
-in probability of \textit{categories} 1 and 2 at location $i$, and
-the similarity between $\alpha_{p1}$ and $\alpha_{p2}$ explains
-the \textit{correlation} between the probabilities at \textit{locations}
-1 and 2 for category $p$.
+between $\alpha_{1}(s_{i})$ and $\alpha_{2}(s_{i})$ explains the
+\textit{difference} in probability of \textit{categories} 1 and 2
+at location $i$, and the similarity between $\alpha_{p}(s_{1})$
+and $\alpha_{p}(s_{2})$ explains the \textit{correlation} between
+the probabilities at \textit{locations} 1 and 2 for category $p$.
 
 \noindent 
 
@@ -581,8 +631,8 @@ the \textit{correlation} between the probabilities at \textit{locations}
 We developed an extension of the model described in previous sections
 to account for data at a different aggregation than our core 8 km
 grid. This extension introduces a new set of latent variables, one
-per tree,  that indicate  the grid cells in which the trees are located
-and can be sampled within the MCMC as additional unknown parameters.
+per tree, that indicate the grid cells in which the trees are located
+and that can be sampled within the MCMC as additional unknown parameters.
 Specifically, $c_{tj}$ is the latent ``membership'' variable for
 tree $j$ in township $t$, $t=1,\ldots,T$. The prior for $c_{tj}$
 is a discrete distribution that puts mass, $\psi_{ti}$, $i=1,\ldots,m$,
@@ -648,8 +698,7 @@ The model is implemented in R \citep{R:2014} with core computational
 calculations coded in C++ using the \emph{Rcpp} package \citep{Edde:Fran:2011}.
 We also make extensive use of sparse matrix representations and algorithms,
 using the \emph{spam} package in R \citep{Furr:Sain:2010}. All code
-is available on Github, including pre- and post-processing code, at
-https://github.com/PalEON-Project/composition. 
+is available on Github, including pre- and post-processing code, at\\\url{https://github.com/PalEON-Project/composition}. 
 
 
 \section{Model comparison\label{sec:Model-comparison}}
@@ -657,15 +706,16 @@ https://github.com/PalEON-Project/composition.
 
 \subsection{Design}
 
-We compared the CAR and SPDE models using cross-validation by holding
-out data from the fitting process and assessing the fit of the model
-on the held-out data. We used two cross-validation experiments:
+We compared the CAR and SPDE models by holding out
+data from the fitting process and assessing the fit of the model
+on the held-out data. We used two experiments\textcolor{red} with
+held-out data:
 \begin{enumerate}
 \item The first experiment used a subregion containing most of Minnesota
 and a small amount of western Wisconsin, defined to be the cells whose
 x-coordinate was less than 300,000 m (this defines a north-south line
 that approximately goes through Duluth, Minnesota) and hereafter referred
-to as the ``Minnesota subregion''. We chose this subregion for cross-validation
+to as the ``Minnesota subregion''. We chose this subregion for evaluation
 because of its high data density, allowing us to experiment with the
 effects of increasing data sparsity on model performance. We held
 out all data from 95\% of the cells in this Minnesota subregion, with
@@ -703,14 +753,15 @@ experiment 1, we define $Y_{i}=\{Y_{i1},\ldots,Y_{iP}\}$ as the count
 of all trees in held-out cell $i$ and for experiment 2, $Y_{i}$
 is the count of held-out individual trees in the cell, while $y_{ijp}$
 is an indicator variable taking value either 0 or 1 depending on whether
-the $j$th held-out tree in the $i$th cell is of taxon $p$. We calculated
-each of the metrics in two ways. First, we used the posterior mean
-composition estimates (as an evaluation of our core predictions),
-with $\tilde{\theta}_{p}(s)$ being the posterior mean. Second, we
-averaged the metric over the posterior samples (as an evaluation of
-our full data product, including uncertainty), taking $\tilde{\theta}_{p}(s)$
-to be an individual MCMC sample and then averaging the metric over
-all the posterior samples. 
+the $j$th held-out tree in the $i$th cell is of taxon $p$. $\hat{\theta}_{ip}=Y_{ip}/n_{i}$
+is the empirical proportion in category $p$ for the $n_{i}$ held-out
+trees in cell $i$. We calculated each of the metrics in two ways.
+First, we used the posterior mean composition estimates (as an evaluation
+of our core predictions), with $\tilde{\theta}_{p}(s)$ being the
+posterior mean. Second, we averaged the metric over the posterior
+samples (as an evaluation of our full data product, including uncertainty),
+taking $\tilde{\theta}_{p}(s)$ to be an individual MCMC sample and
+then averaging the metric over all the posterior samples. 
 \begin{enumerate}
 \item Brier score: \cite{Gnei:etal:2007} suggest this metric, which has
 been in use for decades. For multi-category as opposed to binary outcomes,
@@ -721,8 +772,8 @@ this takes the form
 where $n=\sum_{i=1}^{m}n_{i}$ is the total number of held-out trees
 for a given experiment and $j$ indexes across held-out trees in cell
 $i$. 
-\item Log predictive density: This metric takes the log of the density of
-held-out observations under the fitted model, $Y_{i}\sim\mbox{Multinom}(n_{i},\{\tilde{\theta}_{1}(s_{i}),\ldots,\tilde{\theta}_{P}(s_{i})\})$,
+\item Log predictive density: This metric takes the log of the probability
+density of held-out observations under the fitted model, $Y_{i}\sim\mbox{Multinom}(n_{i},\{\tilde{\theta}_{1}(s_{i}),\ldots,\tilde{\theta}_{P}(s_{i})\})$,
 summing on the log scale across all of the held-out data. 
 
 
@@ -736,13 +787,20 @@ solution to this we set $\tilde{\theta}_{p}(s)=\frac{1}{100000}$
 in such cases, but given these issues we treat the log predictive
 density as a secondary measure.
 
-\item (Experiment 1 only) Weighted root mean square prediction error (RMSPE)
-and mean absolute error (MAE): These metrics calculate the error of
-the estimated proportions relative to the empirical proportions based
-on the held-out trees, averaging over cells and taxa. We weight by
-the number of held-out trees in each cell to account for the greater
-variability in the empirical proportions in locations with few held-out
-trees. 
+\item (Experiment 1 only) Weighted root mean square prediction error (RMSPE),
+
+\[
+\sqrt{\frac{1}{Pn}\sum_{i=1}^{m}\sum_{p=1}^{P}n_{i}(\hat{\theta}_{ip}-\tilde{\theta}_{p}(s))^{2}}
+\]
+and mean absolute error (MAE)
+\[
+\frac{1}{Pn}\sum_{i=1}^{m}\sum_{p=1}^{P}n_{i}|\hat{\theta}_{ip}-\tilde{\theta}_{p}(s)|:
+\]
+These metrics calculate the error of the estimated proportions relative
+to the empirical proportions based on the held-out trees, averaging
+over cells and taxa. We weight by the number of held-out trees in
+each cell to account for the greater variability in the empirical
+proportions in locations with few held-out trees. 
 \item (Experiment 1 only) Coverage and length of 95\% prediction intervals
 for $Y_{ip}$. We considered only cells with at least 50 trees to
 focus our assessment on cases where empirical proportions were reasonably
@@ -754,7 +812,9 @@ be applied to individual posterior samples and therefore allow us
 to estimate the posterior probability that one model has a lower (better)
 value of the metric than the other model by simply calculating the
 proportion of samples for which the model has a lower value of the
-metric.
+metric. Also note that in addition to allowing comparison
+between models the MAE and RMSPE metrics allow one to assess absolute
+performance of each model in predicting composition.
 
 In our initial exploratory fitting, we noticed that the SPDE model
 produced boundary effects in the predicted composition near the edges
@@ -775,22 +835,22 @@ iterations to reduce post-processing computations and storage needs.
 
 \subsection{Results}
 
-Here we summarize the results of our cross-validation analyses that
-inform the choice between the CAR and SPDE models. 
+Here we summarize the results of our analyses that inform the choice
+between the CAR and SPDE models. 
 
 
 \paragraph{Full cell hold-out experiment}
 
-For Experiment 1 for cells in the Minnesota subregion held out of
-the fitting process, the CAR model outperforms the SPDE model based
-on the posterior distribution over the predictive metric values (Table
-\ref{tab:score_cell_fivepercent}). For the posterior mean predictions,
-the SPDE model appears to outperform the CAR model to a lesser degree,
-but we do not have any uncertainty estimates for this comparison.
-Coverage and interval lengths are similar between the two models (Table
-\ref{tab:coverage_cell_fivepercent}). From a practical perspective,
-based on the difference in mean absolute error, the differences between
-the models are small (Table \ref{tab:score_cell_fivepercent}).
+For Experiment 1 (full cells held out) for cells in the Minnesota
+subregion held out of the fitting process, the CAR model outperforms
+the SPDE model based on the posterior distribution over the predictive
+metric values (Table \ref{tab:score_cell_fivepercent}). For the posterior
+mean predictions, the SPDE model appears to outperform the CAR model
+to a lesser degree, but we do not have any uncertainty estimates for
+this comparison. Coverage and interval lengths are similar between
+the two models (Table \ref{tab:coverage_cell_fivepercent}). From
+a practical perspective, based on the difference in mean absolute
+error, the differences between the models are small (Table \ref{tab:score_cell_fivepercent}).
 
 
 
@@ -977,10 +1037,10 @@ better.}
 
 \paragraph{Individual tree hold-out experiment}
 
-In Experiment 2, we have evidence (posterior probability of 0.93)
-that the SPDE model is better based on the Brier score, but the Brier
-score values for the two models are numerically almost the same (Table
-\ref{tab:score_tree}).
+In Experiment 2 (individual trees held out), we have evidence (posterior
+probability of 0.93) that the SPDE model is better based on the Brier
+score, but the Brier score values for the two models are numerically
+almost the same (Table \ref{tab:score_tree}).
 
 
 
@@ -1032,7 +1092,7 @@ comparisons, so there is not a clear choice. In our final data product
 we use the CAR model, for three reasons. First, the CAR model has
 modestly better performance when data are sparse, as is still the
 case for Illinois and Indiana. Second, the model is simpler and easier
-to explain and computations can be done more quickly. Third, predictions
+to explain, and computations can be done more quickly. Third, predictions
 from the SPDE model showed boundary effects, with some taxa showing
 non-negligible posterior mean values at the edges of the domain, well
 away from where the taxa were present in the empirical data. This
@@ -1047,15 +1107,15 @@ of the proportions of each of the 23 tree taxa at each grid cell in
 the states in our domain of the northeastern United States.
 
 For this final data product, we ran the model using the CAR specification
-for 150,000 iterations, discarding the first 25,000 iterations for
-burn-in and retaining 250 subsampled iterations from the remaining
-125,000 iterations (subsampled to limit storage needs and the size
-of the data product). Based on graphical checks and calculation of
-effective sample size values, mixing was generally reasonable, but
-for some of the hyperparameters was relatively slow, particularly
-for less common taxa. Despite this, mixing for the variables of substantive
-interest -- the proportions -- was good, with effective sample sizes
-for the final product generally near 250.
+with all of the data (including the data held out
+in the model comparison analyses) for 150,000 iterations with the
+same burn-in and subsampling details as described in Section \ref{sec:Model-comparison}.
+Based on graphical checks and calculation of effective sample size
+values, mixing was generally reasonable, but for some of the hyperparameters
+was relatively slow, particularly for less common taxa. Despite this,
+mixing for the variables of substantive interest -- the proportions
+-- was good, with effective sample sizes for the final product generally
+near 250.
 
 Maps of estimated composition for the full domain for several taxa
 of substantive interest illustrate the results, contrasting the raw
@@ -1065,8 +1125,8 @@ We also present the posterior means for all 23 taxa (Fig. \ref{fig:all_predictio
 
 \begin{figure}
 \includegraphics[scale=0.75]{fig2}
-
-\hspace{4mm}\includegraphics[scale=0.16]{legendRaw}\hspace{4mm}\includegraphics[scale=0.16]{legendProp}\hspace{3.5mm}\includegraphics[scale=0.16]{legendSD}
+\vspace{2mm}
+\hspace{2mm}\includegraphics[scale=0.16]{legendRaw}\hspace{4mm}\includegraphics[scale=0.16]{legendProp}\hspace{4mm}\includegraphics[scale=0.16]{legendSD}
 
 \caption{Empirical proportions from raw data (column 1), predictions in the
 form of posterior means (column 2) and uncertainty estimates in the
@@ -1084,62 +1144,129 @@ of prediction (column 3) for select taxa. \label{fig:select_maps}}
 \end{figure}
 
 
-The data product is being made publicly available at the NIS Data
-Portal (accession number to be inserted when available) under the
-CC BY license as version 0.4 as of August 2015. The product is in
-the form of a netCDF-4 file, with dimensions x-coordinate, y-coordinate,
-and MCMC iteration. There is one variable per taxon. In addition,
-dynamic visualizations of the product using the Shiny tool are available
-at http://gandalf.berkeley.edu:3838/paciorek/setVegComp {[}this URL
-is temporary and will be updated{]}. The PalEON Project (in particular
-the first author) will continue to maintain this product, releasing
-new versions as additional data in Illinois, Indiana and Ohio are
-digitized. Note that digitization of data from Illinois and Indiana
-is ongoing, and digitization of additional data from Ohio is planned
-as well. As a result, at some point we expect to have complete data
-for the midwestern half of the domain. 
+The data product is publicly available at the NIS
+Data Portal under the CC BY 4.0 license as version 1.0 as of January
+2016 \citep{paci:etal:data:2016}. The product is in the form of a
+netCDF-4 file, with dimensions x-coordinate, y-coordinate, and MCMC
+iteration. There is one variable per taxon. In addition, dynamic visualizations
+of the product using the Shiny tool are available at \href{https://www3.nd.edu/~paleolab/paleonproject/maps}{https://www3.nd.edu/$\sim$paleolab/paleonproject/maps}.
+The PalEON Project (in particular the first author) will continue
+to maintain this product, releasing new versions as additional data
+in Illinois, Indiana and Ohio are digitized. Note that digitization
+of data from Illinois and Indiana is ongoing, and digitization of
+additional data from Ohio is planned as well. As a result, at some
+point we expect to have complete data for the midwestern half of the
+domain. 
 
 
 \section{Discussion\label{sec:Discussion}}
 
-Given the density of data and the limited differences seen between
-the CAR and SPDE models, we expect the data product to be reasonably
-robust to the choice of spatial model, particularly in those areas
-with complete data. However, additional investigation of other statistical
-representations is of interest, in particular nonstationary spatial
-models and use of covariates. The biggest shortcoming of the current
-model is its inability to account for local features such as rivers
-(e.g., the Minnesota River riparian corridor can be seen in the raw
-data but is missing in the statistical estimates). The current model,
-by using a simple stationary spatial model that smooths as a function
-of Euclidean distance, does not account for topographic, soil, or
-other features. An additional drawback of the product is its focus
-on composition, which does not directly tell us about tree density
-or other aspects of vegetation structure, and in particular does not
-distinguish between closed forest, savanna, and prairie. This limitation
-is particularly critical at the prairie-forest transition in Minnesota,
-Wisconsin, Illinois, and into Indiana \citep{transeau1935prairie}.
+In the parts of the modeled region with spatially
+complete data (in particular, Minnesota, Wisconsin, and Michigan),
+the statistical estimates of forest composition closely match the
+patterns apparent in the raw data (Fig. \ref{fig:select_maps}), as
+expected.  In these areas, the estimated tree composition from the
+model has the advantage of downweighting unusual or outlier values
+in the empirical proportions of individual grid cells, which are likely
+due to stochastic sampling variation within that grid cell (compare
+the first two columns in Fig. \ref{fig:select_maps}). Some stochastic
+variation is expected given that, even in the most spatially complete
+regions, each grid cell contains an average of 124 trees (120-135
+is typical) \citep{goring2015composition} and some cells contain
+many fewer trees. Hence, some smoothing of this stochastic variation
+is appropriate. This smoothing is based on information on data from
+nearby cells, and the estimates from the model reflect the smooth
+trends in forest composition across the spatial domain. A partial
+cost is that these maps can smooth out sharp ecotones or other forms
+of true spatial heterogeneity, particularly in areas with sparse data
+(including areas with low tree density). For example, the sharp increase
+in Elm along the Minnesota River (Fig. \ref{fig:select_maps}, first
+column) likely represents a real ecotone in the settlement-era vegetation.
+Vegetation gradients and ecotones were sharper in the settlement-era
+forests in the upper Midwest than in contemporary forests \citep{goring2015composition},
+and the modeled estimates may partially obscure this change. Users
+interested in using the original unsmoothed data are directed to the
+data product described earlier \citep{Gori:etal:data:2016}. Additional
+investigation of other statistical representations to better capture
+sharp gradients is of interest, in particular nonstationary spatial
+models and use of covariates. Potential environmental covariates include
+soils, firebreaks, and topography \citep{grimm1984fire,shea2014reconstructing}.
+Here, however, we chose to limit our model to be exclusively a function
+of spatial distance in order to avoid dependence on the environmental
+drivers of pre-settlement forest composition that might lead to circular
+reasoning in subsequent inferences based on this dataset. Use of covariates
+could also lead to prediction that a taxa is present well beyond its
+range boundary in places where data are sparse. 
 
-This latter limitation can be addressed by developing estimates of
-absolute abundance (e.g., biomass) rather than the relative abundance
-compositional data used here. A gridded dataset of biomass, stem density,
-and basal area is already available for Minnesota, Wisconsin, and
-northern Michigan \citep{goring2015composition}, based on the PLS
-data. An extension to southern Michigan, Illinois, and Indiana is
-planned. We are currently developing statistical estimates of biomass
+A key advance of this work over prior reconstructions
+of settlement-era vegetation lies in the estimates of uncertainty
+across the spatial domain. These estimates of uncertainty include
+the sampling uncertainty within grid cells (as do the within-grid
+cell estimates of uncertainty available from the raw proportions),
+but, because this is a spatial model, predictions and their associated
+uncertainty estimates are also informed by the information content
+of nearby cells. The maps of standard errors across species (Fig.
+\ref{fig:select_maps}, third column) highlight the advantages of
+this approach in areas of high data coverage (Minnesota, Wisconsin,
+Michigan) and in areas of sparse coverage (e.g., Illinois, Indiana,
+parts of Ohio). Where there are not large gaps in the data, the model
+provides low and fairly smooth estimates of uncertainty. Uncertainty
+is generally higher in the eastern subdomain than in the areas of
+the midwestern subdomain with high data coverage because of missing
+townships and lower sampling density even in townships with data.
+In areas of sparse coverage and in areas with low tree density (e.g.,
+southwestern Minnesota), the standard error of our estimates increases
+appropriately. Nevetheless, these uncertainties surround reasonable
+estimates of trends in composition. For example, the model does a
+good job of capturing the oak ecotone in Indiana and Illinois, representing
+a shift from oak savannas and woodlands to closed mesic forests (Fig.
+\ref{fig:select_maps}). Experiment 1 showed that both models predicted
+composition at cells with no data reasonably well, mimicking the case
+of sparsely sampled data and giving confidence in the broad spatial
+patterns predicted in more poorly sampled regions, particularly those
+with regular, but sparse sampling that mimic the experiment (Illinois
+and Indiana, but not Ohio). The apparent blockiness of uncertainty
+estimates in a few places such as Ohio is caused by spatial gaps and
+variations in sampling resolution. Absolute uncertainty generally
+increases with abundance for all taxa (Fig. \ref{fig:select_maps},
+column 3).
+
+The exploration of alternative approaches to spatial
+modeling of composition showed similar results for the SPDE and CAR
+models, both in terms of prediction accuracy and performance of prediction
+intervals. Small differences among the various metrics of goodness
+of fit favored each model in turn, but applied users of the models
+would find little pragmatic difference affecting scientific inference.
+Ultimately, we slightly favor the CAR model, because it avoids the
+boundary effects apparent in the SPDE model at the edges of the domain.
+
+The models presented here estimate only the relative
+abundance of tree taxa, which does not directly tell us about tree
+density or other aspects of vegetation structure. This becomes a particular
+limitation for interpreting vegetation where trees become sparse at
+the prairie-forest transition from northern Minnesota through southern
+Illinois \citep{transeau1935prairie}. Our model (correctly) predicts
+that tree composition there is dominated by oak, but this is less
+useful considering the sparseness of trees. This limitation can be
+addressed by developing estimates of absolute abundance (e.g., biomass)
+rather than compositional estimates. A gridded dataset of biomass,
+stem density, and basal area is already available for Minnesota, Wisconsin,
+and northern Michigan \citep{goring2015composition}, based on the
+PLS data. An extension to southern Michigan, Illinois, and Indiana
+is planned. We are currently developing statistical estimates of biomass
 for Minnesota, Wisconsin, and Michigan using a statistical model applied
 to the gridded biomass dataset, with extension to Illinois and Indiana
 planned. We also plan to estimate stem density and basal area using
-a similar approach to that used for biomass. 
+a similar approach to that used for biomass.
 
 
 
 
 \section*{Author contributions}
 
-CJP, AT, and JZ developed the statistical model and code. CJP carried
+CJP, ALT, and JZ developed the statistical model and code. CJP carried
 out the model comparison and created the data product. CJP wrote the
-paper based on an initial draft by AT and with feedback and editing
+paper based on an initial draft by ALT and with feedback and editing
 from SJG, CVC, JWW, DJM, JAP, JZ and JSM. SJG, JAP, CVC, DJM, JSM,
 and JWW led the processing and analysis of the PLS and TPS data and
 assisted with interpretation of results. 
@@ -1151,7 +1278,7 @@ The authors are deeply indebted to all of the researchers over the
 years who have preserved, collected, and digitized survey records,
 in particular John Burk, Jim Dyer, Peter Marks, Robert McIntosh, Ed
 Schools, Ted Sickley, Ronald Stuckey, and the Ohio Biological Survey.
-We thank Madeline Ruid, Ben Seliger, Morgan Ripp and Daniel Handel
+We thank Madeline Ruid, Benjamin Seliger, Morgan Ripp and Daniel Handel
 for processing of the southern Michigan data. Indiana and Illinois
 data were made possible through the hard work of many Notre Dame undergraduates
 in the McLachlan lab. This work was carried out by the PalEON Project
@@ -1161,8 +1288,9 @@ and from the Notre Dame Environmental Change Initiative.
 
 \bibliographystyle{/accounts/gen/vis/paciorek/latex/RSSstylefile/Chicago}
 
-% \bibliography{/accounts/gen/vis/paciorek/bibfiles/abbrev.stat,/accounts/gen/vis/paciorek/bibfiles/abbrev.other,/accounts/gen/vis/paciorek/bibfiles/spatstat,/accounts/gen/vis/paciorek/bibfiles/statgeneral,/accounts/gen/vis/paciorek/bibfiles/paciorek,/accounts/gen/vis/paciorek/bibfiles/ecology,/accounts/gen/vis/paciorek/research/jmac/composition_paper/goring_intro}
+%\bibliography{/accounts/gen/vis/paciorek/bibfiles/abbrev.stat,/accounts/gen/vis/paciorek/bibfiles/abbrev.other,/accounts/gen/vis/paciorek/bibfiles/spatstat,/accounts/gen/vis/paciorek/bibfiles/statgeneral,/accounts/gen/vis/paciorek/bibfiles/paciorek,/accounts/gen/vis/paciorek/bibfiles/ecology,/accounts/gen/vis/paciorek/research/jmac/composition_paper/goring_intro}
 \bibliography{paperArxiv}
+
 
 \section{Appendix}
 
@@ -1189,7 +1317,7 @@ by $b$.
 W_{ijp} & \sim\begin{cases}
 \mbox{TN}\big({\displaystyle \max_{p^{*}\neq y_{ij}}w_{ijp^{*}},\infty,\alpha_{y_{ij}}(s_{i}),1\big),} & \mbox{if }p\mbox{ = \ensuremath{y_{ij}}}\\
 \mbox{TN}\big(-\infty,w_{ijy_{ij}},\alpha_{p}(s_{i}),1\big), & \mbox{if }p\mbox{ \ensuremath{\neq y_{ij}}}
-\end{cases}\label{sampW}
+\end{cases} \nonumber
 \end{align}
 In essence, the truncation value is determined by the taxon of the
 $j$th tree. For a given $p$, the $W$ values for all trees in all
@@ -1197,7 +1325,7 @@ cells can be sampled in parallel.
 
 The conditional distribution of $\alpha_{p}$ is 
 \begin{align}
-\alpha_{p} & \sim\mbox{N}\bigg(\Big(A+Q_{p}\Big)^{-1}A\bar{w}_{p},\Big(A+Q_{p}\Big)^{-1}\bigg).\label{sampalpha}
+\alpha_{p} & \sim\mbox{N}\bigg(\Big(A+Q_{p}\Big)^{-1}A\bar{w}_{p},\Big(A+Q_{p}\Big)^{-1}\bigg). \nonumber
 \end{align}
 where $Q_{p}=(\sigma_{p}^{2})^{-1}Q$ for the CAR model and $\left(\sigma_{p}^{2}\cdot\frac{4\pi}{\rho_{p}^{2}}\right)^{-1}Q(\rho_{p})$
 for the SPDE model. For each hyperparameter, $\phi_{p}=\log\sigma_{p}$

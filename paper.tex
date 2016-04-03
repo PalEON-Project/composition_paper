@@ -111,8 +111,8 @@ Berkeley, California, USA}
 Madison, Wisconsin, USA}
 
 
-\lyxaddress{\textsuperscript{3}Department of Statistics, University of Iowa,
-Iowa City, Iowa, USA}
+\lyxaddress{\textsuperscript{3}VA Office of Rural Health, Veterans Rural Health
+Resource Center, Iowa City VAMC, Iowa City, Iowa, USA}
 
 
 \lyxaddress{\textsuperscript{4}Harvard Forest, Harvard University, Petersham,
@@ -145,7 +145,6 @@ Madison, Wisconsin, USA}
 \end{quote}
 
 
-%
 \begin{abstract}
 We present a gridded 8 km-resolution data product of the estimated
 composition of tree taxa at the time of Euro-American settlement of
@@ -174,7 +173,7 @@ States prior to large-scale Euro-American settlement. In addition
 to specific regional questions, the data product can also serve as
 a baseline against which to investigate how forests and ecosystems
 change after intensive settlement. The data product is being made
-available at the NIS data portal as version 0.4.
+available at the NIS data portal as version 1.0.
 
 Keywords: biogeography, species composition, old-growth forests, spatial
 modeling, Bayesian statistical model, vegetation mapping
@@ -319,13 +318,11 @@ so many grid cells contained no data at the time the statistical model
 was fit. Note that the number of trees per grid cell varies depending
 on the number of survey points in a cell, with an average of 124 trees
 per cell. The gridded data at the 8 km resolution for the midwest
-subdomain are available through the NIS data portal \textcolor{red}{as
-DOI:10.5072/FK2/e9c144ab83af70e29b8d6647aaae58f5} \textcolor{red}{\citep{Gori:etal:data:2016}}.
+subdomain are available through the NIS data portal \textcolor{red}{\citep{Gori:etal:data:2016}}.
 The TPS data were compiled by C.V. Cogbill from a myriad of archival
 sources representing land division surveys conducted in connection
 with local settlement\textcolor{red}{{} and are available through the
-NIS data portal as DOI:10.5072/FK2/4d44aebe71dbf65290d8ce1bde03598b
-and DOI:10.5072/FK2/88e167487b22d5f657e7ce7e033772e1 \citep{Cogb:dataNE:2016,Cogb:dataOH:2016}}. 
+NIS data portal \citep{Cogb:dataNE:2016,Cogb:dataOH:2016}}. 
 
 The aggregation into taxonomic groups is primarily at the genus level
 but is at the species level in some cases of monospecific genera.
@@ -878,7 +875,6 @@ error, the differences between the models are small (Table \ref{tab:score_cell_f
 
 
 
-%
 \begin{table}
 \caption{Predictive ability based on several predictive metric criteria for
 the CAR and SPDE spatial models when holding out 95\% of entire cells
@@ -974,7 +970,6 @@ from a practical perspective, based on mean absolute error, are limited
 
 
 
-%
 \begin{table}
 \caption{Predictive ability based on several predictive metric criteria for
 the CAR and SPDE spatial models when holding out 80\% of entire cells
@@ -1070,7 +1065,6 @@ almost the same (Table \ref{tab:score_tree}).
 
 
 
-%
 \begin{table}
 \caption{Predictive ability based on several predictive metric criteria for
 the CAR and SPDE spatial models when holding out 5\% of trees. Smaller
@@ -1172,12 +1166,11 @@ of prediction (column 3) for select taxa. \label{fig:select_maps}}
 
 
 The data product is publicly available at the \textcolor{red}{NIS
-Data Portal as DOI:10.5072/FK2/dfc5e9748c8df4c3c275eab0f42d9744} under
-the CC BY 4.0 license as version 0.4 as of January 2016 \citep{paci:etal:data:2016}.
-The product is in the form of a netCDF-4 file, with dimensions x-coordinate,
-y-coordinate, and MCMC iteration. There is one variable per taxon.
-In addition, dynamic visualizations of the product using the Shiny
-tool are available at \href{https://www3.nd.edu/~paleolab/paleonproject/maps}{https://www3.nd.edu/$\sim$paleolab/paleonproject/maps}.
+Data Portal }under the CC BY 4.0 license as version 1.0 as of January
+2016 \citep{paci:etal:data:2016}. The product is in the form of a
+netCDF-4 file, with dimensions x-coordinate, y-coordinate, and MCMC
+iteration. There is one variable per taxon. In addition, dynamic visualizations
+of the product using the Shiny tool are available at \href{https://www3.nd.edu/~paleolab/paleonproject/maps}{https://www3.nd.edu/$\sim$paleolab/paleonproject/maps}.
 The PalEON Project (in particular the first author) will continue
 to maintain this product, releasing new versions as additional data
 in Illinois, Indiana and Ohio are digitized. Note that digitization

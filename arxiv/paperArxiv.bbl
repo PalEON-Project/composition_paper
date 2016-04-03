@@ -1,0 +1,260 @@
+\begin{thebibliography}{}
+
+\bibitem[\protect\citeauthoryear{Banerjee, Carlin, and Gelfand}{Banerjee
+  et~al.}{2004}]{Bane:etal:2004}
+Banerjee, S., B.~Carlin, and A.~Gelfand (2004).
+\newblock {\em Hierarchical Modeling and Analysis for Spatial Data}.
+\newblock Boca Raton, Florida: Chapman \& Hall.
+
+\bibitem[\protect\citeauthoryear{Black, Ruffner, and Abrams}{Black
+  et~al.}{2006}]{Blac:etal:2006}
+Black, B.~A., C.~M. Ruffner, and M.~D. Abrams (2006).
+\newblock {N}ative {A}merican influences on the forest composition of the
+  {A}llegheny {P}lateau, northwest {P}ennsylvania.
+\newblock {\em Canadian Journal of Forest Research\/}~{\em 36\/}(5),
+  1266--1275.
+
+\bibitem[\protect\citeauthoryear{Bourdo}{Bourdo}{1956}]{bourdo1956review}
+Bourdo, E.~A. (1956).
+\newblock A review of the {G}eneral {L}and {O}ffice survey and of its use in
+  quantitative studies of former forests.
+\newblock {\em Ecology\/}~{\em 37}, 754--768.
+
+\bibitem[\protect\citeauthoryear{Christensen, Roberts, and
+  Sk{\"o}ld}{Christensen et~al.}{2006}]{Chri:etal:2006}
+Christensen, O., G.~Roberts, and M.~Sk{\"o}ld (2006).
+\newblock Robust {M}arkov chain {M}onte {C}arlo methods for spatial generalized
+  linear mixed models.
+\newblock {\em Journal of Computational and Graphical Statistics\/}~{\em 15},
+  1--17.
+
+\bibitem[\protect\citeauthoryear{Cogbill}{Cogbill}{2016a}]{Cogb:dataNE:2016}
+Cogbill, C. (2016a).
+\newblock Settlement-era tree composition, eastern {US}: Level 1.
+\newblock Technical Report
+  http://dx.doi.org/10.6073/pasta/e40c1ad172882d5113844296611451f6, Long Term
+  Ecological Research Network.
+
+\bibitem[\protect\citeauthoryear{Cogbill}{Cogbill}{2016b}]{Cogb:dataOH:2016}
+Cogbill, C. (2016b).
+\newblock Settlement-era tree composition, {O}hio: level 1.
+\newblock Technical Report
+  http://dx.doi.org/10.6073/pasta/d09bb56c6af8ef0783cd7e76f8113b34, Long Term
+  Ecological Research Network.
+
+\bibitem[\protect\citeauthoryear{Cogbill, Burk, and Motzkin}{Cogbill
+  et~al.}{2002}]{Cogb:etal:2002}
+Cogbill, C., J.~Burk, and G.~Motzkin (2002).
+\newblock The forests of presettlement {N}ew {E}ngland, {USA}: spatial and
+  compositional patterns based on town proprietor surveys.
+\newblock {\em Journal of Biogeography\/}~{\em 29}, 1279--1304.
+
+\bibitem[\protect\citeauthoryear{Eddelbuettel and Francois}{Eddelbuettel and
+  Francois}{2011}]{Edde:Fran:2011}
+Eddelbuettel, D. and R.~Francois (2011).
+\newblock Rcpp: {S}eamless {R} and {C}++ integration.
+\newblock {\em Journal of Statistical Software\/}~{\em 40}, 1--18.
+
+\bibitem[\protect\citeauthoryear{Foster, Motzkin, and Slater}{Foster
+  et~al.}{1998}]{foster1998land}
+Foster, D.~R., G.~Motzkin, and B.~Slater (1998).
+\newblock Land-use history as long-term broad-scale disturbance: regional
+  forest dynamics in central {N}ew {England}.
+\newblock {\em Ecosystems\/}~{\em 1\/}(1), 96--119.
+
+\bibitem[\protect\citeauthoryear{Friedman and Reich}{Friedman and
+  Reich}{2005}]{friedman2005regional}
+Friedman, S.~K. and P.~B. Reich (2005).
+\newblock Regional legacies of logging: departure from presettlement forest
+  conditions in northern {M}innesota.
+\newblock {\em Ecological Applications\/}~{\em 15\/}(2), 726--744.
+
+\bibitem[\protect\citeauthoryear{Furrer and Sain}{Furrer and
+  Sain}{2010}]{Furr:Sain:2010}
+Furrer, R. and S.~R. Sain (2010).
+\newblock {spam}: A sparse matrix {R} package with emphasis on {MCMC} methods
+  for {G}aussian {M}arkov random fields.
+\newblock {\em Journal of Statistical Software\/}~{\em 36\/}(10), 1--25.
+
+\bibitem[\protect\citeauthoryear{Gelman}{Gelman}{2006}]{Gelm:2006}
+Gelman, A. (2006).
+\newblock Prior distributions for variance parameters in hierarchical models
+  (comment on article by {B}rowne and {D}raper).
+\newblock {\em Bayesian Analysis\/}~{\em 1\/}(3), 515--534.
+
+\bibitem[\protect\citeauthoryear{Gneiting, Balabdaoui, and Raftery}{Gneiting
+  et~al.}{2007}]{Gnei:etal:2007}
+Gneiting, T., F.~Balabdaoui, and A.~E. Raftery (2007).
+\newblock Probabilistic forecasts, calibration and sharpness.
+\newblock {\em Journal of the Royal Statistical Society: Series B (Statistical
+  Methodology)\/}~{\em 69\/}(2), 243--268.
+
+\bibitem[\protect\citeauthoryear{Goring and {University of Wisconsin}}{Goring
+  and {University of Wisconsin}}{2016}]{Gori:etal:data:2016}
+Goring, S. and {University of Wisconsin} (2016).
+\newblock Settlement-era gridded tree composition, midwestern {US}: Level 1.
+\newblock Technical Report
+  http://dx.doi.org/10.6073/pasta/aa0ef9828d41569a96651b056ad89fb3, Long Term
+  Ecological Research Network.
+
+\bibitem[\protect\citeauthoryear{Goring, Williams, Mladenoff, Cogbill, Record,
+  Paciorek, Jackson, Dietze, Matthes, and McLachlan}{Goring
+  et~al.}{2016}]{goring2015composition}
+Goring, S.~J., J.~W. Williams, D.~J. Mladenoff, C.~V. Cogbill, S.~Record, C.~J.
+  Paciorek, S.~T. Jackson, M.~C. Dietze, J.~H. Matthes, and J.~S. McLachlan
+  (2016).
+\newblock Changes in forest composition, stem density, and biomass from the
+  settlement era to present in the upper {M}idwestern {U}nited {S}tates.
+\newblock {\em PLOS ONE\/}~{\em in press}.
+
+\bibitem[\protect\citeauthoryear{Gray, Brandeis, Shaw, McWilliams, and
+  Miles}{Gray et~al.}{2012}]{gray2012forest}
+Gray, A.~N., T.~J. Brandeis, J.~D. Shaw, W.~H. McWilliams, and P.~D. Miles
+  (2012).
+\newblock Forest inventory and analysis database of the {United States} of
+  {America} ({FIA}).
+\newblock {\em Vegetation databases for the 21st century.--Biodiversity \&
+  Ecology\/}~{\em 4}, 255--264.
+
+\bibitem[\protect\citeauthoryear{Grimm}{Grimm}{1984}]{grimm1984fire}
+Grimm, E.~C. (1984).
+\newblock Fire and other factors controlling the {B}ig {W}oods vegetation of
+  {M}innesota in the mid-nineteenth century.
+\newblock {\em Ecological Monographs\/}~{\em 54\/}(3), 291--311.
+
+\bibitem[\protect\citeauthoryear{Krnjaji\'{c} and Draper}{Krnjaji\'{c} and
+  Draper}{2014}]{Krnj:Drap:2014}
+Krnjaji\'{c}, M. and D.~Draper (2014).
+\newblock Bayesian model comparison: {L}og scores and {DIC}.
+\newblock {\em Statistics and Probability Letters\/}~{\em 88}, 9--14.
+
+\bibitem[\protect\citeauthoryear{Lindgren, Rue, and Lindstr{\"o}m}{Lindgren
+  et~al.}{2011}]{Lind:etal:2011}
+Lindgren, F., H.~Rue, and J.~Lindstr{\"o}m (2011).
+\newblock An explicit link between {G}aussian fields and {G}aussian {M}arkov
+  random fields: the stochastic partial differential equation approach.
+\newblock {\em Journal of the Royal Statistical Society B\/}~{\em 73},
+  423--498.
+
+\bibitem[\protect\citeauthoryear{Liu, Mladenoff, Keuler, and Moore}{Liu
+  et~al.}{2011}]{liu2011broadscale}
+Liu, F., D.~J. Mladenoff, N.~S. Keuler, and L.~S. Moore (2011).
+\newblock Broadscale variability in tree data of the historical public land
+  survey and its consequences for ecological studies.
+\newblock {\em Ecological Monographs\/}~{\em 81\/}(2), 259--275.
+
+\bibitem[\protect\citeauthoryear{McCulloch and Rossi}{McCulloch and
+  Rossi}{1994}]{McCu:Ross:1994}
+McCulloch, R. and P.~E. Rossi (1994).
+\newblock An exact likelihood analysis of the multinomial probit model.
+\newblock {\em Journal of Econometrics\/}~{\em 64\/}(1), 207--240.
+
+\bibitem[\protect\citeauthoryear{Mladenoff, Dahir, Nordheim, Schulte, and
+  Guntenspergen}{Mladenoff et~al.}{2002}]{mladenoff2002narrowing}
+Mladenoff, D.~J., S.~E. Dahir, E.~V. Nordheim, L.~A. Schulte, and G.~G.
+  Guntenspergen (2002).
+\newblock Narrowing historical uncertainty: Probabilistic classification of
+  ambiguously identified tree species in historical forest survey data.
+\newblock {\em Ecosystems\/}~{\em 5\/}(6), 539--553.
+
+\bibitem[\protect\citeauthoryear{Munoz, Mladenoff, Schroeder, and
+  Williams}{Munoz et~al.}{2014}]{munoz2014defining}
+Munoz, S.~E., D.~J. Mladenoff, S.~Schroeder, and J.~W. Williams (2014).
+\newblock Defining the spatial patterns of historical land use associated with
+  the indigenous societies of eastern {N}orth {A}merica.
+\newblock {\em Journal of Biogeography\/}~{\em 41\/}(12), 2195--2210.
+
+\bibitem[\protect\citeauthoryear{Paciorek}{Paciorek}{2013}]{Paci:2013}
+Paciorek, C. (2013).
+\newblock Spatial models for point and areal data using {M}arkov random fields
+  on a fine grid.
+\newblock {\em Electronic Journal of Statistics\/}~{\em 7}, 946--972.
+
+\bibitem[\protect\citeauthoryear{Paciorek, Goring, Thurman, Cogbill, Williams,
+  Mladenoff, Peters, Zhu, and McLachlan}{Paciorek
+  et~al.}{2016}]{paci:etal:data:2016}
+Paciorek, C., S.~Goring, A.~Thurman, C.~Cogbill, J.~Williams, D.~Mladenoff,
+  J.~Peters, J.~Zhu, and J.~McLachlan (2016).
+\newblock Settlement-era gridded tree composition, northeastern {US}: Level 2.
+\newblock Technical Report
+  http://dx.doi.org/10.6073/pasta/8544e091b64db26fdbbbafd0699fa4f9, Long Term
+  Ecological Research Network.
+
+\bibitem[\protect\citeauthoryear{Pattison}{Pattison}{1957}]{pattison1957beginnings}
+Pattison, W.~D. (1957).
+\newblock {\em Beginnings of the American Rectangular Land Survey System,
+  1784-1800}.
+\newblock Chicago: University of Chicago.
+
+\bibitem[\protect\citeauthoryear{{R Core Team}}{{R Core Team}}{2014}]{R:2014}
+{R Core Team} (2014).
+\newblock {\em R: A Language and Environment for Statistical Computing}.
+\newblock Vienna, Austria: R Foundation for Statistical Computing.
+
+\bibitem[\protect\citeauthoryear{Rhemtulla, Mladenoff, and Clayton}{Rhemtulla
+  et~al.}{2009a}]{rhemtulla2009historical}
+Rhemtulla, J.~M., D.~J. Mladenoff, and M.~K. Clayton (2009a).
+\newblock Historical forest baselines reveal potential for continued carbon
+  sequestration.
+\newblock {\em Proceedings of the National Academy of Sciences\/}~{\em
+  106\/}(15), 6082--6087.
+
+\bibitem[\protect\citeauthoryear{Rhemtulla, Mladenoff, and Clayton}{Rhemtulla
+  et~al.}{2009b}]{rhemtulla2009legacies}
+Rhemtulla, J.~M., D.~J. Mladenoff, and M.~K. Clayton (2009b).
+\newblock Legacies of historical land use on regional forest composition and
+  structure in {W}isconsin, {USA} (mid-1800{s}-1930{s}-2000{s}).
+\newblock {\em Ecological Applications\/}~{\em 19\/}(4), 1061--1078.
+
+\bibitem[\protect\citeauthoryear{Rue and Held}{Rue and
+  Held}{2005}]{Rue:Held:2005}
+Rue, H. and L.~Held (2005).
+\newblock {\em Gaussian {M}arkov Random Fields: Theory and Applications}.
+\newblock Boca Raton: Chapman \& Hall.
+
+\bibitem[\protect\citeauthoryear{Schulte and Mladenoff}{Schulte and
+  Mladenoff}{2001}]{schulte2001original}
+Schulte, L.~A. and D.~J. Mladenoff (2001).
+\newblock The original {US} public land survey records: their use and
+  limitations in reconstructing presettlement vegetation.
+\newblock {\em Journal of Forestry\/}~{\em 99\/}(10), 5--10.
+
+\bibitem[\protect\citeauthoryear{Shaby and Wells}{Shaby and
+  Wells}{2011}]{Shab:Well:2011}
+Shaby, B. and M.~Wells (2011).
+\newblock Exploring an adaptive {M}etropolis algorithm.
+\newblock Technical Report 2011-14, Department of Statistics, Duke University.
+
+\bibitem[\protect\citeauthoryear{Shea, Schulte, and Palik}{Shea
+  et~al.}{2014}]{shea2014reconstructing}
+Shea, M.~E., L.~A. Schulte, and B.~J. Palik (2014).
+\newblock Reconstructing vegetation past: pre-{E}uro-{A}merican vegetation for
+  the midwest driftless area, {USA}.
+\newblock {\em Ecological Restoration\/}~{\em 32\/}(4), 417--433.
+
+\bibitem[\protect\citeauthoryear{Tan and Nott}{Tan and
+  Nott}{2013}]{Tan:Nott:2013}
+Tan, L.~S. and D.~J. Nott (2013).
+\newblock Variational inference for generalized linear mixed models using
+  partially noncentered parametrizations.
+\newblock {\em Statistical Science\/}~{\em 28\/}(2), 168--188.
+
+\bibitem[\protect\citeauthoryear{Thompson, Carpenter, Cogbill, and
+  Foster}{Thompson et~al.}{2013}]{thompson2013four}
+Thompson, J.~R., D.~N. Carpenter, C.~V. Cogbill, and D.~R. Foster (2013).
+\newblock Four centuries of change in northeastern {United States} forests.
+\newblock {\em PLOS ONE\/}~{\em 8\/}(9), e72540.
+
+\bibitem[\protect\citeauthoryear{Transeau}{Transeau}{1935}]{transeau1935prairie}
+Transeau, E.~N. (1935).
+\newblock The prairie peninsula.
+\newblock {\em Ecology\/}~{\em 16\/}(3), 423--437.
+
+\bibitem[\protect\citeauthoryear{Whitney}{Whitney}{1996}]{Whit:1996}
+Whitney, G.~G. (1996).
+\newblock {\em From Coastal Wilderness to Fruited Plain: a History of
+  Environmental Change in Temperate {N}orth {A}merica from 1500 to the
+  Present}.
+\newblock Cambridge University Press.
+
+\end{thebibliography}

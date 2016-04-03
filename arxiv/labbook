@@ -1,3 +1,8 @@
+4/4/16:
+generated paper.tex from paper.lyx in main directory
+copied to arxiv and removed \textcolor{red} and changed figure refs to match as done in arxiv_original/paperArxiv.tex
+
+
 8/28/15:
 generating .eps files as pdftops -eps fig*pdf
 fig1 looks good; not so sure about fig2,3
