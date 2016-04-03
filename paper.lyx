@@ -218,7 +218,8 @@ Department of Geography, University of Wisconsin, Madison, Wisconsin, USA
 
 \end_inset
 
-Department of Statistics, University of Iowa, Iowa City, Iowa, USA
+VA Office of Rural Health, Veterans Rural Health Resource Center, Iowa City
+ VAMC, Iowa City, Iowa, USA
 \end_layout
 
 \begin_layout Address
@@ -388,7 +389,7 @@ We present a gridded 8 km-resolution data product of the estimated composition
  as a baseline against which to investigate how forests and ecosystems change
  after intensive settlement.
  The data product is being made available at the NIS data portal as version
- 0.4.
+ 1.0.
 \end_layout
 
 \begin_layout Abstract
@@ -874,10 +875,6 @@ cite{goring2015composition}
  The gridded data at the 8 km resolution for the midwest subdomain are available
  through the NIS data portal 
 \color red
-as DOI:10.6073/pasta/aa0ef9828d41569a96651b056ad89fb3
-\color inherit
- 
-\color red
 
 \begin_inset ERT
 status open
@@ -898,9 +895,7 @@ citep{Gori:etal:data:2016}
  Cogbill from a myriad of archival sources representing land division surveys
  conducted in connection with local settlement
 \color red
- and are available through the NIS data portal as DOI:10.6073/pasta/e40c1ad172882
-d5113844296611451f6 and DOI:10.6073/pasta/d09bb56c6af8ef0783cd7e76f8113b34
- 
+ and are available through the NIS data portal 
 \begin_inset ERT
 status open
 
@@ -6720,9 +6715,9 @@ name "fig:all_predictions"
 \begin_layout Standard
 The data product is publicly available at the 
 \color red
-NIS Data Portal as DOI:10.6073/pasta/8544e091b64db26fdbbbafd0699fa4f9
+NIS Data Portal 
 \color inherit
- under the CC BY 4.0 license as version 0.4 as of January 2016 
+under the CC BY 4.0 license as version 1.0 as of January 2016 
 \begin_inset ERT
 status open
 
